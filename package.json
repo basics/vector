@@ -25,6 +25,11 @@
       "@commitlint/config-conventional"
     ]
   },
+  "standard-version": {
+    "scripts": {
+      "postcommit": "git commit --amend -m \"$(git log -1 --pretty=%B) [ci skip]\""
+    }
+  },
   "files": [
     "lib",
     "src"
