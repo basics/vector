@@ -1,0 +1,85 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "eslint.autoFixOnSave": true,
+    "eslint.alwaysShowStatus": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      {
+        "language": "vue",
+        "autoFix": true
+      }
+    ],
+    "prettier.eslintIntegration": true,
+    "prettier.stylelintIntegration": true,
+    "files.exclude": {
+      ".nuxt/": true,
+      "dist/": true,
+      "node_modules/": true,
+      "env/nuxt/cert/": true,
+      "output/": true,
+      "src/static/favicon/*": true,
+      "src/static/favicon/favicon.png": false,
+      "**/.idea": true,
+      "**/*.iml": true,
+      "**/out": true,
+      "**/gen": true,
+      "**/logs": true,
+      "**/*.log": true,
+      "**/.DS_Store": true,
+      "env/nuxt/config/global/favicon.json": true
+    },
+    "files.associations": {
+      ".postcssrc": "json",
+      ".stylelintrc": "json",
+      ".vcmrc": "json",
+      "*.css": "postcss",
+      "*.pcss": "postcss"
+    },
+  },
+  "extensions": {
+    "recommendations": [
+      "aeschli.vscode-css-formatter",
+      "alefragnani.Bookmarks",
+      "balazs4.gitlab-pipeline-monitor",
+      "bhshawon.node-json-autocomplete",
+      "christian-kohler.npm-intellisense",
+      "christian-kohler.path-intellisense",
+      "CoenraadS.bracket-pair-colorizer",
+      "cstuder.gitlab-ci-validator",
+      "daixiangyu13.ivue",
+      "dariofuzinato.vue-peek",
+      "DavidAnson.vscode-markdownlint",
+      "dbaeumer.vscode-eslint",
+      "deerawan.vscode-dash",
+      "EditorConfig.EditorConfig",
+      "eg2.vscode-npm-script",
+      "esbenp.prettier-vscode",
+      "formulahendry.auto-close-tag",
+      "formulahendry.auto-rename-tag",
+      "humao.rest-client",
+      "kisstkondoros.csstriggers",
+      "mgmcdermott.vscode-language-babel",
+      "michelemelluso.gitignore",
+      "mrmlnc.vscode-attrs-sorter",
+      "npxms.hide-gitignored",
+      "octref.vetur",
+      "pflannery.vscode-versionlens",
+      "ricard.postcss",
+      "robertohuertasm.vscode-icons",
+      "shekhardtu.vuejspack",
+      "shinnn.stylelint",
+      "steoates.autoimport",
+      "WallabyJs.quokka-vscode",
+      "wix.vscode-import-cost",
+      "yzhang.markdown-all-in-one"
+    ]
+  }
+}

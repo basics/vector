@@ -1,0 +1,66 @@
+{
+  "name": "blueprint-npm-module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./lib/index.js",
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "scripts": {
+    "clean": "rimraf lib",
+    "test": "npm run lint && npm run cover",
+    "test:prod": "cross-env BABEL_ENV=production npm run test",
+    "test:only": "mocha --require babel-core/register --require babel-polyfill --recursive",
+    "test:watch": "npm test -- --watch",
+    "test:examples": "node examples/",
+    "cover": "istanbul cover _mocha -- --require babel-core/register --require babel-polyfill --recursive",
+    "lint": "eslint src",
+    "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
+    "prepare": "npm run clean && npm run lint && npm run test && npm run build",
+    "commitmsg": "commitlint -E GIT_PARAMS"
+  },
+  "commitlint": {
+    "extends": [
+      "./@commitlint/config-conventional"
+    ]
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basics/blueprint-npm-module.git"
+  },
+  "keywords": [
+    "blueprint",
+    "npm",
+    "module"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/basics/blueprint-npm-module/issues"
+  },
+  "homepage": "https://github.com/basics/blueprint-npm-module#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.6",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-minify": "^0.4.3",
+    "chai": "^4.1.2",
+    "cross-env": "^5.2.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.10.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "rimraf": "^2.6.2"
+  }
+}

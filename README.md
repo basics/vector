@@ -1,1 +1,1 @@
-# vector
+# Blueprint - NPM Module
