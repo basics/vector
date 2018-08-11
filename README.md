@@ -1,7 +1,7 @@
 [![GitHub package version](https://img.shields.io/github/package-json/v/basics/blueprint-npm-module.svg)](https://github.com/basics/blueprint-npm-module)
 [![license](https://img.shields.io/github/license/basics/blueprint-npm-module.svg)](https://github.com/basics/blueprint-npm-module)
 
-[![OSX/Linux Build Status](https://travis-ci.org/GrabarzUndPartner/gp-vue-boilerplate.svg?branch=master)](https://travis-ci.org/GrabarzUndPartner/gp-vue-boilerplate)
+[![OSX/Linux Build Status](https://travis-ci.org/basics/blueprint-npm-module.svg?branch=master)](https://travis-ci.org/basics/blueprint-npm-module)
 [![NSP Status](https://nodesecurity.io/orgs/basics/projects/4c593704-b3ef-4475-95ce-5e3bfeaf3261/badge)](https://nodesecurity.io/orgs/basics/projects/4c593704-b3ef-4475-95ce-5e3bfeaf3261)
 [![Dependencies Status](https://david-dm.org/basics/blueprint-npm-module/status.svg)](https://david-dm.org/basics/blueprint-npm-module)
 [![DevDependencies Status](https://david-dm.org/basics/blueprint-npm-module/dev-status.svg)](https://david-dm.org/basics/blueprint-npm-module?type=dev)
