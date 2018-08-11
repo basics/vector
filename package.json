@@ -18,11 +18,11 @@
     "lint": "eslint src",
     "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
     "prepare": "npm run clean && npm run lint && npm run test && npm run build",
-    "precommit": "commitlint -E GIT_PARAMS"
+    "commitmsg": "commitlint -E GIT_PARAMS"
   },
   "commitlint": {
     "extends": [
-      "./@commitlint/config-conventional"
+      "@commitlint/config-conventional"
     ]
   },
   "files": [
@@ -59,6 +59,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
+    "husky": "^0.14.3",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "rimraf": "^2.6.2"
