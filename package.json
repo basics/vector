@@ -18,7 +18,7 @@
     "lint": "eslint src",
     "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
     "prepare": "npm run clean && npm run lint && npm run test && npm run build",
-    "commitmsg": "commitlint -E GIT_PARAMS"
+    "precommit": "commitlint -E GIT_PARAMS"
   },
   "commitlint": {
     "extends": [
