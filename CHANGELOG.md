@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/basics/vector/compare/v1.6.0...v1.6.1) (2018-08-12)
+
+
+### Bug Fixes
+
+* **package.json:** update package description ([63e8e3a](https://github.com/basics/vector/commit/63e8e3a))
+
 # [1.6.0](https://github.com/basics/vector/compare/v1.5.0...v1.6.0) (2018-08-12)
 
 

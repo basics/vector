@@ -1,6 +1,6 @@
 {
   "name": "@js-basics/vector",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "A vector class which supports operator overloading (+-*/)",
   "main": "./lib/index.js",
   "directories": {
