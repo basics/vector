@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/basics/vector/compare/v1.7.2...v1.8.0) (2018-08-12)
+
+
+### Features
+
+* **example:** added - based on readme ([d672c6c](https://github.com/basics/vector/commit/d672c6c))
+
 ## [1.7.2](https://github.com/basics/vector/compare/v1.7.1...v1.7.2) (2018-08-12)
 
 
