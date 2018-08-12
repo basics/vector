@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/basics/vector/compare/v1.7.1...v1.7.2) (2018-08-12)
+
+
+### Bug Fixes
+
+* **commitlint:** moved config from package.json to rc file ([0fbd488](https://github.com/basics/vector/commit/0fbd488))
+
 ## [1.7.1](https://github.com/basics/vector/compare/v1.7.0...v1.7.1) (2018-08-12)
 
 
