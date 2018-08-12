@@ -1,4 +1,3 @@
-
 let inProgress = 'default';
 
 const v3ValueOf = {
@@ -54,6 +53,15 @@ export class Vector {
 
   valueOf() {
     return v3ValueOf[inProgress].call(this);
+  }
+
+  normalize() {
+    const { length } = this;
+    return new Vector(this.x / length, this.y / length, this.z / length);
+  }
+
+  norm() {
+    return this.normalize();
   }
 
   toString() {
