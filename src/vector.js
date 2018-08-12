@@ -38,8 +38,6 @@ function innerCalc(alg, result) {
   }
 }
 
-function square(val) { return val * val; }
-
 export class Vector {
   constructor(x, y, z) {
     if (typeof x === 'function') {
@@ -64,12 +62,63 @@ export class Vector {
     return this.normalize();
   }
 
+  // methods ispired by
+  // https://evanw.github.io/lightgl.js/docs/vector.html
+
+  dot(v) {
+    return this.x * v.x + this.y * v.y + this.z * v.z;
+  }
+
+  cross(v) {
+    return new Vector(
+      this.y * v.z - this.z * v.y,
+      this.z * v.x - this.x * v.z,
+      this.x * v.y - this.y * v.x
+    );
+  }
+
+  crossNormalize(v) {
+    const vec = this.cross(v);
+    const { length } = vec;
+    vec.x /= length;
+    vec.y /= length;
+    vec.z /= length;
+    return vec;
+  }
+
+  cn(v) {
+    return this.crossNormalize(v);
+  }
+
+  toAngles() {
+    return {
+      theta: Math.atan2(this.z, this.x),
+      phi: Math.asin(this.y / this.length)
+    };
+  }
+
+  angleTo(a) {
+    return Math.acos(this.dot(a) / (this.length * a.length));
+  }
+
+  toArray() {
+    return [this.x, this.y, this.z];
+  }
+
+  clone() {
+    return new Vector(this.x, this.y, this.z);
+  }
+
+  equals(v) {
+    return this.x === v.x && this.y === v.y && this.z === v.z;
+  }
+
   toString() {
     return `[${this.x}, ${this.y}, ${this.z}]`;
   }
 
   get length() {
-    return Math.sqrt(square(this.x) + square(this.y) + square(this.z));
+    return Math.sqrt(this.dot(this));
   }
 
   get len() {
