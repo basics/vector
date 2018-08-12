@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/basics/vector/compare/v1.6.1...v1.7.0) (2018-08-12)
+
+
+### Bug Fixes
+
+* **config:** added vscode live share to workspace config ([ed061a5](https://github.com/basics/vector/commit/ed061a5))
+
+
+### Features
+
+* update package description ([c8ddff5](https://github.com/basics/vector/commit/c8ddff5))
+
 ## [1.6.1](https://github.com/basics/vector/compare/v1.6.0...v1.6.1) (2018-08-12)
 
 
