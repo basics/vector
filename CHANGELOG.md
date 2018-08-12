@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/basics/vector/compare/v1.8.0...v1.8.1) (2018-08-12)
+
+
+### Bug Fixes
+
+* **example:** refactored ([a03cdda](https://github.com/basics/vector/commit/a03cdda))
+
 # [1.8.0](https://github.com/basics/vector/compare/v1.7.2...v1.8.0) (2018-08-12)
 
 
