@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/basics/vector/compare/v1.7.0...v1.7.1) (2018-08-12)
+
+
+### Bug Fixes
+
+* **package.json:** added keywords ([04d49f3](https://github.com/basics/vector/commit/04d49f3))
+
 # [1.7.0](https://github.com/basics/vector/compare/v1.6.1...v1.7.0) (2018-08-12)
 
 
