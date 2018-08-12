@@ -38,7 +38,7 @@ function innerCalc(alg, result) {
   }
 }
 
-export class Vector {
+export default class Vector {
   constructor(x, y, z) {
     if (typeof x === 'function') {
       innerCalc(x, this);

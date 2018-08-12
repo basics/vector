@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { Vector } from '../src/vector';
+import Vector from '../src';
 
 describe('Vector test.', () => {
   it('should create x y z values', () => {
