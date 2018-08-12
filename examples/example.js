@@ -1,11 +1,19 @@
+const { calc, default: Vector } = require('../lib');
+
 /* eslint-disable no-console */
-const defaultAwesomeFunction = require('../lib').default;
-const { awesomeFunction } = require('../lib');
 
-const defaultVal = defaultAwesomeFunction('Dinesh');
-const val = awesomeFunction();
+const pos = new Vector(5, 6, 7);
+const dir = new Vector(1, 0, 0);
+console.log('pos:', pos, ' dir:', dir);
 
-// defaultVal === 'I am the Default Awesome Function, fellow comrade! - Dinesh'
-console.log(defaultVal);
-// val === 'I am just an Awesome Function'
-console.log(val);
+const offsetA = new Vector(() => dir * 30 + pos);
+console.log('offsetA:', offsetA);
+
+const offsetB = calc(() => dir * 30 + pos);
+console.log('offsetB:', offsetB);
+
+let way = offsetA;
+if (way > 1) {
+  way = way.normalize();
+}
+console.log('way:', way);
