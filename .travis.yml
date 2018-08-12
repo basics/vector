@@ -3,15 +3,16 @@ branches:
   only:
     - master
     - /^greenkeeper/.*$/
-env:
-  global:
-    #github
-    - secure: "iIi4quOn4VAaiw1HhLvakeCSRKo4UXOVg/loiOuwgKoZTR902aBXeMixf9Z3zNqjfLN36ER1Kx6NZboYX9g/sXibG01oMOXAmeGfTXfrC1znk0GL0Qh5yHEAjZzS8K2D06j0Rco4br0UHfnN4xV4xA/0H11nKUwQETKc+SmCYv1QozzWwK5mRTrFcCK/Q0j6FGwIbp5AfzXeY1c7XaJiFa4qYK7Nrk1Bw6KfJsQexWSGj37JAl/80fGqmmWcEpntF2uGu6WXejaMFHnqnQ5zD5AIiv6VZIik0RnS3ACXMS/276Jom14x34bIqIHEs+pWk7lPZUH3dTtdtGZHyl7ZOjJiFO5Sc/t/ph8zJEcMzuyKfWppp9DsG2QO9MvMnt7IzLV4N2B9YlYXqx5u9LUPZ6pPzfxxw69Y5p8lfqIBlqegYXVZUtnkQyjnU2PtjBhd9aFuLuV+jDRboTDE/29NBgM5jz8Gw/TbEz8zft3ZRpGY6uRNsNl6pKBpOQU0plL3A88aqbdj3UGMLLaeGp3dArvWrb7fE+//2MqmMZ7Qva9ynnqOFJ+vRX6PRbi1d6NhuFc7OF5LQnNcb0m6fIAiChdPk5Cqha4N7tA7X5a1TKSP/8TVZCiMBsnHnwt1EVRUMjqrE2zmiyXTWbb/XPv+Qao2r18cyiJlCGzQvkl3oaM="
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email: false
 install:
   - npm install
-  - npm install standard-version --no-save
+  - npm install semantic-release @semantic-release/git @semantic-release/changelog --no-save
 script:
   - npm run test
   - npm run build
-  - npx standard-version
-  - git push --follow-tags https://$GH_TOKEN@github.com/$TRAVIS_REPO_SLUG HEAD:$TRAVIS_BRANCH
+after_success:
+  - npm run travis-deploy-once "npm run semantic-release"
