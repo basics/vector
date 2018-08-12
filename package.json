@@ -36,9 +36,9 @@
     "url": "https://github.com/basics/vector.git"
   },
   "keywords": [
-    "blueprint",
-    "npm",
-    "module"
+    "vector",
+    "operator",
+    "math"
   ],
   "license": "MIT",
   "bugs": {
