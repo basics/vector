@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/basics/vector/compare/v1.3.0...v1.4.0) (2018-08-12)
+
+
+### Features
+
+* **versioning:** replaced standard version with semantic-release ([65e88ed](https://github.com/basics/vector/commit/65e88ed))
+
 # Change Log
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.

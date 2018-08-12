@@ -1,6 +1,6 @@
 {
   "name": "@basics/vector",
-  "version": "0.0.0-development",
+  "version": "1.4.0",
   "description": "",
   "main": "./lib/index.js",
   "directories": {
