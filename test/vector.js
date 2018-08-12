@@ -45,6 +45,18 @@ describe('Vector test.', () => {
 
   });
 
+  it('should set opposite axis to 1 when calling the cross product', () => {
+
+    const dir1 = new Vector(0, 1, 0);
+    const dir2 = new Vector(-1, 0, 0);
+    const cross = dir1.crossNormalize(dir2);
+
+    assert.equal(cross.x, 0);
+    assert.equal(cross.y, 0);
+    assert.equal(cross.z, 1);
+
+  });
+
   it('only for readme', () => {
 
     // create vector by numbers
