@@ -7,14 +7,13 @@
 [![Dependencies Status](https://david-dm.org/basics/vector/status.svg)](https://david-dm.org/basics/vector)
 [![DevDependencies Status](https://david-dm.org/basics/vector/dev-status.svg)](https://david-dm.org/basics/vector?type=dev)
 
-[![start with why](https://img.shields.io/badge/start%20with-why%3F-brightgreen.svg?style=flat)](http://www.ted.com/talks/simon_sinek_how_great_leaders_inspire_action)
-[![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts") [![Greenkeeper badge](https://badges.greenkeeper.io/basics/vector.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/basics/vector.svg)](https://greenkeeper.io/)
 
 # basics - vector
 
-this libary provides 3D Vector in js including support for __+ - * /__ operator handling
+this libary provides 3D Vector in js including support for `+` `-` `*` `/` operator handling
 
-create vector by numbers
+#### create vector by numbers
 
 ```js
 const pos = new Vector(5, 6, 7);
@@ -25,7 +24,7 @@ console.log('pos:', pos, ' dir:', dir);
 
 pos: { x: 5, y: 6, z: 7 }  dir: { x: 1, y: 0, z: 0 }
 
-or create vector by calculating other vectors and number
+#### create vector by calculating other vectors and number
 
 ```js
 const offset = new Vector(() => dir * 30 + pos);
@@ -35,7 +34,7 @@ console.log('offset:', offset);
 
 offset: { x: 35, y: 6, z: 7 }
 
-compare length
+#### compare lengths
 
 ```js
 let way = offset;
