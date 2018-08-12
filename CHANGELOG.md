@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/basics/vector/compare/v1.4.0...v1.4.1) (2018-08-12)
+
+
+### Bug Fixes
+
+* **package:** name ([cdb0055](https://github.com/basics/vector/commit/cdb0055))
+
 # [1.4.0](https://github.com/basics/vector/compare/v1.3.0...v1.4.0) (2018-08-12)
 
 
