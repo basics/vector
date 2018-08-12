@@ -1,3 +1,11 @@
+# [1.5.0](https://github.com/basics/vector/compare/v1.4.1...v1.5.0) (2018-08-12)
+
+
+### Features
+
+* add new functions to vector ([31fa033](https://github.com/basics/vector/commit/31fa033))
+* package update keywords ([bdacb1e](https://github.com/basics/vector/commit/bdacb1e))
+
 ## [1.4.1](https://github.com/basics/vector/compare/v1.4.0...v1.4.1) (2018-08-12)
 
 
