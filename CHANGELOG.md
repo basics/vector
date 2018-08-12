@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/basics/vector/compare/v1.5.0...v1.6.0) (2018-08-12)
+
+
+### Features
+
+* delete old index file ([a18328f](https://github.com/basics/vector/commit/a18328f))
+* delete original index file ([621d1e0](https://github.com/basics/vector/commit/621d1e0))
+* rename vector to index file ([07b6127](https://github.com/basics/vector/commit/07b6127))
+
 # [1.5.0](https://github.com/basics/vector/compare/v1.4.1...v1.5.0) (2018-08-12)
 
 
