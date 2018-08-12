@@ -38,7 +38,10 @@
   "keywords": [
     "vector",
     "operator",
-    "math"
+    "math",
+    "overload",
+    "basic",
+    "vec3"
   ],
   "license": "MIT",
   "bugs": {
