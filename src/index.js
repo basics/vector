@@ -1,51 +1,56 @@
-let inProgress = 'default';
+/* eslint class-methods-use-this: 0 */
+const X = Symbol.for('x');
+const Y = Symbol.for('y');
+const Z = Symbol.for('z');
+const DEFAULT = Symbol.for('default');
 
-const v3ValueOf = {
-  x() {
-    return this.x;
-  },
-  y() {
-    return this.y;
-  },
-  z() {
-    return this.z;
-  },
-  default() {
-    return this.length;
-  }
+let inProgress = DEFAULT;
+
+const v3ValueOf = new Map();
+v3ValueOf[X] = function getX() {
+  return this[inProgress];
+};
+v3ValueOf[Y] = function getY() {
+  return this[inProgress];
+};
+v3ValueOf[Z] = function getZ() {
+  return this[inProgress];
+};
+v3ValueOf[DEFAULT] = function getDefault() {
+  return this.length;
 };
 
 function innerCalc(alg, result) {
   if (typeof alg !== 'function') {
     throw new Error('no function assigned');
   }
-  if (inProgress !== 'default') {
+  if (inProgress !== DEFAULT) {
     throw new Error('something wrong');
   }
   try {
     const res = result;
 
-    inProgress = 'x';
-    res.x = alg();
-    inProgress = 'y';
-    res.y = alg();
-    inProgress = 'z';
-    res.z = alg();
+    inProgress = X;
+    res[inProgress] = alg();
+    inProgress = Y;
+    res[inProgress] = alg();
+    inProgress = Z;
+    res[inProgress] = alg();
 
     return res;
   } finally {
-    inProgress = 'default';
+    inProgress = DEFAULT;
   }
 }
 
-export default class Vector {
+class AVector {
   constructor(x, y, z) {
     if (typeof x === 'function') {
       innerCalc(x, this);
     } else {
-      this.x = x || 0;
-      this.y = y || 0;
-      this.z = z || 0;
+      this[X] = x || 0;
+      this[Y] = y || 0;
+      this[Z] = z || 0;
     }
   }
 
@@ -55,7 +60,7 @@ export default class Vector {
 
   normalize() {
     const { length } = this;
-    return new Vector(this.x / length, this.y / length, this.z / length);
+    return this.createVector(this.x / length, this.y / length, this.z / length);
   }
 
   norm() {
@@ -70,7 +75,7 @@ export default class Vector {
   }
 
   cross(v) {
-    return new Vector(
+    return this.createVector(
       this.y * v.z - this.z * v.y,
       this.z * v.x - this.x * v.z,
       this.x * v.y - this.y * v.x
@@ -106,7 +111,7 @@ export default class Vector {
   }
 
   clone() {
-    return new Vector(this.x, this.y, this.z);
+    throw new Error('clone() not implemented');
   }
 
   equals(v) {
@@ -123,6 +128,78 @@ export default class Vector {
 
   get len() {
     return this.length;
+  }
+}
+
+export default class Vector extends AVector {
+  set x(x) {
+    this[X] = x;
+  }
+
+  set y(y) {
+    this[Y] = y;
+  }
+
+  set z(z) {
+    this[Z] = z;
+  }
+
+  get x() {
+    return this[X];
+  }
+
+  get y() {
+    return this[Y];
+  }
+
+  get z() {
+    return this[Z];
+  }
+
+  clone() {
+    return new Vector(this.x, this.y, this.z);
+  }
+
+  createVector(x, y, z) {
+    return new Vector(x, y, z);
+  }
+}
+
+export class IVector extends AVector {
+  get x() {
+    return this[X];
+  }
+
+  set x(_) {
+    throw new Error('set x() not implemented');
+  }
+
+  get y() {
+    return this[Y];
+  }
+
+  set y(_) {
+    throw new Error('set y() not implemented');
+  }
+
+  get z() {
+    return this[Z];
+  }
+
+  set z(_) {
+    throw new Error('set z() not implemented');
+  }
+
+  clone() {
+    return this;
+  }
+
+  toVector() {
+    return new Vector(this.x, this.y, this.z);
+  }
+
+  createVector(x, y, z) {
+    return new IVector(x, y, z);
   }
 }
 
