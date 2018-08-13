@@ -1,3 +1,12 @@
+## [1.8.2](https://github.com/basics/vector/compare/v1.8.1...v1.8.2) (2018-08-13)
+
+
+### Bug Fixes
+
+* **example:** don't import inside test ([245e60a](https://github.com/basics/vector/commit/245e60a))
+* **test:** readme test imports example.js ([7c29af4](https://github.com/basics/vector/commit/7c29af4))
+* **travis:** rearranged script order ([03c3c9a](https://github.com/basics/vector/commit/03c3c9a))
+
 ## [1.8.1](https://github.com/basics/vector/compare/v1.8.0...v1.8.1) (2018-08-12)
 
 
