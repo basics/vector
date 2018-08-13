@@ -1,3 +1,5 @@
+# basics - vector
+
 [![GitHub package version](https://img.shields.io/github/package-json/v/basics/vector.svg)](https://github.com/basics/vector)
 [![license](https://img.shields.io/github/license/basics/vector.svg)](https://github.com/basics/vector)
 
@@ -9,39 +11,37 @@
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/basics/vector.svg)](https://greenkeeper.io/)
 
-# basics - vector
-
 this libary provides 3D Vector in js including support for `+` `-` `*` `/` operator handling
 
-#### create vector by numbers
+## create vector by numbers
 
 ```js
 const pos = new Vector(5, 6, 7);
 const dir = new Vector(1, 0, 0);
 
-console.log('pos:', pos, ' dir:', dir);
+console.log("pos:", pos, " dir:", dir);
 ```
 
-pos: { x: 5, y: 6, z: 7 }  dir: { x: 1, y: 0, z: 0 }
+pos: { x: 5, y: 6, z: 7 } dir: { x: 1, y: 0, z: 0 }
 
-#### create vector by calculating other vectors and number
+## create vector by calculating other vectors and number
 
 ```js
 const offset = new Vector(() => dir * 30 + pos);
 
-console.log('offset:', offset);
+console.log("offset:", offset);
 ```
 
 offset: { x: 35, y: 6, z: 7 }
 
-#### compare lengths
+## compare lengths
 
 ```js
 let way = offset;
 if (way > 1) {
   way = way.normalize();
 }
-console.log('way:', way);
+console.log("way:", way);
 ```
 
 way: { x: 0.96, y: 0.16, z: 0.19 }
