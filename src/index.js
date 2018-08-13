@@ -1,4 +1,3 @@
-/* eslint class-methods-use-this: 0 */
 const X = Symbol.for('x');
 const Y = Symbol.for('y');
 const Z = Symbol.for('z');
@@ -111,7 +110,7 @@ class AVector {
   }
 
   clone() {
-    throw new Error('clone() not implemented');
+    throw new Error('clone() not implemented', this);
   }
 
   equals(v) {
@@ -161,7 +160,7 @@ export default class Vector extends AVector {
   }
 
   createVector(x, y, z) {
-    return new Vector(x, y, z);
+    return new Vector(x, y, z, this);
   }
 }
 
@@ -171,7 +170,7 @@ export class IVector extends AVector {
   }
 
   set x(_) {
-    throw new Error('set x() not implemented');
+    throw new Error('set x() not implemented', this);
   }
 
   get y() {
@@ -179,7 +178,7 @@ export class IVector extends AVector {
   }
 
   set y(_) {
-    throw new Error('set y() not implemented');
+    throw new Error('set y() not implemented', this);
   }
 
   get z() {
@@ -187,7 +186,7 @@ export class IVector extends AVector {
   }
 
   set z(_) {
-    throw new Error('set z() not implemented');
+    throw new Error('set z() not implemented', this);
   }
 
   clone() {
@@ -199,7 +198,7 @@ export class IVector extends AVector {
   }
 
   createVector(x, y, z) {
-    return new IVector(x, y, z);
+    return new IVector(x, y, z, this);
   }
 }
 
