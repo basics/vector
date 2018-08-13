@@ -1,3 +1,16 @@
+# [1.9.0](https://github.com/basics/vector/compare/v1.8.2...v1.9.0) (2018-08-13)
+
+
+### Bug Fixes
+
+* **babelrc:** workaround for broken live build ([1e1d0a3](https://github.com/basics/vector/commit/1e1d0a3))
+* **vector.js:** remove special linter rule ([71a025e](https://github.com/basics/vector/commit/71a025e))
+
+
+### Features
+
+* **vector.js:** optional immutable vector class ([64e89a0](https://github.com/basics/vector/commit/64e89a0))
+
 ## [1.8.2](https://github.com/basics/vector/compare/v1.8.1...v1.8.2) (2018-08-13)
 
 
