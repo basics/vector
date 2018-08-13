@@ -48,6 +48,23 @@ describe('Vector test.', () => {
   });
 
   it('only for readme', () => {
-    require('../examples');
+    // create vector by numbers
+    const pos = new Vector(5, 6, 7);
+    const dir = new Vector(1, 0, 0);
+    console.log('pos:', pos, ' dir:', dir);
+    // pos: { [Number: 10.48] x: 5, y: 6, z: 7 }  dir: { [Number: 1] x: 1, y: 0, z: 0 }
+
+    // or create vector by calculating other vectors and number
+    const offset = new Vector(() => dir * 30 + pos);
+    console.log('offset:', offset);
+    // offset: { [Number: 36.19] x: 35, y: 6, z: 7 }
+
+    // compare length
+    let way = offset;
+    if (way > 1) {
+      way = way.normalize();
+    }
+    console.log('way:', way);
+    // way: { [Number: 1] x: 0.96, y: 0.16, z: 0.19 }
   });
 });
