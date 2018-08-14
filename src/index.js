@@ -1,3 +1,4 @@
+/* eslint class-methods-use-this: 0 */
 const X = Symbol.for('x');
 const Y = Symbol.for('y');
 const Z = Symbol.for('z');
@@ -84,9 +85,9 @@ class AVector {
   crossNormalize(v) {
     const vec = this.cross(v);
     const { length } = vec;
-    vec.x /= length;
-    vec.y /= length;
-    vec.z /= length;
+    vec[X] /= length;
+    vec[Y] /= length;
+    vec[Z] /= length;
     return vec;
   }
 
@@ -110,7 +111,7 @@ class AVector {
   }
 
   clone() {
-    throw new Error('clone() not implemented', this);
+    throw new Error('clone() not implemented');
   }
 
   equals(v) {
@@ -130,7 +131,7 @@ class AVector {
   }
 }
 
-export default class Vector extends AVector {
+export class Vector extends AVector {
   set x(x) {
     this[X] = x;
   }
@@ -160,7 +161,7 @@ export default class Vector extends AVector {
   }
 
   createVector(x, y, z) {
-    return new Vector(x, y, z, this);
+    return new Vector(x, y, z);
   }
 }
 
@@ -170,7 +171,7 @@ export class IVector extends AVector {
   }
 
   set x(_) {
-    throw new Error('set x() not implemented', this);
+    throw new Error('set x() not implemented');
   }
 
   get y() {
@@ -178,7 +179,7 @@ export class IVector extends AVector {
   }
 
   set y(_) {
-    throw new Error('set y() not implemented', this);
+    throw new Error('set y() not implemented');
   }
 
   get z() {
@@ -186,11 +187,7 @@ export class IVector extends AVector {
   }
 
   set z(_) {
-    throw new Error('set z() not implemented', this);
-  }
-
-  clone() {
-    return this;
+    throw new Error('set z() not implemented');
   }
 
   toVector() {
@@ -198,10 +195,12 @@ export class IVector extends AVector {
   }
 
   createVector(x, y, z) {
-    return new IVector(x, y, z, this);
+    return new IVector(x, y, z);
   }
 }
 
 export function calc(alg) {
   return innerCalc(alg, new Vector());
 }
+
+export default Vector;
