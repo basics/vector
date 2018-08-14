@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/basics/vector/compare/v1.9.0...v1.9.1) (2018-08-14)
+
+
+### Bug Fixes
+
+* **index.js:** remove unneeded this calls ([81bbe36](https://github.com/basics/vector/commit/81bbe36))
+
 # [1.9.0](https://github.com/basics/vector/compare/v1.8.2...v1.9.0) (2018-08-13)
 
 
