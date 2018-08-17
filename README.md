@@ -26,8 +26,9 @@ Vector objects can be create with number <nobr>`new Vector(5, 6, 7)`</nobr> or d
 <summary>
 Implementation details
 </summary>
-Javascript has this one peculiarity called valueOf() this function is designed for primitive handling (numbers and strings) when handling arithmetic operations.
-Every class can overwrite this function to give it special behavior. This Vector class calls the assigned statement three times for x, y and z.
+
+Javascript has this one peculiarity called `valueOf()` this function is designed for primitive handling (numbers and strings) when handling arithmetic operations.
+Every class can overwrite this function to give it special behavior. This Vector class calls the assigned statement three times for `x`, `y` and `z`.
 Comparable to trigger arithmetic operation manually for every axis.
 
 ```js
@@ -36,12 +37,14 @@ const y = aVec.y * bVec.y * 4 - dVec.y - 1.5;
 const z = aVec.z * bVec.z * 4 - dVec.z - 1.5;
 ```
 
-Internally the valueOf() implementation returns x in first call, y in second call and z in last call, these results are put into an new Vector object and can be reused further.
+Internally the `valueOf()` implementation returns `x` in first call, `y` in second call and `z` in last call, these results are put into an new Vector object and can be reused further.
 
 </details>
 <!-- markdownlint-enable no-inline-html -->
 
-## create vector by numbers
+## working with Vector class
+
+### create vector by numbers
 
 ```js
 const pos = new Vector(5, 6, 7);
@@ -52,7 +55,7 @@ console.log("pos:", pos, " dir:", dir);
 
 pos: { x: 5, y: 6, z: 7 } dir: { x: 1, y: 0, z: 0 }
 
-## create vector by calculating other vectors and number
+### create vector by calculating other vectors and number
 
 ```js
 const offset = new Vector(() => dir * 30 + pos);
@@ -62,7 +65,7 @@ console.log("offset:", offset);
 
 offset: { x: 35, y: 6, z: 7 }
 
-## compare lengths
+### compare lengths
 
 ```js
 let way = offset;
@@ -74,7 +77,7 @@ console.log("way:", way);
 
 way: { x: 0.96, y: 0.16, z: 0.19 }
 
-## calculate cross product
+### calculate cross product
 
 ```js
 const dir1 = new Vector(0, 1, 0);
@@ -84,9 +87,9 @@ const cross = dir1.cross(dir2);
 console.log("cross:", cross);
 ```
 
-cross: { [Number: 1.41] x: 1, y: 0, z: 1 }
+cross: { x: 1, y: 0, z: 1 }
 
-## directly normalize the cross product
+### directly normalize the cross product
 
 ```js
 const crossNorm = dir1.crossNormalize(dir2);
@@ -94,9 +97,9 @@ const crossNorm = dir1.crossNormalize(dir2);
 console.log("crossNorm:", crossNorm);
 ```
 
-crossNorm: { [Number: 1] x: 0, y: 0, z: 1 }
+crossNorm: { x: 0.71, y: 0, z: 0.71 }
 
-## cross product handling works also with operator handling
+### cross product handling works also with operator handling
 
 ```js
 const crossNormCalc = new Vector(() => dir1.crossNormalize(dir2) * 50);
@@ -104,4 +107,20 @@ const crossNormCalc = new Vector(() => dir1.crossNormalize(dir2) * 50);
 console.log("crossNormCalc:", crossNormCalc);
 ```
 
-crossNormCalc: { [Number: 50] x: 0, y: 0, z: 50 }
+crossNormCalc: { x: 35.36, y: 0, z: 35.36 }
+
+## immutable vector called Victor
+
+behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
+
+```js
+const vec = new Victor(5, 6, 7);
+
+try {
+  vec.x = 27;
+} catch (error) {
+  console.log("error:", error);
+}
+```
+
+error: set x() not implemented
