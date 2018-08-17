@@ -51,7 +51,7 @@ const dir = new Vector(1, 0, 0);
 console.log("pos:", pos, " dir:", dir);
 ```
 
-#### pos: { x: 5, y: 6, z: 7 } dir: { x: 1, y: 0, z: 0 }
+pos: { x: 5, y: 6, z: 7 } dir: { x: 1, y: 0, z: 0 }
 
 ### create vector by calculating other vectors and number
 
@@ -61,16 +61,16 @@ const offset = new Vector(() => dir * 30 + pos);
 console.log("offset:", offset);
 ```
 
-#### offset: { x: 35, y: 6, z: 7 }
+offset: { x: 35, y: 6, z: 7 }
 
 ### calc two Vectors and numbers with operator
 
 ```js
 const offsetB = calc(() => dir * 20 + pos);
-console.log("offsetB:", offsetB.toString());
+console.log("offsetB:", offsetB);
 ```
 
-#### offsetB: { x: 25, y: 6, z: 7 }
+offsetB: { x: 25, y: 6, z: 7 }
 
 ### compare lengths
 
@@ -82,7 +82,7 @@ if (way > 1) {
 console.log("way:", way);
 ```
 
-#### way: { x: 0.96, y: 0.16, z: 0.19 }
+way: { x: 0.96, y: 0.16, z: 0.19 }
 
 ### calculate cross product
 
@@ -94,7 +94,7 @@ const cross = dir1.cross(dir2);
 console.log("cross:", cross);
 ```
 
-#### cross: { x: 1, y: 0, z: 1 }
+cross: { x: 1, y: 0, z: 1 }
 
 ### directly normalize the cross product
 
@@ -104,7 +104,7 @@ const crossNorm = dir1.crossNormalize(dir2);
 console.log("crossNorm:", crossNorm);
 ```
 
-#### crossNorm: { x: 0.71, y: 0, z: 0.71 }
+crossNorm: { x: 0.71, y: 0, z: 0.71 }
 
 ### cross product handling works also with operator handling
 
@@ -114,7 +114,7 @@ const crossNormCalc = new Vector(() => dir1.crossNormalize(dir2) * 50);
 console.log("crossNormCalc:", crossNormCalc);
 ```
 
-#### crossNormCalc: { x: 35.36, y: 0, z: 35.36 }
+crossNormCalc: { x: 35.36, y: 0, z: 35.36 }
 
 ## immutable vector called Victor
 
@@ -130,4 +130,4 @@ try {
 }
 ```
 
-#### error: set x() not implemented
+error: set x() not implemented
