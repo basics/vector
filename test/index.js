@@ -1,5 +1,6 @@
 import { assert } from 'chai';
-import { Vector, IVector } from '../src';
+import { Vector, Victor } from '../src';
+import * as Examples from '../examples';
 
 describe('standard Vector test.', () => {
   it('should create x y z values', () => {
@@ -76,7 +77,7 @@ describe('standard Vector test.', () => {
   });
 });
 
-describe('standard IVector test.', () => {
+describe('standard Victor test.', () => {
   it('should create x y z values', () => {
     const pos = new Vector(5, 6, 7);
     assert.equal(pos.x, 5);
@@ -85,9 +86,9 @@ describe('standard IVector test.', () => {
   });
 
   it('should be calculated by assigned statement', () => {
-    const pos = new IVector(5, 6, 7);
-    const dir = new IVector(1, 0, 0);
-    const scale = new IVector(() => dir * pos);
+    const pos = new Victor(5, 6, 7);
+    const dir = new Victor(1, 0, 0);
+    const scale = new Victor(() => dir * pos);
 
     assert.equal(scale.x, 5);
     assert.equal(scale.y, 0);
@@ -95,7 +96,7 @@ describe('standard IVector test.', () => {
   });
 
   it('should be calculated by assigned statement with only numbers', () => {
-    const vec = new IVector(() => 2 * 2 + 3);
+    const vec = new Victor(() => 2 * 2 + 3);
 
     assert.equal(vec.x, 7);
     assert.equal(vec.y, 7);
@@ -103,8 +104,8 @@ describe('standard IVector test.', () => {
   });
 
   it('should compares lengths of vector.', () => {
-    const pos = new IVector(1, 1, 1);
-    const dir = new IVector(2, 2, 2);
+    const pos = new Victor(1, 1, 1);
+    const dir = new Victor(2, 2, 2);
 
     assert.isTrue(dir > pos, `${dir} should be longer than ${pos}`);
     assert.isTrue(dir.len > pos.len, `${dir} should be longer than ${pos}`);
@@ -113,7 +114,7 @@ describe('standard IVector test.', () => {
   });
 
   it('should change length to 1 when calling normalize', () => {
-    const pos = new IVector(5, 6, 7);
+    const pos = new Victor(5, 6, 7);
     const dir = pos.normalize();
 
     const length = dir.length;
@@ -121,8 +122,8 @@ describe('standard IVector test.', () => {
   });
 
   it('should calculate the cross product', () => {
-    const dir1 = new IVector(0, 1, 0);
-    const dir2 = new IVector(-1, 0, 1);
+    const dir1 = new Victor(0, 1, 0);
+    const dir2 = new Victor(-1, 0, 1);
     const cross = dir1.cross(dir2);
 
     assert.equal(cross.x, 1);
@@ -131,8 +132,8 @@ describe('standard IVector test.', () => {
   });
 
   it('should set opposite axis to 1 when calling the cross product', () => {
-    const dir1 = new IVector(0, 1, 0);
-    const dir2 = new IVector(-1, 0, 0);
+    const dir1 = new Victor(0, 1, 0);
+    const dir2 = new Victor(-1, 0, 0);
     const cross = dir1.crossNormalize(dir2);
 
     assert.equal(cross.x, 0);
@@ -141,8 +142,8 @@ describe('standard IVector test.', () => {
   });
 
   it('should set opposite axis to 1 when calling the cross also when handling operators', () => {
-    const dir1 = new IVector(0, 1, 0);
-    const dir2 = new IVector(-1, 0, 0);
+    const dir1 = new Victor(0, 1, 0);
+    const dir2 = new Victor(-1, 0, 0);
     const cross = new Vector(() => dir1.crossNormalize(dir2) * 50);
 
     assert.equal(cross.x, 0);
@@ -151,9 +152,9 @@ describe('standard IVector test.', () => {
   });
 });
 
-describe('special IVector test.', () => {
+describe('special Victor test.', () => {
   it('should throw error when tying to change x y z values', () => {
-    const pos = new IVector(5, 6, 7);
+    const pos = new Victor(5, 6, 7);
 
     assert.throws(() => (pos.x = 27), Error);
     assert.equal(pos.x, 5);
@@ -164,7 +165,7 @@ describe('special IVector test.', () => {
   });
 
   it('should toVector() create a mutable Vector copy', () => {
-    const ipos = new IVector(5, 6, 7);
+    const ipos = new Victor(5, 6, 7);
     const pos = ipos.toVector();
 
     assert.instanceOf(pos, Vector);

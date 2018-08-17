@@ -119,7 +119,7 @@ class AVector {
   }
 
   toString() {
-    return `[${this.x}, ${this.y}, ${this.z}]`;
+    return `{ x: ${this.x}, y: ${this.y}, z: ${this.z} }`;
   }
 
   get length() {
@@ -165,7 +165,7 @@ export class Vector extends AVector {
   }
 }
 
-export class IVector extends AVector {
+export class Victor extends AVector {
   get x() {
     return this[X];
   }
@@ -195,7 +195,7 @@ export class IVector extends AVector {
   }
 
   createVector(x, y, z) {
-    return new IVector(x, y, z);
+    return new Victor(x, y, z);
   }
 }
 
