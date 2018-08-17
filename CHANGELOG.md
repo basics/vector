@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/basics/vector/compare/v1.9.1...v1.10.0) (2018-08-17)
+
+
+### Features
+
+* **index.js:** rename IVector to Victor ([61c6602](https://github.com/basics/vector/commit/61c6602))
+
 ## [1.9.1](https://github.com/basics/vector/compare/v1.9.0...v1.9.1) (2018-08-14)
 
 
