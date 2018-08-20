@@ -117,6 +117,27 @@ class AVector {
     return Math.acos(this.dot(a) / (this.length * a.length));
   }
 
+  // http://schteppe.github.io/cannon.js/docs/files/src_math_Quaternion.js.html
+  rotate(quat) {
+    const { x, y, z } = this;
+
+    const {
+      x: qx, y: qy, z: qz, w: qw
+    } = quat;
+
+    // q*v
+    const ix = qw * x + qy * z - qz * y;
+    const iy = qw * y + qz * x - qx * z;
+    const iz = qw * z + qx * y - qy * x;
+    const iw = -qx * x - qy * y - qz * z;
+
+    return this.createVector(
+      ix * qw + iw * -qx + iy * -qz - iz * -qy,
+      iy * qw + iw * -qy + iz * -qx - ix * -qz,
+      iz * qw + iw * -qz + ix * -qy - iy * -qx
+    );
+  }
+
   toArray() {
     return [this.x, this.y, this.z];
   }
