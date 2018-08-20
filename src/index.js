@@ -1,21 +1,23 @@
 /* eslint class-methods-use-this: 0 */
+/* eslint no-param-reassign: 0 */
+
 const X = Symbol.for('x');
 const Y = Symbol.for('y');
 const Z = Symbol.for('z');
 const DEFAULT = Symbol.for('default');
 
 let inProgress = DEFAULT;
+let inVector;
 
 const v3ValueOf = new Map();
-v3ValueOf[X] = function getX() {
+v3ValueOf[X] = function getValueOf() {
+  if (!inVector) {
+    inVector = this;
+  }
   return this[inProgress];
 };
-v3ValueOf[Y] = function getY() {
-  return this[inProgress];
-};
-v3ValueOf[Z] = function getZ() {
-  return this[inProgress];
-};
+v3ValueOf[Y] = v3ValueOf[X];
+v3ValueOf[Z] = v3ValueOf[X];
 v3ValueOf[DEFAULT] = function getDefault() {
   return this.length;
 };
@@ -28,18 +30,27 @@ function innerCalc(alg, result) {
     throw new Error('something wrong');
   }
   try {
-    const res = result;
-
     inProgress = X;
-    res[inProgress] = alg();
-    inProgress = Y;
-    res[inProgress] = alg();
-    inProgress = Z;
-    res[inProgress] = alg();
+    const x = alg();
 
-    return res;
+    if (!result && !inVector) {
+      return x;
+    }
+    inProgress = Y;
+    const y = alg();
+    inProgress = Z;
+    const z = alg();
+
+    if (!result) {
+      return inVector.createVector(x, y, z);
+    }
+    result[X] = x;
+    result[Y] = y;
+    result[Z] = z;
+    return result;
   } finally {
     inProgress = DEFAULT;
+    inVector = undefined;
   }
 }
 
@@ -200,7 +211,7 @@ export class Victor extends AVector {
 }
 
 export function calc(alg) {
-  return innerCalc(alg, new Vector());
+  return innerCalc(alg);
 }
 
 export default Vector;
