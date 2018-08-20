@@ -1,3 +1,11 @@
+# [1.11.0](https://github.com/basics/vector/compare/v1.10.0...v1.11.0) (2018-08-20)
+
+
+### Features
+
+* **vector:** calc flexible for different vector implementations ([8bdf2d8](https://github.com/basics/vector/commit/8bdf2d8))
+* **vector:** rotate() vector with quarternion ([ca28934](https://github.com/basics/vector/commit/ca28934))
+
 # [1.10.0](https://github.com/basics/vector/compare/v1.9.1...v1.10.0) (2018-08-17)
 
 
