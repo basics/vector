@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/basics/vector/compare/v1.11.0...v1.12.0) (2018-08-21)
+
+
+### Features
+
+* **operator:** extract operator code from vector ([c0359c6](https://github.com/basics/vector/commit/c0359c6))
+
 # [1.11.0](https://github.com/basics/vector/compare/v1.10.0...v1.11.0) (2018-08-20)
 
 
