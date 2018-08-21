@@ -1,63 +1,33 @@
+import {
+  cachedMethod, cachedGetter, cachedValueOf, operatorCalc
+} from './operator';
+
 /* eslint class-methods-use-this: 0 */
-/* eslint no-param-reassign: 0 */
 
 const X = Symbol.for('x');
 const Y = Symbol.for('y');
 const Z = Symbol.for('z');
-const DEFAULT = Symbol.for('default');
 
-let inProgress = DEFAULT;
-let inVector;
+function cross(one, two) {
+  return one.createVector(
+    one.y * two.z - one.z * two.y,
+    one.z * two.x - one.x * two.z,
+    one.x * two.y - one.y * two.x
+  );
+}
 
-const v3ValueOf = new Map();
-v3ValueOf[X] = function getValueOf() {
-  if (!inVector) {
-    inVector = this;
-  }
-  return this[inProgress];
-};
-v3ValueOf[Y] = v3ValueOf[X];
-v3ValueOf[Z] = v3ValueOf[X];
-v3ValueOf[DEFAULT] = function getDefault() {
-  return this.length;
-};
-
-function innerCalc(alg, result) {
-  if (typeof alg !== 'function') {
-    throw new Error('no function assigned');
-  }
-  if (inProgress !== DEFAULT) {
-    throw new Error('something wrong');
-  }
-  try {
-    inProgress = X;
-    const x = alg();
-
-    if (!result && !inVector) {
-      return x;
-    }
-    inProgress = Y;
-    const y = alg();
-    inProgress = Z;
-    const z = alg();
-
-    if (!result) {
-      return inVector.createVector(x, y, z);
-    }
-    result[X] = x;
-    result[Y] = y;
-    result[Z] = z;
-    return result;
-  } finally {
-    inProgress = DEFAULT;
-    inVector = undefined;
-  }
+function dot(one, two) {
+  return one.x * two.x + one.y * two.y + one.z * two.z;
 }
 
 class AVector {
   constructor(x, y, z) {
     if (typeof x === 'function') {
-      innerCalc(x, this);
+      operatorCalc(x, (ix, iy, iz) => {
+        this[X] = ix;
+        this[Y] = iy;
+        this[Z] = iz;
+      });
     } else {
       this[X] = x || 0;
       this[Y] = y || 0;
@@ -66,7 +36,7 @@ class AVector {
   }
 
   valueOf() {
-    return v3ValueOf[inProgress].call(this);
+    return this.length;
   }
 
   normalize() {
@@ -82,19 +52,15 @@ class AVector {
   // https://evanw.github.io/lightgl.js/docs/vector.html
 
   dot(v) {
-    return this.x * v.x + this.y * v.y + this.z * v.z;
+    return dot(this, v);
   }
 
   cross(v) {
-    return this.createVector(
-      this.y * v.z - this.z * v.y,
-      this.z * v.x - this.x * v.z,
-      this.x * v.y - this.y * v.x
-    );
+    return cross(this, v);
   }
 
   crossNormalize(v) {
-    const vec = this.cross(v);
+    const vec = cross(this, v);
     const { length } = vec;
     vec[X] /= length;
     vec[Y] /= length;
@@ -114,7 +80,7 @@ class AVector {
   }
 
   angleTo(a) {
-    return Math.acos(this.dot(a) / (this.length * a.length));
+    return Math.acos(dot(this, a) / (this.length * a.length));
   }
 
   // http://schteppe.github.io/cannon.js/docs/files/src_math_Quaternion.js.html
@@ -155,13 +121,23 @@ class AVector {
   }
 
   get length() {
-    return Math.sqrt(this.dot(this));
+    return Math.sqrt(dot(this, this));
   }
 
   get len() {
     return this.length;
   }
 }
+
+cachedValueOf(AVector);
+cachedMethod(AVector, 'dot');
+cachedMethod(AVector, 'cross');
+cachedMethod(AVector, 'crossNormalize');
+cachedMethod(AVector, 'toAngles');
+cachedMethod(AVector, 'angleTo');
+cachedMethod(AVector, 'rotate');
+cachedMethod(AVector, 'toArray');
+cachedGetter(AVector, 'length');
 
 export class Vector extends AVector {
   set x(x) {
@@ -232,7 +208,7 @@ export class Victor extends AVector {
 }
 
 export function calc(alg) {
-  return innerCalc(alg);
+  return operatorCalc(alg);
 }
 
 export default Vector;
