@@ -26,13 +26,23 @@ v3ValueOf[DEFAULT] = function (org) {
 };
 
 let resultCacheIndex = -1;
+let handlingCache = false;
 const resultCache = [];
 const v3resultCache = new Map();
 v3resultCache[X] = function (org, args) {
-  resultCacheIndex += 1;
-  const res = org.apply(this, args);
-  resultCache[resultCacheIndex] = res;
-  return res;
+  if (handlingCache) {
+    return org.apply(this, args);
+  }
+  try {
+    handlingCache = true;
+
+    resultCacheIndex += 1;
+    const res = org.apply(this, args);
+    resultCache[resultCacheIndex] = res;
+    return res;
+  } finally {
+    handlingCache = false;
+  }
 };
 v3resultCache[Y] = function () {
   resultCacheIndex += 1;
@@ -42,10 +52,6 @@ v3resultCache[Z] = v3resultCache[Y];
 v3resultCache[DEFAULT] = function (org, args) {
   return org.apply(this, args);
 };
-
-function createVector(source, x, y, z) {
-  return source.createVector(x, y, z);
-}
 
 export function operatorCalc(alg, result) {
   if (typeof alg !== 'function') {
@@ -70,7 +76,7 @@ export function operatorCalc(alg, result) {
     const z = alg();
 
     if (!result) {
-      return createVector(inVector, x, y, z);
+      return inVector.createVector(x, y, z);
     }
     if (typeof result === 'function') {
       return result(x, y, z);
