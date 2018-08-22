@@ -1,3 +1,11 @@
+# [1.14.0](https://github.com/basics/vector/compare/v1.13.0...v1.14.0) (2018-08-22)
+
+
+### Features
+
+* **operator:** optimize caching for nested cache calls ([5bbf348](https://github.com/basics/vector/commit/5bbf348))
+* **vector:** better readable nested code ([56a4629](https://github.com/basics/vector/commit/56a4629))
+
 # [1.13.0](https://github.com/basics/vector/compare/v1.12.0...v1.13.0) (2018-08-22)
 
 
