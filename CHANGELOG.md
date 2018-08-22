@@ -1,3 +1,11 @@
+# [1.13.0](https://github.com/basics/vector/compare/v1.12.0...v1.13.0) (2018-08-22)
+
+
+### Features
+
+* **operator:** caching for methods and getter ([a70e937](https://github.com/basics/vector/commit/a70e937))
+* **vector:** optimize code for caching getter ([844bf05](https://github.com/basics/vector/commit/844bf05))
+
 # [1.12.0](https://github.com/basics/vector/compare/v1.11.0...v1.12.0) (2018-08-21)
 
 
