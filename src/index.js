@@ -20,6 +20,10 @@ function dot(one, two) {
   return one.x * two.x + one.y * two.y + one.z * two.z;
 }
 
+function getLength(v) {
+  return Math.sqrt(dot(v, v));
+}
+
 class AVector {
   constructor(x, y, z) {
     if (typeof x === 'function') {
@@ -36,11 +40,11 @@ class AVector {
   }
 
   valueOf() {
-    return this.length;
+    return getLength(this);
   }
 
   normalize() {
-    const { length } = this;
+    const length = getLength(this);
     return this.createVector(this.x / length, this.y / length, this.z / length);
   }
 
@@ -61,7 +65,7 @@ class AVector {
 
   crossNormalize(v) {
     const vec = cross(this, v);
-    const { length } = vec;
+    const length = getLength(vec);
     vec[X] /= length;
     vec[Y] /= length;
     vec[Z] /= length;
@@ -75,12 +79,12 @@ class AVector {
   toAngles() {
     return {
       theta: Math.atan2(this.z, this.x),
-      phi: Math.asin(this.y / this.length)
+      phi: Math.asin(this.y / getLength(this))
     };
   }
 
   angleTo(a) {
-    return Math.acos(dot(this, a) / (this.length * a.length));
+    return Math.acos(dot(this, a) / (getLength(this) * getLength(a)));
   }
 
   // http://schteppe.github.io/cannon.js/docs/files/src_math_Quaternion.js.html
@@ -121,7 +125,7 @@ class AVector {
   }
 
   get length() {
-    return Math.sqrt(dot(this, this));
+    return getLength(this);
   }
 
   get len() {
