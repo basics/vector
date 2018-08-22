@@ -1,5 +1,6 @@
 /* eslint func-names: 0 */
 /* eslint no-param-reassign: 0 */
+/* eslint getter-return: 0 */
 
 const X = 'x';
 const Y = 'y';
@@ -97,8 +98,19 @@ export function cachedValueOf(Vector) {
 export function cachedMethod(Vector, name) {
   const org = Vector.prototype[name];
   Vector.prototype[name] = function (...args) {
-    return v3resultCache[inProgress].call(this, org, args, name);
+    return v3resultCache[inProgress].call(this, org, args);
   };
 }
 
-export function cachedGetter(/* Vector, name */) {}
+export function cachedGetter(Vector, name) {
+  const desc = Object.getOwnPropertyDescriptor(Vector.prototype, name);
+  const org = function () {
+    return desc.get.call(this);
+  };
+
+  Object.defineProperty(Vector.prototype, name, {
+    get() {
+      return v3resultCache[inProgress].call(this, org);
+    }
+  });
+}
