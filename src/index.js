@@ -8,22 +8,6 @@ const X = Symbol.for('x');
 const Y = Symbol.for('y');
 const Z = Symbol.for('z');
 
-function cross(one, two) {
-  return one.createVector(
-    one.y * two.z - one.z * two.y,
-    one.z * two.x - one.x * two.z,
-    one.x * two.y - one.y * two.x
-  );
-}
-
-function dot(one, two) {
-  return one.x * two.x + one.y * two.y + one.z * two.z;
-}
-
-function getLength(v) {
-  return Math.sqrt(dot(v, v));
-}
-
 class AVector {
   constructor(x, y, z) {
     if (typeof x === 'function') {
@@ -40,11 +24,11 @@ class AVector {
   }
 
   valueOf() {
-    return getLength(this);
+    return this.length;
   }
 
   normalize() {
-    const length = getLength(this);
+    const { length } = this;
     return this.createVector(this.x / length, this.y / length, this.z / length);
   }
 
@@ -56,16 +40,20 @@ class AVector {
   // https://evanw.github.io/lightgl.js/docs/vector.html
 
   dot(v) {
-    return dot(this, v);
+    return this.x * v.x + this.y * v.y + this.z * v.z;
   }
 
   cross(v) {
-    return cross(this, v);
+    return this.createVector(
+      this.y * v.z - this.z * v.y,
+      this.z * v.x - this.x * v.z,
+      this.x * v.y - this.y * v.x
+    );
   }
 
   crossNormalize(v) {
-    const vec = cross(this, v);
-    const length = getLength(vec);
+    const vec = this.cross(v);
+    const { length } = vec;
     vec[X] /= length;
     vec[Y] /= length;
     vec[Z] /= length;
@@ -79,12 +67,12 @@ class AVector {
   toAngles() {
     return {
       theta: Math.atan2(this.z, this.x),
-      phi: Math.asin(this.y / getLength(this))
+      phi: Math.asin(this.y / this.length)
     };
   }
 
   angleTo(a) {
-    return Math.acos(dot(this, a) / (getLength(this) * getLength(a)));
+    return Math.acos(this.dot(a) / (this.length * a.length));
   }
 
   // http://schteppe.github.io/cannon.js/docs/files/src_math_Quaternion.js.html
@@ -125,7 +113,7 @@ class AVector {
   }
 
   get length() {
-    return getLength(this);
+    return Math.sqrt(this.dot(this));
   }
 
   get len() {
