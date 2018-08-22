@@ -131,3 +131,7 @@ try {
 ```
 
 error: set x() not implemented
+
+## running example
+
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=builtin.solarized.light&cachebuster)](https://github.com/basics/vector/blob/master/examples/example.js)
