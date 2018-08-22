@@ -13,14 +13,14 @@
 
 <!-- markdownlint-disable no-inline-html -->
 
-This libary provides 3D Vector in js including support for <nobr>`+` `-` `*` `/`</nobr> operator handling.
+This libary provides 3D Vector in js including support for<nobr> `+` `-` `*` `/` </nobr>operator handling.
 
-Normally vector implementations in javascript handle arithmetic operation by functions <nobr>`aVec.multiply(bVec).substract(dVec)`.</nobr>
-Other languages provide operator overloading, that coders can create Vector class which can handle operation similar to number handling <nobr>`aVec * bVec - dVec`.</nobr>
+Normally vector implementations in javascript handle arithmetic operation by functions<nobr> `aVec.multiply(bVec).substract(dVec)`. </nobr>
+Other languages provide operator overloading, that coders can create Vector class which can handle operation similar to number handling<nobr> `aVec * bVec - dVec`. </nobr>
 
-This libary gives javascript coders a way to handle operators with a single statement <nobr>`() => aVec * bVec - dVec`.</nobr>
-The calculation can be combined with numbers <nobr>`() => aVec * bVec * 4 - dVec - 1.5`.</nobr>
-Vector objects can be create with number <nobr>`new Vector(5, 6, 7)`</nobr> or directly with assigned statement <nobr>`new Vector(() => 5 * 30 + 2)`.</nobr>
+This libary gives javascript coders a way to handle operators with a single statement<nobr> `() => aVec * bVec - dVec`. </nobr>
+The calculation can be combined with numbers<nobr> `() => aVec * bVec * 4 - dVec - 1.5`. </nobr>
+Vector objects can be create with number<nobr> `new Vector(5, 6, 7)` </nobr>or directly with assigned statement<nobr> `new Vector(() => 5 * 30 + 2)`.</nobr>
 
 <details>
 <summary> Implementation details</summary>
