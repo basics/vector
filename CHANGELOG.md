@@ -1,3 +1,11 @@
+# [1.15.0](https://github.com/basics/vector/compare/v1.14.0...v1.15.0) (2018-08-23)
+
+
+### Features
+
+* **vector:** add lengthSq getter ([fcb2ccc](https://github.com/basics/vector/commit/fcb2ccc))
+* **vector:** distance between two vectors ([88326ad](https://github.com/basics/vector/commit/88326ad))
+
 # [1.14.0](https://github.com/basics/vector/compare/v1.13.0...v1.14.0) (2018-08-22)
 
 
