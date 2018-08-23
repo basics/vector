@@ -8,6 +8,9 @@ const X = Symbol.for('x');
 const Y = Symbol.for('y');
 const Z = Symbol.for('z');
 
+function square(val) {
+  return val * val;
+}
 class AVector {
   constructor(x, y, z) {
     if (typeof x === 'function') {
@@ -96,6 +99,14 @@ class AVector {
     );
   }
 
+  distance(v) {
+    return Math.sqrt(square(this.x - v.x) + square(this.y - v.y) + square(this.z - v.z));
+  }
+
+  dist(v) {
+    return this.distance(v);
+  }
+
   toArray() {
     return [this.x, this.y, this.z];
   }
@@ -128,6 +139,7 @@ cachedMethod(AVector, 'crossNormalize');
 cachedMethod(AVector, 'toAngles');
 cachedMethod(AVector, 'angleTo');
 cachedMethod(AVector, 'rotate');
+cachedMethod(AVector, 'distance');
 cachedMethod(AVector, 'toArray');
 cachedGetter(AVector, 'length');
 
