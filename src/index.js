@@ -123,8 +123,16 @@ class AVector {
     return `{ x: ${this.x}, y: ${this.y}, z: ${this.z} }`;
   }
 
+  get lengthSq() {
+    return this.dot(this);
+  }
+
   get length() {
-    return Math.sqrt(this.dot(this));
+    return Math.sqrt(this.lengthSq);
+  }
+
+  get lensq() {
+    return this.lengthSq;
   }
 
   get len() {
@@ -142,6 +150,7 @@ cachedMethod(AVector, 'rotate');
 cachedMethod(AVector, 'distance');
 cachedMethod(AVector, 'toArray');
 cachedGetter(AVector, 'length');
+cachedGetter(AVector, 'lengthSq');
 
 export class Vector extends AVector {
   set x(x) {
