@@ -1,3 +1,10 @@
+## [1.16.3](https://github.com/basics/vector/compare/v1.16.2...v1.16.3) (2018-08-24)
+
+
+### Bug Fixes
+
+* **operator:** replace Map with explicit if statements ([a818f29](https://github.com/basics/vector/commit/a818f29))
+
 ## [1.16.2](https://github.com/basics/vector/compare/v1.16.1...v1.16.2) (2018-08-24)
 
 
