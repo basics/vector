@@ -1,3 +1,10 @@
+## [1.16.2](https://github.com/basics/vector/compare/v1.16.1...v1.16.2) (2018-08-24)
+
+
+### Bug Fixes
+
+* **bundle:** renamed to bundle.min.js ([28c6846](https://github.com/basics/vector/commit/28c6846))
+
 ## [1.16.1](https://github.com/basics/vector/compare/v1.16.0...v1.16.1) (2018-08-24)
 
 
