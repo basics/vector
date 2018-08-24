@@ -16,7 +16,7 @@
     "test:examples": "node examples/",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --require babel-core/register --require babel-polyfill --recursive",
     "lint": "eslint src",
-    "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
+    "build": "cross-env BABEL_ENV=production babel src --out-dir lib && npx rollup --config ./.rolluprc",
     "prepare": "npm run clean && npm run lint && npm run test && npm run build",
     "commitmsg": "commitlint -E GIT_PARAMS",
     "travis-deploy-once": "travis-deploy-once",
@@ -49,9 +49,11 @@
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.6",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-minify": "^0.4.3",
+    "babelrc-rollup": "^3.0.0",
     "chai": "^4.1.2",
     "cross-env": "^5.2.0",
     "eslint": "^5.3.0",
@@ -63,7 +65,10 @@
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "rimraf": "^2.6.2",
-    "travis-deploy-once": "^5.0.2",
-    "semantic-release": "^15.9.8"
+    "rollup": "^0.64.1",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-babel-minify": "^5.0.0",
+    "semantic-release": "^15.9.8",
+    "travis-deploy-once": "^5.0.2"
   }
 }

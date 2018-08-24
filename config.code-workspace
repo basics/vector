@@ -39,6 +39,7 @@
     "files.associations": {
       ".postcssrc": "json",
       ".releaserc": "json",
+      ".rolluprc": "javascript",
       ".stylelintrc": "json",
       ".vcmrc": "json",
       "*.css": "postcss",

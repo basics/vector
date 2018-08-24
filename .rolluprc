@@ -1,0 +1,25 @@
+import babel from 'rollup-plugin-babel';
+import babelrc from 'babelrc-rollup';
+import minify from 'rollup-plugin-babel-minify';
+
+export default {
+  input: 'src/index.js',
+  output: {
+    name: 'vector',
+    file: 'lib/bundle.js',
+    format: 'umd',
+    exports: 'named'
+  },
+
+  plugins: [
+    babel({
+      babelrc: false,
+      presets: [['env', { modules: false }]]
+    }),
+    minify({
+      comments: false,
+      banner: '/* vector class - MIT License */',
+      bannerNewLine: true
+    })
+  ]
+};
