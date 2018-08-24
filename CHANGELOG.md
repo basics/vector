@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/basics/vector/compare/v1.16.0...v1.16.1) (2018-08-24)
+
+
+### Bug Fixes
+
+* **bundle:** renamed it to basics ([ef1140f](https://github.com/basics/vector/commit/ef1140f))
+
 # [1.16.0](https://github.com/basics/vector/compare/v1.15.0...v1.16.0) (2018-08-24)
 
 
