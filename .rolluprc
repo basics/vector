@@ -6,7 +6,7 @@ export default {
   input: 'src/index.js',
   output: {
     name: 'basics',
-    file: 'lib/bundle.js',
+    file: 'lib/bundle.min.js',
     format: 'umd',
     exports: 'named'
   },
