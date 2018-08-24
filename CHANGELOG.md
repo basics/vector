@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/basics/vector/compare/v1.15.0...v1.16.0) (2018-08-24)
+
+
+### Features
+
+* **rollup:** create a bundle (combined files) as umd ([c140f20](https://github.com/basics/vector/commit/c140f20))
+
 # [1.15.0](https://github.com/basics/vector/compare/v1.14.0...v1.15.0) (2018-08-23)
 
 
