@@ -10,48 +10,9 @@ const DEFAULT = Symbol.for('default');
 let inProgress = DEFAULT;
 let inVector;
 
-const v3ValueOf = new Map();
-v3ValueOf[X] = function () {
-  if (!inVector) {
-    inVector = this;
-  }
-  return this[inProgress];
-};
-v3ValueOf[Y] = function () {
-  return this[inProgress];
-};
-v3ValueOf[Z] = v3ValueOf[Y];
-v3ValueOf[DEFAULT] = function (org) {
-  return org.call(this);
-};
-
 let resultCacheIndex = -1;
 let handlingCache = false;
 const resultCache = [];
-const v3resultCache = new Map();
-v3resultCache[X] = function (org, args) {
-  if (handlingCache) {
-    return org.apply(this, args);
-  }
-  try {
-    handlingCache = true;
-
-    resultCacheIndex += 1;
-    const res = org.apply(this, args);
-    resultCache[resultCacheIndex] = res;
-    return res;
-  } finally {
-    handlingCache = false;
-  }
-};
-v3resultCache[Y] = function () {
-  resultCacheIndex += 1;
-  return resultCache[resultCacheIndex];
-};
-v3resultCache[Z] = v3resultCache[Y];
-v3resultCache[DEFAULT] = function (org, args) {
-  return org.apply(this, args);
-};
 
 export function operatorCalc(alg, result) {
   if (typeof alg !== 'function') {
@@ -97,15 +58,54 @@ export function cachedValueOf(Vector) {
   const name = 'valueOf';
   const org = Vector.prototype[name];
   Vector.prototype[name] = function () {
-    return v3ValueOf[inProgress].call(this, org);
+    if (inProgress === X) {
+      if (!inVector) {
+        inVector = this;
+      }
+      return this.x;
+    }
+    if (inProgress === Y) {
+      return this.y;
+    }
+    if (inProgress === Z) {
+      return this.z;
+    }
+    return org.call(this);
+  };
+}
+
+function bindCache(org) {
+  return function (...args) {
+    if (inProgress === X) {
+      if (handlingCache) {
+        return org.apply(this, args);
+      }
+      try {
+        handlingCache = true;
+
+        resultCacheIndex += 1;
+        const res = org.apply(this, args);
+        resultCache[resultCacheIndex] = res;
+        return res;
+      } finally {
+        handlingCache = false;
+      }
+    }
+    if (inProgress === Y) {
+      resultCacheIndex += 1;
+      return resultCache[resultCacheIndex];
+    }
+    if (inProgress === Z) {
+      resultCacheIndex += 1;
+      return resultCache[resultCacheIndex];
+    }
+    return org.apply(this, args);
   };
 }
 
 export function cachedMethod(Vector, name) {
   const org = Vector.prototype[name];
-  Vector.prototype[name] = function (...args) {
-    return v3resultCache[inProgress].call(this, org, args);
-  };
+  Vector.prototype[name] = bindCache(org);
 }
 
 export function cachedGetter(Vector, name) {
@@ -115,8 +115,6 @@ export function cachedGetter(Vector, name) {
   };
 
   Object.defineProperty(Vector.prototype, name, {
-    get() {
-      return v3resultCache[inProgress].call(this, org);
-    }
+    get: bindCache(org)
   });
 }
