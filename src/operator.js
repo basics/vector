@@ -26,7 +26,7 @@ export function operatorCalc(alg, result) {
     resultCacheIndex = -1;
     const x = alg();
 
-    if (!result && !inVector) {
+    if (!result && typeof inVector === 'undefined') {
       return x;
     }
     inProgress = Y;
@@ -59,7 +59,7 @@ export function cachedValueOf(Vector) {
   const org = Vector.prototype[name];
   Vector.prototype[name] = function () {
     if (inProgress === X) {
-      if (!inVector) {
+      if (typeof inVector === 'undefined') {
         inVector = this;
       }
       return this.x;
