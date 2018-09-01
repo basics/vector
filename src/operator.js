@@ -2,10 +2,10 @@
 /* eslint no-param-reassign: 0 */
 /* eslint getter-return: 0 */
 
-const X = 'x';
-const Y = 'y';
-const Z = 'z';
-const DEFAULT = Symbol.for('default');
+const X = 0;
+const Y = 1;
+const Z = 2;
+const DEFAULT = 3;
 
 let inProgress = DEFAULT;
 let inVector;
@@ -43,9 +43,9 @@ export function operatorCalc(alg, result) {
       return result(x, y, z);
     }
 
-    result[X] = x;
-    result[Y] = y;
-    result[Z] = z;
+    result.x = x;
+    result.y = y;
+    result.z = z;
     return result;
   } finally {
     inProgress = DEFAULT;
