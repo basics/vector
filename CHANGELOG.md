@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/basics/vector/compare/v1.16.3...v1.17.0) (2018-09-01)
+
+
+### Features
+
+* **operator:** optimize inVector check ([c0b9643](https://github.com/basics/vector/commit/c0b9643))
+
 ## [1.16.3](https://github.com/basics/vector/compare/v1.16.2...v1.16.3) (2018-08-24)
 
 
