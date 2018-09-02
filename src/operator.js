@@ -15,6 +15,12 @@ let resultCacheIndex = -1;
 let handlingCache = false;
 const resultCache = [];
 
+function handleProgess(progess, alg) {
+  inProgress = progess;
+  resultCacheIndex = -1;
+  return alg();
+}
+
 export function operatorCalc(alg, result) {
   if (typeof alg !== 'function') {
     throw new Error('no function assigned');
@@ -23,19 +29,13 @@ export function operatorCalc(alg, result) {
     throw new Error('something wrong');
   }
   try {
-    inProgress = X;
-    resultCacheIndex = -1;
-    const x = alg();
-
+    const x = handleProgess(X, alg);
     if (!result && typeof inVector === 'undefined') {
       return x;
     }
-    inProgress = Y;
-    resultCacheIndex = -1;
-    const y = alg();
-    inProgress = Z;
-    resultCacheIndex = -1;
-    const z = alg();
+
+    const y = handleProgess(Y, alg);
+    const z = handleProgess(Z, alg);
 
     if (!result) {
       return new inVector.constructor(x, y, z);
@@ -51,7 +51,6 @@ export function operatorCalc(alg, result) {
   } finally {
     inProgress = DEFAULT;
     inVector = undefined;
-    resultCacheIndex = -1;
   }
 }
 
