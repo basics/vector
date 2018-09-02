@@ -1,6 +1,7 @@
 /* eslint func-names: 0 */
 /* eslint no-param-reassign: 0 */
 /* eslint getter-return: 0 */
+/* eslint new-cap: 0 */
 
 const X = 0;
 const Y = 1;
@@ -37,7 +38,7 @@ export function operatorCalc(alg, result) {
     const z = alg();
 
     if (!result) {
-      return inVector.createVector(x, y, z);
+      return new inVector.constructor(x, y, z);
     }
     if (typeof result === 'function') {
       return result(x, y, z);
@@ -57,11 +58,10 @@ export function operatorCalc(alg, result) {
 export function cachedValueOf(Vector) {
   const name = 'valueOf';
   const org = Vector.prototype[name];
+
   Vector.prototype[name] = function () {
     if (inProgress === X) {
-      if (typeof inVector === 'undefined') {
-        inVector = this;
-      }
+      inVector = this;
       return this.x;
     }
     if (inProgress === Y) {
