@@ -1,3 +1,16 @@
+# [1.18.0](https://github.com/basics/vector/compare/v1.17.0...v1.18.0) (2018-09-02)
+
+
+### Bug Fixes
+
+* **operator:** outsource progress step to single fn ([8e6d7a5](https://github.com/basics/vector/commit/8e6d7a5))
+
+
+### Features
+
+* **operator:** dont need createVector fn anymore ([d21741c](https://github.com/basics/vector/commit/d21741c))
+* **vector:** remove createVector fn ([de3720a](https://github.com/basics/vector/commit/de3720a))
+
 # [1.17.0](https://github.com/basics/vector/compare/v1.16.3...v1.17.0) (2018-09-01)
 
 
