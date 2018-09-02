@@ -32,7 +32,7 @@ class AVector {
 
   normalize() {
     const { length } = this;
-    return this.createVector(this.x / length, this.y / length, this.z / length);
+    return new this.constructor(this.x / length, this.y / length, this.z / length);
   }
 
   norm() {
@@ -47,7 +47,7 @@ class AVector {
   }
 
   cross(v) {
-    return this.createVector(
+    return new this.constructor(
       this.y * v.z - this.z * v.y,
       this.z * v.x - this.x * v.z,
       this.x * v.y - this.y * v.x
@@ -86,13 +86,12 @@ class AVector {
       x: qx, y: qy, z: qz, w: qw
     } = quat;
 
-    // q*v
     const ix = qw * x + qy * z - qz * y;
     const iy = qw * y + qz * x - qx * z;
     const iz = qw * z + qx * y - qy * x;
     const iw = -qx * x - qy * y - qz * z;
 
-    return this.createVector(
+    return new this.constructor(
       ix * qw + iw * -qx + iy * -qz - iz * -qy,
       iy * qw + iw * -qy + iz * -qx - ix * -qz,
       iz * qw + iw * -qz + ix * -qy - iy * -qx
@@ -180,10 +179,6 @@ export class Vector extends AVector {
   clone() {
     return new Vector(this.x, this.y, this.z);
   }
-
-  createVector(x, y, z) {
-    return new Vector(x, y, z);
-  }
 }
 
 export class Victor extends AVector {
@@ -213,10 +208,6 @@ export class Victor extends AVector {
 
   toVector() {
     return new Vector(this.x, this.y, this.z);
-  }
-
-  createVector(x, y, z) {
-    return new Victor(x, y, z);
   }
 }
 
