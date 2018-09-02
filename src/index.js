@@ -1,6 +1,7 @@
 import {
   cachedMethod, cachedGetter, cachedValueOf, operatorCalc
 } from './operator';
+import formatNumber from './formatter';
 
 /* eslint class-methods-use-this: 0 */
 
@@ -119,7 +120,7 @@ class AVector {
   }
 
   toString() {
-    return `{ x: ${this.x}, y: ${this.y}, z: ${this.z} }`;
+    return `{ x: ${formatNumber(this.x)}, y: ${formatNumber(this.y)}, z: ${formatNumber(this.z)} }`;
   }
 
   get lengthSq() {
