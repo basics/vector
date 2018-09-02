@@ -1,3 +1,11 @@
+# [1.19.0](https://github.com/basics/vector/compare/v1.18.0...v1.19.0) (2018-09-02)
+
+
+### Features
+
+* **formater:** formatNumber with relevant digits ([f60a444](https://github.com/basics/vector/commit/f60a444))
+* **vector:** toString formatted axes ([6bf7e29](https://github.com/basics/vector/commit/6bf7e29))
+
 # [1.18.0](https://github.com/basics/vector/compare/v1.17.0...v1.18.0) (2018-09-02)
 
 
