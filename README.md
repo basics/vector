@@ -134,4 +134,4 @@ error: set x() not implemented
 
 ## running example
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=builtin.solarized.light)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js)](https://github.com/basics/vector/blob/master/examples/example.js)
