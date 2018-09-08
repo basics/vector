@@ -44,94 +44,34 @@ Internally the `valueOf()` implementation returns `x` in first call, `y` in seco
 
 ### create vector by numbers
 
-```js
-const pos = new Vector(5, 6, 7);
-const dir = new Vector(1, 0, 0);
-
-console.log("pos:", pos, " dir:", dir);
-```
-
-pos: { x: 5, y: 6, z: 7 } dir: { x: 1, y: 0, z: 0 }
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=4-10)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### create vector by calculating other vectors and number
 
-```js
-const offset = new Vector(() => dir * 30 + pos);
-
-console.log("offset:", offset);
-```
-
-offset: { x: 35, y: 6, z: 7 }
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=10-15)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### calc two Vectors and numbers with operator
 
-```js
-const offsetB = calc(() => dir * 20 + pos);
-console.log("offsetB:", offsetB);
-```
-
-offsetB: { x: 25, y: 6, z: 7 }
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=15-20)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### compare lengths
 
-```js
-let way = offset;
-if (way > 1) {
-  way = way.normalize();
-}
-console.log("way:", way);
-```
-
-way: { x: 0.96, y: 0.16, z: 0.19 }
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=20-28)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### calculate cross product
 
-```js
-const dir1 = new Vector(0, 1, 0);
-const dir2 = new Vector(-1, 0, 1);
-const cross = dir1.cross(dir2);
-
-console.log("cross:", cross);
-```
-
-cross: { x: 1, y: 0, z: 1 }
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=28-36)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### directly normalize the cross product
 
-```js
-const crossNorm = dir1.crossNormalize(dir2);
-
-console.log("crossNorm:", crossNorm);
-```
-
-crossNorm: { x: 0.71, y: 0, z: 0.71 }
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=36-42)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### cross product handling works also with operator handling
 
-```js
-const crossNormCalc = new Vector(() => dir1.crossNormalize(dir2) * 50);
-
-console.log("crossNormCalc:", crossNormCalc);
-```
-
-crossNormCalc: { x: 35.36, y: 0, z: 35.36 }
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=42-48)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ## immutable vector called Victor
 
 behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
 
-```js
-const vec = new Victor(5, 6, 7);
-
-try {
-  vec.x = 27;
-} catch (error) {
-  console.log("error:", error);
-}
-```
-
-error: set x() not implemented
-
-## running example
-
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=48-58)](https://github.com/basics/vector/blob/master/examples/example.js)
