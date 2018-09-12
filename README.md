@@ -25,15 +25,35 @@ Vector objects can be create with number<nobr> `new Vector(5, 6, 7)` </nobr>or d
 <details>
 <summary> Implementation details</summary>
 
+```js
+// typical implementation of vector in js
+const vec = aVec.multiply(bVec).multiply(4).substract(dVec).substract(1.5);
+
+                    ⇓
+
+// better readable, but much more complicated
+const vec = new Vec(aVec.x * bVec.x * 4 - dVec.x - 1.5,
+                    aVec.y * bVec.y * 4 - dVec.y - 1.5,
+                    aVec.z * bVec.z * 4 - dVec.z - 1.5);
+
+                    ⇓
+
+// inspired by smart array handling
+// first version of calling assigned function three times
+const vec = oldCalc(  aVec, bVec, dVec,
+                    ( aVec, bVec, dVec) =>
+                      aVec * bVec * 4 - dVec - 1.5
+                   );
+
+                    ⇓
+
+// final version with overwritten valueOf() function
+const vec = calc(() => aVec * bVec * 4 - dVec - 1.5);
+```
+
 Javascript has this one peculiarity called `valueOf()` this function is designed for primitive handling (numbers and strings) when handling arithmetic operations.
 Every class can overwrite this function to give it special behavior. This Vector class calls the assigned statement three times for `x`, `y` and `z`.
 Comparable to trigger arithmetic operation manually for every axis.
-
-```js
-const x = aVec.x * bVec.x * 4 - dVec.x - 1.5;
-const y = aVec.y * bVec.y * 4 - dVec.y - 1.5;
-const z = aVec.z * bVec.z * 4 - dVec.z - 1.5;
-```
 
 Internally the `valueOf()` implementation returns `x` in first call, `y` in second call and `z` in last call, these results are put into an new Vector object and can be reused further.
 
