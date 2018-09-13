@@ -1,3 +1,16 @@
+# [1.20.0](https://github.com/basics/vector/compare/v1.19.0...v1.20.0) (2018-09-06)
+
+
+### Bug Fixes
+
+* **operator:** optimize operator calc performance ([dc9214e](https://github.com/basics/vector/commit/dc9214e))
+
+
+### Features
+
+* **formatter:** optimize formatter for rounded values ([e82645d](https://github.com/basics/vector/commit/e82645d))
+* **vector:** move axes to data array ([5625cc8](https://github.com/basics/vector/commit/5625cc8))
+
 # [1.19.0](https://github.com/basics/vector/compare/v1.18.0...v1.19.0) (2018-09-02)
 
 

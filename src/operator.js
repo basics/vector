@@ -29,21 +29,22 @@ export function operatorCalc(alg, result) {
     throw new Error('something wrong');
   }
   try {
+    const noRes = typeof result === 'undefined';
     const x = handleProgess(X, alg);
-    if (!result && typeof inVector === 'undefined') {
+
+    if (noRes && typeof inVector === 'undefined') {
       return x;
     }
 
     const y = handleProgess(Y, alg);
     const z = handleProgess(Z, alg);
 
-    if (!result) {
+    if (noRes) {
       return new inVector.constructor(x, y, z);
     }
     if (typeof result === 'function') {
       return result(x, y, z);
     }
-
     result.x = x;
     result.y = y;
     result.z = z;
@@ -54,11 +55,12 @@ export function operatorCalc(alg, result) {
   }
 }
 
-export function cachedValueOf(Vector) {
+export function cachedValueOf(VectorClass) {
+  const Vector = VectorClass.prototype;
   const name = 'valueOf';
-  const org = Vector.prototype[name];
+  const org = Vector[name];
 
-  Vector.prototype[name] = function () {
+  Vector[name] = function () {
     if (inProgress === X) {
       inVector = this;
       return this.x;
@@ -102,18 +104,20 @@ function bindCache(org) {
   };
 }
 
-export function cachedMethod(Vector, name) {
-  const org = Vector.prototype[name];
-  Vector.prototype[name] = bindCache(org);
+export function cachedMethod(VectorClass, name) {
+  const Vector = VectorClass.prototype;
+  const org = Vector[name];
+  Vector[name] = bindCache(org);
 }
 
-export function cachedGetter(Vector, name) {
-  const desc = Object.getOwnPropertyDescriptor(Vector.prototype, name);
+export function cachedGetter(VectorClass, name) {
+  const Vector = VectorClass.prototype;
+  const desc = Object.getOwnPropertyDescriptor(Vector, name);
   const org = function () {
     return desc.get.call(this);
   };
 
-  Object.defineProperty(Vector.prototype, name, {
+  Object.defineProperty(Vector, name, {
     get: bindCache(org)
   });
 }

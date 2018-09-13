@@ -5,9 +5,10 @@ import formatNumber from './formatter';
 
 /* eslint class-methods-use-this: 0 */
 
-const X = Symbol.for('x');
-const Y = Symbol.for('y');
-const Z = Symbol.for('z');
+const X = 0;
+const Y = 1;
+const Z = 2;
+const AXES = Symbol.for('axes');
 
 function square(val) {
   return val * val;
@@ -15,15 +16,11 @@ function square(val) {
 class AVector {
   constructor(x, y, z) {
     if (typeof x === 'function') {
-      operatorCalc(x, (ix, iy, iz) => {
-        this[X] = ix;
-        this[Y] = iy;
-        this[Z] = iz;
+      operatorCalc(x, (...args) => {
+        this[AXES] = args;
       });
     } else {
-      this[X] = x || 0;
-      this[Y] = y || 0;
-      this[Z] = z || 0;
+      this[AXES] = [x || 0, y || 0, z || 0];
     }
   }
 
@@ -58,9 +55,9 @@ class AVector {
   crossNormalize(v) {
     const vec = this.cross(v);
     const { length } = vec;
-    vec[X] /= length;
-    vec[Y] /= length;
-    vec[Z] /= length;
+    vec[AXES][X] /= length;
+    vec[AXES][Y] /= length;
+    vec[AXES][Z] /= length;
     return vec;
   }
 
@@ -154,27 +151,27 @@ cachedGetter(AVector, 'lengthSq');
 
 export class Vector extends AVector {
   set x(x) {
-    this[X] = x;
+    this[AXES][X] = x;
   }
 
   set y(y) {
-    this[Y] = y;
+    this[AXES][Y] = y;
   }
 
   set z(z) {
-    this[Z] = z;
+    this[AXES][Z] = z;
   }
 
   get x() {
-    return this[X];
+    return this[AXES][X];
   }
 
   get y() {
-    return this[Y];
+    return this[AXES][Y];
   }
 
   get z() {
-    return this[Z];
+    return this[AXES][Z];
   }
 
   clone() {
@@ -184,7 +181,7 @@ export class Vector extends AVector {
 
 export class Victor extends AVector {
   get x() {
-    return this[X];
+    return this[AXES][X];
   }
 
   set x(_) {
@@ -192,7 +189,7 @@ export class Victor extends AVector {
   }
 
   get y() {
-    return this[Y];
+    return this[AXES][Y];
   }
 
   set y(_) {
@@ -200,7 +197,7 @@ export class Victor extends AVector {
   }
 
   get z() {
-    return this[Z];
+    return this[AXES][Z];
   }
 
   set z(_) {
