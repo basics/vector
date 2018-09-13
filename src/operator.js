@@ -1,11 +1,12 @@
 /* eslint func-names: 0 */
 /* eslint no-param-reassign: 0 */
 /* eslint getter-return: 0 */
+/* eslint new-cap: 0 */
 
-const X = 'x';
-const Y = 'y';
-const Z = 'z';
-const DEFAULT = Symbol.for('default');
+const X = 0;
+const Y = 1;
+const Z = 2;
+const DEFAULT = 3;
 
 let inProgress = DEFAULT;
 let inVector;
@@ -13,6 +14,12 @@ let inVector;
 let resultCacheIndex = -1;
 let handlingCache = false;
 const resultCache = [];
+
+function handleProgess(progess, alg) {
+  inProgress = progess;
+  resultCacheIndex = -1;
+  return alg();
+}
 
 export function operatorCalc(alg, result) {
   if (typeof alg !== 'function') {
@@ -22,46 +29,40 @@ export function operatorCalc(alg, result) {
     throw new Error('something wrong');
   }
   try {
-    inProgress = X;
-    resultCacheIndex = -1;
-    const x = alg();
+    const noRes = typeof result === 'undefined';
+    const x = handleProgess(X, alg);
 
-    if (!result && !inVector) {
+    if (noRes && typeof inVector === 'undefined') {
       return x;
     }
-    inProgress = Y;
-    resultCacheIndex = -1;
-    const y = alg();
-    inProgress = Z;
-    resultCacheIndex = -1;
-    const z = alg();
 
-    if (!result) {
-      return inVector.createVector(x, y, z);
+    const y = handleProgess(Y, alg);
+    const z = handleProgess(Z, alg);
+
+    if (noRes) {
+      return new inVector.constructor(x, y, z);
     }
     if (typeof result === 'function') {
       return result(x, y, z);
     }
-
-    result[X] = x;
-    result[Y] = y;
-    result[Z] = z;
+    result.x = x;
+    result.y = y;
+    result.z = z;
     return result;
   } finally {
     inProgress = DEFAULT;
     inVector = undefined;
-    resultCacheIndex = -1;
   }
 }
 
-export function cachedValueOf(Vector) {
+export function cachedValueOf(VectorClass) {
+  const Vector = VectorClass.prototype;
   const name = 'valueOf';
-  const org = Vector.prototype[name];
-  Vector.prototype[name] = function () {
+  const org = Vector[name];
+
+  Vector[name] = function () {
     if (inProgress === X) {
-      if (!inVector) {
-        inVector = this;
-      }
+      inVector = this;
       return this.x;
     }
     if (inProgress === Y) {
@@ -103,18 +104,20 @@ function bindCache(org) {
   };
 }
 
-export function cachedMethod(Vector, name) {
-  const org = Vector.prototype[name];
-  Vector.prototype[name] = bindCache(org);
+export function cachedMethod(VectorClass, name) {
+  const Vector = VectorClass.prototype;
+  const org = Vector[name];
+  Vector[name] = bindCache(org);
 }
 
-export function cachedGetter(Vector, name) {
-  const desc = Object.getOwnPropertyDescriptor(Vector.prototype, name);
+export function cachedGetter(VectorClass, name) {
+  const Vector = VectorClass.prototype;
+  const desc = Object.getOwnPropertyDescriptor(Vector, name);
   const org = function () {
     return desc.get.call(this);
   };
 
-  Object.defineProperty(Vector.prototype, name, {
+  Object.defineProperty(Vector, name, {
     get: bindCache(org)
   });
 }

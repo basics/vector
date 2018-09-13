@@ -1,12 +1,14 @@
 import {
   cachedMethod, cachedGetter, cachedValueOf, operatorCalc
 } from './operator';
+import formatNumber from './formatter';
 
 /* eslint class-methods-use-this: 0 */
 
-const X = Symbol.for('x');
-const Y = Symbol.for('y');
-const Z = Symbol.for('z');
+const X = 0;
+const Y = 1;
+const Z = 2;
+const AXES = Symbol.for('axes');
 
 function square(val) {
   return val * val;
@@ -14,15 +16,11 @@ function square(val) {
 class AVector {
   constructor(x, y, z) {
     if (typeof x === 'function') {
-      operatorCalc(x, (ix, iy, iz) => {
-        this[X] = ix;
-        this[Y] = iy;
-        this[Z] = iz;
+      operatorCalc(x, (...args) => {
+        this[AXES] = args;
       });
     } else {
-      this[X] = x || 0;
-      this[Y] = y || 0;
-      this[Z] = z || 0;
+      this[AXES] = [x || 0, y || 0, z || 0];
     }
   }
 
@@ -32,7 +30,7 @@ class AVector {
 
   normalize() {
     const { length } = this;
-    return this.createVector(this.x / length, this.y / length, this.z / length);
+    return new this.constructor(this.x / length, this.y / length, this.z / length);
   }
 
   norm() {
@@ -47,7 +45,7 @@ class AVector {
   }
 
   cross(v) {
-    return this.createVector(
+    return new this.constructor(
       this.y * v.z - this.z * v.y,
       this.z * v.x - this.x * v.z,
       this.x * v.y - this.y * v.x
@@ -57,9 +55,9 @@ class AVector {
   crossNormalize(v) {
     const vec = this.cross(v);
     const { length } = vec;
-    vec[X] /= length;
-    vec[Y] /= length;
-    vec[Z] /= length;
+    vec[AXES][X] /= length;
+    vec[AXES][Y] /= length;
+    vec[AXES][Z] /= length;
     return vec;
   }
 
@@ -86,13 +84,12 @@ class AVector {
       x: qx, y: qy, z: qz, w: qw
     } = quat;
 
-    // q*v
     const ix = qw * x + qy * z - qz * y;
     const iy = qw * y + qz * x - qx * z;
     const iz = qw * z + qx * y - qy * x;
     const iw = -qx * x - qy * y - qz * z;
 
-    return this.createVector(
+    return new this.constructor(
       ix * qw + iw * -qx + iy * -qz - iz * -qy,
       iy * qw + iw * -qy + iz * -qx - ix * -qz,
       iz * qw + iw * -qz + ix * -qy - iy * -qx
@@ -120,7 +117,7 @@ class AVector {
   }
 
   toString() {
-    return `{ x: ${this.x}, y: ${this.y}, z: ${this.z} }`;
+    return `{ x: ${formatNumber(this.x)}, y: ${formatNumber(this.y)}, z: ${formatNumber(this.z)} }`;
   }
 
   get lengthSq() {
@@ -154,41 +151,37 @@ cachedGetter(AVector, 'lengthSq');
 
 export class Vector extends AVector {
   set x(x) {
-    this[X] = x;
+    this[AXES][X] = x;
   }
 
   set y(y) {
-    this[Y] = y;
+    this[AXES][Y] = y;
   }
 
   set z(z) {
-    this[Z] = z;
+    this[AXES][Z] = z;
   }
 
   get x() {
-    return this[X];
+    return this[AXES][X];
   }
 
   get y() {
-    return this[Y];
+    return this[AXES][Y];
   }
 
   get z() {
-    return this[Z];
+    return this[AXES][Z];
   }
 
   clone() {
     return new Vector(this.x, this.y, this.z);
   }
-
-  createVector(x, y, z) {
-    return new Vector(x, y, z);
-  }
 }
 
 export class Victor extends AVector {
   get x() {
-    return this[X];
+    return this[AXES][X];
   }
 
   set x(_) {
@@ -196,7 +189,7 @@ export class Victor extends AVector {
   }
 
   get y() {
-    return this[Y];
+    return this[AXES][Y];
   }
 
   set y(_) {
@@ -204,7 +197,7 @@ export class Victor extends AVector {
   }
 
   get z() {
-    return this[Z];
+    return this[AXES][Z];
   }
 
   set z(_) {
@@ -213,10 +206,6 @@ export class Victor extends AVector {
 
   toVector() {
     return new Vector(this.x, this.y, this.z);
-  }
-
-  createVector(x, y, z) {
-    return new Victor(x, y, z);
   }
 }
 

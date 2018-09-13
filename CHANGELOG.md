@@ -1,3 +1,44 @@
+# [1.20.0](https://github.com/basics/vector/compare/v1.19.0...v1.20.0) (2018-09-06)
+
+
+### Bug Fixes
+
+* **operator:** optimize operator calc performance ([dc9214e](https://github.com/basics/vector/commit/dc9214e))
+
+
+### Features
+
+* **formatter:** optimize formatter for rounded values ([e82645d](https://github.com/basics/vector/commit/e82645d))
+* **vector:** move axes to data array ([5625cc8](https://github.com/basics/vector/commit/5625cc8))
+
+# [1.19.0](https://github.com/basics/vector/compare/v1.18.0...v1.19.0) (2018-09-02)
+
+
+### Features
+
+* **formater:** formatNumber with relevant digits ([f60a444](https://github.com/basics/vector/commit/f60a444))
+* **vector:** toString formatted axes ([6bf7e29](https://github.com/basics/vector/commit/6bf7e29))
+
+# [1.18.0](https://github.com/basics/vector/compare/v1.17.0...v1.18.0) (2018-09-02)
+
+
+### Bug Fixes
+
+* **operator:** outsource progress step to single fn ([8e6d7a5](https://github.com/basics/vector/commit/8e6d7a5))
+
+
+### Features
+
+* **operator:** dont need createVector fn anymore ([d21741c](https://github.com/basics/vector/commit/d21741c))
+* **vector:** remove createVector fn ([de3720a](https://github.com/basics/vector/commit/de3720a))
+
+# [1.17.0](https://github.com/basics/vector/compare/v1.16.3...v1.17.0) (2018-09-01)
+
+
+### Features
+
+* **operator:** optimize inVector check ([c0b9643](https://github.com/basics/vector/commit/c0b9643))
+
 ## [1.16.3](https://github.com/basics/vector/compare/v1.16.2...v1.16.3) (2018-08-24)
 
 
