@@ -9,6 +9,9 @@ describe('formatNumber test.', () => {
     assert.equal(formatNumber(0.0000000000000000000000000001), '0.0000000000000000000000000001');
     assert.equal(formatNumber(0.00009999999999), '0.0001');
     assert.equal(formatNumber(0.00009999), '0.00009999');
+    assert.equal(formatNumber(2.5), '2.5');
+    assert.equal(formatNumber(2.9999999999), '3.0');
+    assert.equal(formatNumber(2.999), '2.999');
     assert.equal(formatNumber(257.5657), '257.6');
     assert.equal(formatNumber(2575657546445.985), '2575657546446');
   });

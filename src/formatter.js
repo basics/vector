@@ -38,7 +38,7 @@ export default function formatNumber(nr, digits) {
     n.exp += 1;
   }
 
-  if (n.exp <= 1) {
+  if (n.exp < 1) {
     mant = mant.toString().replace('0.', '');
 
     return `0.${'0'.repeat(Math.max(0, -n.exp))}${mant}`;
