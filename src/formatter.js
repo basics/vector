@@ -1,5 +1,8 @@
 // https://code.open-xchange.com/#contentPanel;a7550a02-aa41-45d9-9cad-7e1c920815f3;null;ui/apps/io.ox/office/tk/utils.js;content
 
+const DECIMAL = (0.5).toLocaleString().substring(1, 2) || '.';
+const ZERO = (0).toLocaleString() || '0';
+
 function normalizeNumber(number) {
   // special handling for zero
   if (number === 0) {
@@ -39,10 +42,12 @@ export default function formatNumber(nr, digits) {
   }
 
   if (n.exp < 1) {
-    mant = mant.toString().replace('0.', '');
+    mant = mant.toString().replace(`${ZERO}${DECIMAL}`, '');
 
-    return `0.${'0'.repeat(Math.max(0, -n.exp))}${mant}`;
+    return `${ZERO}${DECIMAL}${ZERO.repeat(Math.max(0, -n.exp))}${mant.toLocaleString(undefined, {
+      useGrouping: true
+    })}`;
   }
   const e = 10 ** n.exp;
-  return mant * e;
+  return (mant * e).toLocaleString();
 }
