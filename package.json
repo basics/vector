@@ -1,6 +1,6 @@
 {
   "name": "@js-basics/vector",
-  "version": "1.20.0",
+  "version": "1.20.2",
   "description": "A vector lib with support for (+ - * /) operator handling",
   "main": "./lib/index.js",
   "directories": {
@@ -65,7 +65,7 @@
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "rimraf": "^2.6.2",
-    "rollup": "^0.65.2",
+    "rollup": "^0.66.0",
     "rollup-plugin-babel": "^4.0.1",
     "rollup-plugin-babel-minify": "^6.0.0",
     "semantic-release": "^15.9.8",
