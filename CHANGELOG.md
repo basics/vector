@@ -1,3 +1,10 @@
+## [1.20.3](https://github.com/basics/vector/compare/v1.20.2...v1.20.3) (2018-09-21)
+
+
+### Bug Fixes
+
+* **vector:** jsdocs correct [@return](https://github.com/return) ([8b7b157](https://github.com/basics/vector/commit/8b7b157))
+
 ## [1.20.2](https://github.com/basics/vector/compare/v1.20.1...v1.20.2) (2018-09-14)
 
 
