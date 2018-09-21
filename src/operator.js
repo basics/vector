@@ -21,6 +21,11 @@ function handleProgess(progess, alg) {
   return alg();
 }
 
+/**
+ * @param {() => number} alg
+ * @param {{ x: number, y: number, z: number }=} result
+ * @return {{ x: number, y: number, z: number } | number}
+ */
 export function operatorCalc(alg, result) {
   if (typeof alg !== 'function') {
     throw new Error('no function assigned');

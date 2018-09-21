@@ -14,6 +14,9 @@ function square(val) {
   return val * val;
 }
 
+/**
+ * @extends {number}
+ */
 class AVector {
   /**
    *
@@ -243,14 +246,26 @@ cachedGetter(AVector, 'length');
 cachedGetter(AVector, 'lengthSq');
 
 export class Vector extends AVector {
+  /**
+   *
+   * @param {number} x
+   */
   set x(x) {
     this[AXES][X] = x;
   }
 
+  /**
+   *
+   * @param {number} y
+   */
   set y(y) {
     this[AXES][Y] = y;
   }
 
+  /**
+   *
+   * @param {number} z
+   */
   set z(z) {
     this[AXES][Z] = z;
   }
@@ -297,6 +312,10 @@ export class Victor extends AVector {
     return this[AXES][X];
   }
 
+  /**
+   *
+   * @throws SetNotImplementedError
+   */
   set x(_) {
     throw new Error('set x() not implemented');
   }
@@ -309,6 +328,10 @@ export class Victor extends AVector {
     return this[AXES][Y];
   }
 
+  /**
+   *
+   * @throws SetNotImplementedError
+   */
   set y(_) {
     throw new Error('set y() not implemented');
   }
@@ -321,6 +344,10 @@ export class Victor extends AVector {
     return this[AXES][Z];
   }
 
+  /**
+   *
+   * @throws SetNotImplementedError
+   */
   set z(_) {
     throw new Error('set z() not implemented');
   }
@@ -329,7 +356,10 @@ export class Victor extends AVector {
     return new Vector(this.x, this.y, this.z);
   }
 }
-
+/**
+ * @param {() => number} alg
+ * @return {AVector | number}
+ */
 export function calc(alg) {
   return operatorCalc(alg);
 }
