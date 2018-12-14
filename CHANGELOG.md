@@ -1,3 +1,10 @@
+# [1.21.0](https://github.com/basics/vector/compare/v1.20.3...v1.21.0) (2018-12-14)
+
+
+### Features
+
+* **vector:** swizzle function ([890bb52](https://github.com/basics/vector/commit/890bb52))
+
 ## [1.20.3](https://github.com/basics/vector/compare/v1.20.2...v1.20.3) (2018-09-21)
 
 
