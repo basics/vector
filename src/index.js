@@ -8,7 +8,7 @@ import formatNumber from './formatter';
 const X = 0;
 const Y = 1;
 const Z = 2;
-const AXES = Symbol.for('axes');
+const AXES = Symbol('axes');
 
 function square(val) {
   return val * val;
@@ -173,6 +173,11 @@ class AVector {
    */
   toArray() {
     return [this.x, this.y, this.z];
+  }
+
+  swizzle(target) {
+    const data = target.split('').map(t => this[t]);
+    return new this.constructor(data[0], data[1], data[2]);
   }
 
   /**
