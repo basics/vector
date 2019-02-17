@@ -300,6 +300,14 @@ export class Vector extends AVector {
   }
 
   /**
+   * @param {() => number} alg
+   * @returns {this}
+   */
+  calc(alg) {
+    return operatorCalc(alg, this);
+  }
+
+  /**
    *
    * @returns {Vector}
    */

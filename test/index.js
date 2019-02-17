@@ -183,6 +183,16 @@ describe('special Vector test.', () => {
     pos.z = 29;
     assert.equal(pos.z, 29);
   });
+
+  it('should change x y z values when calling local calc method', () => {
+    const pos = new Vector(5, 6, 7);
+    const res = pos.calc(p => p * 25);
+
+    assert.equal(pos, res);
+    assert.equal(pos.x, 125);
+    assert.equal(pos.y, 150);
+    assert.equal(pos.z, 175);
+  });
 });
 
 describe('calc test.', () => {
@@ -218,4 +228,4 @@ describe('performance test', () => {
     time = new Date().getTime() - time;
     console.log('perf test faster', `${Math.round(time) / 1000}s`);
   });
-});
+}); 
