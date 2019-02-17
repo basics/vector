@@ -132,6 +132,13 @@ const vectorTest = (Vec3) => {
     assert.closeTo(cross3.y, 0, 0.01);
     assert.closeTo(cross3.z, 49, 0.01);
   });
+
+  it('should swizzle x y z values', () => {
+    const pos = new Vec3(5, 6, 7).swizzle('zxy');
+    assert.equal(pos.x, 7);
+    assert.equal(pos.y, 5);
+    assert.equal(pos.z, 6);
+  });
 };
 
 describe('standard Vector test.', () => {
@@ -182,5 +189,33 @@ describe('calc test.', () => {
   it('calling of calc should generate only numbers if no vector is in use', () => {
     const vec = calc(() => 2 * 2 + 3);
     assert.equal(vec, 7);
+  });
+});
+
+describe('performance test', () => {
+  it('should be fast', () => {
+    let time = new Date().getTime();
+
+    const v1 = new Vector(1, 2, 3);
+    const v2 = new Vector(4, 5, 6);
+    for (let i = 0; i < 10000; i++) {
+      const v3 = calc(() => v1.cross(v2) + v2 * v1 - v1 / v2 + (v2 * v2) / v1);
+    }
+    time = new Date().getTime() - time;
+    console.log('perf test fast', `${Math.round(time) / 1000}s`);
+  });
+
+  it('should be faster', () => {
+    let time = new Date().getTime();
+
+    const v1 = new Vector(1, 2, 3);
+    const v2 = new Vector(4, 5, 6);
+
+    const fn = () => v1 + v2 * v1 - v1 / v2 + (v2 * v2) / v1;
+    for (let i = 0; i < 10000; i++) {
+      const v3 = calc(fn);
+    }
+    time = new Date().getTime() - time;
+    console.log('perf test faster', `${Math.round(time) / 1000}s`);
   });
 });

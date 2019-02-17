@@ -1,3 +1,17 @@
+## [1.21.1](https://github.com/basics/vector/compare/v1.21.0...v1.21.1) (2019-02-17)
+
+
+### Bug Fixes
+
+* **example:** create vector inside calculation ([d3e3b7d](https://github.com/basics/vector/commit/d3e3b7d))
+
+# [1.21.0](https://github.com/basics/vector/compare/v1.20.3...v1.21.0) (2018-12-14)
+
+
+### Features
+
+* **vector:** swizzle function ([890bb52](https://github.com/basics/vector/commit/890bb52))
+
 ## [1.20.3](https://github.com/basics/vector/compare/v1.20.2...v1.20.3) (2018-09-21)
 
 

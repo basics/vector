@@ -1,6 +1,6 @@
 {
   "name": "@js-basics/vector",
-  "version": "1.20.3",
+  "version": "1.21.1",
   "description": "A vector lib with support for (+ - * /) operator handling",
   "main": "./lib/index.js",
   "directories": {
@@ -47,7 +47,7 @@
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-conventional": "^7.0.1",
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^9.0.0",
+    "babel-eslint": "^10.0.0",
     "babel-plugin-add-module-exports": "^1.0.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-polyfill": "^6.26.0",
@@ -61,13 +61,13 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
-    "husky": "^0.14.3",
+    "husky": "^1.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "rimraf": "^2.6.2",
-    "rollup": "^0.66.0",
+    "rollup": "^1.2.0",
     "rollup-plugin-babel": "^3.0.7",
-    "rollup-plugin-babel-minify": "^6.0.0",
+    "rollup-plugin-babel-minify": "^7.0.0",
     "semantic-release": "^15.9.8",
     "travis-deploy-once": "^5.0.2"
   }
