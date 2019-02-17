@@ -1,3 +1,10 @@
+## [1.21.2](https://github.com/basics/vector/compare/v1.21.1...v1.21.2) (2019-02-17)
+
+
+### Bug Fixes
+
+* **readme:** remove NSP status ([3994fc8](https://github.com/basics/vector/commit/3994fc8))
+
 ## [1.21.1](https://github.com/basics/vector/compare/v1.21.0...v1.21.1) (2019-02-17)
 
 
