@@ -1,3 +1,10 @@
+## [1.21.1](https://github.com/basics/vector/compare/v1.21.0...v1.21.1) (2019-02-17)
+
+
+### Bug Fixes
+
+* **example:** create vector inside calculation ([d3e3b7d](https://github.com/basics/vector/commit/d3e3b7d))
+
 # [1.21.0](https://github.com/basics/vector/compare/v1.20.3...v1.21.0) (2018-12-14)
 
 
