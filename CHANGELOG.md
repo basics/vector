@@ -1,3 +1,10 @@
+## [1.21.3](https://github.com/basics/vector/compare/v1.21.2...v1.21.3) (2019-02-17)
+
+
+### Bug Fixes
+
+* **husky:** change params for husky ([b1f3389](https://github.com/basics/vector/commit/b1f3389))
+
 ## [1.21.2](https://github.com/basics/vector/compare/v1.21.1...v1.21.2) (2019-02-17)
 
 
