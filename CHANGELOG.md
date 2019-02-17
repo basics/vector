@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/basics/vector/compare/v1.21.3...v1.22.0) (2019-02-17)
+
+
+### Features
+
+* **vector:** local calc method for Vector ([3dad3d5](https://github.com/basics/vector/commit/3dad3d5))
+
 ## [1.21.3](https://github.com/basics/vector/compare/v1.21.2...v1.21.3) (2019-02-17)
 
 
