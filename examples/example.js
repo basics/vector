@@ -55,3 +55,8 @@ try {
   console.log('error:', error.toString());
   // error: Error: set x() not implemented
 }
+
+// creating vector inside calculation works, but has overhead
+const inlineVec = new Victor(() => new Victor(25, 30) / 2);
+console.log(debug`inlineVec: ${inlineVec}`);
+// inlineVec: { x: 12.5, y: 15, z: 0 }
