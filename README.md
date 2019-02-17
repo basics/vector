@@ -7,7 +7,6 @@
 
 [![OSX/Linux Build Status](https://travis-ci.org/basics/vector.svg?branch=master)](https://travis-ci.org/basics/vector)
 [![Windows Build status](https://ci.appveyor.com/api/projects/status/drb33qvmf3koo5gr?svg=true)](https://ci.appveyor.com/project/StephanGerbeth/vector)
-[![NSP Status](https://nodesecurity.io/orgs/basics/projects/23094b78-f287-4645-a043-f97267a30c5b/badge)](https://nodesecurity.io/orgs/basics/projects/23094b78-f287-4645-a043-f97267a30c5b)
 [![Dependencies Status](https://david-dm.org/basics/vector/status.svg)](https://david-dm.org/basics/vector)
 [![DevDependencies Status](https://david-dm.org/basics/vector/dev-status.svg)](https://david-dm.org/basics/vector?type=dev)
 
