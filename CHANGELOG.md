@@ -1,3 +1,18 @@
+# [1.23.0](https://github.com/basics/vector/compare/v1.22.0...v1.23.0) (2019-03-31)
+
+
+### Bug Fixes
+
+* **test:** rename index tests to vetor ([d073a20](https://github.com/basics/vector/commit/d073a20))
+
+
+### Features
+
+* **index:** new index file for handling different vector types ([8d1b286](https://github.com/basics/vector/commit/8d1b286))
+* **point:** add point lib for 2d vector calculations ([5f1e611](https://github.com/basics/vector/commit/5f1e611))
+* **vector:** extract vector source to vector3 file ([5197852](https://github.com/basics/vector/commit/5197852))
+* **vector:** rename vector3 to vector ([674fdda](https://github.com/basics/vector/commit/674fdda))
+
 # [1.22.0](https://github.com/basics/vector/compare/v1.21.3...v1.22.0) (2019-02-17)
 
 
