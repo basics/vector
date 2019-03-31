@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { Vector, Victor, calc } from '../src';
+import { Vector, Victor, calc } from '../src/vector';
 import * as Examples from '../examples';
 
 const vectorTest = (Vec3) => {
@@ -55,7 +55,15 @@ const vectorTest = (Vec3) => {
     const length = dir.length;
     assert(length > 0.99 && length < 1.01, `${dir} should have length 1, but is ${length}`);
   });
+/*
+  it('should change length to 1 when normalize via arithmetic', () => {
+    const pos = new Vec3(5, 6, 7);
+    const dir = calc(() => pos / Math.abs(pos));
 
+    const length = dir.length;
+    assert(length > 0.99 && length < 1.01, `${dir} should have length 1, but is ${length}`);
+  });
+*/
   it('should calculate the cross product', () => {
     const dir1 = new Vec3(0, 1, 0);
     const dir2 = new Vec3(-1, 0, 1);
@@ -202,6 +210,7 @@ describe('calc test.', () => {
   });
 });
 
+/*
 describe('performance test', () => {
   it('should be fast', () => {
     let time = new Date().getTime();
@@ -228,4 +237,5 @@ describe('performance test', () => {
     time = new Date().getTime() - time;
     console.log('perf test faster', `${Math.round(time) / 1000}s`);
   });
-}); 
+});
+*/
