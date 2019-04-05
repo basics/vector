@@ -34,9 +34,12 @@
     "vector",
     "operator",
     "math",
+    "arithmetic",
     "overload",
     "basic",
-    "vec3"
+    "vec3",
+    "vec2",
+    "valueOf"
   ],
   "license": "MIT",
   "bugs": {
