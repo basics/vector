@@ -89,6 +89,10 @@ Internally the `valueOf()` implementation returns `x` in first call, `y` in seco
 
 [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=42-48)](https://github.com/basics/vector/blob/master/examples/example.js)
 
+### normalize only with arithmetic
+
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=58-63)](https://github.com/basics/vector/blob/master/examples/example.js)
+
 ## immutable vector called Victor
 
 behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.

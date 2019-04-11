@@ -56,6 +56,11 @@ try {
   // error: Error: set x() not implemented
 }
 
+// normalize only with arithmetic
+const norm = calc(() => offsetA / offsetA.length);
+console.log(debug`norm: ${norm}`);
+// norm: { x: 0.967, y: 0.1658, z: 0.1934 }
+
 // creating vector inside calculation works, but has overhead
 const inlineVec = new Victor(() => new Victor(25, 30) / 2);
 console.log(debug`inlineVec: ${inlineVec}`);
