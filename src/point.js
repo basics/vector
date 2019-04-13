@@ -1,5 +1,9 @@
 import {
-  cachedMethod, cachedGetter, cachedValueOf, operatorCalc
+  cachedMethod,
+  cachedGetter,
+  cachedValueOf,
+  operatorCalc,
+  defineVectorLength
 } from './operator';
 import formatNumber from './formatter';
 
@@ -49,8 +53,8 @@ class APoint {
    */
   constructor(x, y) {
     if (typeof x === 'function') {
-      operatorCalc(x, (...args) => {
-        this[AXES] = args;
+      operatorCalc(x, (nx, ny) => {
+        this[AXES] = [nx, ny];
       });
     } else {
       this[AXES] = [x || 0, y || 0];
@@ -69,7 +73,7 @@ class APoint {
    */
   normalize() {
     const { length } = this;
-    return new this.constructor(this.x / length, this.y / length, this.z / length);
+    return new this.constructor(this.x / length, this.y / length);
   }
 
   /**
@@ -128,10 +132,10 @@ class APoint {
 
   /**
    *
-   * @returns {[number, number, number]}
+   * @returns {[number, number]}
    */
   toArray() {
-    return [this.x, this.y, this.z];
+    return [this.x, this.y];
   }
 
   /**
@@ -190,14 +194,31 @@ class APoint {
   get len() {
     return this.length;
   }
+
+  /**
+   *
+   * @throws GetNotImplementedError
+   */
+  get z() {
+    throw new Error('get z() not implemented');
+  }
+
+  /**
+   *
+   * @throws SetNotImplementedError
+   */
+  set z(_) {
+    throw new Error('set z() not implemented');
+  }
 }
 
 cachedValueOf(APoint);
+defineVectorLength(APoint, 2);
 cachedMethod(APoint, 'dot');
-cachedMethod(APoint, 'toAngle');
 cachedMethod(APoint, 'angleTo');
 cachedMethod(APoint, 'distance');
 cachedMethod(APoint, 'toArray');
+cachedMethod(APoint, 'getRad');
 cachedGetter(APoint, 'length');
 cachedGetter(APoint, 'lengthSq');
 

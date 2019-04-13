@@ -1,5 +1,9 @@
 import {
-  cachedMethod, cachedGetter, cachedValueOf, operatorCalc
+  cachedMethod,
+  cachedGetter,
+  cachedValueOf,
+  operatorCalc,
+  defineVectorLength
 } from './operator';
 import formatNumber from './formatter';
 
@@ -26,8 +30,8 @@ class AVector {
    */
   constructor(x, y, z) {
     if (typeof x === 'function') {
-      operatorCalc(x, (...args) => {
-        this[AXES] = args;
+      operatorCalc(x, (nx, ny, nz) => {
+        this[AXES] = [nx, ny, nz];
       });
     } else {
       this[AXES] = [x || 0, y || 0, z || 0];
@@ -239,6 +243,7 @@ class AVector {
 }
 
 cachedValueOf(AVector);
+defineVectorLength(AVector, 3);
 cachedMethod(AVector, 'dot');
 cachedMethod(AVector, 'cross');
 cachedMethod(AVector, 'crossNormalize');

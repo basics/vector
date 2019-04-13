@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import { Point, IPoint, calc } from '../src/point';
 
 const pointTest = (Vec2) => {
-  it('should create x y z values', () => {
+  it('should create x y values', () => {
     const pos = new Vec2(5, 6);
     assert.equal(pos.x, 5);
     assert.equal(pos.y, 6);
@@ -115,7 +115,7 @@ describe('special Point test.', () => {
     assert.equal(pos.y, 28);
   });
 
-  it('should change x y z values when calling local calc method', () => {
+  it('should change x y values when calling local calc method', () => {
     const pos = new Point(5, 6);
     const res = pos.calc(p => p * 25);
 
