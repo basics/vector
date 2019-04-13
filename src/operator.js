@@ -12,6 +12,7 @@ const VECTOR_LENGTH = Symbol('vector length');
 
 let inProgress = DEFAULT;
 let inVector;
+let last;
 
 let resultCacheIndex = -1;
 let handlingCache = false;
@@ -93,6 +94,7 @@ export function operatorCalc(alg, result) {
   } finally {
     inProgress = DEFAULT;
     inVector = undefined;
+    last = undefined;
   }
 }
 
@@ -104,6 +106,7 @@ export function cachedValueOf(VectorClass) {
   Vector[name] = function () {
     if (inProgress === X) {
       inVector = inVector ? maxVector(inVector, this) : this;
+      last = this;
       return this.x;
     }
     if (inProgress === Y) {
@@ -170,4 +173,57 @@ export function defineVectorLength(VectorClass, value) {
   const Vector = VectorClass.prototype;
 
   Object.defineProperty(Vector, VECTOR_LENGTH, { value });
+}
+
+export function cachedApplier(MatClass, name, TargetClass) {
+  const Mat = MatClass.prototype;
+  const org = Mat[name];
+  Mat[name] = bindCache(org);
+
+  if (TargetClass) {
+    // TODO: magic happens here
+  }
+}
+
+export function fallbackValueOf(MatClass) {
+  const Mat = MatClass.prototype;
+  const name = 'valueOf';
+  const org = Mat[name];
+
+  Mat[name] = function () {
+    if (inProgress === DEFAULT) {
+      return org.call(this);
+    }
+
+    if (last) {
+      console.log('here is something', last);
+
+      // TODO: magic happens here
+      try {
+        const fromCache = bindCache(Mat.applyVector).call(this, last);
+        // const fromCache = this.applyVector(last);
+        last = this;
+
+        console.log('->', fromCache);
+
+        // if (inProgress === X) {
+        //   return fromCache.toArray()[0];
+        // }
+        // if (inProgress === Y) {
+        //   return fromCache.toArray()[1];
+        // }
+        // if (inProgress === Z) {
+        //   if (last[VECTOR_LENGTH] !== 2) {
+        //     return fromCache.toArray()[2];
+        //   }
+        //   return 0;
+        // }
+      } catch (e) {
+        console.error('ERROR!', e);
+      }
+    }
+
+    last = this;
+    return 1;
+  };
 }

@@ -314,6 +314,20 @@ export class Vector extends AVector {
 
   /**
    *
+   * @param {number} x
+   * @param {number} y
+   * @param {number} z
+   * @returns {AVector}
+   */
+  set(x, y, z) {
+    this[AXES][X] = x;
+    this[AXES][Y] = y;
+    this[AXES][Z] = z;
+    return this;
+  }
+
+  /**
+   *
    * @returns {Vector}
    */
   clone() {
