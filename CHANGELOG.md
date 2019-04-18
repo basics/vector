@@ -1,3 +1,17 @@
+# [1.25.0](https://github.com/basics/vector/compare/v1.24.0...v1.25.0) (2019-04-18)
+
+
+### Bug Fixes
+
+* **point:** extend factory function ([238cc16](https://github.com/basics/vector/commit/238cc16))
+* **vector:** extend factory function ([9b2276d](https://github.com/basics/vector/commit/9b2276d))
+
+
+### Features
+
+* **point:** factory functions for correct types ([a7314ec](https://github.com/basics/vector/commit/a7314ec))
+* **vector:** factory functions for correct types ([dedcc9a](https://github.com/basics/vector/commit/dedcc9a))
+
 # [1.24.0](https://github.com/basics/vector/compare/v1.23.0...v1.24.0) (2019-04-13)
 
 
