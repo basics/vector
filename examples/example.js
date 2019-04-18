@@ -1,7 +1,7 @@
+// @ts-nocheck
 import { calc, Vector, Victor } from '../src';
 import debug from '../src/debug';
 /* eslint-disable no-console */
-
 // create vector by numbers
 const pos = new Vector(5, 6, 7);
 const dir = new Vector(1, 0, 0);

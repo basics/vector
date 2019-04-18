@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   cachedMethod,
   cachedGetter,
@@ -19,14 +20,15 @@ function square(val) {
 }
 
 /**
- * @extends {number}
+ * @typedef {AVector & number} AVectorType
+ * @abstract
  */
 class AVector {
   /**
    *
-   * @param {number} x
-   * @param {number} y
-   * @param {number} z
+   * @param {number | (() => number)} x
+   * @param {number} [y]
+   * @param {number} [z]
    */
   constructor(x, y, z) {
     if (typeof x === 'function') {
@@ -46,7 +48,7 @@ class AVector {
   }
 
   /**
-   * @returns {AVector}
+   * @returns {AVectorType}
    */
   normalize() {
     const { length } = this;
@@ -54,7 +56,7 @@ class AVector {
   }
 
   /**
-   * @returns {AVector}
+   * @returns {AVectorType}
    */
   norm() {
     return this.normalize();
@@ -75,7 +77,7 @@ class AVector {
   /**
    *
    * @param {AVector} v
-   * @returns {AVector}
+   * @returns {AVectorType}
    */
   cross(v) {
     return new this.constructor(
@@ -88,7 +90,7 @@ class AVector {
   /**
    *
    * @param {AVector} v
-   * @returns {AVector}
+   * @returns {AVectorType}
    */
   crossNormalize(v) {
     const vec = this.cross(v);
@@ -102,7 +104,7 @@ class AVector {
   /**
    *
    * @param {AVector} v
-   * @returns {AVector}
+   * @returns {AVectorType}
    */
   cn(v) {
     return this.crossNormalize(v);
@@ -240,6 +242,54 @@ class AVector {
   get len() {
     return this.length;
   }
+
+  /**
+   *
+   * @returns {number}
+   */
+  get x() {
+    return this[AXES][X];
+  }
+
+  /**
+   *
+   * @throws SetNotImplementedError
+   */
+  set x(_) {
+    throw new Error('set x() not implemented');
+  }
+
+  /**
+   *
+   * @returns {number}
+   */
+  get y() {
+    return this[AXES][Y];
+  }
+
+  /**
+   *
+   * @throws SetNotImplementedError
+   */
+  set y(_) {
+    throw new Error('set y() not implemented');
+  }
+
+  /**
+   *
+   * @returns {number}
+   */
+  get z() {
+    return this[AXES][Z];
+  }
+
+  /**
+   *
+   * @throws SetNotImplementedError
+   */
+  set z(_) {
+    throw new Error('set z() not implemented');
+  }
 }
 
 cachedValueOf(AVector);
@@ -255,6 +305,9 @@ cachedMethod(AVector, 'toArray');
 cachedGetter(AVector, 'length');
 cachedGetter(AVector, 'lengthSq');
 
+/**
+ * @typedef {Vector & number} VectorType
+ */
 export class Vector extends AVector {
   /**
    *
@@ -305,7 +358,7 @@ export class Vector extends AVector {
   }
 
   /**
-   * @param {() => number} alg
+   * @param {(vector: VectorType) => number} alg
    * @returns {this}
    */
   calc(alg) {
@@ -313,63 +366,20 @@ export class Vector extends AVector {
   }
 
   /**
-   *
-   * @returns {Vector}
+   * @returns {Vector & number}
    */
   clone() {
     return new Vector(this.x, this.y, this.z);
   }
 }
 
+/**
+ * @typedef {Victor & number} VictorType
+ */
 export class Victor extends AVector {
   /**
-   *
-   * @returns {number}
+   * @returns {VectorType}
    */
-  get x() {
-    return this[AXES][X];
-  }
-
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
-  set x(_) {
-    throw new Error('set x() not implemented');
-  }
-
-  /**
-   *
-   * @returns {number}
-   */
-  get y() {
-    return this[AXES][Y];
-  }
-
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
-  set y(_) {
-    throw new Error('set y() not implemented');
-  }
-
-  /**
-   *
-   * @returns {number}
-   */
-  get z() {
-    return this[AXES][Z];
-  }
-
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
-  set z(_) {
-    throw new Error('set z() not implemented');
-  }
-
   toVector() {
     return new Vector(this.x, this.y, this.z);
   }
@@ -377,8 +387,30 @@ export class Victor extends AVector {
 
 /**
  * @param {() => number} alg
- * @return {Vector | Victor | number}
+ * @return {VectorType | VictorType}
  */
 export function calc(alg) {
   return operatorCalc(alg);
+}
+
+/**
+ * @typedef {(x: number, y: number, z: number) => VectorType} vector
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ * @return {VectorType}
+ */
+export function vector(x, y, z) {
+  return new Vector(x, y, z);
+}
+
+/**
+ * @typedef {(x: number, y: number, z: number) => VictorType} victor
+ * @param {number} x
+ * @param {number} y
+ * @param {number} z
+ * @return {VictorType}
+ */
+export function victor(x, y, z) {
+  return new Victor(x, y, z);
 }

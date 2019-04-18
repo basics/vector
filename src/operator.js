@@ -34,11 +34,6 @@ function maxVector(v1, v2) {
   return v2;
 }
 
-/**
- * @param {() => number} alg
- * @param {{ x: number, y: number, z: number } | { x: number, y: number }=} result
- * @return {{ x: number, y: number, z: number } | { x: number, y: number } | number}
- */
 export function operatorCalc(alg, result) {
   if (typeof alg !== 'function') {
     throw new Error('no function assigned');
