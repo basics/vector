@@ -25,7 +25,6 @@ function square(val) {
  */
 class AVector {
   /**
-   *
    * @param {number | (() => number)} x
    * @param {number} [y]
    * @param {number} [z]
@@ -395,9 +394,9 @@ export function calc(alg) {
 
 /**
  * @typedef {(x: number, y: number, z: number) => VectorType} vector
- * @param {number} x
- * @param {number} y
- * @param {number} z
+ * @param {number | (() => number)} x
+ * @param {number} [y]
+ * @param {number} [z]
  * @return {VectorType}
  */
 export function vector(x, y, z) {
@@ -406,9 +405,9 @@ export function vector(x, y, z) {
 
 /**
  * @typedef {(x: number, y: number, z: number) => VictorType} victor
- * @param {number} x
- * @param {number} y
- * @param {number} z
+ * @param {number | (() => number)} x
+ * @param {number} [y]
+ * @param {number} [z]
  * @return {VictorType}
  */
 export function victor(x, y, z) {

@@ -27,7 +27,7 @@ const vectorTest = (vec3, Vec3) => {
   });
 
   it('should be calculated by assigned statement with only numbers', () => {
-    const vec = calc(() => 2 * 2 + 3);
+    const vec = vec3(() => 2 * 2 + 3);
 
     assert.equal(vec.x, 7);
     assert.equal(vec.y, 7);
@@ -36,7 +36,7 @@ const vectorTest = (vec3, Vec3) => {
 
   it('calling of calc should automatically detect assigned Vector types', () => {
     const pos = vec3(2, 2, 2);
-    const vec = calc(() => 2 * pos + 3);
+    const vec = vec3(() => 2 * pos + 3);
 
     assert.instanceOf(vec, Vec3);
     assert.equal(vec.x, 7);
