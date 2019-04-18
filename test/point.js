@@ -24,7 +24,7 @@ const pointTest = (vec2, Vec2) => {
   });
 
   it('should be calculated by assigned statement with only numbers', () => {
-    const vec = calc(() => 2 * 2 + 3);
+    const vec = vec2(() => 2 * 2 + 3);
 
     assert.equal(vec.x, 7);
     assert.equal(vec.y, 7);
@@ -32,7 +32,7 @@ const pointTest = (vec2, Vec2) => {
 
   it('calling of calc should automatically detect assigned Point types', () => {
     const pos = vec2(2, 2);
-    const vec = calc(() => 2 * pos + 3);
+    const vec = vec2(() => 2 * pos + 3);
 
     assert.instanceOf(vec, Vec2);
     assert.equal(vec.x, 7);

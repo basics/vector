@@ -49,9 +49,8 @@ function square(val) {
  */
 class APoint {
   /**
-   *
-   * @param {number} x
-   * @param {number} y
+   * @param {number | (() => number)} x
+   * @param {number} [y]
    */
   constructor(x, y) {
     if (typeof x === 'function') {
