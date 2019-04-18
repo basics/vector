@@ -1,3 +1,4 @@
+// @ts-nocheck
 import {
   cachedMethod,
   cachedGetter,
@@ -43,7 +44,8 @@ function square(val) {
 }
 
 /**
- * @extends {number}
+ * @typedef {APoint & number} APointType
+ * @abstract
  */
 class APoint {
   /**
@@ -69,7 +71,7 @@ class APoint {
   }
 
   /**
-   * @returns {APoint}
+   * @returns {APointType}
    */
   normalize() {
     const { length } = this;
@@ -77,7 +79,7 @@ class APoint {
   }
 
   /**
-   * @returns {APoint}
+   * @returns {APointType}
    */
   norm() {
     return this.normalize();
@@ -197,6 +199,38 @@ class APoint {
 
   /**
    *
+   * @returns {number}
+   */
+  get x() {
+    return this[AXES][X];
+  }
+
+  /**
+   *
+   * @throws SetNotImplementedError
+   */
+  set x(_) {
+    throw new Error('set x() not implemented');
+  }
+
+  /**
+   *
+   * @returns {number}
+   */
+  get y() {
+    return this[AXES][Y];
+  }
+
+  /**
+   *
+   * @throws SetNotImplementedError
+   */
+  set y(_) {
+    throw new Error('set y() not implemented');
+  }
+
+  /**
+   *
    * @throws GetNotImplementedError
    */
   get z() {
@@ -222,6 +256,9 @@ cachedMethod(APoint, 'getRad');
 cachedGetter(APoint, 'length');
 cachedGetter(APoint, 'lengthSq');
 
+/**
+ * @typedef {Point & number} PointType
+ */
 export class Point extends APoint {
   /**
    *
@@ -256,7 +293,7 @@ export class Point extends APoint {
   }
 
   /**
-   * @param {() => number} alg
+   * @param {(point: PointType) => number} alg
    * @returns {this}
    */
   calc(alg) {
@@ -264,7 +301,6 @@ export class Point extends APoint {
   }
 
   /**
-   *
    * @returns {Point}
    */
   clone() {
@@ -272,39 +308,13 @@ export class Point extends APoint {
   }
 }
 
+/**
+ * @typedef {IPoint & number} IPointType
+ */
 export class IPoint extends APoint {
   /**
-   *
-   * @returns {number}
+   * @returns {PointType}
    */
-  get x() {
-    return this[AXES][X];
-  }
-
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
-  set x(_) {
-    throw new Error('set x() not implemented');
-  }
-
-  /**
-   *
-   * @returns {number}
-   */
-  get y() {
-    return this[AXES][Y];
-  }
-
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
-  set y(_) {
-    throw new Error('set y() not implemented');
-  }
-
   toPoint() {
     return new Point(this.x, this.y);
   }
@@ -312,8 +322,28 @@ export class IPoint extends APoint {
 
 /**
  * @param {() => number} alg
- * @return {Point | IPoint | number}
+ * @return {PointType | IPointType}
  */
 export function calc(alg) {
   return operatorCalc(alg);
+}
+
+/**
+ * @typedef {(x: number, y: number) => PointType} point
+ * @param {number} x
+ * @param {number} y
+ * @return {PointType}
+ */
+export function point(x, y) {
+  return new Point(x, y);
+}
+
+/**
+ * @typedef {(x: number, y: number) => IPointType} ipoint
+ * @param {number} x
+ * @param {number} y
+ * @return {IPointType}
+ */
+export function ipoint(x, y) {
+  return new IPoint(x, y);
 }

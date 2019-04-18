@@ -8,7 +8,7 @@ export { Point, IPoint };
 
 /**
  * @param {() => number} alg
- * @return {Vector | Victor | IVector | Point | Ipoint | number}
+ * @return {(Vector | Victor | IVector | Point | IPoint) & number}
  */
 export function calc(alg) {
   return operatorCalc(alg);
