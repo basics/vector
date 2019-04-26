@@ -63,7 +63,8 @@ Internally the `valueOf()` implementation returns `x` in first call, `y` in seco
 
 ### create vector by numbers
 
-`[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=4-10)](https://github.com/basics/vector/blob/master/examples/example.js)`
+|   |
+|[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=4-10)](https://github.com/basics/vector/blob/master/examples/example.js)|
 
 ### create vector by calculating other vectors and number
 
