@@ -1,3 +1,10 @@
+## [1.25.1](https://github.com/basics/vector/compare/v1.25.0...v1.25.1) (2019-05-07)
+
+
+### Bug Fixes
+
+* **vector:** fix jsdoc for factory functions ([3d9d375](https://github.com/basics/vector/commit/3d9d375))
+
 # [1.25.0](https://github.com/basics/vector/compare/v1.24.0...v1.25.0) (2019-04-18)
 
 
