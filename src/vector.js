@@ -393,7 +393,7 @@ export function calc(alg) {
 }
 
 /**
- * @typedef {(x: number, y: number, z: number) => VectorType} vector
+ * @typedef {(x: (number | (() => number)), y?: number, z?: number) => VectorType} vector
  * @param {number | (() => number)} x
  * @param {number} [y]
  * @param {number} [z]
@@ -404,7 +404,7 @@ export function vector(x, y, z) {
 }
 
 /**
- * @typedef {(x: number, y: number, z: number) => VictorType} victor
+ * @typedef {(x: (number | (() => number)), y?: number, z?: number) => VictorType} victor
  * @param {number | (() => number)} x
  * @param {number} [y]
  * @param {number} [z]

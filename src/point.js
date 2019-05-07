@@ -328,9 +328,9 @@ export function calc(alg) {
 }
 
 /**
- * @typedef {(x: number, y: number) => PointType} point
- * @param {number} x
- * @param {number} y
+ * @typedef {(x: (number | (() => number)), y?: number) => PointType} point
+ * @param {number | (() => number)} x
+ * @param {number} [y]
  * @return {PointType}
  */
 export function point(x, y) {
@@ -338,9 +338,9 @@ export function point(x, y) {
 }
 
 /**
- * @typedef {(x: number, y: number) => IPointType} ipoint
- * @param {number} x
- * @param {number} y
+ * @typedef {(x: (number | (() => number)), y?: number) => IPointType} ipoint
+ * @param {number | (() => number)} x
+ * @param {number} [y]
  * @return {IPointType}
  */
 export function ipoint(x, y) {

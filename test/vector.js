@@ -61,15 +61,15 @@ const vectorTest = (vec3, Vec3) => {
     const length = dir.length;
     assert(length > 0.99 && length < 1.01, `${dir} should have length 1, but is ${length}`);
   });
-  /*
+
   it('should change length to 1 when normalize via arithmetic', () => {
     const pos = vec3(5, 6, 7);
-    const dir = calc(() => pos / Math.abs(pos));
+    const dir = calc(() => pos / pos.length);
 
     const length = dir.length;
     assert(length > 0.99 && length < 1.01, `${dir} should have length 1, but is ${length}`);
   });
-*/
+
   it('should calculate the cross product', () => {
     const dir1 = vec3(0, 1, 0);
     const dir2 = vec3(-1, 0, 1);
