@@ -109,11 +109,11 @@ export function cachedValueOf(VectorClass) {
     if (inProgress === DEFAULT) {
       return org.call(this);
     }
+    let res = this;
+    if (last && last[APPLY]) {
+      res = last[APPLY].call(last, this);
+    }
     try {
-      let res = this;
-      if (last && last[APPLY]) {
-        res = last[APPLY].call(last, this);
-      }
       if (inProgress === X) {
         inVector = inVector ? maxVector(inVector, res) : res;
         return res.x;
@@ -128,7 +128,7 @@ export function cachedValueOf(VectorClass) {
       }
       return 0;
     } finally {
-      last = this;
+      last = res;
     }
   };
 }
@@ -199,10 +199,13 @@ export function fallbackValueOf(MatClass, applyName) {
     if (inProgress === DEFAULT) {
       return org.call(this);
     }
-    try {
-      if (last) {
-        const res = this[APPLY].call(this, last);
+    if (last) {
+      if (last[APPLY]) {
+        throw new Error('cant apply matrices and quaternion with each other!');
+      }
+      const res = this[APPLY].call(this, last);
 
+      try {
         if (inProgress === X) {
           return res.x / last.x;
         }
@@ -215,10 +218,12 @@ export function fallbackValueOf(MatClass, applyName) {
           }
         }
         return 0;
+      } finally {
+        last = res;
       }
-      return 1;
-    } finally {
-      last = this;
     }
+
+    last = this;
+    return 1;
   };
 }

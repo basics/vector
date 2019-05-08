@@ -34,4 +34,11 @@ describe('Quaternion tests.', () => {
     assert.equal(vec.y, vecOld.y);
     assert.equal(vec.z, vecOld.z);
   });
+
+  it('should not work quat * quat', () => {
+    const pos = new Quaternion(0, 0, 0, 1);
+    const quat = new Quaternion(0, 1, 0, 1);
+
+    assert.throw(() => calc(() => quat * pos));
+  });
 });

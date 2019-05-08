@@ -73,7 +73,7 @@ export class Quaternion {
     const qy = w * vb.y + qw * va.y + vaxvb.y;
     const qz = w * vb.z + qw * va.z + vaxvb.z;
 
-    return this.constructor(qx, qy, qz, qw);
+    return new this.constructor(qx, qy, qz, qw);
   }
 
   /**
