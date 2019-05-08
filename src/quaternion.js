@@ -1,10 +1,4 @@
-import {
-  cachedValueOf,
-  operatorCalc,
-  defineVectorLength,
-  cachedApplier,
-  fallbackValueOf
-} from './operator';
+import { operatorCalc, defineVectorLength, fallbackValueOf } from './operator';
 import formatNumber from './formatter';
 import { Vector } from './vector';
 
@@ -33,6 +27,13 @@ export class Quaternion {
     } else {
       this[AXES] = [x || 0, y || 0, z || 0, w || 0];
     }
+  }
+
+  apply(other) {
+    if (other instanceof Quaternion) {
+      return this.applyQuaternion(other);
+    }
+    return this.applyVector(other);
   }
 
   // http://schteppe.github.io/cannon.js/docs/files/src_math_Quaternion.js.html
@@ -111,10 +112,7 @@ export class Quaternion {
   }
 }
 
-cachedValueOf(Quaternion);
 defineVectorLength(Quaternion, 1);
-fallbackValueOf(Quaternion);
-cachedApplier(Quaternion, 'applyQuaternion', Quaternion);
-cachedApplier(Quaternion, 'applyVector');
+fallbackValueOf(Quaternion, 'apply');
 
 export default Quaternion;

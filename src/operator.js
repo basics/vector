@@ -9,6 +9,7 @@ const Y = 1;
 const Z = 2;
 const DEFAULT = 3;
 const VECTOR_LENGTH = Symbol('vector length');
+const APPLY = Symbol('apply');
 
 let inProgress = DEFAULT;
 let inVector;
@@ -21,6 +22,7 @@ const resultCache = [];
 function handleProgess(progess, alg, resVec) {
   inProgress = progess;
   resultCacheIndex = -1;
+  last = undefined;
   return alg(resVec);
 }
 
@@ -104,21 +106,30 @@ export function cachedValueOf(VectorClass) {
   const org = Vector[name];
 
   Vector[name] = function () {
-    if (inProgress === X) {
-      inVector = inVector ? maxVector(inVector, this) : this;
-      last = this;
-      return this.x;
+    if (inProgress === DEFAULT) {
+      return org.call(this);
     }
-    if (inProgress === Y) {
-      return this.y;
-    }
-    if (inProgress === Z) {
-      if (this[VECTOR_LENGTH] !== 2) {
-        return this.z;
+    try {
+      let res = this;
+      if (last && last[APPLY]) {
+        res = last[APPLY].call(last, this);
+      }
+      if (inProgress === X) {
+        inVector = inVector ? maxVector(inVector, res) : res;
+        return res.x;
+      }
+      if (inProgress === Y) {
+        return res.y;
+      }
+      if (inProgress === Z) {
+        if (res[VECTOR_LENGTH] !== 2) {
+          return res.z;
+        }
       }
       return 0;
+    } finally {
+      last = this;
     }
-    return org.call(this);
   };
 }
 
@@ -175,55 +186,39 @@ export function defineVectorLength(VectorClass, value) {
   Object.defineProperty(Vector, VECTOR_LENGTH, { value });
 }
 
-export function cachedApplier(MatClass, name, TargetClass) {
-  const Mat = MatClass.prototype;
-  const org = Mat[name];
-  Mat[name] = bindCache(org);
+export function fallbackValueOf(MatClass, applyName) {
+  cachedMethod(MatClass, applyName);
 
-  if (TargetClass) {
-    // TODO: magic happens here
-  }
-}
-
-export function fallbackValueOf(MatClass) {
   const Mat = MatClass.prototype;
   const name = 'valueOf';
   const org = Mat[name];
+
+  Mat[APPLY] = Mat[applyName];
 
   Mat[name] = function () {
     if (inProgress === DEFAULT) {
       return org.call(this);
     }
+    try {
+      if (last) {
+        const res = this[APPLY].call(this, last);
 
-    if (last) {
-      console.log('here is something', last);
-
-      // TODO: magic happens here
-      try {
-        const fromCache = bindCache(Mat.applyVector).call(this, last);
-        // const fromCache = this.applyVector(last);
-        last = this;
-
-        console.log('->', fromCache);
-
-        // if (inProgress === X) {
-        //   return fromCache.toArray()[0];
-        // }
-        // if (inProgress === Y) {
-        //   return fromCache.toArray()[1];
-        // }
-        // if (inProgress === Z) {
-        //   if (last[VECTOR_LENGTH] !== 2) {
-        //     return fromCache.toArray()[2];
-        //   }
-        //   return 0;
-        // }
-      } catch (e) {
-        console.error('ERROR!', e);
+        if (inProgress === X) {
+          return res.x / last.x;
+        }
+        if (inProgress === Y) {
+          return res.y / last.y;
+        }
+        if (inProgress === Z) {
+          if (last[VECTOR_LENGTH] !== 2) {
+            return res.z / last.z;
+          }
+        }
+        return 0;
       }
+      return 1;
+    } finally {
+      last = this;
     }
-
-    last = this;
-    return 1;
   };
 }
