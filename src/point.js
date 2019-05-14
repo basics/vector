@@ -328,21 +328,27 @@ export function calc(alg) {
 }
 
 /**
- * @typedef {(x: (number | (() => number)), y?: number) => PointType} point
- * @param {number | (() => number)} x
- * @param {number} [y]
- * @return {PointType}
+ * @typedef {() => number} Alg
+ * @typedef {(alg: Alg) => PointType} PointAlg
+ * @typedef {(x: number , y: number) => PointType} PointCon
+ * @typedef {PointAlg & PointCon} point
+ *
+ * @type {point}
  */
-export function point(x, y) {
+export const point = function point(x, y) {
   return new Point(x, y);
-}
+};
 
 /**
- * @typedef {(x: (number | (() => number)), y?: number) => IPointType} ipoint
- * @param {number | (() => number)} x
- * @param {number} [y]
- * @return {IPointType}
+ * @typedef {() => number} Alg
+ * @typedef {(alg: Alg) => IPointType} IPointAlg
+ * @typedef {(x: number , y: number) => IPointType} IPointCon
+ * @typedef {IPointAlg & IPointCon} ipoint
+ *
+ * @param {number} x
+ * @param {number} y
+ * @type {ipoint}
  */
-export function ipoint(x, y) {
+export const ipoint = function ipoint(x, y) {
   return new IPoint(x, y);
-}
+};

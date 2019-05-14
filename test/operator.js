@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { assert } from 'chai';
 import { operatorCalc } from '../src/operator';
 import { Victor, Vector } from '../src';

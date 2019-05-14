@@ -28,6 +28,7 @@ class AVector {
    * @param {number | (() => number)} x
    * @param {number} [y]
    * @param {number} [z]
+   * @returns {AVectorType}
    */
   constructor(x, y, z) {
     if (typeof x === 'function') {
@@ -365,7 +366,7 @@ export class Vector extends AVector {
   }
 
   /**
-   * @returns {Vector & number}
+   * @returns {VectorType}
    */
   clone() {
     return new Vector(this.x, this.y, this.z);
@@ -382,6 +383,13 @@ export class Victor extends AVector {
   toVector() {
     return new Vector(this.x, this.y, this.z);
   }
+
+  /**
+   * @returns {this}
+   */
+  clone() {
+    return this;
+  }
 }
 
 /**
@@ -393,23 +401,25 @@ export function calc(alg) {
 }
 
 /**
- * @typedef {(x: (number | (() => number)), y?: number, z?: number) => VectorType} vector
- * @param {number | (() => number)} x
- * @param {number} [y]
- * @param {number} [z]
- * @return {VectorType}
+ * @typedef {() => number} Alg
+ * @typedef {(alg: Alg) => VectorType} VectorAlg
+ * @typedef {(x: number , y: number, z: number) => VectorType} VectorCon
+ * @typedef {VectorAlg & VectorCon} vector
+ *
+ * @type { vector }
  */
-export function vector(x, y, z) {
+export const vector = function vector(x, y, z) {
   return new Vector(x, y, z);
-}
+};
 
 /**
- * @typedef {(x: (number | (() => number)), y?: number, z?: number) => VictorType} victor
- * @param {number | (() => number)} x
- * @param {number} [y]
- * @param {number} [z]
- * @return {VictorType}
+ * @typedef {() => number} Alg
+ * @typedef {(alg: Alg) => VictorType} VictorAlg
+ * @typedef {(x: number , y: number, z: number) => VictorType} VictorCon
+ * @typedef {VictorAlg & VictorCon} victor
+ *
+ * @type { victor }
  */
-export function victor(x, y, z) {
+export const victor = function victor(x, y, z) {
   return new Victor(x, y, z);
-}
+};
