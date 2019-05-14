@@ -1,3 +1,15 @@
+# [1.26.0](https://github.com/basics/vector/compare/v1.25.1...v1.26.0) (2019-05-14)
+
+
+### Bug Fixes
+
+* **vector:** reduce double code in jsdocs ([9e9c947](https://github.com/basics/vector/commit/9e9c947))
+
+
+### Features
+
+* **vector:** optimize jsdoc for factory functions ([d528042](https://github.com/basics/vector/commit/d528042))
+
 ## [1.25.1](https://github.com/basics/vector/compare/v1.25.0...v1.25.1) (2019-05-07)
 
 
