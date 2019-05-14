@@ -20,12 +20,13 @@ function square(val) {
 }
 
 /**
+ * @typedef {() => number} Alg
  * @typedef {AVector & number} AVectorType
  * @abstract
  */
 class AVector {
   /**
-   * @param {number | (() => number)} x
+   * @param {number | (Alg)} x
    * @param {number} [y]
    * @param {number} [z]
    * @returns {AVectorType}
@@ -393,7 +394,7 @@ export class Victor extends AVector {
 }
 
 /**
- * @param {() => number} alg
+ * @param {Alg} alg
  * @return {VectorType | VictorType}
  */
 export function calc(alg) {
@@ -401,7 +402,6 @@ export function calc(alg) {
 }
 
 /**
- * @typedef {() => number} Alg
  * @typedef {(alg: Alg) => VectorType} VectorAlg
  * @typedef {(x: number , y: number, z: number) => VectorType} VectorCon
  * @typedef {VectorAlg & VectorCon} vector
@@ -413,7 +413,6 @@ export const vector = function vector(x, y, z) {
 };
 
 /**
- * @typedef {() => number} Alg
  * @typedef {(alg: Alg) => VictorType} VictorAlg
  * @typedef {(x: number , y: number, z: number) => VictorType} VictorCon
  * @typedef {VictorAlg & VictorCon} victor

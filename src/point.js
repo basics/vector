@@ -44,12 +44,13 @@ function square(val) {
 }
 
 /**
+ * @typedef {() => number} Alg
  * @typedef {APoint & number} APointType
  * @abstract
  */
 class APoint {
   /**
-   * @param {number | (() => number)} x
+   * @param {number | (Alg)} x
    * @param {number} [y]
    */
   constructor(x, y) {
@@ -320,7 +321,7 @@ export class IPoint extends APoint {
 }
 
 /**
- * @param {() => number} alg
+ * @param {Alg} alg
  * @return {PointType | IPointType}
  */
 export function calc(alg) {
@@ -328,7 +329,6 @@ export function calc(alg) {
 }
 
 /**
- * @typedef {() => number} Alg
  * @typedef {(alg: Alg) => PointType} PointAlg
  * @typedef {(x: number , y: number) => PointType} PointCon
  * @typedef {PointAlg & PointCon} point
@@ -340,13 +340,10 @@ export const point = function point(x, y) {
 };
 
 /**
- * @typedef {() => number} Alg
  * @typedef {(alg: Alg) => IPointType} IPointAlg
  * @typedef {(x: number , y: number) => IPointType} IPointCon
  * @typedef {IPointAlg & IPointCon} ipoint
  *
- * @param {number} x
- * @param {number} y
  * @type {ipoint}
  */
 export const ipoint = function ipoint(x, y) {
