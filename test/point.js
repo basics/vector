@@ -17,7 +17,7 @@ const pointTest = (vec2, Vec2) => {
   it('should be calculated by assigned statement', () => {
     const pos = vec2(5, 6);
     const dir = vec2(1, 0);
-    const scale = calc(() => dir * pos);
+    const scale = vec2(() => dir * pos);
 
     assert.equal(scale.x, 5);
     assert.equal(scale.y, 0);

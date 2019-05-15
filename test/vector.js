@@ -19,7 +19,7 @@ const vectorTest = (vec3, Vec3) => {
   it('should be calculated by assigned statement', () => {
     const pos = vec3(5, 6, 7);
     const dir = vec3(1, 0, 0);
-    const scale = calc(() => dir * pos);
+    const scale = vec3(() => dir * pos);
 
     assert.equal(scale.x, 5);
     assert.equal(scale.y, 0);
@@ -64,7 +64,7 @@ const vectorTest = (vec3, Vec3) => {
 
   it('should change length to 1 when normalize via arithmetic', () => {
     const pos = vec3(5, 6, 7);
-    const dir = calc(() => pos / pos.length);
+    const dir = vec3(() => pos / pos.length);
 
     const length = dir.length;
     assert(length > 0.99 && length < 1.01, `${dir} should have length 1, but is ${length}`);
@@ -93,7 +93,7 @@ const vectorTest = (vec3, Vec3) => {
   it('should set opposite axis to 1 when calling the cross also when handling operators', () => {
     const dir1 = vec3(0, 1, 0);
     const dir2 = vec3(-1, 0, 0);
-    const cross = calc(() => dir1.crossNormalize(dir2) * 50);
+    const cross = vec3(() => dir1.crossNormalize(dir2) * 50);
 
     assert.equal(cross.x, 0);
     assert.equal(cross.y, 0);
@@ -131,17 +131,17 @@ const vectorTest = (vec3, Vec3) => {
     const dir1 = vec3(0, 1, 0);
     const dir2 = vec3(-1, 0, 0);
 
-    const cross1 = calc(() => dir1.crossNormalize(dir2) * (50 + dir1.angleTo(dir2)));
+    const cross1 = vec3(() => dir1.crossNormalize(dir2) * (50 + dir1.angleTo(dir2)));
     assert.closeTo(cross1.x, 0, 0.01);
     assert.closeTo(cross1.y, 0, 0.01);
     assert.closeTo(cross1.z, 51.5707, 0.01);
 
-    const cross2 = calc(() => dir1.crossNormalize(dir2) * (50 + dir1.toAngles().phi));
+    const cross2 = vec3(() => dir1.crossNormalize(dir2) * (50 + dir1.toAngles().phi));
     assert.closeTo(cross2.x, 0, 0.01);
     assert.closeTo(cross2.y, 0, 0.01);
     assert.closeTo(cross2.z, 51.5707, 0.01);
 
-    const cross3 = calc(() => dir1.crossNormalize(dir2) * (50 + dir2.toArray()[0]));
+    const cross3 = vec3(() => dir1.crossNormalize(dir2) * (50 + dir2.toArray()[0]));
     assert.closeTo(cross3.x, 0, 0.01);
     assert.closeTo(cross3.y, 0, 0.01);
     assert.closeTo(cross3.z, 49, 0.01);
