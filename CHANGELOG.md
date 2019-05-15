@@ -1,3 +1,17 @@
+# [1.27.0](https://github.com/basics/vector/compare/v1.26.0...v1.27.0) (2019-05-15)
+
+
+### Bug Fixes
+
+* **vector:** avoid call calc directly ([479a3fe](https://github.com/basics/vector/commit/479a3fe))
+
+
+### Features
+
+* **index:** export factory functions ([53b55c0](https://github.com/basics/vector/commit/53b55c0))
+* **operator:** cachedFactory function ([ec4515c](https://github.com/basics/vector/commit/ec4515c))
+* **vector:** vector and point using cahedFactory ([e128535](https://github.com/basics/vector/commit/e128535))
+
 # [1.26.0](https://github.com/basics/vector/compare/v1.25.1...v1.26.0) (2019-05-14)
 
 
