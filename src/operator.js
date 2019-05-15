@@ -166,3 +166,7 @@ export function defineVectorLength(VectorClass, value) {
 
   Object.defineProperty(Vector, VECTOR_LENGTH, { value });
 }
+
+export function cachedFactory(VectorClass) {
+  return bindCache((...args) => new VectorClass(...args));
+}
