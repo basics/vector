@@ -4,7 +4,8 @@ import {
   cachedGetter,
   cachedValueOf,
   operatorCalc,
-  defineVectorLength
+  defineVectorLength,
+  cachedFactory
 } from './operator';
 import formatNumber from './formatter';
 
@@ -328,6 +329,8 @@ export function calc(alg) {
   return operatorCalc(alg);
 }
 
+const pointFactory = cachedFactory(Point);
+
 /**
  * @typedef {(alg: Alg) => PointType} PointAlg
  * @typedef {(x: number , y: number) => PointType} PointCon
@@ -336,8 +339,10 @@ export function calc(alg) {
  * @type {point}
  */
 export const point = function point(x, y) {
-  return new Point(x, y);
+  return pointFactory(x, y);
 };
+
+const ipointFactory = cachedFactory(IPoint);
 
 /**
  * @typedef {(alg: Alg) => IPointType} IPointAlg
@@ -347,5 +352,5 @@ export const point = function point(x, y) {
  * @type {ipoint}
  */
 export const ipoint = function ipoint(x, y) {
-  return new IPoint(x, y);
+  return ipointFactory(x, y);
 };

@@ -4,7 +4,8 @@ import {
   cachedGetter,
   cachedValueOf,
   operatorCalc,
-  defineVectorLength
+  defineVectorLength,
+  cachedFactory
 } from './operator';
 import formatNumber from './formatter';
 
@@ -401,6 +402,8 @@ export function calc(alg) {
   return operatorCalc(alg);
 }
 
+const vectorFactory = cachedFactory(Vector);
+
 /**
  * @typedef {(alg: Alg) => VectorType} VectorAlg
  * @typedef {(x: number , y: number, z: number) => VectorType} VectorCon
@@ -409,8 +412,10 @@ export function calc(alg) {
  * @type { vector }
  */
 export const vector = function vector(x, y, z) {
-  return new Vector(x, y, z);
+  return vectorFactory(x, y, z);
 };
+
+const victorFactory = cachedFactory(Victor);
 
 /**
  * @typedef {(alg: Alg) => VictorType} VictorAlg
@@ -420,5 +425,5 @@ export const vector = function vector(x, y, z) {
  * @type { victor }
  */
 export const victor = function victor(x, y, z) {
-  return new Victor(x, y, z);
+  return victorFactory(x, y, z);
 };
