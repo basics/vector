@@ -1,10 +1,18 @@
 import { operatorCalc } from './operator';
 
-import { Vector, Victor, Victor as IVector } from './vector';
-import { Point, IPoint } from './point';
+import {
+  Vector, Victor, Victor as IVector, vector, victor, victor as ivector
+} from './vector';
+import {
+  Point, IPoint, point, ipoint
+} from './point';
 
-export { Vector, Victor, IVector };
-export { Point, IPoint };
+export {
+  Vector, Victor, IVector, vector, victor, ivector
+};
+export {
+  Point, IPoint, point, ipoint
+};
 
 /**
  * @param {() => number} alg
