@@ -65,6 +65,9 @@ export function operatorCalc(alg, result) {
         return new inVector.constructor(x, y);
       }
       if (funRes) {
+        if (result.length === 3) {
+          return result(x, y, 0);
+        }
         return result(x, y);
       }
 
@@ -77,6 +80,9 @@ export function operatorCalc(alg, result) {
         return new inVector.constructor(x, y, z);
       }
       if (funRes) {
+        if (result.length !== 3) {
+          throw new Error('You cant use 3D Operands for a 2D Result, better use xz, xy, yz getter');
+        }
         return result(x, y, z);
       }
 
