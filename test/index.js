@@ -2,6 +2,7 @@ import { assert } from 'chai';
 import {
   victor, ipoint, Victor, vector, point, calc
 } from '../src';
+import { cachedValueOf, cachedFactory, operatorCalc } from '../src/operator';
 
 describe('mixed 2D and 3D test.', () => {
   it('fetches higher order operand automatically in calc', () => {
@@ -42,5 +43,34 @@ describe('mixed 2D and 3D test.', () => {
 
     assert.equal(pos.x, 10);
     assert.equal(pos.y, 14);
+  });
+});
+
+class Tuple {
+  constructor(x, y, z) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+  }
+}
+cachedValueOf(Tuple);
+const tupleFactory = cachedFactory(Tuple);
+const tuple = (x, y, z) => {
+  if (typeof x === 'function') {
+    return operatorCalc(x, new Tuple());
+  }
+  return tupleFactory(x, y, z);
+};
+
+describe('override valueOf of a new class', () => {
+  it('alculations with the new class', () => {
+    const t1 = tuple(3, 4, 5);
+    const t2 = tuple(6, 7, 8);
+    const pos = tuple(() => t1 + t2 * 2);
+
+    assert.instanceOf(pos, Tuple);
+    assert.equal(pos.x, 15);
+    assert.equal(pos.y, 18);
+    assert.equal(pos.z, 21);
   });
 });
