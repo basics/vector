@@ -75,11 +75,11 @@ Internally the `valueOf()` implementation returns `x` in first call, `y` in seco
 
 ### calculate cross product
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=25-30)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=25-33)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### directly normalize the cross product
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=36-39)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=33-39)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### cross product handling works also with operator handling
 
@@ -91,8 +91,6 @@ Internally the `valueOf()` implementation returns `x` in first call, `y` in seco
 
 ## mutable 3D vector called Vector
 
-behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
-
 [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=50-57)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ## immutable 3D vector called Victor
@@ -103,13 +101,11 @@ behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
 
 ## mutable 2D vector called Point
 
-behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
-
 [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=67-74)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ## immutable 2D vector called IPoint
 
-behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
+behaves exactly like Point but code cant change its `x` and `y` axes.
 
 [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=74-84)](https://github.com/basics/vector/blob/master/examples/example.js)
 
