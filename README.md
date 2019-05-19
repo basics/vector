@@ -63,38 +63,62 @@ Internally the `valueOf()` implementation returns `x` in first call, `y` in seco
 
 ### create vector by numbers
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=4-10)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=6-12)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### create vector by calculating other vectors and number
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=10-15)](https://github.com/basics/vector/blob/master/examples/example.js)
-
-### calc two Vectors and numbers with operator
-
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=15-20)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=12-17)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### compare lengths
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=20-28)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=17-25)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### calculate cross product
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=28-36)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=25-30)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### directly normalize the cross product
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=36-42)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=36-39)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### cross product handling works also with operator handling
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=42-48)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=39-45)](https://github.com/basics/vector/blob/master/examples/example.js)
 
 ### normalize only with arithmetic
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=58-63)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=45-50)](https://github.com/basics/vector/blob/master/examples/example.js)
 
-## immutable vector called Victor
+## mutable 3D vector called Vector
 
 behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=48-58)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=50-57)](https://github.com/basics/vector/blob/master/examples/example.js)
+
+## immutable 3D vector called Victor
+
+behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
+
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=57-67)](https://github.com/basics/vector/blob/master/examples/example.js)
+
+## mutable 2D vector called Point
+
+behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
+
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=67-74)](https://github.com/basics/vector/blob/master/examples/example.js)
+
+## immutable 2D vector called IPoint
+
+behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
+
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=74-84)](https://github.com/basics/vector/blob/master/examples/example.js)
+
+## creating vector inside calculation
+
+ works fine thanks to caching in factory function.
+
+ [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=84-90)](https://github.com/basics/vector/blob/master/examples/example.js)
+
+## mixing 2D and 3D space
+
+ [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=90-98)](https://github.com/basics/vector/blob/master/examples/example.js)
