@@ -63,58 +63,58 @@ Internally the `valueOf()` implementation returns `x` in first call, `y` in seco
 
 ### create vector by numbers
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=6-12)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=6-12)](https://github.com/basics/vector/blob/master/examples/example.js#L6)
 
 ### create vector by calculating other vectors and number
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=12-17)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=12-17)](https://github.com/basics/vector/blob/master/examples/example.js#L12)
 
 ### compare lengths
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=17-25)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=17-25)](https://github.com/basics/vector/blob/master/examples/example.js#L17)
 
 ### calculate cross product
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=25-33)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=25-33)](https://github.com/basics/vector/blob/master/examples/example.js#L25)
 
 ### directly normalize the cross product
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=33-39)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=33-39)](https://github.com/basics/vector/blob/master/examples/example.js#L33)
 
 ### cross product handling works also with operator handling
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=39-45)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=39-45)](https://github.com/basics/vector/blob/master/examples/example.js#L39)
 
 ### normalize only with arithmetic
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=45-50)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=45-50)](https://github.com/basics/vector/blob/master/examples/example.js#L45)
 
 ## mutable 3D vector called Vector
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=50-57)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=50-57)](https://github.com/basics/vector/blob/master/examples/example.js#L50)
 
 ## immutable 3D vector called Victor
 
 behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=57-67)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=57-67)](https://github.com/basics/vector/blob/master/examples/example.js#L57)
 
 ## mutable 2D vector called Point
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=67-74)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=67-74)](https://github.com/basics/vector/blob/master/examples/example.js#L67)
 
 ## immutable 2D vector called IPoint
 
 behaves exactly like Point but code cant change its `x` and `y` axes.
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=74-84)](https://github.com/basics/vector/blob/master/examples/example.js)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=74-84)](https://github.com/basics/vector/blob/master/examples/example.js#L74)
 
 ## creating vector inside calculation
 
  works fine thanks to caching in factory function.
 
- [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=84-90)](https://github.com/basics/vector/blob/master/examples/example.js)
+ [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=84-90)](https://github.com/basics/vector/blob/master/examples/example.js#L84)
 
 ## mixing 2D and 3D space
 
- [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=90-98)](https://github.com/basics/vector/blob/master/examples/example.js)
+ [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=90-98)](https://github.com/basics/vector/blob/master/examples/example.js#L90)
