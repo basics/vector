@@ -1,7 +1,7 @@
-import {
-  vector, victor, point, ipoint
-} from '../src';
+import { vector, victor } from '../src/vector';
+import { point, ipoint } from '../src/point';
 import debug from '../src/debug';
+import { cachedValueOf, cachedFactory, operatorCalc } from '../src/operator';
 /* eslint-disable no-console */
 
 // create vector by numbers
@@ -95,3 +95,31 @@ console.log(debug`from2d: ${from2d}`);
 console.log(debug`from3d: ${from3d}`);
 // from2d: { x: 12.5, y: 15, z: 0 }
 // from3d: { x: 25, y: 30 }
+
+// override valueOf in own class
+class Tuple {
+  constructor(x, y, z) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+  }
+}
+cachedValueOf(Tuple);
+
+// write own factory function
+const tuple = (() => {
+  const tupleFactory = cachedFactory(Tuple);
+  return (x, y, z) => {
+    if (typeof x === 'function') {
+      return operatorCalc(x, new Tuple());
+    }
+    return tupleFactory(x, y, z);
+  };
+})();
+
+const t1 = tuple(3, 4, 5);
+const t2 = tuple(6, 7, 8);
+const t = tuple(() => t1 + t2 * 2);
+
+console.log(`t: ${JSON.stringify(t)}`);
+// t: {"x":15,"y":18,"z":21}
