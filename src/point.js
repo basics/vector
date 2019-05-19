@@ -10,6 +10,7 @@ import {
 import formatNumber from './formatter';
 
 /* eslint class-methods-use-this: 0 */
+/* eslint-disable no-unused-vars */
 
 const X = 0;
 const Y = 1;
@@ -142,8 +143,17 @@ class APoint {
   }
 
   /**
-   *
+   * @param {(point: APointType) => number} alg
+   * @returns {this}
    * @throws NotImplementedError
+   */
+  calc(alg) {
+    throw new Error('calc() not implemented');
+  }
+
+  /**
+   * @throws NotImplementedError
+   * @returns {APoint}
    */
   clone() {
     throw new Error('clone() not implemented');
@@ -232,7 +242,7 @@ class APoint {
 
   /**
    *
-   * @throws GetNotImplementedError
+   * @returns {number}
    */
   get z() {
     throw new Error('get z() not implemented');
@@ -294,7 +304,7 @@ export class Point extends APoint {
   }
 
   /**
-   * @param {(point: PointType) => number} alg
+   * @param {(point: APointType) => number} alg
    * @returns {this}
    */
   calc(alg) {
@@ -302,7 +312,7 @@ export class Point extends APoint {
   }
 
   /**
-   * @returns {Point}
+   * @returns {APoint}
    */
   clone() {
     return new Point(this.x, this.y);

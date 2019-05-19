@@ -8,8 +8,10 @@ import {
   cachedFactory
 } from './operator';
 import formatNumber from './formatter';
+import { ipoint } from './point';
 
 /* eslint class-methods-use-this: 0 */
+/* eslint-disable no-unused-vars */
 
 const X = 0;
 const Y = 1;
@@ -30,7 +32,6 @@ class AVector {
    * @param {number | (Alg)} x
    * @param {number} [y]
    * @param {number} [z]
-   * @returns {AVectorType}
    */
   constructor(x, y, z) {
     if (typeof x === 'function') {
@@ -69,7 +70,7 @@ class AVector {
 
   /**
    *
-   * @param {AVector} v
+   * @param {AVectorType} v
    * @returns {number}
    */
   dot(v) {
@@ -77,8 +78,7 @@ class AVector {
   }
 
   /**
-   *
-   * @param {AVector} v
+   * @param {AVectorType} v
    * @returns {AVectorType}
    */
   cross(v) {
@@ -90,8 +90,7 @@ class AVector {
   }
 
   /**
-   *
-   * @param {AVector} v
+   * @param {AVectorType} v
    * @returns {AVectorType}
    */
   crossNormalize(v) {
@@ -104,8 +103,7 @@ class AVector {
   }
 
   /**
-   *
-   * @param {AVector} v
+   * @param {AVectorType} v
    * @returns {AVectorType}
    */
   cn(v) {
@@ -125,7 +123,7 @@ class AVector {
 
   /**
    *
-   * @param {AVector} v
+   * @param {AVectorType} v
    * @returns {number}
    */
   angleTo(v) {
@@ -136,7 +134,7 @@ class AVector {
   /**
    *
    * @param {{ x: number, y: number, z: number, w: number }} quat
-   * @returns {AVector}
+   * @returns {AVectorType}
    */
   rotate(quat) {
     const { x, y, z } = this;
@@ -159,7 +157,7 @@ class AVector {
 
   /**
    *
-   * @param {AVector} v
+   * @param {AVectorType} v
    * @returns {number}
    */
   distance(v) {
@@ -168,7 +166,7 @@ class AVector {
 
   /**
    *
-   * @param {AVector} v
+   * @param {AVectorType} v
    * @returns {number}
    */
   dist(v) {
@@ -189,8 +187,18 @@ class AVector {
   }
 
   /**
+   * @param {(vector: AVectorType) => number} arg
+   * @returns {this}
+   * @throws NotImplementedError
+   */
+  calc(arg) {
+    throw new Error('calc() not implemented');
+  }
+
+  /**
    *
    * @throws NotImplementedError
+   * @return {AVectorType}
    */
   clone() {
     throw new Error('clone() not implemented');
@@ -198,7 +206,7 @@ class AVector {
 
   /**
    *
-   * @param {AVector} v
+   * @param {AVectorType} v
    * @returns {boolean}
    */
   equals(v) {
@@ -292,6 +300,49 @@ class AVector {
   set z(_) {
     throw new Error('set z() not implemented');
   }
+
+  /**
+   * @typedef {((import("./point").IPoint) & number)} IPointType
+   * @returns {IPointType}
+   */
+  get xy() {
+    return ipoint(this[AXES][X], this[AXES][Y]);
+  }
+
+  /**
+   * @throws SetNotImplementedError
+   */
+  set xy(_) {
+    throw new Error('set xz() not implemented');
+  }
+
+  /**
+   * @returns {IPointType}
+   */
+  get xz() {
+    return ipoint(this[AXES][X], this[AXES][Z]);
+  }
+
+  /**
+   * @throws SetNotImplementedError
+   */
+  set xz(_) {
+    throw new Error('set xz() not implemented');
+  }
+
+  /**
+   * @returns {IPointType}
+   */
+  get yz() {
+    return ipoint(this[AXES][Y], this[AXES][Z]);
+  }
+
+  /**
+   * @throws SetNotImplementedError
+   */
+  set yz(_) {
+    throw new Error('set yz() not implemented');
+  }
 }
 
 cachedValueOf(AVector);
@@ -360,7 +411,7 @@ export class Vector extends AVector {
   }
 
   /**
-   * @param {(vector: VectorType) => number} alg
+   * @param {(vector: AVectorType) => number} alg
    * @returns {this}
    */
   calc(alg) {
@@ -368,7 +419,7 @@ export class Vector extends AVector {
   }
 
   /**
-   * @returns {VectorType}
+   * @returns {AVectorType}
    */
   clone() {
     return new Vector(this.x, this.y, this.z);
@@ -387,7 +438,7 @@ export class Victor extends AVector {
   }
 
   /**
-   * @returns {this}
+   * @returns {AVectorType}
    */
   clone() {
     return this;
