@@ -1,3 +1,10 @@
+## [1.28.1](https://github.com/basics/vector/compare/v1.28.0...v1.28.1) (2019-05-19)
+
+
+### Bug Fixes
+
+* **operator:** test for cachedValueOf ([8180ccd](https://github.com/basics/vector/commit/8180ccd))
+
 # [1.28.0](https://github.com/basics/vector/compare/v1.27.0...v1.28.0) (2019-05-19)
 
 
