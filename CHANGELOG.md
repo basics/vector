@@ -1,3 +1,16 @@
+# [1.28.0](https://github.com/basics/vector/compare/v1.27.0...v1.28.0) (2019-05-19)
+
+
+### Bug Fixes
+
+* **vector:** tests for 2d 3d transformation ([d92e6de](https://github.com/basics/vector/commit/d92e6de))
+
+
+### Features
+
+* **operator:** error handling for type dismatch ([3354467](https://github.com/basics/vector/commit/3354467))
+* **vector:** xy xz xz getter for 3d to 2d conv ([c596d18](https://github.com/basics/vector/commit/c596d18))
+
 # [1.27.0](https://github.com/basics/vector/compare/v1.26.0...v1.27.0) (2019-05-15)
 
 
