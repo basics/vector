@@ -1,3 +1,10 @@
+## [1.28.2](https://github.com/basics/vector/compare/v1.28.1...v1.28.2) (2019-06-25)
+
+
+### Bug Fixes
+
+* **package:** white lines inside package list ([4f03b79](https://github.com/basics/vector/commit/4f03b79))
+
 ## [1.28.1](https://github.com/basics/vector/compare/v1.28.0...v1.28.1) (2019-05-19)
 
 
