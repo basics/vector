@@ -10,19 +10,16 @@
 [![Dependencies Status](https://david-dm.org/basics/vector/status.svg)](https://david-dm.org/basics/vector)
 [![DevDependencies Status](https://david-dm.org/basics/vector/dev-status.svg)](https://david-dm.org/basics/vector?type=dev)
 
-<!-- markdownlint-disable no-inline-html -->
+This libary provides 3D Vector in js including support for `+` `-` `*` `/` operator handling.
 
-This libary provides 3D Vector in js including support for<nobr> `+` `-` `*` `/` </nobr>operator handling.
+Normally vector implementations in javascript handle arithmetic operation by functions `aVec.multiply(bVec).substract(dVec)`.
+Other languages provide operator overloading, that coders can create Vector class which can handle operation similar to number handling `aVec * bVec - dVec`.
 
-Normally vector implementations in javascript handle arithmetic operation by functions<nobr> `aVec.multiply(bVec).substract(dVec)`. </nobr>
-Other languages provide operator overloading, that coders can create Vector class which can handle operation similar to number handling<nobr> `aVec * bVec - dVec`. </nobr>
+This libary gives javascript coders a way to handle operators with a single statement `() => aVec * bVec - dVec`.
+The calculation can be combined with numbers `() => aVec * bVec * 4 - dVec - 1.5`.
+Vector objects can be create with number `new Vector(5, 6, 7)` or directly with assigned statement `new Vector(() => 5 * 30 + 2)`.
 
-This libary gives javascript coders a way to handle operators with a single statement<nobr> `() => aVec * bVec - dVec`. </nobr>
-The calculation can be combined with numbers<nobr> `() => aVec * bVec * 4 - dVec - 1.5`. </nobr>
-Vector objects can be create with number<nobr> `new Vector(5, 6, 7)` </nobr>or directly with assigned statement<nobr> `new Vector(() => 5 * 30 + 2)`.</nobr>
-
-<details>
-<summary> Implementation details</summary>
+## Implementation details
 
 ```js
 // typical implementation of vector in js
@@ -55,9 +52,6 @@ Every class can overwrite this function to give it special behavior. This Vector
 Comparable to trigger arithmetic operation manually for every axis.
 
 Internally the `valueOf()` implementation returns `x` in first call, `y` in second call and `z` in last call, these results are put into an new Vector object and can be reused further.
-
-</details>
-<!-- markdownlint-enable no-inline-html -->
 
 ## working with Vector classes
 
