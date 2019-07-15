@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/basics/vector#readme",
   "devDependencies": {
-    "@commitlint/cli": "8.0.0",
+    "@commitlint/cli": "8.1.0",
     "@commitlint/config-conventional": "8.0.0",
     "babel-cli": "6.26.0",
     "babel-eslint": "10.0.2",
