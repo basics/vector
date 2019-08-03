@@ -15,4 +15,4 @@ script:
   - npm run test
   - npm run build
 after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
+  - npx travis-deploy-once "npm run semantic-release"
