@@ -15,7 +15,7 @@
     "test:examples": "node examples/",
     "cover": "nyc npx mocha --recursive",
     "lint": "eslint src",
-    "build": "cross-env BABEL_ENV=production babel src --out-dir lib",
+    "build": "cross-env BABEL_ENV=production babel src --out-dir lib && npx rollup --config ./.rolluprc",
     "prepare": "npm run clean && npm run test && npm run build",
     "semantic-release": "semantic-release"
   },
@@ -54,6 +54,7 @@
     "babel-eslint": "^10.0.2",
     "babel-plugin-istanbul": "^5.2.0",
     "babel-preset-minify": "^0.5.0",
+    "babelrc-rollup": "^3.0.0",
     "chai": "^4.2.0",
     "cross-env": "^5.2.0",
     "eslint": "^6.1.0",
@@ -64,6 +65,9 @@
     "husky": "^3.0.2",
     "nyc": "^14.1.1",
     "rimraf": "^2.6.3",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-babel-minify": "^9.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "semantic-release": "^15.13.19"
   },
   "dependencies": {

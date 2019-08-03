@@ -1,5 +1,5 @@
 import babel from 'rollup-plugin-babel';
-import babelrc from 'babelrc-rollup';
+import resolve from 'rollup-plugin-node-resolve';
 import minify from 'rollup-plugin-babel-minify';
 
 export default {
@@ -12,9 +12,11 @@ export default {
   },
 
   plugins: [
+    resolve(),
     babel({
       babelrc: false,
-      presets: [['env', { modules: false }]]
+      exclude: 'node_modules/**',
+      presets: [['@babel/preset-env', { modules: false }]]
     }),
     minify({
       comments: false,
