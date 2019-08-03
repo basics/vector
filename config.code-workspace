@@ -37,6 +37,8 @@
       "env/nuxt/config/global/favicon.json": true
     },
     "files.associations": {
+      ".branchlintrc": "json",
+      ".huskyrc": "json",
       ".postcssrc": "json",
       ".releaserc": "json",
       ".rolluprc": "javascript",
