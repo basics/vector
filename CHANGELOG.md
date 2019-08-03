@@ -1,3 +1,15 @@
+# [1.29.0](https://github.com/basics/vector/compare/v1.28.2...v1.29.0) (2019-08-03)
+
+
+### Bug Fixes
+
+* **rollup:** reconfiguration of rollup process ([579f415](https://github.com/basics/vector/commit/579f415))
+
+
+### Features
+
+* **config:** update configs from blueprint 1.3.0 ([e2fb406](https://github.com/basics/vector/commit/e2fb406))
+
 ## [1.28.2](https://github.com/basics/vector/compare/v1.28.1...v1.28.2) (2019-06-25)
 
 
