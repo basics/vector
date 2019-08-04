@@ -53,7 +53,11 @@ const v1 = vector(5, 6, 7);
 
 v1.x = 27;
 console.log(debug`v1: ${v1}`);
-// norm: { x: 27, y: 6, z: 7 }
+// v1: { x: 27, y: 6, z: 7 }
+
+v1.calc(p => (p + 1) * 12);
+console.log(debug`v1: ${v1}`);
+// v1: { x: 336, y: 84, z: 96 }
 
 // immutable 3D vector called Victor
 const v2 = victor(5, 6, 7);
@@ -65,12 +69,16 @@ try {
   // error: Error: set x() not implemented
 }
 
-// mutable 3D vector called Point
+// mutable 2D vector called Point
 const p1 = point(5, 6);
 
 p1.x = 27;
 console.log(debug`p1: ${p1}`);
-// norm: { x: 27, y: 6 }
+// p1: { x: 27, y: 6 }
+
+p1.calc(p => (p + 1) * 12);
+console.log(debug`v1: ${v1}`);
+// p1: { x: 336, y: 84 }
 
 // immutable 2D point called IPoint
 const p2 = ipoint(5, 6);

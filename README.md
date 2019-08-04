@@ -85,40 +85,40 @@ Internally the `valueOf()` implementation returns `x` in first call, `y` in seco
 
 ### mutable 3D vector called Vector
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=50-57)](https://github.com/basics/vector/blob/master/examples/example.js#L50)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=50-61)](https://github.com/basics/vector/blob/master/examples/example.js#L50)
 
 ### immutable 3D vector called Victor
 
 behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=57-67)](https://github.com/basics/vector/blob/master/examples/example.js#L57)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=61-71)](https://github.com/basics/vector/blob/master/examples/example.js#L57)
 
 ### mutable 2D vector called Point
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=67-74)](https://github.com/basics/vector/blob/master/examples/example.js#L67)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=71-82)](https://github.com/basics/vector/blob/master/examples/example.js#L67)
 
 ### immutable 2D vector called IPoint
 
 behaves exactly like Point but code cant change its `x` and `y` axes.
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=74-84)](https://github.com/basics/vector/blob/master/examples/example.js#L74)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=82-92)](https://github.com/basics/vector/blob/master/examples/example.js#L74)
 
 ### creating vector inside calculation
 
  works fine thanks to caching in factory function.
 
- [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=84-90)](https://github.com/basics/vector/blob/master/examples/example.js#L84)
+ [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=92-98)](https://github.com/basics/vector/blob/master/examples/example.js#L84)
 
 ### mixing 2D and 3D space
 
- [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=90-98)](https://github.com/basics/vector/blob/master/examples/example.js#L90)
+ [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=98-106)](https://github.com/basics/vector/blob/master/examples/example.js#L90)
 
 ## working with Operator class
 
 ### override valueOf in own class
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=98-108)](https://github.com/basics/vector/blob/master/examples/example.js#L98)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=106-116)](https://github.com/basics/vector/blob/master/examples/example.js#L98)
 
 ### write own factory function
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=108-126)](https://github.com/basics/vector/blob/master/examples/example.js#L107)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=116-134)](https://github.com/basics/vector/blob/master/examples/example.js#L107)
