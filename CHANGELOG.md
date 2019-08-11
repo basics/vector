@@ -1,3 +1,11 @@
+# [1.30.0](https://github.com/basics/vector/compare/v1.29.0...v1.30.0) (2019-08-11)
+
+
+### Features
+
+* **docs:** prepare jsdocs for doc generation ([495f62f](https://github.com/basics/vector/commit/495f62f))
+* **package:** command for docs generation ([18a4dda](https://github.com/basics/vector/commit/18a4dda))
+
 # [1.29.0](https://github.com/basics/vector/compare/v1.28.2...v1.29.0) (2019-08-03)
 
 
