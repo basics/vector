@@ -46,6 +46,8 @@ function square(val) {
 }
 
 /**
+ * @typedef {IPoint & number} IPointType
+ * @typedef {Point & number} PointType
  * @typedef {() => number} Alg
  * @typedef {APoint & number} APointType
  * @abstract
@@ -268,7 +270,12 @@ cachedGetter(APoint, 'length');
 cachedGetter(APoint, 'lengthSq');
 
 /**
- * @typedef {Point & number} PointType
+ * Point
+ *
+ * new Point(x: *number*, y: *number*): [[Point]]
+ *
+ * new Point(alg: (*function*(): *number*)): [[Point]]
+ *
  */
 export class Point extends APoint {
   /**
@@ -320,7 +327,12 @@ export class Point extends APoint {
 }
 
 /**
- * @typedef {IPoint & number} IPointType
+ * IPoint
+ *
+ * new IPoint(x: *number*, y: *number*): [[IPoint]]
+ *
+ * new IPoint(alg: (*function*(): *number*)): [[IPoint]]
+ *
  */
 export class IPoint extends APoint {
   /**
@@ -342,11 +354,13 @@ export function calc(alg) {
 const pointFactory = cachedFactory(Point);
 
 /**
+ * *function* point(x: *number*, y: *number*): [[Point]] & *number*
+ *
+ * *function* point(alg: (*function*(): *number*)): [[Point]] & *number*
+ *
  * @typedef {(alg: Alg) => PointType} PointAlg
  * @typedef {(x: number , y: number) => PointType} PointCon
- * @typedef {PointAlg & PointCon} point
- *
- * @type {point}
+ * @typedef {PointAlg & PointCon}
  */
 export const point = function point(x, y) {
   return pointFactory(x, y);
@@ -355,12 +369,14 @@ export const point = function point(x, y) {
 const ipointFactory = cachedFactory(IPoint);
 
 /**
+ * *function* ipoint(x: *number*, y: *number*): [[IPoint]] & *number*
+ *
+ * *function* ipoint(alg: (*function*(): *number*)): [[IPoint]] & *number*
+ *
  * @typedef {(alg: Alg) => IPointType} IPointAlg
  * @typedef {(x: number , y: number) => IPointType} IPointCon
- * @typedef {IPointAlg & IPointCon} ipoint
- *
- * @type {ipoint}
- */
+ * @typedef {IPointAlg & IPointCon}
+*/
 export const ipoint = function ipoint(x, y) {
   return ipointFactory(x, y);
 };

@@ -23,6 +23,8 @@ function square(val) {
 }
 
 /**
+ * @typedef {Victor & number} VictorType
+ * @typedef {Vector & number} VectorType
  * @typedef {() => number} Alg
  * @typedef {AVector & number} AVectorType
  * @abstract
@@ -359,7 +361,13 @@ cachedGetter(AVector, 'length');
 cachedGetter(AVector, 'lengthSq');
 
 /**
- * @typedef {Vector & number} VectorType
+ *
+ * Vector
+ *
+ * new Vector(x: *number*, y: *number*, z: *number*): [[Vector]]
+ *
+ * new Vector(alg: (*function*(): *number*)): [[Vector]]
+ *
  */
 export class Vector extends AVector {
   /**
@@ -427,11 +435,17 @@ export class Vector extends AVector {
 }
 
 /**
- * @typedef {Victor & number} VictorType
+ * Victor
+ *
+ * new Victor(x: *number*, y: *number*, z: *number*): [[Victor]]
+ *
+ * new Victor(alg: (*function*(): *number*)): [[Victor]]
+ *
+ *
  */
 export class Victor extends AVector {
   /**
-   * @returns {VectorType}
+   * @returns {VictorType}
    */
   toVector() {
     return new Vector(this.x, this.y, this.z);
@@ -456,11 +470,13 @@ export function calc(alg) {
 const vectorFactory = cachedFactory(Vector);
 
 /**
+ * *function* vector(x: *number*, y: *number*, z: *number*): [[Vector]] & *number*
+ *
+ * *function* vector(alg: (*function*(): *number*)): [[Vector]] & *number*
+ *
  * @typedef {(alg: Alg) => VectorType} VectorAlg
  * @typedef {(x: number , y: number, z: number) => VectorType} VectorCon
- * @typedef {VectorAlg & VectorCon} vector
- *
- * @type { vector }
+ * @typedef {VectorAlg & VectorCon}
  */
 export const vector = function vector(x, y, z) {
   return vectorFactory(x, y, z);
@@ -469,11 +485,13 @@ export const vector = function vector(x, y, z) {
 const victorFactory = cachedFactory(Victor);
 
 /**
+ * *function* victor(x: *number*, y: *number*, z: *number*): [[Victor]] & *number*
+ *
+ * *function* victor(alg: (*function*(): *number*)): [[Victor]] & *number*
+ *
  * @typedef {(alg: Alg) => VictorType} VictorAlg
  * @typedef {(x: number , y: number, z: number) => VictorType} VictorCon
- * @typedef {VictorAlg & VictorCon} victor
- *
- * @type { victor }
+ * @typedef {VictorAlg & VictorCon}
  */
 export const victor = function victor(x, y, z) {
   return victorFactory(x, y, z);
