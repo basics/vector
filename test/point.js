@@ -113,7 +113,7 @@ describe('special IPoint test.', () => {
 
 describe('special Point test.', () => {
   it('should change x y values when setting directly', () => {
-    const pos = new Point(5, 6);
+    const pos = point(5, 6);
 
     pos.x = 27;
     assert.equal(pos.x, 27);
@@ -122,7 +122,7 @@ describe('special Point test.', () => {
   });
 
   it('should change x y values when calling local calc method', () => {
-    const pos = new Point(5, 6);
+    const pos = point(5, 6);
     const res = pos.calc(p => p * 25);
 
     assert.equal(pos, res);
