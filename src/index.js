@@ -16,10 +16,14 @@ export {
 
 /**
  * @param {() => number} alg
- * @return {(Vector | Victor | IVector | Point | IPoint) & number}
+ * @return {(Vector | Victor | IVector | Point | IPoint) & number | number}
  */
 export function calc(alg) {
   return operatorCalc(alg);
 }
 
 export default Vector;
+
+export const Export = {
+  Vector, Victor, IVector, Point, IPoint
+};
