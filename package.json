@@ -16,9 +16,9 @@
     "cover": "nyc npx mocha --recursive",
     "lint": "eslint src",
     "build": "cross-env BABEL_ENV=production babel src --out-dir lib && npx rollup --config ./.rolluprc",
+    "docs": "typedoc ./src --out ./lib/docs --allowJs --checkJs --noEmit --excludeNotExported --module commonjs --target es6 --exclude **/debug.js",
     "prepare": "npm run clean && npm run test && npm run build",
-    "semantic-release": "semantic-release",
-    "docs": "typedoc --out docs ./src --allowJs --noEmit --module true --excludeNotExported"
+    "semantic-release": "semantic-release"
   },
   "files": [
     "lib",
@@ -69,7 +69,8 @@
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-babel-minify": "^9.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "semantic-release": "^15.13.19"
+    "semantic-release": "^15.13.19",
+    "typedoc": "^0.15.0"
   },
   "dependencies": {
     "core-js": "^3.1.4"
