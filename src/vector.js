@@ -12,6 +12,7 @@ import { ipoint } from './point';
 
 /* eslint class-methods-use-this: 0 */
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-dupe-keys */
 
 const X = 0;
 const Y = 1;
@@ -44,6 +45,7 @@ class AVector {
       this[AXES] = [x || 0, y || 0, z || 0];
     }
   }
+
 
   /**
    * @returns {number}
@@ -191,7 +193,7 @@ class AVector {
   /**
    * @param {(vector: AVectorType) => number} arg
    * @returns {this}
-   * @throws NotImplementedError
+   * @throws NotImplementedError ⚠
    */
   calc(arg) {
     throw new Error('calc() not implemented');
@@ -199,7 +201,7 @@ class AVector {
 
   /**
    *
-   * @throws NotImplementedError
+   * @throws NotImplementedError ⚠
    * @return {AVectorType}
    */
   clone() {
@@ -462,6 +464,7 @@ export class Victor extends AVector {
 /**
  * @param {Alg} alg
  * @return {VectorType | VictorType}
+ * @hidden
  */
 export function calc(alg) {
   return operatorCalc(alg);
@@ -470,29 +473,51 @@ export function calc(alg) {
 const vectorFactory = cachedFactory(Vector);
 
 /**
- * *function* vector(x: *number*, y: *number*, z: *number*): [[Vector]] & *number*
- *
- * *function* vector(alg: (*function*(): *number*)): [[Vector]] & *number*
- *
  * @typedef {(alg: Alg) => VectorType} VectorAlg
  * @typedef {(x: number , y: number, z: number) => VectorType} VectorCon
  * @typedef {VectorAlg & VectorCon}
+ * @hidden
  */
-export const vector = function vector(x, y, z) {
+export function vector(x, y, z) {
   return vectorFactory(x, y, z);
-};
+}
 
 const victorFactory = cachedFactory(Victor);
 
 /**
- * *function* victor(x: *number*, y: *number*, z: *number*): [[Victor]] & *number*
- *
- * *function* victor(alg: (*function*(): *number*)): [[Victor]] & *number*
- *
  * @typedef {(alg: Alg) => VictorType} VictorAlg
  * @typedef {(x: number , y: number, z: number) => VictorType} VictorCon
  * @typedef {VictorAlg & VictorCon}
+ * @hidden
  */
-export const victor = function victor(x, y, z) {
+export function victor(x, y, z) {
   return victorFactory(x, y, z);
+}
+
+export const Export = {
+  /**
+   * @param {Alg} alg
+   * @return {VectorType | VictorType}
+   */
+  calc: alg => operatorCalc(alg),
+
+  /**
+   * @type {VectorAlg}
+   */
+  vector: alg => vectorFactory(alg),
+
+  /**
+   * @type {VectorCon}
+   */
+  vector: (x, y) => vectorFactory(x, y),
+
+  /**
+   * @type {VictorAlg}
+   */
+  victor: alg => victorFactory(alg),
+
+  /**
+   * @type {VictorCon}
+   */
+  victor: (x, y) => victorFactory(x, y)
 };

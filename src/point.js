@@ -11,6 +11,7 @@ import formatNumber from './formatter';
 
 /* eslint class-methods-use-this: 0 */
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-dupe-keys */
 
 const X = 0;
 const Y = 1;
@@ -56,6 +57,7 @@ class APoint {
   /**
    * @param {number | (Alg)} x
    * @param {number} [y]
+   * @hidden
    */
   constructor(x, y) {
     if (typeof x === 'function') {
@@ -147,14 +149,14 @@ class APoint {
   /**
    * @param {(point: APointType) => number} alg
    * @returns {this}
-   * @throws NotImplementedError
+   * @throws NotImplementedError ⚠
    */
   calc(alg) {
     throw new Error('calc() not implemented');
   }
 
   /**
-   * @throws NotImplementedError
+   * @throws NotImplementedError ⚠
    * @returns {APoint}
    */
   clone() {
@@ -272,8 +274,14 @@ cachedGetter(APoint, 'lengthSq');
 /**
  * Point
  *
+ * **constructor**
+ * ___
  * new Point(x: *number*, y: *number*): [[Point]]
  *
+ *
+ *
+ * **constructor**
+ * ___
  * new Point(alg: (*function*(): *number*)): [[Point]]
  *
  */
@@ -329,6 +337,8 @@ export class Point extends APoint {
 /**
  * IPoint
  *
+ * **constructors**
+ * ___
  * new IPoint(x: *number*, y: *number*): [[IPoint]]
  *
  * new IPoint(alg: (*function*(): *number*)): [[IPoint]]
@@ -346,6 +356,7 @@ export class IPoint extends APoint {
 /**
  * @param {Alg} alg
  * @return {PointType | IPointType}
+ * @hidden
  */
 export function calc(alg) {
   return operatorCalc(alg);
@@ -354,29 +365,52 @@ export function calc(alg) {
 const pointFactory = cachedFactory(Point);
 
 /**
- * *function* point(x: *number*, y: *number*): [[Point]] & *number*
- *
- * *function* point(alg: (*function*(): *number*)): [[Point]] & *number*
- *
  * @typedef {(alg: Alg) => PointType} PointAlg
  * @typedef {(x: number , y: number) => PointType} PointCon
- * @typedef {PointAlg & PointCon}
+ * @typedef {PointAlg & PointCon} point
+ * @type {point}
+ * @hidden
  */
-export const point = function point(x, y) {
+export function point(x, y) {
   return pointFactory(x, y);
-};
+}
 
 const ipointFactory = cachedFactory(IPoint);
 
 /**
- * *function* ipoint(x: *number*, y: *number*): [[IPoint]] & *number*
- *
- * *function* ipoint(alg: (*function*(): *number*)): [[IPoint]] & *number*
- *
  * @typedef {(alg: Alg) => IPointType} IPointAlg
  * @typedef {(x: number , y: number) => IPointType} IPointCon
  * @typedef {IPointAlg & IPointCon}
-*/
-export const ipoint = function ipoint(x, y) {
+ * @hidden
+ */
+export function ipoint(x, y) {
   return ipointFactory(x, y);
+}
+
+export const Export = {
+  /**
+   * @param {Alg} alg
+   * @return {PointType | IPointType}
+   */
+  calc: alg => operatorCalc(alg),
+
+  /**
+   * @type {PointAlg}
+   */
+  point: alg => pointFactory(alg),
+
+  /**
+   * @type {PointCon}
+   */
+  point: (x, y) => pointFactory(x, y),
+
+  /**
+   * @type {IPointAlg}
+   */
+  ipoint: alg => ipointFactory(alg),
+
+  /**
+   * @type {IPointCon}
+   */
+  ipoint: (x, y) => ipointFactory(x, y)
 };
