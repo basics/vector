@@ -1,3 +1,12 @@
+# [1.31.0](https://github.com/basics/vector/compare/v1.30.0...v1.31.0) (2019-08-16)
+
+
+### Features
+
+* **package:** activate docs creation ([adbc719](https://github.com/basics/vector/commit/adbc719))
+* **package:** add typedoc module ([62b20da](https://github.com/basics/vector/commit/62b20da))
+* **vector:** continue prepare code for docs ([06ad72c](https://github.com/basics/vector/commit/06ad72c))
+
 # [1.30.0](https://github.com/basics/vector/compare/v1.29.0...v1.30.0) (2019-08-11)
 
 
