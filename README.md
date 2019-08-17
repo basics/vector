@@ -21,7 +21,7 @@ Vector objects can be create with number `new Vector(5, 6, 7)` or directly with 
 
 ## Implementation details
 
-```js
+```javascript
 // typical implementation of vector in js
 const vec = aVec.multiply(bVec).multiply(4).substract(dVec).substract(1.5);
 
@@ -52,6 +52,30 @@ Every class can overwrite this function to give it special behavior. This Vector
 Comparable to trigger arithmetic operation manually for every axis.
 
 Internally the `valueOf()` implementation returns `x` in first call, `y` in second call and `z` in last call, these results are put into an new Vector object and can be reused further.
+
+## Usage
+
+[API Reference](https://unpkg.com/@js-basics/vector/docs/modules/_index_.html)
+
+### load via hmtl
+
+```html
+<script type="text/javascript" src="https://unpkg.com/@js-basics/vector/lib/bundle.min.js"></script>
+```
+
+```javascript
+const { vector, victor, point, ipoint, calc } = basics;
+```
+
+### load via npm
+
+```default
+npm i @js-basics/vector
+```
+
+```javascript
+import { vector, victor, point, ipoint, calc } from '@js-basics/vector';
+```
 
 ## working with Vector classes
 
