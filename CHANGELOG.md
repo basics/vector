@@ -1,3 +1,11 @@
+## [1.31.1](https://github.com/basics/vector/compare/v1.31.0...v1.31.1) (2019-08-17)
+
+
+### Bug Fixes
+
+* **package:** change docs folder to root ([eea6133](https://github.com/basics/vector/commit/eea6133))
+* **readme:** update read for api ref and import ([d31bbf4](https://github.com/basics/vector/commit/d31bbf4))
+
 # [1.31.0](https://github.com/basics/vector/compare/v1.30.0...v1.31.0) (2019-08-16)
 
 
