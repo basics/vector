@@ -1,3 +1,11 @@
+## [1.31.3](https://github.com/basics/vector/compare/v1.31.2...v1.31.3) (2019-08-21)
+
+
+### Bug Fixes
+
+* **eslint:** add more rules ([ed8ef0f](https://github.com/basics/vector/commit/ed8ef0f))
+* **vector:** fix jsodcs arguments ([228834e](https://github.com/basics/vector/commit/228834e))
+
 ## [1.31.2](https://github.com/basics/vector/compare/v1.31.1...v1.31.2) (2019-08-21)
 
 
