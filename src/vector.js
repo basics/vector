@@ -10,10 +10,6 @@ import {
 import formatNumber from './formatter';
 import { ipoint } from './point';
 
-/* eslint class-methods-use-this: 0 */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-dupe-keys */
-
 const X = 0;
 const Y = 1;
 const Z = 2;
@@ -35,6 +31,7 @@ class AVector {
    * @param {number | (Alg)} x
    * @param {number} [y]
    * @param {number} [z]
+   * @hidden
    */
   constructor(x, y, z) {
     if (typeof x === 'function') {
@@ -476,6 +473,11 @@ const vectorFactory = cachedFactory(Vector);
  * @typedef {(alg: Alg) => VectorType} VectorAlg
  * @typedef {(x: number , y: number, z: number) => VectorType} VectorCon
  * @typedef {VectorAlg & VectorCon}
+ *
+ * @param {number | Alg} x
+ * @param {number} [y]
+ * @param {number} [z]
+ * @returns {VectorType}
  * @hidden
  */
 export function vector(x, y, z) {
@@ -488,6 +490,11 @@ const victorFactory = cachedFactory(Victor);
  * @typedef {(alg: Alg) => VictorType} VictorAlg
  * @typedef {(x: number , y: number, z: number) => VictorType} VictorCon
  * @typedef {VictorAlg & VictorCon}
+ *
+ * @param {number | (Alg)} x
+ * @param {number} [y]
+ * @param {number} [z]
+ * @returns {VictorType}
  * @hidden
  */
 export function victor(x, y, z) {

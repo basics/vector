@@ -9,10 +9,6 @@ import {
 } from './operator';
 import formatNumber from './formatter';
 
-/* eslint class-methods-use-this: 0 */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-dupe-keys */
-
 const X = 0;
 const Y = 1;
 const AXES = Symbol('axes');
@@ -55,7 +51,7 @@ function square(val) {
  */
 class APoint {
   /**
-   * @param {number | (Alg)} x
+   * @param {number | Alg} x
    * @param {number} [y]
    * @hidden
    */
@@ -319,7 +315,7 @@ export class Point extends APoint {
   }
 
   /**
-   * @param {(point: APointType) => number} alg
+   * @param {(point: PointType) => number} alg
    * @returns {this}
    */
   calc(alg) {
@@ -368,12 +364,15 @@ const pointFactory = cachedFactory(Point);
  * @typedef {(alg: Alg) => PointType} PointAlg
  * @typedef {(x: number , y: number) => PointType} PointCon
  * @typedef {PointAlg & PointCon} point
- * @type {point}
+ *
+ * @param {number | Alg} x
+ * @param {number} [y]
+ * @returns {PointType}
  * @hidden
  */
-export function point(x, y) {
+export const point = function point(x, y) {
   return pointFactory(x, y);
-}
+};
 
 const ipointFactory = cachedFactory(IPoint);
 
@@ -381,6 +380,10 @@ const ipointFactory = cachedFactory(IPoint);
  * @typedef {(alg: Alg) => IPointType} IPointAlg
  * @typedef {(x: number , y: number) => IPointType} IPointCon
  * @typedef {IPointAlg & IPointCon}
+ *
+ * @param {number | Alg} x
+ * @param {number} [y]
+ * @returns {IPointType}
  * @hidden
  */
 export function ipoint(x, y) {
