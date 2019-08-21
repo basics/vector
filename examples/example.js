@@ -2,7 +2,6 @@ import { vector, victor } from '../src/vector';
 import { point, ipoint } from '../src/point';
 import debug from '../src/debug';
 import { cachedValueOf, cachedFactory, operatorCalc } from '../src/operator';
-/* eslint-disable no-console */
 
 // create vector by numbers
 const pos = vector(5, 6, 7);

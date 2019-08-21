@@ -1,8 +1,3 @@
-/* eslint func-names: 0 */
-/* eslint no-param-reassign: 0 */
-/* eslint getter-return: 0 */
-/* eslint new-cap: 0 */
-/* eslint no-prototype-builtins: 0 */
 
 const X = 0;
 const Y = 1;
