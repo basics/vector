@@ -1,3 +1,13 @@
+## [1.31.2](https://github.com/basics/vector/compare/v1.31.1...v1.31.2) (2019-08-21)
+
+
+### Bug Fixes
+
+* **eslint:** move eslint rules from file to config ([f42b717](https://github.com/basics/vector/commit/f42b717))
+* **eslint:** remove unneeded lint rules ([9345857](https://github.com/basics/vector/commit/9345857))
+* **index:** optimize exports ([25eefbe](https://github.com/basics/vector/commit/25eefbe))
+* **vector:** optimize jsdocs ([de63a6e](https://github.com/basics/vector/commit/de63a6e))
+
 ## [1.31.1](https://github.com/basics/vector/compare/v1.31.0...v1.31.1) (2019-08-17)
 
 
