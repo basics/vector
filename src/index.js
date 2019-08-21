@@ -8,11 +8,11 @@ import {
 } from './point';
 
 export {
-  Vector, Victor, IVector, vector, victor, ivector
-};
+  Vector, Victor, Victor as IVector, vector, victor, victor as ivector
+} from './vector';
 export {
   Point, IPoint, point, ipoint
-};
+} from './point';
 
 /**
  * @param {() => number} alg
@@ -25,5 +25,5 @@ export function calc(alg) {
 export default Vector;
 
 export const Export = {
-  Vector, Victor, IVector, Point, IPoint
+  Vector, Victor, IVector, Point, IPoint, vector, victor, ivector, point, ipoint
 };
