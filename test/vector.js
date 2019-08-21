@@ -199,7 +199,7 @@ describe('special Vector test.', () => {
   });
 
   it('should change x y z values when calling local calc method', () => {
-    const pos = new Vector(5, 6, 7);
+    const pos = vector(5, 6, 7);
     const res = pos.calc(p => p * 25);
 
     assert.equal(pos, res);
