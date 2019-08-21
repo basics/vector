@@ -5,6 +5,15 @@
     "mocha": true
   },
   "rules": {
-    "comma-dangle": ["error", "only-multiline"]
+    "comma-dangle": ["error", "only-multiline"],
+    "class-methods-use-this": "off",
+    "no-unused-vars": "off",
+    "no-dupe-keys": "off",
+    "func-names": "off",
+    "no-param-reassign": "off",
+    "no-console": "off",
+    "getter-return": "off",
+    "new-cap": "off",
+    "no-prototype-builtins": "off"
   }
 }
