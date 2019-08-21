@@ -516,7 +516,7 @@ export const Export = {
   /**
    * @type {VectorCon}
    */
-  vector: (x, y) => vectorFactory(x, y),
+  vector: (x, y, z) => vectorFactory(x, y, z),
 
   /**
    * @type {VictorAlg}
@@ -526,5 +526,5 @@ export const Export = {
   /**
    * @type {VictorCon}
    */
-  victor: (x, y) => victorFactory(x, y)
+  victor: (x, y, z) => victorFactory(x, y, z)
 };
