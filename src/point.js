@@ -272,14 +272,10 @@ cachedGetter(APoint, 'lengthSq');
 /**
  * Point
  *
- * **constructor**
- * ___
  * new Point(x: *number*, y: *number*): [[Point]]
  *
+ * new Point(arr: *[number, number]*): [[Point]]
  *
- *
- * **constructor**
- * ___
  * new Point(alg: (*function*(): *number*)): [[Point]]
  *
  */
@@ -335,9 +331,9 @@ export class Point extends APoint {
 /**
  * IPoint
  *
- * **constructors**
- * ___
  * new IPoint(x: *number*, y: *number*): [[IPoint]]
+ *
+ * new IPoint(arr: *[number, number]*): [[IPoint]]
  *
  * new IPoint(alg: (*function*(): *number*)): [[IPoint]]
  *
