@@ -51,7 +51,7 @@ function square(val) {
  */
 class APoint {
   /**
-   * @param {number | Alg} x
+   * @param {number | [number, number, number] | Alg} x
    * @param {number} [y]
    * @hidden
    */
@@ -60,6 +60,8 @@ class APoint {
       operatorCalc(x, (nx, ny) => {
         this[AXES] = [nx, ny];
       });
+    } else if (Array.isArray(x)) {
+      this[AXES] = [...x];
     } else {
       this[AXES] = [x || 0, y || 0];
     }
@@ -363,9 +365,10 @@ const pointFactory = cachedFactory(Point);
 /**
  * @typedef {(alg: Alg) => PointType} PointAlg
  * @typedef {(x: number , y: number) => PointType} PointCon
- * @typedef {PointAlg & PointCon} point
+ * @typedef {(data: [number, number]) => PointType} PointArr
+ * @typedef {PointAlg & PointCon & PointArr} point
  *
- * @param {number | Alg} x
+ * @param {number | [number, number] | Alg} x
  * @param {number} [y]
  * @returns {PointType}
  * @hidden
@@ -379,9 +382,10 @@ const ipointFactory = cachedFactory(IPoint);
 /**
  * @typedef {(alg: Alg) => IPointType} IPointAlg
  * @typedef {(x: number , y: number) => IPointType} IPointCon
- * @typedef {IPointAlg & IPointCon}
+ * @typedef {(data: [number, number]) => IPointType} IPointArr
+ * @typedef {IPointAlg & IPointCon & IPointArr}
  *
- * @param {number | Alg} x
+ * @param {number | [number, number] | Alg} x
  * @param {number} [y]
  * @returns {IPointType}
  * @hidden
@@ -403,6 +407,11 @@ export const Export = {
   point: alg => pointFactory(alg),
 
   /**
+   * @type {PointArr}
+   */
+  point: arr => pointFactory(arr),
+
+  /**
    * @type {PointCon}
    */
   point: (x, y) => pointFactory(x, y),
@@ -411,6 +420,11 @@ export const Export = {
    * @type {IPointAlg}
    */
   ipoint: alg => ipointFactory(alg),
+
+  /**
+   * @type {IPointArr}
+   */
+  ipoint: arr => ipointFactory(arr),
 
   /**
    * @type {IPointCon}
