@@ -367,6 +367,8 @@ cachedGetter(AVector, 'lengthSq');
  *
  * new Vector(x: *number*, y: *number*, z: *number*): [[Vector]]
  *
+ * new Vector(arr: *[number, number, number]*): [[Vector]]
+ *
  * new Vector(alg: (*function*(): *number*)): [[Vector]]
  *
  */
@@ -439,6 +441,8 @@ export class Vector extends AVector {
  * Victor
  *
  * new Victor(x: *number*, y: *number*, z: *number*): [[Victor]]
+ *
+ * new Victor(arr: *[number, number, number]*): [[Victor]]
  *
  * new Victor(alg: (*function*(): *number*)): [[Victor]]
  *
