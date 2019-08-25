@@ -14,6 +14,12 @@ const pointTest = (vec2, Vec2) => {
     assert.equal(pos.y, 6);
   });
 
+  it('should create x y values via array', () => {
+    const pos = vec2([5, 6]);
+    assert.equal(pos.x, 5);
+    assert.equal(pos.y, 6);
+  });
+
   it('should be calculated by assigned statement', () => {
     const pos = vec2(5, 6);
     const dir = vec2(1, 0);
