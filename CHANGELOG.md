@@ -1,3 +1,11 @@
+# [1.32.0](https://github.com/basics/vector/compare/v1.31.3...v1.32.0) (2019-08-25)
+
+
+### Features
+
+* **point:** init point via array ([fd5cde7](https://github.com/basics/vector/commit/fd5cde7))
+* **vector:** init vector via array ([3ae9ef2](https://github.com/basics/vector/commit/3ae9ef2))
+
 ## [1.31.3](https://github.com/basics/vector/compare/v1.31.2...v1.31.3) (2019-08-21)
 
 
