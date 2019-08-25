@@ -28,7 +28,7 @@ function square(val) {
  */
 class AVector {
   /**
-   * @param {number | (Alg)} x
+   * @param {number | [number, number, number] | Alg} x
    * @param {number} [y]
    * @param {number} [z]
    * @hidden
@@ -38,6 +38,8 @@ class AVector {
       operatorCalc(x, (nx, ny, nz) => {
         this[AXES] = [nx, ny, nz];
       });
+    } else if (Array.isArray(x)) {
+      this[AXES] = [...x];
     } else {
       this[AXES] = [x || 0, y || 0, z || 0];
     }
@@ -472,9 +474,10 @@ const vectorFactory = cachedFactory(Vector);
 /**
  * @typedef {(alg: Alg) => VectorType} VectorAlg
  * @typedef {(x: number , y: number, z: number) => VectorType} VectorCon
- * @typedef {VectorAlg & VectorCon}
+ * @typedef {(data: [number, number, number]) => VectorType} VectorArr
+ * @typedef {VectorAlg & VectorCon & VectorArr}
  *
- * @param {number | Alg} x
+ * @param {number | [number, number, number] | Alg} x
  * @param {number} [y]
  * @param {number} [z]
  * @returns {VectorType}
@@ -489,9 +492,10 @@ const victorFactory = cachedFactory(Victor);
 /**
  * @typedef {(alg: Alg) => VictorType} VictorAlg
  * @typedef {(x: number , y: number, z: number) => VictorType} VictorCon
- * @typedef {VictorAlg & VictorCon}
+ * @typedef {(data: [number, number, number]) => VictorType} VictorArr
+ * @typedef {VictorAlg & VictorCon & VictorArr}
  *
- * @param {number | (Alg)} x
+ * @param {number | [number, number, number] | Alg} x
  * @param {number} [y]
  * @param {number} [z]
  * @returns {VictorType}
@@ -514,6 +518,11 @@ export const Export = {
   vector: alg => vectorFactory(alg),
 
   /**
+   * @type {VectorArr}
+   */
+  vector: arr => vectorFactory(arr),
+
+  /**
    * @type {VectorCon}
    */
   vector: (x, y, z) => vectorFactory(x, y, z),
@@ -522,6 +531,11 @@ export const Export = {
    * @type {VictorAlg}
    */
   victor: alg => victorFactory(alg),
+
+  /**
+  * @type {VictorArr}
+  */
+  victor: arr => victorFactory(arr),
 
   /**
    * @type {VictorCon}
