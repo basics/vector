@@ -16,6 +16,13 @@ const vectorTest = (vec3, Vec3) => {
     assert.equal(pos.z, 7);
   });
 
+  it('should create x y z values via array', () => {
+    const pos = vec3([5, 6, 7]);
+    assert.equal(pos.x, 5);
+    assert.equal(pos.y, 6);
+    assert.equal(pos.z, 7);
+  });
+
   it('should be calculated by assigned statement', () => {
     const pos = vec3(5, 6, 7);
     const dir = vec3(1, 0, 0);
