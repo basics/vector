@@ -8,7 +8,8 @@ export default {
     name: 'basics',
     file: 'lib/bundle.min.js',
     format: 'umd',
-    exports: 'named'
+    exports: 'named',
+    extend: true
   },
 
   plugins: [
