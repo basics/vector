@@ -1,3 +1,15 @@
+# [1.33.0](https://github.com/basics/vector/compare/v1.32.1...v1.33.0) (2019-09-13)
+
+
+### Bug Fixes
+
+* **index:** remove unneeded imports ([0eb7be7](https://github.com/basics/vector/commit/0eb7be7))
+
+
+### Features
+
+* **vector:** cont left forward and up ([9ccf780](https://github.com/basics/vector/commit/9ccf780))
+
 ## [1.32.1](https://github.com/basics/vector/compare/v1.32.0...v1.32.1) (2019-09-07)
 
 
