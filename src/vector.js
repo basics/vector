@@ -546,3 +546,7 @@ export const Export = {
    */
   victor: (x, y, z) => victorFactory(x, y, z)
 };
+
+export const FORWARD = victor(0, 0, -1);
+export const LEFT = victor(-1, 0, 0);
+export const UP = victor(0, 1, 0);
