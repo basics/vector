@@ -1,3 +1,10 @@
+## [1.33.1](https://github.com/basics/vector/compare/v1.33.0...v1.33.1) (2019-09-15)
+
+
+### Bug Fixes
+
+* **operator:** workaround for logic operators ([41ff882](https://github.com/basics/vector/commit/41ff882))
+
 # [1.33.0](https://github.com/basics/vector/compare/v1.32.1...v1.33.0) (2019-09-13)
 
 
