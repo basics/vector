@@ -88,7 +88,7 @@ const pointTest = (vec2, Vec2) => {
     assert.closeTo(arr[1], 10, 0.1);
   });
 
-  it('calc method with || should work without error', () => {
+  it('should work when using calc function with || should work without error', () => {
     const dir0 = vec2(4, 4);
     const pos0 = vec2(6, 0);
 
@@ -104,6 +104,15 @@ const pointTest = (vec2, Vec2) => {
 
     assert.equal(res1.x, 6);
     assert.equal(res1.y, 0);
+  });
+
+  it('should work when using calc function directly returns vector', () => {
+    const dir0 = vec2(4, 4);
+
+    const res0 = calc(() => dir0);
+
+    assert.equal(res0.x, 4);
+    assert.equal(res0.y, 4);
   });
 };
 
@@ -155,7 +164,7 @@ describe('special Point test.', () => {
     assert.equal(pos.y, 150);
   });
 
-  it('local calc method with || should work without error', () => {
+  it('should work when using local calc method with || should work without error', () => {
     const dir0 = point(4, 4);
     const pos0 = point(6, 0);
 
@@ -175,5 +184,17 @@ describe('special Point test.', () => {
     assert.equal(pos1, res1);
     assert.equal(res1.x, 6);
     assert.equal(res1.y, 0);
+  });
+
+  it('should work when using local calc method directly returns vector', () => {
+    const dir0 = point(4, 4);
+    const pos0 = point(6, 0);
+
+    const res0 = pos0.calc(() => dir0);
+
+    assert.isTrue(pos0 === res0);
+    assert.equal(pos0, res0);
+    assert.equal(res0.x, 4);
+    assert.equal(res0.y, 4);
   });
 });
