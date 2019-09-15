@@ -2,7 +2,7 @@
 const X = 0;
 const Y = 1;
 const Z = 2;
-const DEFAULT = 3;
+const DEFAULT = undefined;
 const VECTOR_LENGTH = Symbol('vector length');
 
 let inProgress = DEFAULT;
@@ -23,7 +23,51 @@ function handleProgess(progess, alg, resVec) {
 }
 
 function getVectorLength(vec) {
+  if (typeof vec === 'number') {
+    return 1;
+  }
+  if (Array.isArray(vec)) {
+    return vec.length;
+  }
   return vec[VECTOR_LENGTH] !== 2 ? 3 : 2;
+}
+
+function getVectorValue(vec, index) {
+  if (index >= getVectorLength(vec)) {
+    return 0;
+  }
+  if (Array.isArray(vec)) {
+    return vec[index];
+  }
+  if (index === X) {
+    return vec.x;
+  }
+  if (index === Y) {
+    return vec.y;
+  }
+  if (index === Z) {
+    return vec.z;
+  }
+  // really?
+  return undefined;
+}
+
+function setVectorValue(vec, index, value) {
+  if (Array.isArray(vec)) {
+    vec[index] = value;
+    return;
+  }
+  if (index === X) {
+    vec.x = value;
+    return;
+  }
+  if (index === Y) {
+    vec.y = value;
+    return;
+  }
+  if (index === Z) {
+    vec.z = value;
+  }
 }
 
 function maxVector(v1, v2) {
@@ -38,58 +82,43 @@ export function operatorCalc(alg, result) {
     throw new Error('no function assigned');
   }
   if (inProgress !== DEFAULT) {
-    throw new Error('something wrong');
+    throw new Error('something wrong, do you use calc() inside calc?');
   }
   try {
     const noRes = typeof result === 'undefined';
     const funRes = typeof result === 'function';
     const resVec = !funRes && !noRes ? result : undefined;
-    const x = handleProgess(X, alg, resVec);
+    const x = handleProgess(0, alg, resVec);
 
     if (noRes && typeof inVector === 'undefined') {
       return x;
     }
 
-    let calcZ = false;
-    if (inVector) {
-      calcZ = getVectorLength(inVector) !== 2;
-    } else {
-      calcZ = result.length !== 2;
+    const inLen = inVector ? getVectorLength(inVector) : 0;
+    const len = funRes ? result.length : inLen;
+    if (len < inLen) {
+      throw new Error('Your assigned result Vector cant use higher space Operands than it has');
+    }
+    const target = new Array(len);
+    target[0] = x;
+    if (resVec) {
+      setVectorValue(resVec, inProgress, target[0]);
+    }
+    for (let i = 1; i < len; i += 1) {
+      const val = handleProgess(i, alg, resVec);
+      target[i] = val;
+      if (resVec) {
+        setVectorValue(resVec, inProgress, val);
+      }
     }
 
-    const y = handleProgess(Y, alg, resVec);
-
-    if (!calcZ) {
-      if (noRes) {
-        return new inVector.constructor(x, y);
-      }
-      if (funRes) {
-        if (result.length === 3) {
-          return result(x, y, 0);
-        }
-        return result(x, y);
-      }
-
-      result.x = x;
-      result.y = y;
-    } else {
-      const z = handleProgess(Z, alg, resVec);
-
-      if (noRes) {
-        return new inVector.constructor(x, y, z);
-      }
-      if (funRes) {
-        if (result.length !== 3) {
-          throw new Error('You cant use 3D Operands for a 2D Result, better use xz, xy, yz getter');
-        }
-        return result(x, y, z);
-      }
-
-      result.x = x;
-      result.y = y;
-      result.z = z;
+    if (noRes) {
+      return new inVector.constructor(...target);
     }
-    return result;
+    if (funRes) {
+      return result(...target);
+    }
+    return resVec;
   } finally {
     inProgress = DEFAULT;
     inVector = undefined;
@@ -104,18 +133,11 @@ export function cachedValueOf(VectorClass) {
   Vector[name] = function () {
     if (inProgress === X) {
       inVector = inVector ? maxVector(inVector, this) : this;
-      return this.x;
     }
-    if (inProgress === Y) {
-      return this.y;
+    if (inProgress === DEFAULT) {
+      return org.call(this);
     }
-    if (inProgress === Z) {
-      if (this[VECTOR_LENGTH] !== 2) {
-        return this.z;
-      }
-      return 0;
-    }
-    return org.call(this);
+    return getVectorValue(this, inProgress);
   };
 }
 
