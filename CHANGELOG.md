@@ -1,3 +1,16 @@
+# [1.34.0](https://github.com/basics/vector/compare/v1.33.1...v1.34.0) (2019-09-15)
+
+
+### Bug Fixes
+
+* **array:** example files for test array support ([88f9d5f](https://github.com/basics/vector/commit/88f9d5f))
+* **vector:** extend tests ([a95d12b](https://github.com/basics/vector/commit/a95d12b))
+
+
+### Features
+
+* **operator:** initial array support ([4746943](https://github.com/basics/vector/commit/4746943))
+
 ## [1.33.1](https://github.com/basics/vector/compare/v1.33.0...v1.33.1) (2019-09-15)
 
 
