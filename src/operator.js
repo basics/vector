@@ -15,7 +15,11 @@ const resultCache = [];
 function handleProgess(progess, alg, resVec) {
   inProgress = progess;
   resultCacheIndex = -1;
-  return alg(resVec);
+  const res = alg(resVec);
+  if (typeof res !== 'number' && res) {
+    return res.valueOf();
+  }
+  return res;
 }
 
 function getVectorLength(vec) {

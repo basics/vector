@@ -160,6 +160,26 @@ const vectorTest = (vec3, Vec3) => {
     assert.equal(pos.y, 5);
     assert.equal(pos.z, 6);
   });
+
+  it('calc method with || should work without error', () => {
+    const dir0 = vec3(4, 4, 0);
+    const pos0 = vec3(6, 0, 0);
+
+    const res0 = calc(() => (pos0 * dir0) || pos0);
+
+    assert.equal(res0.x, 24);
+    assert.equal(res0.y, 0);
+    assert.equal(res0.z, 0);
+
+    const dir1 = vec3(0, 0, 0);
+    const pos1 = vec3(6, 0, 0);
+
+    const res1 = calc(() => (pos1 * dir1) || pos1);
+
+    assert.equal(res1.x, 6);
+    assert.equal(res1.y, 0);
+    assert.equal(res1.z, 0);
+  });
 };
 
 describe('standard Vector test.', () => {
@@ -209,10 +229,35 @@ describe('special Vector test.', () => {
     const pos = vector(5, 6, 7);
     const res = pos.calc(p => p * 25);
 
+    assert.isTrue(pos === res);
     assert.equal(pos, res);
     assert.equal(pos.x, 125);
     assert.equal(pos.y, 150);
     assert.equal(pos.z, 175);
+  });
+
+  it('local calc method with || should work without error', () => {
+    const dir0 = vector(4, 4, 0);
+    const pos0 = vector(6, 0, 0);
+
+    const res0 = pos0.calc(p => (p * dir0) || p);
+
+    assert.isTrue(pos0 === res0);
+    assert.equal(pos0, res0);
+    assert.equal(res0.x, 24);
+    assert.equal(res0.y, 0);
+    assert.equal(res0.z, 0);
+
+    const dir1 = vector(0, 0);
+    const pos1 = vector(6, 0);
+
+    const res1 = pos1.calc(p => (p * dir1) || p);
+
+    assert.isTrue(pos1 === res1);
+    assert.equal(pos1, res1);
+    assert.equal(res1.x, 6);
+    assert.equal(res1.y, 0);
+    assert.equal(res1.z, 0);
   });
 });
 
