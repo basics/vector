@@ -3,6 +3,8 @@
   "version": "1.34.1",
   "description": "A vector lib with support for (+ - * /) operator handling",
   "main": "./lib/index.js",
+  "operator": "./lib/operator.js",
+  "playcanvas": "./lib/playcanvas.js",
   "directories": {
     "example": "examples",
     "test": "test"
