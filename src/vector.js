@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { isArray } from 'util';
+import { isArray } from './util';
 import {
   cachedMethod,
   cachedGetter,
