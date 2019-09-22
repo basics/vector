@@ -1,3 +1,16 @@
+# [1.35.0](https://github.com/basics/vector/compare/v1.34.1...v1.35.0) (2019-09-22)
+
+
+### Bug Fixes
+
+* **playcanvas:** typo ([719137d](https://github.com/basics/vector/commit/719137d))
+* **vector:** corret import path ([57637a5](https://github.com/basics/vector/commit/57637a5))
+
+
+### Features
+
+* **operator:** operator adapter for playcanvas ([910c791](https://github.com/basics/vector/commit/910c791))
+
 ## [1.34.1](https://github.com/basics/vector/compare/v1.34.0...v1.34.1) (2019-09-22)
 
 
