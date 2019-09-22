@@ -4,6 +4,7 @@ const Y = 1;
 const Z = 2;
 const DEFAULT = undefined;
 const VECTOR_LENGTH = Symbol('vector length');
+const GET_SOURCE = Symbol('get source');
 
 let inProgress = DEFAULT;
 let inVector;
@@ -26,8 +27,9 @@ function getVectorLength(vec) {
   if (typeof vec === 'number') {
     return 1;
   }
-  if (Array.isArray(vec)) {
-    return vec.length;
+  const getSource = vec.prototype[GET_SOURCE];
+  if (getSource) {
+    return getSource(vec).length;
   }
   return vec[VECTOR_LENGTH] !== 2 ? 3 : 2;
 }
@@ -36,8 +38,9 @@ function getVectorValue(vec, index) {
   if (index >= getVectorLength(vec)) {
     return 0;
   }
-  if (Array.isArray(vec)) {
-    return vec[index];
+  const getSource = vec.prototype[GET_SOURCE];
+  if (getSource) {
+    return getSource(vec)[index];
   }
   if (index === X) {
     return vec.x;
@@ -53,8 +56,9 @@ function getVectorValue(vec, index) {
 }
 
 function setVectorValue(vec, index, value) {
-  if (Array.isArray(vec)) {
-    vec[index] = value;
+  const getSource = vec.prototype[GET_SOURCE];
+  if (getSource) {
+    getSource(vec)[index] = value;
     return;
   }
   if (index === X) {
@@ -95,7 +99,10 @@ export function operatorCalc(alg, result) {
     }
 
     const inLen = inVector ? getVectorLength(inVector) : 0;
-    const len = funRes ? result.length : inLen;
+    let len = funRes ? result.length : inLen;
+    if (!len) {
+      len = inLen;
+    }
     if (len < inLen) {
       throw new Error('Your assigned result Vector cant use higher space Operands than it has');
     }
@@ -125,8 +132,9 @@ export function operatorCalc(alg, result) {
   }
 }
 
-export function cachedValueOf(VectorClass) {
+export function cachedValueOf(VectorClass, getSource) {
   const Vector = VectorClass.prototype;
+  Vector[GET_SOURCE] = getSource;
   const name = 'valueOf';
   const org = Vector[name];
 

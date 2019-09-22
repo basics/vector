@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { isArray } from 'util';
 import {
   cachedMethod,
   cachedGetter,
@@ -38,7 +39,7 @@ class AVector {
       operatorCalc(x, (nx, ny, nz) => {
         this[AXES] = [nx, ny, nz];
       });
-    } else if (Array.isArray(x)) {
+    } else if (isArray(x)) {
       this[AXES] = [...x];
     } else {
       this[AXES] = [x || 0, y || 0, z || 0];

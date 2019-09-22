@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { isArray } from 'util';
 import {
   cachedMethod,
   cachedGetter,
@@ -60,7 +61,7 @@ class APoint {
       operatorCalc(x, (nx, ny) => {
         this[AXES] = [nx, ny];
       });
-    } else if (Array.isArray(x)) {
+    } else if (isArray(x)) {
       this[AXES] = [...x];
     } else {
       this[AXES] = [x || 0, y || 0];
@@ -116,6 +117,21 @@ class APoint {
    */
   angleTo(v) {
     return angleOverGround(this.y, this.x, v.y, v.x);
+  }
+
+  /**
+ *
+ * @param {number} angle
+ * @returns {APointType}
+ */
+  rotate(angle) {
+    const sa = Math.sin(angle);
+    const ca = Math.cos(angle);
+
+    const x = (this.x * ca) - (this.y * sa);
+    const y = (this.x * sa) + (this.y * ca);
+
+    return this.constructor(x, y);
   }
 
   /**

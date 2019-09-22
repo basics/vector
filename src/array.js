@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { cachedValueOf } from './operator';
+import { isArray } from './util';
 
 export class VectorArray extends Array {
   constructor(...vals) {
@@ -7,7 +8,7 @@ export class VectorArray extends Array {
       throw new Error('no empty array allowd');
     }
     const first = vals[0];
-    const src = Array.isArray(first) ? first : vals;
+    const src = isArray(first) ? first : vals;
 
     super(src.length);
     for (let i = 0; i < src.length; i += 1) {
@@ -16,7 +17,7 @@ export class VectorArray extends Array {
   }
 }
 
-cachedValueOf(VectorArray);
+cachedValueOf(VectorArray, src => src);
 
 /**
  * @typedef {Array<number> & number} ArrayType
