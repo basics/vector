@@ -24,10 +24,7 @@ function handleProgess(progess, alg, resVec) {
 }
 
 function getVectorLength(vec) {
-  if (typeof vec === 'number') {
-    return 1;
-  }
-  const getSource = vec.prototype[GET_SOURCE];
+  const getSource = vec[GET_SOURCE];
   if (getSource) {
     return getSource(vec).length;
   }
@@ -38,7 +35,7 @@ function getVectorValue(vec, index) {
   if (index >= getVectorLength(vec)) {
     return 0;
   }
-  const getSource = vec.prototype[GET_SOURCE];
+  const getSource = vec[GET_SOURCE];
   if (getSource) {
     return getSource(vec)[index];
   }
@@ -56,7 +53,7 @@ function getVectorValue(vec, index) {
 }
 
 function setVectorValue(vec, index, value) {
-  const getSource = vec.prototype[GET_SOURCE];
+  const getSource = vec[GET_SOURCE];
   if (getSource) {
     getSource(vec)[index] = value;
     return;
