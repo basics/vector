@@ -2,7 +2,21 @@ import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import minify from 'rollup-plugin-babel-minify';
 
-export default {
+const plugins = [
+  resolve(),
+  babel({
+    babelrc: false,
+    exclude: 'node_modules/**',
+    presets: [['@babel/preset-env', { modules: false }]]
+  }),
+  minify({
+    comments: false,
+    banner: '/* vector class - MIT License */',
+    bannerNewLine: true
+  })
+];
+
+export default [{
   input: 'src/index.js',
   output: {
     name: 'basics',
@@ -11,18 +25,25 @@ export default {
     exports: 'named',
     extend: true
   },
-
-  plugins: [
-    resolve(),
-    babel({
-      babelrc: false,
-      exclude: 'node_modules/**',
-      presets: [['@babel/preset-env', { modules: false }]]
-    }),
-    minify({
-      comments: false,
-      banner: '/* vector class - MIT License */',
-      bannerNewLine: true
-    })
-  ]
-};
+  plugins
+}, {
+  input: 'src/operator.js',
+  output: {
+    name: 'basics',
+    file: 'lib/operator.min.js',
+    format: 'umd',
+    exports: 'named',
+    extend: true
+  },
+  plugins
+}, {
+  input: 'src/playcanvas.js',
+  output: {
+    name: 'basics',
+    file: 'lib/playcanvas.min.js',
+    format: 'umd',
+    exports: 'named',
+    extend: true
+  },
+  plugins
+}];
