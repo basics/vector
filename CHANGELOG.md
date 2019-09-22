@@ -1,3 +1,11 @@
+## [1.34.1](https://github.com/basics/vector/compare/v1.34.0...v1.34.1) (2019-09-22)
+
+
+### Bug Fixes
+
+* **array:** optimize operator array handling ([871e8bd](https://github.com/basics/vector/commit/871e8bd))
+* **operator:** correct symbol handling ([431717c](https://github.com/basics/vector/commit/431717c))
+
 # [1.34.0](https://github.com/basics/vector/compare/v1.33.1...v1.34.0) (2019-09-15)
 
 
