@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { operatorCalc, cachedValueOf, defineVectorLength } from './operator';
 
 export function hiJackPlayCanvas(pc) {
