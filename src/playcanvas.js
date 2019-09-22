@@ -30,5 +30,5 @@ const { pc } = typeof window === 'undefined' ? {} : window;
 if (!pc) {
   console.warn('no playcanvas in global namespace found');
 } else {
-  hiJack(pc);
+  hiJackPlayCanvas(pc);
 }
