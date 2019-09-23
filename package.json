@@ -2,9 +2,7 @@
   "name": "@js-basics/vector",
   "version": "1.35.0",
   "description": "A vector lib with support for (+ - * /) operator handling",
-  "main": "./lib/index.js",
-  "operator": "./lib/operator.js",
-  "playcanvas": "./lib/playcanvas.js",
+  "main": "./index.js",
   "directories": {
     "example": "examples",
     "test": "test"
@@ -17,16 +15,11 @@
     "test:examples": "node examples/",
     "cover": "nyc npx mocha --recursive",
     "lint": "eslint src",
-    "build": "cross-env BABEL_ENV=production babel src --out-dir lib && npx rollup --config ./.rolluprc",
+    "build": "cross-env BABEL_ENV=production babel src --out-dir ./ && npx rollup --config ./.rolluprc",
     "docs": "typedoc ./src --out ./docs --allowJs --checkJs --noEmit --excludeNotExported --module commonjs --target es6 --exclude **/debug.js",
     "prepare": "npm run clean && npm run test && npm run build && npm run docs",
     "semantic-release": "semantic-release"
   },
-  "files": [
-    "docs",
-    "lib",
-    "src"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/basics/vector.git"
