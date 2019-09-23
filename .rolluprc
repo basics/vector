@@ -19,8 +19,8 @@ const plugins = [
 export default [{
   input: 'src/index.js',
   output: {
-    name: 'basics',
-    file: 'lib/bundle.min.js',
+    name: 'basics.vector',
+    file: 'bundle.min.js',
     format: 'umd',
     exports: 'named',
     extend: true
@@ -29,8 +29,8 @@ export default [{
 }, {
   input: 'src/operator.js',
   output: {
-    name: 'basics',
-    file: 'lib/operator.min.js',
+    name: 'basics.vector.operator',
+    file: 'operator.min.js',
     format: 'umd',
     exports: 'named',
     extend: true
@@ -39,8 +39,8 @@ export default [{
 }, {
   input: 'src/playcanvas.js',
   output: {
-    name: 'basics',
-    file: 'lib/playcanvas.min.js',
+    name: 'basics.vector.playcanvas',
+    file: 'playcanvas.min.js',
     format: 'umd',
     exports: 'named',
     extend: true
