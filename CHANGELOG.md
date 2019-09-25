@@ -1,3 +1,10 @@
+## [1.37.2](https://github.com/basics/vector/compare/v1.37.1...v1.37.2) (2019-09-25)
+
+
+### Bug Fixes
+
+* **playcanvas:** fix wrong prototype for getter ([bc8bdbb](https://github.com/basics/vector/commit/bc8bdbb))
+
 ## [1.37.1](https://github.com/basics/vector/compare/v1.37.0...v1.37.1) (2019-09-25)
 
 
