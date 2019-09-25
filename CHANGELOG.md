@@ -1,3 +1,10 @@
+## [1.37.1](https://github.com/basics/vector/compare/v1.37.0...v1.37.1) (2019-09-25)
+
+
+### Bug Fixes
+
+* **playcanvas:** correct getter handling ([c459daf](https://github.com/basics/vector/commit/c459daf))
+
 # [1.37.0](https://github.com/basics/vector/compare/v1.36.0...v1.37.0) (2019-09-25)
 
 
