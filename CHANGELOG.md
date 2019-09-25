@@ -1,3 +1,10 @@
+# [1.36.0](https://github.com/basics/vector/compare/v1.35.0...v1.36.0) (2019-09-25)
+
+
+### Features
+
+* **build:** optimize paths for deep imports ([f87a4e4](https://github.com/basics/vector/commit/f87a4e4))
+
 # [1.35.0](https://github.com/basics/vector/compare/v1.34.1...v1.35.0) (2019-09-22)
 
 
