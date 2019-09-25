@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { hiJackPlayCanvas } from '../src/playcanvas';
+import { hiJackPlayCanvas } from '../../src/adapter/playcanvas';
 
 class Vec2 {
   constructor(x, y) {
