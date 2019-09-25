@@ -1,3 +1,10 @@
+# [1.37.0](https://github.com/basics/vector/compare/v1.36.0...v1.37.0) (2019-09-25)
+
+
+### Features
+
+* **playcanvas:** move playcanvas to adapter foldr ([fbab200](https://github.com/basics/vector/commit/fbab200))
+
 # [1.36.0](https://github.com/basics/vector/compare/v1.35.0...v1.36.0) (2019-09-25)
 
 
