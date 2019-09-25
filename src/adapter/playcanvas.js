@@ -9,7 +9,9 @@ function fallbackWindow() {
   };
 }
 export function hijackPlayCanvas(pc) {
-  const { Vec2, Vec3, Quat } = pc;
+  const {
+    Vec2, Vec3, Quat, Mat4
+  } = pc;
 
   cachedValueOf(Vec2);
   defineVectorLength(Vec2, 2);
@@ -33,7 +35,7 @@ export function hijackPlayCanvas(pc) {
 
   pc.calc = operatorCalc;
 
-  Object.defineProperty(Vec3.prototype, 'left', {
+  Object.defineProperty(Quat.prototype, 'left', {
     get() {
       return this.transformVector(Vec3.LEFT, new Vec3());
     },
@@ -41,7 +43,7 @@ export function hijackPlayCanvas(pc) {
       throw new Error('set left not allowed');
     }
   });
-  Object.defineProperty(Vec3.prototype, 'dir', {
+  Object.defineProperty(Quat.prototype, 'dir', {
     get() {
       return this.transformVector(Vec3.FORWARD, new Vec3());
     },
@@ -49,7 +51,7 @@ export function hijackPlayCanvas(pc) {
       throw new Error('set dir not allowed');
     }
   });
-  Object.defineProperty(Vec3.prototype, 'up', {
+  Object.defineProperty(Quat.prototype, 'up', {
     get() {
       return this.transformVector(Vec3.UP, new Vec3());
     },
@@ -57,9 +59,8 @@ export function hijackPlayCanvas(pc) {
       throw new Error('set up not allowed');
     }
   });
-
   Quat.fromDir = function (dir, up = Vec3.UP) {
-    return new pc.Quat().setFromMat4(new pc.Mat4().setLookAt(Vec3.ZERO, dir, up));
+    return new Quat().setFromMat4(new Mat4().setLookAt(Vec3.ZERO, dir, up));
   };
 }
 
