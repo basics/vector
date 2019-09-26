@@ -71,9 +71,7 @@ const {
 
 ### load via npm
 
-```default
-npm i @js-basics/vector
-```
+$ `npm i @js-basics/vector`
 
 ```javascript
 import {
@@ -161,9 +159,7 @@ const {
 
 ### load via npm
 
-```default
-npm i @js-basics/vector
-```
+$ `npm i @js-basics/vector`
 
 ```javascript
 import {
