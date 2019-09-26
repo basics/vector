@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import formatNumber from '../src/formatter';
+import { formatNumber } from '../src/formatter';
 
 describe('formatNumber test.', () => {
   it('should format Number with default 4 decimals', () => {
