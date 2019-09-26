@@ -1,3 +1,22 @@
+# [1.38.0](https://github.com/basics/vector/compare/v1.37.2...v1.38.0) (2019-09-26)
+
+
+### Bug Fixes
+
+* **degree:** correct deg to rad handling ([ea726bc](https://github.com/basics/vector/commit/ea726bc))
+
+
+### Features
+
+* **degree:** better degree to angle handling ([5ac3d93](https://github.com/basics/vector/commit/5ac3d93))
+* **formatter:** clean up exports ([0056451](https://github.com/basics/vector/commit/0056451))
+* **index:** export new quaternion type ([63bc3b3](https://github.com/basics/vector/commit/63bc3b3))
+* **playcanvas:** cached quat factory ([7beb643](https://github.com/basics/vector/commit/7beb643))
+* **point:** degree support for point methods ([e429025](https://github.com/basics/vector/commit/e429025))
+* **quaternion:** quaternion type ([dba3086](https://github.com/basics/vector/commit/dba3086))
+* **util:** more features ([34dc1e9](https://github.com/basics/vector/commit/34dc1e9))
+* **vector:** normalize rads ([a8bbfc1](https://github.com/basics/vector/commit/a8bbfc1))
+
 ## [1.37.2](https://github.com/basics/vector/compare/v1.37.1...v1.37.2) (2019-09-25)
 
 

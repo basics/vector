@@ -1,6 +1,6 @@
 {
   "name": "@js-basics/vector",
-  "version": "1.37.2",
+  "version": "1.38.0",
   "description": "A vector lib with support for (+ - * /) operator handling",
   "main": "./index.js",
   "directories": {
