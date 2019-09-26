@@ -202,3 +202,7 @@ export function defineVectorLength(VectorClass, value) {
 export function cachedFactory(VectorClass) {
   return bindCache((...args) => new VectorClass(...args));
 }
+
+export function cachedFunction(realFactory) {
+  return bindCache((...args) => realFactory(...args));
+}

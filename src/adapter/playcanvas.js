@@ -1,6 +1,6 @@
 // @ts-nocheck
 import {
-  operatorCalc, cachedValueOf, defineVectorLength, cachedFactory
+  operatorCalc, cachedValueOf, defineVectorLength, cachedFactory, cachedFunction
 } from '../operator';
 
 function fallbackWindow() {
@@ -59,9 +59,15 @@ export function hijackPlayCanvas(pc) {
       throw new Error('set up not allowed');
     }
   });
-  Quat.fromDir = function (dir, up = Vec3.UP) {
-    return new Quat().setFromMat4(new Mat4().setLookAt(Vec3.ZERO, dir, up));
-  };
+  pc.quat = cachedFunction((x, y, z, w) => {
+    if (typeof dir === 'number') {
+      return new Quat(x, y, z, w);
+    }
+    if (!x) {
+      return new Quat();
+    }
+    return new Quat().setFromMat4(new Mat4().setLookAt(Vec3.ZERO, x, y || Vec3.UP));
+  });
 }
 
 // eslint-disable-next-line no-undef
