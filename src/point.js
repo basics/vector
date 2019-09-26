@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { isArray } from './util';
+import { isArray, normRad } from './util';
 import {
   cachedMethod,
   cachedGetter,
@@ -8,35 +8,17 @@ import {
   defineVectorLength,
   cachedFactory
 } from './operator';
-import formatNumber from './formatter';
+import { formatNumber } from './formatter';
 
 const X = 0;
 const Y = 1;
 const AXES = Symbol('axes');
 
-const deg180 = Math.PI;
-const deg360 = Math.PI * 2;
-// const deg90 = Math.PI * 0.5;
-
-function atan2(y, x) {
-  let res = Math.atan2(y, x);
-  if (res < 0) {
-    res = deg360 + res;
-  }
-  return res;
-}
-
 function angleOverGround(y1, x1, y2, x2) {
-  const atanOne = atan2(y1, x1);
-  const atanTwo = atan2(y2, x2);
+  const atanOne = Math.atan2(y1, x1);
+  const atanTwo = Math.atan2(y2, x2);
 
-  let res = atanOne - atanTwo;
-  if (res > deg180) {
-    res -= deg360;
-  } else if (res < -deg180) {
-    res += deg360;
-  }
-  return res;
+  return normRad(atanOne - atanTwo);
 }
 
 function square(val) {
@@ -107,7 +89,7 @@ class APoint {
    * @returns {number}
    */
   getRad() {
-    return atan2(this.y, this.x);
+    return normRad(Math.atan2(this.y, this.x));
   }
 
   /**
@@ -120,10 +102,15 @@ class APoint {
   }
 
   /**
- *
- * @param {number} angle
- * @returns {APointType}
- */
+   * @typedef {import('./degree').Degree} Degree
+   * @typedef {import('./degree').IDegree} IDegree
+   * @typedef {IDegree | Degree | number} DegreeType
+   */
+  /**
+   *
+   * @param {DegreeType} angle
+   * @returns {APointType}
+   */
   rotate(angle) {
     const sa = Math.sin(angle);
     const ca = Math.cos(angle);
@@ -131,7 +118,7 @@ class APoint {
     const x = (this.x * ca) - (this.y * sa);
     const y = (this.x * sa) + (this.y * ca);
 
-    return this.constructor(x, y);
+    return new this.constructor(x, y);
   }
 
   /**
