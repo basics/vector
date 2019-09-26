@@ -1,4 +1,6 @@
 // @ts-nocheck
+import { normRad } from './util';
+
 const ANGLE = Symbol('angle-rad');
 const DEG_TO_RAD = Math.PI / 180;
 const RAD_TO_DEG = 180 / Math.PI;
@@ -45,7 +47,7 @@ export class Degree extends ADegree {
     if (angle instanceof ADegree) {
       this[ANGLE] = angle[ANGLE];
     } else {
-      this[ANGLE] = degToRad(angle);
+      this[ANGLE] = normRad(angle * DEG_TO_RAD);
     }
   }
 }
