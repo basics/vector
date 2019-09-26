@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { isArray } from './util';
+import { isArray, multQuatVec, normRad } from './util';
 import {
   cachedMethod,
   cachedGetter,
@@ -8,8 +8,8 @@ import {
   defineVectorLength,
   cachedFactory
 } from './operator';
-import formatNumber from './formatter';
-import { ipoint } from './point';
+import { formatNumber } from './formatter';
+import { IPoint } from './point';
 
 const X = 0;
 const Y = 1;
@@ -19,6 +19,10 @@ const AXES = Symbol('axes');
 function square(val) {
   return val * val;
 }
+
+/**
+ * @typedef {IPoint & number} IPointType
+ */
 
 /**
  * @typedef {Victor & number} VictorType
@@ -131,7 +135,7 @@ class AVector {
    * @returns {number}
    */
   angleTo(v) {
-    return Math.acos(this.dot(v) / (this.length * v.length));
+    return normRad(Math.acos(this.dot(v) / (this.length * v.length)));
   }
 
   // http://schteppe.github.io/cannon.js/docs/files/src_math_Quaternion.js.html
@@ -141,22 +145,7 @@ class AVector {
    * @returns {AVectorType}
    */
   rotate(quat) {
-    const { x, y, z } = this;
-
-    const {
-      x: qx, y: qy, z: qz, w: qw
-    } = quat;
-
-    const ix = qw * x + qy * z - qz * y;
-    const iy = qw * y + qz * x - qx * z;
-    const iz = qw * z + qx * y - qy * x;
-    const iw = -qx * x - qy * y - qz * z;
-
-    return new this.constructor(
-      ix * qw + iw * -qx + iy * -qz - iz * -qy,
-      iy * qw + iw * -qy + iz * -qx - ix * -qz,
-      iz * qw + iw * -qz + ix * -qy - iy * -qx
-    );
+    return multQuatVec(quat, this);
   }
 
   /**
@@ -185,8 +174,16 @@ class AVector {
     return [this.x, this.y, this.z];
   }
 
+
+  /**
+  * @param {string} target
+  * @returns {VectorType | VictorType | IPointType}
+  */
   swizzle(target) {
     const data = target.split('').map(t => this[t]);
+    if (data.length === 2) {
+      return new IPoint(data[0], data[1]);
+    }
     return new this.constructor(data[0], data[1], data[2]);
   }
 
@@ -306,11 +303,10 @@ class AVector {
   }
 
   /**
-   * @typedef {((import("./point").IPoint) & number)} IPointType
    * @returns {IPointType}
    */
   get xy() {
-    return ipoint(this[AXES][X], this[AXES][Y]);
+    return new IPoint(this[AXES][X], this[AXES][Y]);
   }
 
   /**
@@ -324,7 +320,7 @@ class AVector {
    * @returns {IPointType}
    */
   get xz() {
-    return ipoint(this[AXES][X], this[AXES][Z]);
+    return new IPoint(this[AXES][X], this[AXES][Z]);
   }
 
   /**
@@ -338,7 +334,7 @@ class AVector {
    * @returns {IPointType}
    */
   get yz() {
-    return ipoint(this[AXES][Y], this[AXES][Z]);
+    return new IPoint(this[AXES][Y], this[AXES][Z]);
   }
 
   /**
