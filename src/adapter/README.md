@@ -10,9 +10,7 @@
 
 ### load via npm
 
-```default
-npm i @js-basics/vector
-```
+$ `npm i @js-basics/vector`
 
 ```javascript
 import '@js-basics/vector/adapter/playcanvas';
