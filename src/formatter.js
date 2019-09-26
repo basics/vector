@@ -27,7 +27,7 @@ function normalizeNumber(number) {
   return { mant, exp };
 }
 
-export default function formatNumber(nr, digits) {
+export function formatNumber(nr, digits) {
   const n = normalizeNumber(nr);
   n.mant /= 10;
   n.exp += 1;
