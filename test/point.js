@@ -8,6 +8,12 @@ import {
  * @param {(typeof Point) | (typeof IPoint)} Vec2
  */
 const pointTest = (vec2, Vec2) => {
+  it('should create empty vector', () => {
+    const pos = vec2();
+    assert.equal(pos.x, 0);
+    assert.equal(pos.y, 0);
+  });
+
   it('should create x y values', () => {
     const pos = vec2(5, 6);
     assert.equal(pos.x, 5);

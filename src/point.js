@@ -384,7 +384,7 @@ const ipointFactory = cachedFactory(IPoint);
  * @typedef {(alg: Alg) => IPointType} IPointAlg
  * @typedef {(x: number , y: number) => IPointType} IPointCon
  * @typedef {(data: [number, number]) => IPointType} IPointArr
- * @typedef {IPointAlg & IPointCon & IPointArr & IPointType}
+ * @typedef {IPointAlg & IPointCon & IPointArr & IPointType & IPointZero}
  *
  * @param {number | [number, number] | Alg} [x]
  * @param {number} [y]
