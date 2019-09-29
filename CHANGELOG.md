@@ -1,3 +1,12 @@
+## [1.38.2](https://github.com/basics/vector/compare/v1.38.1...v1.38.2) (2019-09-29)
+
+
+### Bug Fixes
+
+* **playcanvas:** correct usage of fromEulerYXZ ([7d33e4b](https://github.com/basics/vector/commit/7d33e4b))
+* **quaternion:** correct return type ([431901f](https://github.com/basics/vector/commit/431901f))
+* **quaternion:** first test for quaternion ([327ff8f](https://github.com/basics/vector/commit/327ff8f))
+
 ## [1.38.1](https://github.com/basics/vector/compare/v1.38.0...v1.38.1) (2019-09-29)
 
 
