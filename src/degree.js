@@ -1,7 +1,7 @@
 // @ts-nocheck
 import { normRad } from './util';
 
-const ANGLE = Symbol('angle-rad');
+const ANGLE = Symbol('angle rad');
 const DEG_TO_RAD = Math.PI / 180;
 const RAD_TO_DEG = 180 / Math.PI;
 
@@ -41,13 +41,13 @@ class ADegree {
 export class Degree extends ADegree {
   /**
    *
-   * @param {number | Degree | IDegree} angle
+   * @param {number | Degree | IDegree} [angle]
    */
   set(angle) {
     if (angle instanceof ADegree) {
       this[ANGLE] = angle[ANGLE];
     } else {
-      this[ANGLE] = normRad(angle * DEG_TO_RAD);
+      this[ANGLE] = normRad((angle || 0) * DEG_TO_RAD);
     }
   }
 }
@@ -60,6 +60,8 @@ export class IDegree extends ADegree {
     return new Degree(this[ANGLE]);
   }
 }
+
+const ZERO = new IDegree(0);
 
 /**
  * @typedef {(angle: number) => DegreeType} DegreeNum
@@ -87,18 +89,25 @@ export function idegree(angle) {
   if (angle instanceof IDegree) {
     return angle;
   }
+  if (!angle) {
+    return ZERO;
+  }
   return new IDegree(angle);
+}
+
+export function isAngle(angle) {
+  return typeof angle === 'number' || angle instanceof ADegree;
 }
 
 export const Export = {
   /**
-   * @param {number | Degree | IDegree} angle
+   * @param {number | Degree | IDegree} [angle]
    * @returns {IDegreeType}
    */
   idegree: angle => idegree(angle),
 
   /**
-   * @param {number | Degree | IDegree} angle
+   * @param {number | Degree | IDegree} [angle]
    * @returns {DegreeType}
    */
   degree: angle => degree(angle),
