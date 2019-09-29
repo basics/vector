@@ -2,7 +2,7 @@
 import {
   Vector, Victor, FORWARD, LEFT, UP
 } from './vector';
-import { isArray, multQuatVec } from './util';
+import { isArray, multQuatVec, fromEulerYXZ } from './util';
 import { formatNumber } from './formatter';
 import { cachedFactory } from './operator';
 import { isAngle, degree, IDegree } from './degree';
