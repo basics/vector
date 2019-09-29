@@ -1,3 +1,17 @@
+## [1.38.1](https://github.com/basics/vector/compare/v1.38.0...v1.38.1) (2019-09-29)
+
+
+### Bug Fixes
+
+* **degree:** isAngle check ([f869a4d](https://github.com/basics/vector/commit/f869a4d))
+* **playcanvas:** setFromOrientation ([a1731e0](https://github.com/basics/vector/commit/a1731e0))
+* **point:** docs for empty constructor ([4b6627f](https://github.com/basics/vector/commit/4b6627f))
+* **point:** test and doc for empty constructor ([2c78fd0](https://github.com/basics/vector/commit/2c78fd0))
+* **quaternion:** fix imports ([c436971](https://github.com/basics/vector/commit/c436971))
+* **quaternion:** fixes for checking if angle ([f086695](https://github.com/basics/vector/commit/f086695))
+* **util:** fromEulerYXZ ([dc6b653](https://github.com/basics/vector/commit/dc6b653))
+* **vector:** docs for empty constructor ([a57dbc6](https://github.com/basics/vector/commit/a57dbc6))
+
 # [1.38.0](https://github.com/basics/vector/compare/v1.37.2...v1.38.0) (2019-09-26)
 
 
