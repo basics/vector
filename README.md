@@ -10,9 +10,9 @@
 [![Dependencies Status](https://david-dm.org/basics/vector/status.svg)](https://david-dm.org/basics/vector)
 [![DevDependencies Status](https://david-dm.org/basics/vector/dev-status.svg)](https://david-dm.org/basics/vector?type=dev)
 
-This libary provides 3D Vector in js including support for `+` `-` `*` `/` operator handling.
+This libary provides 3D Vector in js including support for `+` `-` `*` `/` (also `%` and `**`) operator handling.
 
-Normally vector implementations in javascript handle arithmetic operation by functions `aVec.multiply(bVec).substract(dVec)`.
+Normally vector implementations in javascript handle arithmetic operation by methods `aVec.multiply(bVec).substract(dVec)`.
 Other languages provide operator overloading, that coders can create Vector class which can handle operation similar to number handling `aVec * bVec - dVec`.
 
 This libary gives javascript coders a way to handle operators with a single statement `() => aVec * bVec - dVec`.
@@ -37,18 +37,17 @@ const vec = new Vec(aVec.x * bVec.x * 4 - dVec.x - 1.5,
 // inspired by smart array handling
 // first version of calling assigned function three times
 const vec = oldCalc(  aVec, bVec, dVec,
-                    ( aVec, bVec, dVec) =>
-                      aVec * bVec * 4 - dVec - 1.5
+                    ( aVec, bVec, dVec) => aVec * bVec * 4 - dVec - 1.5
                    );
 
                     ⇓
 
-// final version with overwritten valueOf() function
+// final version with overwritten valueOf() method
 const vec = calc(() => aVec * bVec * 4 - dVec - 1.5);
 ```
 
-Javascript has this one peculiarity called `valueOf()` this function is designed for primitive handling (numbers and strings) when handling arithmetic operations.
-Every class can overwrite this function to give it special behavior. This Vector class calls the assigned statement three times for `x`, `y` and `z`.
+Javascript has this one peculiarity called `valueOf()` this method is designed for primitive handling (numbers and strings) when handling arithmetic operations.
+Every class can overwrite this method to give it special behavior. This Vector class calls the assigned statement three times for `x`, `y` and `z`.
 Comparable to trigger arithmetic operation manually for every axis.
 
 Internally the `valueOf()` implementation returns `x` in first call, `y` in second call and `z` in last call, these results are put into an new Vector object and can be reused further.
