@@ -166,15 +166,15 @@ class AQuaternion {
   }
 
   get left() {
-    return this.appyVector(LEFT);
+    return this.multiplyVector(LEFT);
   }
 
   get dir() {
-    return this.appyVector(FORWARD);
+    return this.multiplyVector(FORWARD);
   }
 
   get up() {
-    return this.appyVector(UP);
+    return this.multiplyVector(UP);
   }
 
   /**
@@ -328,15 +328,15 @@ function fromCache(scope, key, fn) {
 
 export class IQuaternion extends AQuaternion {
   get left() {
-    return fromCache(this, LEFT_CACHE, () => this.appyVector(LEFT));
+    return fromCache(this, LEFT_CACHE, () => this.multiplyVector(LEFT));
   }
 
   get dir() {
-    return fromCache(this, FORWARD_CACHE, () => this.appyVector(FORWARD));
+    return fromCache(this, FORWARD_CACHE, () => this.multiplyVector(FORWARD));
   }
 
   get up() {
-    return fromCache(this, UP_CACHE, () => this.appyVector(UP));
+    return fromCache(this, UP_CACHE, () => this.multiplyVector(UP));
   }
 }
 
@@ -392,15 +392,18 @@ const LEFT90 = new IQuaternion(LEFT, degree(90));
  * @returns {IQuaternion}
  */
 export function fromOrientation({ alpha, beta, gamma }, orientation) {
-  let rot = new IQuaternion(fromEulerYXZ(degree(beta), degree(alpha), degree(-gamma)));
-  rot.multiplyQuaternion(LEFT90);
+  const x = degree(beta);
+  const y = degree(alpha);
+  const z = degree(-gamma);
+  let rot = new IQuaternion(fromEulerYXZ(x, y, z));
+  rot = rot.multiplyQuaternion(LEFT90);
 
   if (orientation) {
     const { dir } = rot;
     const local = new IQuaternion(dir, degree(orientation));
     rot = local.multiplyQuaternion(rot);
   }
-  return rot[AXES];
+  return rot;
 }
 
 export const Export = {
