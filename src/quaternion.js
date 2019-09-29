@@ -5,11 +5,12 @@ import {
 import { isArray, multQuatVec } from './util';
 import { formatNumber } from './formatter';
 import { cachedFactory } from './operator';
+import { isAngle, degree, IDegree } from './degree';
 
 const X = 0;
 const Y = 1;
 const Z = 2;
-const W = 2;
+const W = 3;
 const AXES = Symbol('axes');
 
 const FORWARD_CACHE = Symbol('forward');
@@ -88,7 +89,7 @@ function axisAngle(axis, angle) {
   quaternion[Y] = sa * axis.y;
   quaternion[Z] = sa * axis.z;
   quaternion[W] = ca;
-  return this;
+  return quaternion;
 }
 
 class AQuaternion {
@@ -97,7 +98,7 @@ class AQuaternion {
    * @typedef {import('./degree').IDegree} IDegree
    * @typedef {IDegree | Degree | number} DegreeType
    *
-   * @param {number | Vector | Victor | [number, number, number, number]} x
+   * @param {number | Vector | Victor | [number, number, number, number] } [x]
    * @param {number | Vector | Victor} [y]
    * @param {number} [z]
    * @param {number} [w]
@@ -107,10 +108,12 @@ class AQuaternion {
       this[AXES] = [x, y, z, w];
     } else if (isArray(x)) {
       this[AXES] = [...x];
-    } else if (typeof y === 'number') {
+    } else if (isAngle(y)) {
       this[AXES] = axisAngle(x, y);
-    } else {
+    } else if (x) {
       this[AXES] = look(x, y || UP);
+    } else {
+      this[AXES] = [0, 0, 0, 1];
     }
     normalize(this[AXES]);
   }
@@ -341,14 +344,15 @@ const quaternionFactory = cachedFactory(Quaternion);
 
 /**
  * @typedef {Vector | Victor} VectorType
+ * @typedef {() => Quaternion} QuatZero
  * @typedef {(x: number , y: number, z: number, w: number) => Quaternion} QuatNumber
  * @typedef {(dir: VectorType) => Quaternion} QuatDir
  * @typedef {(dir: VectorType, up: VectorType) => Quaternion} QuatDirUp
  * @typedef {(axis: VectorType, angle: DegreeType) => Quaternion} QuatAxis
  * @typedef {(arr: [number, number, number, number]) => Quaternion} QuatArr
- * @typedef {QuatNumber & QuatDir & QuatDirUp & QuatAxis & QuatArr}
+ * @typedef {QuatNumber & QuatDir & QuatDirUp & QuatAxis & QuatArr & QuatZero}
  *
- * @param {number | VectorType | [number, number, number, number]} x
+ * @param {number | VectorType | [number, number, number, number]} [x]
  * @param {number | VectorType} [y]
  * @param {number} [z]
  * @param {number} [w]
@@ -361,14 +365,15 @@ export const quaternion = function (x, y, z, w) {
 const iquaternionFactory = cachedFactory(IQuaternion);
 
 /**
- * @typedef {(x: number , y: number, z: number, w: number) => IQuaternion} IQuatNumber
+ * @typedef {() => IQuaternion} IQuatZero
+ * @typedef {(x: number, y: number, z: number, w: number) => IQuaternion} IQuatNumber
  * @typedef {(dir: VectorType) => IQuaternion} IQuatDir
  * @typedef {(dir: VectorType, up: VectorType) => IQuaternion} IQuatDirUp
  * @typedef {(axis: VectorType, angle: DegreeType) => IQuaternion} IQuatAxis
  * @typedef {(arr: [number, number, number, number]) => IQuaternion} IQuatArr
- * @typedef {IQuatNumber & IQuatDir & IQuatDirUp & IQuatAxis & IQuatArr}
+ * @typedef {IQuatNumber & IQuatDir & IQuatDirUp & IQuatAxis & IQuatArr & IQuatZero}
  *
- * @param {number | VectorType | [number, number, number, number]} x
+ * @param {number | VectorType | [number, number, number, number]} [x]
  * @param {number | VectorType} [y]
  * @param {number} [z]
  * @param {number} [w]
@@ -378,7 +383,32 @@ export const iquaternion = function (x, y, z, w) {
   return iquaternionFactory(x, y, z, w);
 };
 
+const LEFT90 = new IQuaternion(LEFT, degree(90));
+
+/**
+ *
+ * @param {{ alpha: number, beta: number, gamma: number }} orientationEvent
+ * @param {number} orientation
+ * @returns {IQuaternion}
+ */
+export function fromOrientation({ alpha, beta, gamma }, orientation) {
+  let rot = new IQuaternion(fromEulerYXZ(degree(beta), degree(alpha), degree(-gamma)));
+  rot.multiplyQuaternion(LEFT90);
+
+  if (orientation) {
+    const { dir } = rot;
+    const local = new IQuaternion(dir, degree(orientation));
+    rot = local.multiplyQuaternion(rot);
+  }
+  return rot[AXES];
+}
+
 export const Export = {
+
+  /**
+   * @type {QuatZero}
+   */
+  quaternion: () => quaternion(),
 
   /**
    * @type {QuatDir}
@@ -404,6 +434,11 @@ export const Export = {
    * @type {QuatNumber}
    */
   quaternion: (x, y, z, w) => quaternion(x, y, z, w),
+
+  /**
+   * @type {IQuatZero}
+   */
+  iquaternion: () => iquaternion(),
 
   /**
   * @type {IQuatDir}
