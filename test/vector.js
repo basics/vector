@@ -9,6 +9,13 @@ import * as Examples from '../examples';
  * @param {(typeof Vector) | (typeof Victor)} Vec3
  */
 const vectorTest = (vec3, Vec3) => {
+  it('should create empty vector', () => {
+    const pos = vec3();
+    assert.equal(pos.x, 0);
+    assert.equal(pos.y, 0);
+    assert.equal(pos.z, 0);
+  });
+
   it('should create x y z values', () => {
     const pos = vec3(5, 6, 7);
     assert.equal(pos.x, 5);
