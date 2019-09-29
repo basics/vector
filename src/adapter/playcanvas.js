@@ -2,6 +2,7 @@
 import {
   operatorCalc, cachedValueOf, defineVectorLength, cachedFactory, cachedFunction
 } from '../operator';
+import { fromEulerYXZ } from '../util';
 
 function fallbackWindow() {
   return {
@@ -10,7 +11,7 @@ function fallbackWindow() {
 }
 export function hijackPlayCanvas(pc) {
   const {
-    Vec2, Vec3, Quat, Mat4
+    Vec2, Vec3, Quat, Mat4, math
   } = pc;
 
   cachedValueOf(Vec2);
@@ -60,14 +61,34 @@ export function hijackPlayCanvas(pc) {
     }
   });
   pc.quat = cachedFunction((x, y, z, w) => {
-    if (typeof dir === 'number') {
+    if (typeof x === 'number') {
       return new Quat(x, y, z, w);
     }
     if (!x) {
       return new Quat();
     }
+    if (typeof y === 'number') {
+      return new Quat().setFromAxisAngle(x, y);
+    }
     return new Quat().setFromMat4(new Mat4().setLookAt(Vec3.ZERO, x, y || Vec3.UP));
   });
+
+  const LEFT90 = pc.quat(Vec3.LEFT, 90);
+
+  Quat.prototype.setFromOrientation = function ({ alpha, beta, gamma }, orientation) {
+    const x = beta * math.DEG_TO_RAD;
+    const y = alpha * math.DEG_TO_RAD;
+    const z = -gamma * math.DEG_TO_RAD;
+    let rot = pc.quat(fromEulerYXZ(x, y, z));
+    rot.mul(LEFT90);
+
+    if (orientation) {
+      const { dir } = rot;
+      const local = pc.quat(dir, orientation);
+      rot = local.mul(rot);
+    }
+    this.copy(rot);
+  };
 }
 
 // eslint-disable-next-line no-undef
