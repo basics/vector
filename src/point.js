@@ -34,7 +34,7 @@ function square(val) {
  */
 class APoint {
   /**
-   * @param {number | [number, number, number] | Alg} x
+   * @param {number | [number, number, number] | Alg} [x]
    * @param {number} [y]
    * @hidden
    */
@@ -362,12 +362,13 @@ export function calc(alg) {
 const pointFactory = cachedFactory(Point);
 
 /**
+ * @typedef {() => PointType} PointZero
  * @typedef {(alg: Alg) => PointType} PointAlg
  * @typedef {(x: number , y: number) => PointType} PointCon
  * @typedef {(data: [number, number]) => PointType} PointArr
- * @typedef {PointAlg & PointCon & PointArr} point
+ * @typedef {PointAlg & PointCon & PointArr & PointZero} point
  *
- * @param {number | [number, number] | Alg} x
+ * @param {number | [number, number] | Alg} [x]
  * @param {number} [y]
  * @returns {PointType}
  * @hidden
@@ -379,12 +380,13 @@ export const point = function point(x, y) {
 const ipointFactory = cachedFactory(IPoint);
 
 /**
+ * @typedef {() => IPointType} IPointZero
  * @typedef {(alg: Alg) => IPointType} IPointAlg
  * @typedef {(x: number , y: number) => IPointType} IPointCon
  * @typedef {(data: [number, number]) => IPointType} IPointArr
- * @typedef {IPointAlg & IPointCon & IPointArr}
+ * @typedef {IPointAlg & IPointCon & IPointArr & IPointType}
  *
- * @param {number | [number, number] | Alg} x
+ * @param {number | [number, number] | Alg} [x]
  * @param {number} [y]
  * @returns {IPointType}
  * @hidden
@@ -393,12 +395,21 @@ export function ipoint(x, y) {
   return ipointFactory(x, y);
 }
 
+export const ZERO = ipoint(0, 0);
+export const FORWARD = ipoint(0, -1);
+export const LEFT = ipoint(-1, 0);
+
 export const Export = {
   /**
    * @param {Alg} alg
    * @return {PointType | IPointType}
    */
   calc: alg => operatorCalc(alg),
+
+  /**
+  * @type {PointZero}
+  */
+  point: () => pointFactory(),
 
   /**
    * @type {PointAlg}
