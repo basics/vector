@@ -73,21 +73,26 @@ export function hijackPlayCanvas(pc) {
     return new Quat().setFromMat4(new Mat4().setLookAt(Vec3.ZERO, x, y || Vec3.UP));
   });
 
+  Quat.prototype.multiplyQuaternion = function (other) {
+    return this.clone().mul(other);
+  };
+
   const LEFT90 = pc.quat(Vec3.LEFT, 90);
 
   Quat.prototype.setFromOrientation = function ({ alpha, beta, gamma }, orientation) {
     const x = beta * math.DEG_TO_RAD;
     const y = alpha * math.DEG_TO_RAD;
     const z = -gamma * math.DEG_TO_RAD;
-    let rot = pc.quat(fromEulerYXZ(x, y, z));
-    rot.mul(LEFT90);
+    let rot = pc.quat(...fromEulerYXZ(x, y, z));
+    rot = rot.multiplyQuaternion(LEFT90);
 
     if (orientation) {
       const { dir } = rot;
       const local = pc.quat(dir, orientation);
-      rot = local.mul(rot);
+      rot = local.multiplyQuaternion(rot);
     }
     this.copy(rot);
+    return this;
   };
 }
 
