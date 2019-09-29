@@ -24,7 +24,7 @@ const pc = {
   Quat,
 };
 
-describe('override valueOf of a new class', () => {
+describe('override valueOf of playcanvas Vec3', () => {
   it('calculations with the new class', () => {
     hijackPlayCanvas(pc);
 
