@@ -1,8 +1,8 @@
 // @ts-nocheck
 import {
-  Vector, Victor, FORWARD, LEFT, UP
+  Vector, Victor, FORWARD, LEFT, UP, RIGHT
 } from './vector';
-import { isArray, multQuatVec, fromEulerYXZ } from './util';
+import { isArray, multQuatVec } from './util';
 import { formatNumber } from './formatter';
 import { cachedFactory } from './operator';
 import { isAngle, degree, IDegree } from './degree';
@@ -13,9 +13,10 @@ const Z = 2;
 const W = 3;
 const AXES = Symbol('axes');
 
-const FORWARD_CACHE = Symbol('forward');
-const LEFT_CACHE = Symbol('left');
-const UP_CACHE = Symbol('up');
+const FORWARD_CACHE = Symbol('forward cache');
+const LEFT_CACHE = Symbol('left cache');
+const UP_CACHE = Symbol('up cache');
+const INVERSE_CACHE = Symbol('inverse cache');
 
 function length([x, y, z, w]) {
   return Math.sqrt(x * x + y * y + z * z + w * w);
@@ -92,33 +93,46 @@ function axisAngle(axis, angle) {
   return quaternion;
 }
 
+function from(x, y, z, w) {
+  if (typeof x === 'number') {
+    return [x, y, z, w];
+  }
+  if (isArray(x)) {
+    return [...x];
+  }
+  if (isAngle(y)) {
+    return axisAngle(x, y);
+  }
+  if (x) {
+    return look(x, y || UP);
+  }
+  return [0, 0, 0, 1];
+}
+
 class AQuaternion {
   /**
    * @typedef {import('./degree').Degree} Degree
    * @typedef {import('./degree').IDegree} IDegree
    * @typedef {IDegree | Degree | number} DegreeType
    *
-   * @param {number | Vector | Victor | [number, number, number, number] } [x]
+   * @param {number | Vector | Victor | Quaternion | IQuaternion | [number, number, number, number] } [x]
    * @param {number | Vector | Victor} [y]
    * @param {number} [z]
    * @param {number} [w]
    */
   constructor(x, y, z, w) {
-    if (typeof x === 'number') {
-      this[AXES] = [x, y, z, w];
-    } else if (isArray(x)) {
-      this[AXES] = [...x];
-    } else if (isAngle(y)) {
-      this[AXES] = axisAngle(x, y);
-    } else if (x) {
-      this[AXES] = look(x, y || UP);
-    } else {
-      this[AXES] = [0, 0, 0, 1];
-    }
+    this[AXES] = from(x, y, z, w);
     normalize(this[AXES]);
   }
 
-  multiply(other) {
+  /**
+   * @throws SetNotImplementedError
+   */
+  set(x, y, z, w) {
+    throw new Error('set x() not implemented');
+  }
+
+  multiply(other, y, z, w) {
     if (typeof other.w === 'number') {
       return this.multiplyQuaternion(other);
     }
@@ -149,11 +163,15 @@ class AQuaternion {
     return this.multiply(other);
   }
 
-  conjugate() {
+  get inverse() {
     const {
       x, y, z, w
     } = this;
     return this.constructor(x * -1, y * -1, z * -1, w);
+  }
+
+  get inv() {
+    return this.inverse;
   }
 
   /**
@@ -253,6 +271,21 @@ class AQuaternion {
 
 export class Quaternion extends AQuaternion {
   /**
+  * @param {number | Quaternion | IQuaternion | Vector | Victor | [number, number, number, number] } [x]
+  * @param {number | Vector | Victor} [y]
+  * @param {number} [z]
+  * @param {number} [w]
+  */
+  set(x, y, z, w) {
+    if (x instanceof AQuaternion) {
+      this[AXES] = [...x[AXES]];
+    } else {
+      this[AXES] = from(x, y, z, w);
+      normalize(this[AXES]);
+    }
+  }
+
+  /**
      *
      * @param {number} x
      */
@@ -338,6 +371,15 @@ export class IQuaternion extends AQuaternion {
   get up() {
     return fromCache(this, UP_CACHE, () => this.multiplyVector(UP));
   }
+
+  get inverse() {
+    return fromCache(this, INVERSE_CACHE, () => {
+      const {
+        x, y, z, w
+      } = this;
+      return this.constructor(x * -1, y * -1, z * -1, w);
+    });
+  }
 }
 
 const quaternionFactory = cachedFactory(Quaternion);
@@ -391,12 +433,16 @@ const LEFT90 = new IQuaternion(LEFT, degree(90));
  * @param {number} orientation
  * @returns {IQuaternion}
  */
-export function fromOrientation({ alpha, beta, gamma }, orientation) {
-  const x = degree(beta);
-  const y = degree(alpha);
-  const z = degree(-gamma);
-  let rot = new IQuaternion(fromEulerYXZ(x, y, z));
-  rot = rot.multiplyQuaternion(LEFT90);
+export function fromOrientation(orientationEvent, orientation) {
+  const { alpha, beta, gamma } = orientationEvent;
+  const x = iquaternion(RIGHT, degree(beta));
+  const y = iquaternion(UP, degree(alpha));
+  const z = iquaternion(FORWARD, degree(gamma));
+
+  let rot = y;
+  rot = rot.multiply(x);
+  rot = rot.multiply(z);
+  rot = rot.multiply(LEFT90);
 
   if (orientation) {
     const { dir } = rot;

@@ -2,7 +2,6 @@
 import {
   operatorCalc, cachedValueOf, defineVectorLength, cachedFactory, cachedFunction
 } from '../operator';
-import { fromEulerYXZ } from '../util';
 
 function fallbackWindow() {
   return {
@@ -11,8 +10,11 @@ function fallbackWindow() {
 }
 export function hijackPlayCanvas(pc) {
   const {
-    Vec2, Vec3, Quat, Mat4, math
+    Vec2, Vec3, Quat, Mat4
   } = pc;
+  const {
+    LEFT, FORWARD, UP, RIGHT, ZERO
+  } = Vec3;
 
   cachedValueOf(Vec2);
   defineVectorLength(Vec2, 2);
@@ -38,7 +40,7 @@ export function hijackPlayCanvas(pc) {
 
   Object.defineProperty(Quat.prototype, 'left', {
     get() {
-      return this.transformVector(Vec3.LEFT, new Vec3());
+      return this.transformVector(LEFT, new Vec3());
     },
     set() {
       throw new Error('set left not allowed');
@@ -46,7 +48,7 @@ export function hijackPlayCanvas(pc) {
   });
   Object.defineProperty(Quat.prototype, 'dir', {
     get() {
-      return this.transformVector(Vec3.FORWARD, new Vec3());
+      return this.transformVector(FORWARD, new Vec3());
     },
     set() {
       throw new Error('set dir not allowed');
@@ -54,10 +56,18 @@ export function hijackPlayCanvas(pc) {
   });
   Object.defineProperty(Quat.prototype, 'up', {
     get() {
-      return this.transformVector(Vec3.UP, new Vec3());
+      return this.transformVector(UP, new Vec3());
     },
     set() {
       throw new Error('set up not allowed');
+    }
+  });
+  Object.defineProperty(Quat.prototype, 'inverse', {
+    get() {
+      return this.clone().invert();
+    },
+    set() {
+      throw new Error('set inverse not allowed');
     }
   });
   pc.quat = cachedFunction((x, y, z, w) => {
@@ -70,20 +80,23 @@ export function hijackPlayCanvas(pc) {
     if (typeof y === 'number') {
       return new Quat().setFromAxisAngle(x, y);
     }
-    return new Quat().setFromMat4(new Mat4().setLookAt(Vec3.ZERO, x, y || Vec3.UP));
+    return new Quat().setFromMat4(new Mat4().setLookAt(ZERO, x, y || UP));
   });
 
   Quat.prototype.multiplyQuaternion = function (other) {
     return this.clone().mul(other);
   };
 
-  const LEFT90 = pc.quat(Vec3.LEFT, 90);
+  const LEFT90 = pc.quat(LEFT, 90);
 
   Quat.prototype.setFromOrientation = function ({ alpha, beta, gamma }, orientation) {
-    const x = beta * math.DEG_TO_RAD;
-    const y = alpha * math.DEG_TO_RAD;
-    const z = -gamma * math.DEG_TO_RAD;
-    let rot = pc.quat(...fromEulerYXZ(x, y, z));
+    const x = pc.quat(RIGHT, beta);
+    const y = pc.quat(UP, alpha);
+    const z = pc.quat(FORWARD, gamma);
+
+    let rot = y;
+    rot = rot.multiplyQuaternion(x);
+    rot = rot.multiplyQuaternion(z);
     rot = rot.multiplyQuaternion(LEFT90);
 
     if (orientation) {

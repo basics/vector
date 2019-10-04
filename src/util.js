@@ -21,23 +21,6 @@ export function multQuatVec(quat, vec) {
   return new vec.constructor(rx, ry, rz);
 }
 
-// https://github.com/immersive-web/webvr-polyfill/blob/ceb80d0e2d1d66e318782e30d89e0a09ca4857cd/build/webvr-polyfill.js#L2209
-export function fromEulerYXZ(x, y, z) {
-  const c1 = Math.cos(x / 2);
-  const c2 = Math.cos(y / 2);
-  const c3 = Math.cos(z / 2);
-  const s1 = Math.sin(x / 2);
-  const s2 = Math.sin(y / 2);
-  const s3 = Math.sin(z / 2);
-
-  return [
-    s1 * c2 * c3 + c1 * s2 * s3,
-    c1 * s2 * c3 - s1 * c2 * s3,
-    c1 * c2 * s3 - s1 * s2 * c3,
-    c1 * c2 * c3 + s1 * s2 * s3
-  ];
-}
-
 const angle180 = Math.PI;
 const angle360 = Math.PI * 2;
 

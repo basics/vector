@@ -591,5 +591,8 @@ export const Export = {
 
 export const ZERO = victor(0, 0, 0);
 export const FORWARD = victor(0, 0, -1);
+export const BACK = victor(0, 0, 1);
 export const LEFT = victor(-1, 0, 0);
+export const RIGHT = victor(1, 0, 0);
 export const UP = victor(0, 1, 0);
+export const BOTTOM = victor(0, -1, 0);
