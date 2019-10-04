@@ -1,3 +1,12 @@
+## [1.38.3](https://github.com/basics/vector/compare/v1.38.2...v1.38.3) (2019-10-04)
+
+
+### Bug Fixes
+
+* **eslint:** max len 140 ([dc4d41a](https://github.com/basics/vector/commit/dc4d41a))
+* **quaternion:** more quaternion tests ([1e89a6c](https://github.com/basics/vector/commit/1e89a6c))
+* **quaternion:** remove euler pendency ([62694a8](https://github.com/basics/vector/commit/62694a8))
+
 ## [1.38.2](https://github.com/basics/vector/compare/v1.38.1...v1.38.2) (2019-09-29)
 
 
