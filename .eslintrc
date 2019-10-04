@@ -17,6 +17,12 @@
     "no-prototype-builtins": "off",
     "max-classes-per-file": "off",
     "arrow-parens": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 140
+      }
+    ]
   }
 }
