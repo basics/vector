@@ -1,3 +1,10 @@
+## [1.38.5](https://github.com/basics/vector/compare/v1.38.4...v1.38.5) (2019-10-06)
+
+
+### Bug Fixes
+
+* **playcanvas:** fix typo in multiply ([5fba42d](https://github.com/basics/vector/commit/5fba42d))
+
 ## [1.38.4](https://github.com/basics/vector/compare/v1.38.3...v1.38.4) (2019-10-06)
 
 
