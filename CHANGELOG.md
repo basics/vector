@@ -1,3 +1,12 @@
+## [1.38.4](https://github.com/basics/vector/compare/v1.38.3...v1.38.4) (2019-10-06)
+
+
+### Bug Fixes
+
+* **playcanvas:** quat fexible multiply method ([be2bb60](https://github.com/basics/vector/commit/be2bb60))
+* **quaternion:** fix name of quaternion test ([fdd0b65](https://github.com/basics/vector/commit/fdd0b65))
+* **quaternion:** flexible multiply method ([30c501a](https://github.com/basics/vector/commit/30c501a))
+
 ## [1.38.3](https://github.com/basics/vector/compare/v1.38.2...v1.38.3) (2019-10-04)
 
 
