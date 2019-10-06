@@ -93,7 +93,7 @@ function axisAngle(axis, angle) {
   return quaternion;
 }
 
-function from(x, y, z, w) {
+function getQuat(x, y, z, w) {
   if (typeof x === 'number') {
     return [x, y, z, w];
   }
@@ -103,10 +103,14 @@ function from(x, y, z, w) {
   if (isAngle(y)) {
     return axisAngle(x, y);
   }
-  if (x) {
-    return look(x, y || UP);
+  if (x && y) {
+    return look(x, y);
   }
-  return [0, 0, 0, 1];
+  return undefined;
+}
+
+function from(x, y, z, w) {
+  return getQuat(x, y, z, w) || [0, 0, 0, 1];
 }
 
 class AQuaternion {
@@ -133,6 +137,10 @@ class AQuaternion {
   }
 
   multiply(other, y, z, w) {
+    const o = getQuat(other, y, z, w);
+    if (o) {
+      return this.multiplyQuaternion(new this.constructor(o));
+    }
     if (typeof other.w === 'number') {
       return this.multiplyQuaternion(other);
     }
@@ -159,8 +167,8 @@ class AQuaternion {
     return new this.constructor(x, y, z, w);
   }
 
-  mul(other) {
-    return this.multiply(other);
+  mul(other, y, z, w) {
+    return this.multiply(other, y, z, w);
   }
 
   get inverse() {
@@ -267,7 +275,6 @@ class AQuaternion {
     return `{ x: ${formatNumber(this.x)}, y: ${formatNumber(this.y)}, z: ${formatNumber(this.z)}, w: ${formatNumber(this.w)} }`;
   }
 }
-
 
 export class Quaternion extends AQuaternion {
   /**
@@ -433,22 +440,15 @@ const LEFT90 = new IQuaternion(LEFT, degree(90));
  * @param {number} orientation
  * @returns {IQuaternion}
  */
-export function fromOrientation(orientationEvent, orientation) {
-  const { alpha, beta, gamma } = orientationEvent;
-  const x = iquaternion(RIGHT, degree(beta));
-  const y = iquaternion(UP, degree(alpha));
-  const z = iquaternion(FORWARD, degree(gamma));
+export function fromOrientation({ alpha, beta, gamma }, orientation) {
+  let rot = iquaternion(UP, degree(alpha))
+    .mul(RIGHT, degree(beta))
+    .mul(FORWARD, degree(gamma))
+    .mul(LEFT90);
 
-  let rot = y;
-  rot = rot.multiply(x);
-  rot = rot.multiply(z);
-  rot = rot.multiply(LEFT90);
+  rot = iquaternion(rot.dir, degree(orientation))
+    .mul(rot);
 
-  if (orientation) {
-    const { dir } = rot;
-    const local = new IQuaternion(dir, degree(orientation));
-    rot = local.multiplyQuaternion(rot);
-  }
   return rot;
 }
 
