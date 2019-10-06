@@ -87,22 +87,24 @@ export function hijackPlayCanvas(pc) {
     return this.clone().mul(other);
   };
 
+  Quat.prototype.multiply = function (other, y, z, w) {
+    if (other && typeof other.z === 'number') {
+      return this.multiplyQuaternion(other);
+    }
+    return this.multiplyQuaternion(pc.quat(other, y, z, w));
+  };
+
   const LEFT90 = pc.quat(LEFT, 90);
 
   Quat.prototype.setFromOrientation = function ({ alpha, beta, gamma }, orientation) {
-    const x = pc.quat(RIGHT, beta);
-    const y = pc.quat(UP, alpha);
-    const z = pc.quat(FORWARD, gamma);
-
-    let rot = y;
-    rot = rot.multiplyQuaternion(x);
-    rot = rot.multiplyQuaternion(z);
-    rot = rot.multiplyQuaternion(LEFT90);
+    let rot = pc.quat(UP, alpha)
+      .multiply(RIGHT, beta)
+      .multiply(FORWARD, gamma)
+      .multiply(LEFT90);
 
     if (orientation) {
-      const { dir } = rot;
-      const local = pc.quat(dir, orientation);
-      rot = local.multiplyQuaternion(rot);
+      rot = pc.quat(rot.dir, orientation)
+        .multiply(rot);
     }
     this.copy(rot);
     return this;
