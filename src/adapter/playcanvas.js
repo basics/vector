@@ -88,7 +88,7 @@ export function hijackPlayCanvas(pc) {
   };
 
   Quat.prototype.multiply = function (other, y, z, w) {
-    if (other && typeof other.z === 'number') {
+    if (other && typeof other.w === 'number') {
       return this.multiplyQuaternion(other);
     }
     return this.multiplyQuaternion(pc.quat(other, y, z, w));
