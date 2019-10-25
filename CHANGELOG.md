@@ -1,3 +1,10 @@
+## [1.38.9](https://github.com/basics/vector/compare/v1.38.8...v1.38.9) (2019-10-25)
+
+
+### Bug Fixes
+
+* **package.json:** updated main attribute to cjs ([47a2ece](https://github.com/basics/vector/commit/47a2ece0b6f4ac6a66901a5bb1a29eef75c69091))
+
 ## [1.38.8](https://github.com/basics/vector/compare/v1.38.7...v1.38.8) (2019-10-25)
 
 
