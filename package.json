@@ -4,8 +4,8 @@
   "description": "A vector lib with support for (+ - * /) operator handling",
   "main": "./build/cjs/index.js",
   "directories": {
-    "example": "examples",
-    "test": "test"
+    "test": "test",
+    "build": "build"
   },
   "scripts": {
     "clean": "rimraf lib",
