@@ -1,3 +1,10 @@
+## [1.38.10](https://github.com/basics/vector/compare/v1.38.9...v1.38.10) (2019-10-25)
+
+
+### Bug Fixes
+
+* **rollup:** rename name for default module ([d68b020](https://github.com/basics/vector/commit/d68b020ea64349a59b798c0352a34b75d61b4b54))
+
 ## [1.38.9](https://github.com/basics/vector/compare/v1.38.8...v1.38.9) (2019-10-25)
 
 
