@@ -1,3 +1,10 @@
+## [1.38.6](https://github.com/basics/vector/compare/v1.38.5...v1.38.6) (2019-10-25)
+
+
+### Bug Fixes
+
+* **build:** different builds (esm, cjs, umd, amd) ([36b2a07](https://github.com/basics/vector/commit/36b2a078744c2d71c927f4c7901ef0134b5001bf))
+
 ## [1.38.5](https://github.com/basics/vector/compare/v1.38.4...v1.38.5) (2019-10-06)
 
 
