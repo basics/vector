@@ -1,3 +1,10 @@
+## [1.38.11](https://github.com/basics/vector/compare/v1.38.10...v1.38.11) (2019-10-25)
+
+
+### Bug Fixes
+
+* **package:** add build dir to directories ([38ebd9a](https://github.com/basics/vector/commit/38ebd9a821414fb94272bedb25d90d3679307a33))
+
 ## [1.38.10](https://github.com/basics/vector/compare/v1.38.9...v1.38.10) (2019-10-25)
 
 
