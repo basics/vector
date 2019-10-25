@@ -5,7 +5,7 @@
 ### load via hmtl
 
 ```html
-<script type="text/javascript" src="https://unpkg.com/@js-basics/vector/adapter/playcanvas.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@js-basics/vector/build/umd/adapter/playcanvas.min.js"></script>
 ```
 
 ### load via npm
@@ -24,4 +24,4 @@ open `external scripts`
 
 increase `Array Size`
 
-add `https://unpkg.com/@js-basics/vector/playcanvas.min.js` to the array
+add `https://unpkg.com/@js-basics/vector/build/umd/adapter/playcanvas.min.js` to the array

@@ -59,7 +59,7 @@ Internally the `valueOf()` implementation returns `x` in first call, `y` in seco
 ### load via hmtl
 
 ```html
-<script type="text/javascript" src="https://unpkg.com/@js-basics/vector/bundle.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@js-basics/vector/build/bundle.min.js"></script>
 ```
 
 ```javascript
@@ -147,7 +147,7 @@ You are happy with your current vector library and definitely don’t want to ch
 ### load via hmtl
 
 ```html
-<script type="text/javascript" src="https://unpkg.com/@js-basics/vector/operator.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/@js-basics/vector/build/umd/operator.min.js"></script>
 ```
 
 ```javascript
