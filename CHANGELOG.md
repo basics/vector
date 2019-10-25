@@ -1,3 +1,10 @@
+## [1.38.7](https://github.com/basics/vector/compare/v1.38.6...v1.38.7) (2019-10-25)
+
+
+### Bug Fixes
+
+* **package.json:** updated main attribute ([487ac5d](https://github.com/basics/vector/commit/487ac5d0ab50839016d89f23b4ecbfebc8b12c63))
+
 ## [1.38.6](https://github.com/basics/vector/compare/v1.38.5...v1.38.6) (2019-10-25)
 
 
