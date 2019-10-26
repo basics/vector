@@ -3,8 +3,8 @@
   "version": "1.38.11",
   "description": "A vector lib with support for (+ - * /) operator handling",
   "main": "./build/cjs/index.js",
+  "module": "./build/esm/index.js",
   "directories": {
-    "test": "test",
     "build": "build"
   },
   "scripts": {
