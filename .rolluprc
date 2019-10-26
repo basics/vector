@@ -1,13 +1,9 @@
 import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import minify from 'rollup-plugin-babel-minify';
+import visualizer from 'rollup-plugin-visualizer';
 
 const plugins = [
-  babel({
-    babelrc: false,
-    exclude: 'node_modules/**',
-    presets: [['@babel/preset-env', { modules: false }]]
-  }),
   resolve(),
   minify({
     comments: false,
@@ -36,7 +32,13 @@ export default [
       exports: 'named',
       format: 'amd'
     }],
-    plugins
+    plugins: [
+      babel({
+        babelrc: false,
+        exclude: 'node_modules/**',
+        presets: [['@babel/preset-env', { modules: false }]]
+      }),
+    ].concat(plugins)
   }, ...[
     {
       input: 'src/index.js',
@@ -68,7 +70,21 @@ export default [
         exports: 'named',
         extend: true
       },
-      plugins
+      plugins: [
+        babel({
+          babelrc: false,
+          exclude: 'node_modules/**',
+          presets: [['@babel/preset-env', {
+            targets: 'last 2 versions, ie >= 11',
+            corejs: '3',
+            useBuiltIns: 'usage'
+          }]]
+        }),
+        visualizer({
+          filename: `./report/${item.output.name}.html`,
+          template: 'treemap'
+        })
+      ].concat(plugins)
     }
   })
 ];
