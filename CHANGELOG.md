@@ -1,3 +1,10 @@
+## [1.38.12](https://github.com/basics/vector/compare/v1.38.11...v1.38.12) (2019-10-26)
+
+
+### Bug Fixes
+
+* **package:** add esm module to npm config ([d009526](https://github.com/basics/vector/commit/d0095267def350e3fa643159ce3c9477d72c6ade))
+
 ## [1.38.11](https://github.com/basics/vector/compare/v1.38.10...v1.38.11) (2019-10-25)
 
 
