@@ -37,6 +37,7 @@ jspm_packages
 lib
 docs
 build
+report
 
 # npm package lock
 package-lock.json
