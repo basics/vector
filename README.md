@@ -59,23 +59,22 @@ Internally the `valueOf()` implementation returns `x` in first call, `y` in seco
 ### load via hmtl
 
 ```html
-<script type="text/javascript" src="https://unpkg.com/@js-basics/vector/build/bundle.min.js"></script>
+<script
+  type="text/javascript"
+  src="https://unpkg.com/@js-basics/vector/build/iife/bundle.min.js"
+></script>
 ```
 
 ```javascript
-const {
-  calc, vector, victor, point, ipoint
-} = basics.vector;
+const { calc, vector, victor, point, ipoint } = basics.vector;
 ```
 
 ### load via npm
 
-$ `npm i @js-basics/vector`
+\$ `npm i @js-basics/vector`
 
 ```javascript
-import {
-  calc, vector, victor, point, ipoint,
-} from '@js-basics/vector';
+import { calc, vector, victor, point, ipoint } from "@js-basics/vector";
 ```
 
 ## working with Vector classes
@@ -130,13 +129,13 @@ behaves exactly like Point but code cant change its `x` and `y` axes.
 
 ### creating vector inside calculation
 
- works fine thanks to caching in factory function.
+works fine thanks to caching in factory function.
 
- [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=92-98)](https://github.com/basics/vector/blob/master/examples/example.js#L84)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=92-98)](https://github.com/basics/vector/blob/master/examples/example.js#L84)
 
 ### mixing 2D and 3D space
 
- [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=98-106)](https://github.com/basics/vector/blob/master/examples/example.js#L90)
+[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=98-106)](https://github.com/basics/vector/blob/master/examples/example.js#L90)
 
 ## Not another vector lib
 
@@ -147,23 +146,26 @@ You are happy with your current vector library and definitely don’t want to ch
 ### load via hmtl
 
 ```html
-<script type="text/javascript" src="https://unpkg.com/@js-basics/vector/build/umd/operator.min.js"></script>
+<script
+  type="text/javascript"
+  src="https://unpkg.com/@js-basics/vector/build/iife/operator.min.js"
+></script>
 ```
 
 ```javascript
-const {
-  cachedValueOf, cachedFactory, operatorCalc
-} = basics.vector.operator;
+const { cachedValueOf, cachedFactory, operatorCalc } = basics.vector.operator;
 ```
 
 ### load via npm
 
-$ `npm i @js-basics/vector`
+\$ `npm i @js-basics/vector`
 
 ```javascript
 import {
-  cachedValueOf, cachedFactory, operatorCalc,
-} from '@js-basics/vector/operator';
+  cachedValueOf,
+  cachedFactory,
+  operatorCalc
+} from "@js-basics/vector/build/cjs/operator";
 ```
 
 ### override valueOf in own class
