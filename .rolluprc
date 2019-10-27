@@ -2,15 +2,7 @@ import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import minify from 'rollup-plugin-babel-minify';
 import visualizer from 'rollup-plugin-visualizer';
-
-const plugins = [
-  resolve(),
-  minify({
-    comments: false,
-    banner: '/* vector class - MIT License */',
-    bannerNewLine: true
-  })
-];
+import commonjs from 'rollup-plugin-commonjs';
 
 export default [
   {
@@ -19,26 +11,27 @@ export default [
       'operator': 'src/operator.js',
       'adapter/playcanvas': 'src/adapter/playcanvas.js'
     },
-    output: [{
-      dir: './build/esm',
-      exports: 'named',
-      format: 'esm'
-    }, {
-      dir: './build/cjs',
-      exports: 'named',
-      format: 'cjs'
-    }, {
-      dir: './build/amd',
-      exports: 'named',
-      format: 'amd'
-    }],
+    output: [
+      {
+        dir: './build/esm',
+        exports: 'named',
+        format: 'esm',
+        interop: false
+      }, {
+        dir: './build/cjs',
+        exports: 'named',
+        format: 'cjs',
+        interop: false
+      }
+    ],
+
     plugins: [
       babel({
         babelrc: false,
         exclude: 'node_modules/**',
         presets: [['@babel/preset-env', { modules: false }]]
       }),
-    ].concat(plugins)
+    ]
   }, ...[
     {
       input: 'src/index.js',
@@ -60,7 +53,7 @@ export default [
       }
     }
   ].map((item) => {
-    const format = 'umd';
+    const format = 'iife';
     return {
       input: item.input,
       output: {
@@ -68,23 +61,28 @@ export default [
         name: item.output.name,
         format: format,
         exports: 'named',
-        extend: true
+        interop: false
       },
       plugins: [
         babel({
           babelrc: false,
           exclude: 'node_modules/**',
           presets: [['@babel/preset-env', {
-            targets: 'last 2 versions, ie >= 11',
-            corejs: '3',
-            useBuiltIns: 'usage'
+            modules: false,
           }]]
+        }),
+        resolve(),
+        commonjs(),
+        minify({
+          comments: false,
+          banner: '/* vector class - MIT License */',
+          bannerNewLine: true
         }),
         visualizer({
           filename: `./report/${item.output.name}.html`,
           template: 'treemap'
         })
-      ].concat(plugins)
+      ]
     }
   })
 ];
