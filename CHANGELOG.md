@@ -1,3 +1,15 @@
+# [1.40.0](https://github.com/basics/vector/compare/v1.39.0...v1.40.0) (2019-10-27)
+
+
+### Bug Fixes
+
+* **rollup:** only build cjs, esm, iife ([ecb947c](https://github.com/basics/vector/commit/ecb947c914656870feb98672e755c871e4131603))
+
+
+### Features
+
+* **polyfills:** added babel polyfill config + added build visualizer ([57a1390](https://github.com/basics/vector/commit/57a13909684f010e09ac891fa9b5cdde50f5f2e1))
+
 # [1.39.0](https://github.com/basics/vector/compare/v1.38.12...v1.39.0) (2019-10-26)
 
 
