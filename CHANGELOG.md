@@ -1,3 +1,10 @@
+## [1.40.1](https://github.com/basics/vector/compare/v1.40.0...v1.40.1) (2019-10-27)
+
+
+### Bug Fixes
+
+* **readme:** update paths in readme ([82c849d](https://github.com/basics/vector/commit/82c849dadd9c396df794220a43a62052a6ce217e))
+
 # [1.40.0](https://github.com/basics/vector/compare/v1.39.0...v1.40.0) (2019-10-27)
 
 
