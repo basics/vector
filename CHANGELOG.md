@@ -1,3 +1,10 @@
+# [1.39.0](https://github.com/basics/vector/compare/v1.38.12...v1.39.0) (2019-10-26)
+
+
+### Features
+
+* **polyfills:** added babel polyfill config + added build visualizer ([9bbd188](https://github.com/basics/vector/commit/9bbd1887489e0551bd672c3ec2b19a7c46937a45))
+
 ## [1.38.12](https://github.com/basics/vector/compare/v1.38.11...v1.38.12) (2019-10-26)
 
 
