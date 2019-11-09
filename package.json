@@ -9,7 +9,7 @@
   },
   "scripts": {
     "clean": "rimraf lib",
-    "test": "npm run lint",
+    "test": "npm run lint && npm run cover",
     "test:prod": "cross-env BABEL_ENV=production npm run test",
     "test:watch": "npm test -- --watch",
     "test:examples": "node examples/",
@@ -69,8 +69,5 @@
     "rollup-plugin-visualizer": "^2.6.0",
     "semantic-release": "^15.13.28",
     "typedoc": "^0.15.0"
-  },
-  "optionalDependencies": {
-    "core-js": "^3.3.4"
   }
 }

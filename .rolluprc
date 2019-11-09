@@ -68,7 +68,7 @@ module.exports = [
           babelrc: false,
           exclude: 'node_modules/**',
           presets: [['@babel/preset-env', {
-            modules: false,
+            modules: false
           }]]
         }),
         resolve(),
