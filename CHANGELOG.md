@@ -1,3 +1,10 @@
+## [1.40.3](https://github.com/basics/vector/compare/v1.40.2...v1.40.3) (2019-11-09)
+
+
+### Bug Fixes
+
+* package.json, package-lock.json & .snyk to reduce vulnerabilities ([b7b5b41](https://github.com/basics/vector/commit/b7b5b413a2e6fa49603e7a6ea5de73608b21ad20))
+
 ## [1.40.2](https://github.com/basics/vector/compare/v1.40.1...v1.40.2) (2019-11-09)
 
 
