@@ -12,7 +12,7 @@ install:
   - npm install
   - npm install semantic-release @semantic-release/git @semantic-release/changelog --no-save
 script:
-  - npm run test
-  - npm run build
+  # - npm run cover
+#   - npm run build
 after_success:
   - npx travis-deploy-once "npm run semantic-release"
