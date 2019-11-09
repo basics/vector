@@ -9,7 +9,7 @@
   },
   "scripts": {
     "clean": "rimraf lib",
-    "test": "npm run lint && npm run cover",
+    "test": "npm run lint",
     "test:prod": "cross-env BABEL_ENV=production npm run test",
     "test:watch": "npm test -- --watch",
     "test:examples": "node examples/",
