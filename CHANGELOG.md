@@ -1,3 +1,13 @@
+## [1.40.2](https://github.com/basics/vector/compare/v1.40.1...v1.40.2) (2019-11-09)
+
+
+### Bug Fixes
+
+* **package.json:** removed auto cover ([1214bb7](https://github.com/basics/vector/commit/1214bb7a942cfbb45809fc210b4b9f251f6f4372))
+* **package.json:** updated versions ([f15b435](https://github.com/basics/vector/commit/f15b43598d4af37c8198f4af0d71ef3a936418c9))
+* **rolluprc:** refactored ([8ddfe03](https://github.com/basics/vector/commit/8ddfe03244967fe88e9c3a3e836fda5bf5bddf3a))
+* **setup:** refactored ([9bf4edd](https://github.com/basics/vector/commit/9bf4edd08ae239d2de768204246c4363e4e20d68))
+
 ## [1.40.1](https://github.com/basics/vector/compare/v1.40.0...v1.40.1) (2019-10-27)
 
 
