@@ -47,7 +47,7 @@
     "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
     "@babel/register": "^7.7.0",
-    "@commitlint/cli": "^8.2.0",
+    "@commitlint/cli": "^8.3.3",
     "@commitlint/config-conventional": "^8.2.0",
     "babel-eslint": "^10.0.3",
     "babel-plugin-istanbul": "^5.2.0",
