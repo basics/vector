@@ -67,7 +67,7 @@
     "rollup-plugin-babel-minify": "^9.1.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-visualizer": "^2.7.2",
+    "rollup-plugin-visualizer": "^3.0.0",
     "semantic-release": "^15.13.30",
     "typedoc": "^0.15.0"
   },
