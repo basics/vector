@@ -1,3 +1,10 @@
+## [1.40.5](https://github.com/basics/vector/compare/v1.40.4...v1.40.5) (2019-11-17)
+
+
+### Bug Fixes
+
+* **install:** removed snyk protect ([8737b57](https://github.com/basics/vector/commit/8737b57ba9c310baeb9be1d426ae9af6338fe231))
+
 ## [1.40.4](https://github.com/basics/vector/compare/v1.40.3...v1.40.4) (2019-11-17)
 
 
