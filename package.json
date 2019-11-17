@@ -16,10 +16,9 @@
     "cover": "nyc npx mocha --recursive",
     "lint": "eslint src",
     "build": "cross-env BABEL_ENV=production npx rollup --config ./.rolluprc",
-    "docs": "typedoc ./src --out ./docs --allowJs --checkJs --noEmit --excludeNotExported --module commonjs --target es6 --exclude **/debug.js",
-    "prepare": "npm run snyk-protect && npm run clean && npm run test && npm run build && npm run docs",
-    "semantic-release": "semantic-release",
-    "snyk-protect": "snyk protect"
+    "docs": "npx typedoc ./src --out ./docs --allowJs --checkJs --noEmit --excludeNotExported --module commonjs --target es6 --exclude **/debug.js",
+    "prepare": "npm run clean && npm run test && npm run build && npm run docs",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -46,8 +45,6 @@
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/register": "^7.7.0",
-    "@commitlint/cli": "^8.3.3",
-    "@commitlint/config-conventional": "^8.3.3",
     "babel-eslint": "^10.0.3",
     "babel-plugin-istanbul": "^5.2.0",
     "babel-preset-minify": "^0.5.1",
@@ -59,18 +56,13 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
-    "husky": "^3.0.9",
     "nyc": "^14.1.1",
     "rimraf": "^3.0.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-babel-minify": "^9.1.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "semantic-release": "^15.13.30",
-    "typedoc": "^0.15.0"
+    "semantic-release": "^15.13.30"
   },
-  "snyk": true,
-  "dependencies": {
-    "snyk": "^1.247.0"
-  }
+  "snyk": true
 }
