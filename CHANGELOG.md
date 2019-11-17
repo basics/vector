@@ -1,3 +1,10 @@
+## [1.40.4](https://github.com/basics/vector/compare/v1.40.3...v1.40.4) (2019-11-17)
+
+
+### Bug Fixes
+
+* **rollup:** removed analyzer ([9da43fa](https://github.com/basics/vector/commit/9da43fa26ffc0813094a6a29c10d69f7b3f9aeab))
+
 ## [1.40.3](https://github.com/basics/vector/compare/v1.40.2...v1.40.3) (2019-11-09)
 
 
