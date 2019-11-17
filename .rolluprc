@@ -1,7 +1,6 @@
 const babel = require('rollup-plugin-babel');
 const resolve = require('rollup-plugin-node-resolve');
 const minify = require('rollup-plugin-babel-minify');
-const visualizer = require('rollup-plugin-visualizer');
 const commonjs = require('rollup-plugin-commonjs');
 
 module.exports = [
@@ -77,10 +76,6 @@ module.exports = [
           comments: false,
           banner: '/* vector class - MIT License */',
           bannerNewLine: true
-        }),
-        visualizer({
-          filename: `./report/${item.output.name}.html`,
-          template: 'treemap'
         })
       ]
     }
