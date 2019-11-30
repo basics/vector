@@ -1,3 +1,10 @@
+## [1.40.6](https://github.com/basics/vector/compare/v1.40.5...v1.40.6) (2019-11-30)
+
+
+### Bug Fixes
+
+* upgrade semantic-release from 15.13.30 to 15.13.31 ([985a0ab](https://github.com/basics/vector/commit/985a0abf118a068b6f75f69817599889de929414))
+
 ## [1.40.5](https://github.com/basics/vector/compare/v1.40.4...v1.40.5) (2019-11-17)
 
 
