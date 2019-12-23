@@ -46,7 +46,7 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/register": "^7.7.4",
     "babel-eslint": "^10.0.3",
-    "babel-plugin-istanbul": "^5.2.0",
+    "babel-plugin-istanbul": "^6.0.0",
     "babel-preset-minify": "^0.5.1",
     "babelrc-rollup": "^3.0.0",
     "chai": "^4.2.0",
