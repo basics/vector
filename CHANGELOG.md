@@ -1,3 +1,19 @@
+# [1.41.0](https://github.com/basics/vector/compare/v1.40.7...v1.41.0) (2020-01-01)
+
+
+### Features
+
+* **index:** build move cjs path to default ([c9ad582](https://github.com/basics/vector/commit/c9ad58255c3cbcb8792c3207a7f56765ac3926e9))
+
+## [1.40.7](https://github.com/basics/vector/compare/v1.40.6...v1.40.7) (2019-12-10)
+
+
+### Bug Fixes
+
+* upgrade @babel/cli from 7.7.0 to 7.7.4 ([5f0a229](https://github.com/basics/vector/commit/5f0a229a20c2be816986c9ed34d195e8edc218c5))
+* upgrade @babel/register from 7.7.0 to 7.7.4 ([a07fa91](https://github.com/basics/vector/commit/a07fa911bed7dd594d439d38df95d9c81f15359c))
+* upgrade eslint from 6.6.0 to 6.7.0 ([f01a60f](https://github.com/basics/vector/commit/f01a60f9ec5cddb354e600d069aec44a8d1d6662))
+
 ## [1.40.6](https://github.com/basics/vector/compare/v1.40.5...v1.40.6) (2019-11-30)
 
 

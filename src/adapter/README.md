@@ -16,7 +16,7 @@
 \$ `npm i @js-basics/vector`
 
 ```javascript
-import "@js-basics/vector/build/cjs/adapter/playcanvas";
+import "@js-basics/vector/adapter/playcanvas";
 ```
 
 ### load in editor of playcanvas
