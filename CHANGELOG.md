@@ -1,3 +1,11 @@
+## [1.41.1](https://github.com/basics/vector/compare/v1.41.0...v1.41.1) (2020-01-05)
+
+
+### Bug Fixes
+
+* upgrade eslint from 6.7.0 to 6.7.2 ([6e66017](https://github.com/basics/vector/commit/6e66017dbde9c608968ca9c6428e8354d0ba34c0))
+* upgrade rollup-plugin-babel-minify from 9.1.1 to 9.1.1 ([d018415](https://github.com/basics/vector/commit/d018415e54588ae280e53f28e5bade63baf3a5c8))
+
 # [1.41.0](https://github.com/basics/vector/compare/v1.40.7...v1.41.0) (2020-01-01)
 
 
