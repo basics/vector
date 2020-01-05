@@ -1,3 +1,10 @@
+# [1.41.0](https://github.com/basics/vector/compare/v1.40.7...v1.41.0) (2020-01-01)
+
+
+### Features
+
+* **index:** build move cjs path to default ([c9ad582](https://github.com/basics/vector/commit/c9ad58255c3cbcb8792c3207a7f56765ac3926e9))
+
 ## [1.40.7](https://github.com/basics/vector/compare/v1.40.6...v1.40.7) (2019-12-10)
 
 

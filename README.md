@@ -165,7 +165,7 @@ import {
   cachedValueOf,
   cachedFactory,
   operatorCalc
-} from "@js-basics/vector/build/cjs/operator";
+} from "@js-basics/vector/operator";
 ```
 
 ### override valueOf in own class

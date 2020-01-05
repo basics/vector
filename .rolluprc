@@ -17,7 +17,7 @@ module.exports = [
         format: 'esm',
         interop: false
       }, {
-        dir: './build/cjs',
+        dir: './',
         exports: 'named',
         format: 'cjs',
         interop: false
