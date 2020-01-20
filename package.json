@@ -42,7 +42,7 @@
   "homepage": "https://github.com/basics/vector#readme",
   "devDependencies": {
     "@babel/cli": "^7.7.7",
-    "@babel/core": "^7.7.2",
+    "@babel/core": "^7.8.0",
     "@babel/preset-env": "^7.7.7",
     "@babel/register": "^7.7.7",
     "babel-eslint": "^10.0.3",
