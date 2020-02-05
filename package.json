@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/basics/vector#readme",
   "devDependencies": {
-    "@babel/cli": "^7.8.0",
+    "@babel/cli": "^7.8.3",
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.8.0",
     "@babel/register": "^7.7.7",
