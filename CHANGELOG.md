@@ -1,3 +1,28 @@
+# [1.42.0](https://github.com/basics/vector/compare/v1.41.1...v1.42.0) (2020-03-25)
+
+
+### Bug Fixes
+
+* **nvm:** change node version to 12.16.1 ([852d3cd](https://github.com/basics/vector/commit/852d3cdd70174320be61c0a2426e3d8c9c9b06a4))
+* **package:** fix build ([d7dafef](https://github.com/basics/vector/commit/d7dafef4fafde78dc4ea545b2e14e883ef6877db))
+* upgrade @babel/cli from 7.7.4 to 7.7.7 ([1d327f4](https://github.com/basics/vector/commit/1d327f4f8bb422b829a5fc8f7cdc63235d952658))
+* upgrade @babel/cli from 7.7.7 to 7.8.0 ([fa6fd73](https://github.com/basics/vector/commit/fa6fd735cc88d6c64811a682ebef1eabf945472d))
+* upgrade @babel/core from 7.7.2 to 7.8.3 ([3100808](https://github.com/basics/vector/commit/3100808be7584818b48b5caa0f4a2220da335759))
+* upgrade @babel/preset-env from 7.7.1 to 7.7.7 ([b1a5e3d](https://github.com/basics/vector/commit/b1a5e3d7ef81c0bbe2d98b0c2cdc5cd97d0da942))
+* upgrade @babel/preset-env from 7.7.7 to 7.8.0 ([0e26a8e](https://github.com/basics/vector/commit/0e26a8e2b7ef0264f135b922c0de7441ae5b89cd))
+* upgrade @babel/register from 7.7.4 to 7.7.7 ([f2314ae](https://github.com/basics/vector/commit/f2314aed44b33d7f225e4dcf0fb3e9226403ecac))
+* upgrade @babel/register from 7.7.7 to 7.8.3 ([0efb050](https://github.com/basics/vector/commit/0efb05000e19df225fa1ff40815ac809a4acbec5))
+* upgrade eslint from 6.7.2 to 6.8.0 ([3cea301](https://github.com/basics/vector/commit/3cea301630b68d084b236e153d6d4c0aaae8a944))
+* upgrade eslint-plugin-import from 2.18.2 to 2.19.1 ([cbe706a](https://github.com/basics/vector/commit/cbe706a31013b0937ee47997c8c7439d0864b09a))
+* upgrade eslint-plugin-import from 2.19.1 to 2.20.0 ([7c812ba](https://github.com/basics/vector/commit/7c812ba880cad16e2ebfedcb33934ea78fe4c857))
+* upgrade eslint-plugin-react from 7.16.0 to 7.18.0 ([01a1a94](https://github.com/basics/vector/commit/01a1a94af24e59ae2afe2fc3926fcb6802d00461))
+* upgrade rimraf from 3.0.0 to 3.0.1 ([2f63373](https://github.com/basics/vector/commit/2f63373944df7fd3abdbf152fecb94783cb92d2e))
+
+
+### Features
+
+* upgrade semantic-release from 15.13.31 to 16.0.0 ([3ae808c](https://github.com/basics/vector/commit/3ae808cf645c4648eccc42b53cad2bb6ff3eb31a))
+
 ## [1.41.1](https://github.com/basics/vector/compare/v1.41.0...v1.41.1) (2020-01-05)
 
 
