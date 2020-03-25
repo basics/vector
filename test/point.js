@@ -94,11 +94,20 @@ const pointTest = (vec2, Vec2) => {
     assert.closeTo(arr[1], 10, 0.1);
   });
 
-  it('should work when using calc function with || should work without error', () => {
+  it('should throw an error when using calc function directly with ||', () => {
     const dir0 = vec2(4, 4);
     const pos0 = vec2(6, 0);
 
-    const res0 = calc(() => (pos0 * dir0) || pos0);
+    assert.throws(() => calc(() => (pos0 * dir0) || pos0));
+
+    assert.throws(() => calc(() => (pos1 * dir1) || pos1));
+  });
+
+  it('should work when using calc function indirectly with ||', () => {
+    const dir0 = vec2(4, 4);
+    const pos0 = vec2(6, 0);
+
+    const res0 = calc(() => (pos0 * dir0) || +pos0);
 
     assert.equal(res0.x, 24);
     assert.equal(res0.y, 0);
@@ -106,19 +115,34 @@ const pointTest = (vec2, Vec2) => {
     const dir1 = vec2(0, 0);
     const pos1 = vec2(6, 0);
 
-    const res1 = calc(() => (pos1 * dir1) || pos1);
+    const res1 = calc(() => (pos1 * dir1) || +pos1);
 
     assert.equal(res1.x, 6);
     assert.equal(res1.y, 0);
   });
 
-  it('should work when using calc function directly returns vector', () => {
+  it('should throw an error when using calc function directly returns vector', () => {
     const dir0 = vec2(4, 4);
 
-    const res0 = calc(() => dir0);
+    assert.throws(() => calc(() => dir0));
+  });
+
+  it('should work when using calc function indirectly returns vector', () => {
+    const dir0 = vec2(4, 4);
+
+    const res0 = calc(() => +dir0);
 
     assert.equal(res0.x, 4);
     assert.equal(res0.y, 4);
+  });
+
+  it('conditional checks inside calc should return truthy values', () => {
+    const dir0 = vec2(4, 2);
+
+    const res0 = calc(() => dir0 > 3 ? true : false);
+
+    assert.equal(res0.x, 1);
+    assert.equal(res0.y, 0);
   });
 };
 
@@ -170,11 +194,20 @@ describe('special Point test.', () => {
     assert.equal(pos.y, 150);
   });
 
-  it('should work when using local calc method with || should work without error', () => {
+  it('should throw an error when using local calc method directly with ||', () => {
     const dir0 = point(4, 4);
     const pos0 = point(6, 0);
 
-    const res0 = pos0.calc(p => (p * dir0) || p);
+    assert.throws(() => pos0.calc(p => (p * dir0) || p));
+
+    assert.throws(() => pos1.calc(p => (p * dir1) || p));
+  });
+
+  it('should work when using local calc method with indirectly ||', () => {
+    const dir0 = point(4, 4);
+    const pos0 = point(6, 0);
+
+    const res0 = pos0.calc(p => (p * dir0) || +p);
 
     assert.isTrue(pos0 === res0);
     assert.equal(pos0, res0);
@@ -184,7 +217,7 @@ describe('special Point test.', () => {
     const dir1 = point(0, 0);
     const pos1 = point(6, 0);
 
-    const res1 = pos1.calc(p => (p * dir1) || p);
+    const res1 = pos1.calc(p => (p * dir1) || +p);
 
     assert.isTrue(pos1 === res1);
     assert.equal(pos1, res1);
@@ -192,11 +225,18 @@ describe('special Point test.', () => {
     assert.equal(res1.y, 0);
   });
 
-  it('should work when using local calc method directly returns vector', () => {
+  it('should throw an error when using local calc method directly returns vector', () => {
     const dir0 = point(4, 4);
     const pos0 = point(6, 0);
 
-    const res0 = pos0.calc(() => dir0);
+    assert.throws(() => pos0.calc(() => dir0));
+  });
+
+  it('should work when using local calc method indirectly returns vector', () => {
+    const dir0 = point(4, 4);
+    const pos0 = point(6, 0);
+
+    const res0 = pos0.calc(() => +dir0);
 
     assert.isTrue(pos0 === res0);
     assert.equal(pos0, res0);
