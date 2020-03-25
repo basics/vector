@@ -1,3 +1,10 @@
+# [1.43.0](https://github.com/basics/vector/compare/v1.42.0...v1.43.0) (2020-03-25)
+
+
+### Features
+
+* **operator:** correct conditional handling ([87f0bef](https://github.com/basics/vector/commit/87f0bef8f727647c3ec65a7d1b5003020d678478))
+
 # [1.42.0](https://github.com/basics/vector/compare/v1.41.1...v1.42.0) (2020-03-25)
 
 
