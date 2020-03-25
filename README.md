@@ -54,8 +54,6 @@ Internally the `valueOf()` implementation returns `x` in first call, `y` in seco
 
 ## Usage
 
-[API Reference](https://unpkg.com/@js-basics/vector/docs/globals.html)
-
 ### load via hmtl
 
 ```html
