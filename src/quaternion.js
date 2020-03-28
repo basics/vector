@@ -272,7 +272,7 @@ class AQuaternion {
    * @returns {string}
    */
   toString() {
-    return `{ x: ${formatNumber(this.x)}, y: ${formatNumber(this.y)}, z: ${formatNumber(this.z)}, w: ${formatNumber(this.w)} }`;
+    return `{ 'x': ${formatNumber(this.x)}, 'y': ${formatNumber(this.y)}, 'z': ${formatNumber(this.z)}, 'w': ${formatNumber(this.w)} }`;
   }
 }
 

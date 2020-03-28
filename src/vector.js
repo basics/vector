@@ -219,7 +219,7 @@ class AVector {
    * @returns {string}
    */
   toString() {
-    return `{ x: ${formatNumber(this.x)}, y: ${formatNumber(this.y)}, z: ${formatNumber(this.z)} }`;
+    return `{ 'x': ${formatNumber(this.x)}, 'y': ${formatNumber(this.y)}, 'z': ${formatNumber(this.z)} }`;
   }
 
   /**

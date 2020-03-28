@@ -178,7 +178,7 @@ class APoint {
    * @returns {string}
    */
   toString() {
-    return `{ x: ${formatNumber(this.x)}, y: ${formatNumber(this.y)} }`;
+    return `{ 'x': ${formatNumber(this.x)}, 'y': ${formatNumber(this.y)} }`;
   }
 
   /**
