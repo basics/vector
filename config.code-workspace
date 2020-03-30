@@ -7,7 +7,7 @@
   "settings": {
     "eslint.autoFixOnSave": true,
     "eslint.alwaysShowStatus": true,
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.formatOnPaste": true,
     "eslint.validate": [
       "javascript",
