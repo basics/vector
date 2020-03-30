@@ -115,8 +115,8 @@ class APoint {
     const sa = Math.sin(angle);
     const ca = Math.cos(angle);
 
-    const x = (this.x * ca) - (this.y * sa);
-    const y = (this.x * sa) + (this.y * ca);
+    const x = this.x * ca - this.y * sa;
+    const y = this.x * sa + this.y * ca;
 
     return new this.constructor(x, y);
   }
@@ -272,16 +272,6 @@ cachedMethod(APoint, 'getRad');
 cachedGetter(APoint, 'length');
 cachedGetter(APoint, 'lengthSq');
 
-/**
- * Point
- *
- * new Point(x: *number*, y: *number*): [[Point]]
- *
- * new Point(arr: *[number, number]*): [[Point]]
- *
- * new Point(alg: (*function*(): *number*)): [[Point]]
- *
- */
 export class Point extends APoint {
   /**
    *
@@ -331,16 +321,6 @@ export class Point extends APoint {
   }
 }
 
-/**
- * IPoint
- *
- * new IPoint(x: *number*, y: *number*): [[IPoint]]
- *
- * new IPoint(arr: *[number, number]*): [[IPoint]]
- *
- * new IPoint(alg: (*function*(): *number*)): [[IPoint]]
- *
- */
 export class IPoint extends APoint {
   /**
    * @returns {PointType}
@@ -362,82 +342,34 @@ export function calc(alg) {
 const pointFactory = cachedFactory(Point);
 
 /**
- * @typedef {() => PointType} PointZero
- * @typedef {(alg: Alg) => PointType} PointAlg
- * @typedef {(x: number , y: number) => PointType} PointCon
- * @typedef {(data: [number, number]) => PointType} PointArr
- * @typedef {PointAlg & PointCon & PointArr & PointZero} point
- *
- * @param {number | [number, number] | Alg} [x]
- * @param {number} [y]
- * @returns {PointType}
- * @hidden
+ * @template P
+ * @typedef {() => P} Zero
  */
-export const point = function point(x, y) {
-  return pointFactory(x, y);
-};
+/**
+ * @template P
+ * @typedef {(alg: Alg) => P} Algh
+ */
+/**
+ * @template P
+ * @typedef {(x: number, y: number) => P} Con
+ */
+/**
+ * @template P
+ * @typedef {(data: [number, number]) => P} Arr
+ */
+
+/**
+ * @type {Zero<PointType> & Algh<PointType> & Con<PointType> & Arr<PointType>}
+ */
+export const point = (...args) => pointFactory(...args);
 
 const ipointFactory = cachedFactory(IPoint);
 
 /**
- * @typedef {() => IPointType} IPointZero
- * @typedef {(alg: Alg) => IPointType} IPointAlg
- * @typedef {(x: number , y: number) => IPointType} IPointCon
- * @typedef {(data: [number, number]) => IPointType} IPointArr
- * @typedef {IPointAlg & IPointCon & IPointArr & IPointType & IPointZero}
- *
- * @param {number | [number, number] | Alg} [x]
- * @param {number} [y]
- * @returns {IPointType}
- * @hidden
+ * @type {Zero<IPointType> & Algh<IPointType> & Con<IPointType> & Arr<IPointType>}
  */
-export function ipoint(x, y) {
-  return ipointFactory(x, y);
-}
+export const ipoint = (x, y) => ipointFactory(x, y);
 
 export const ZERO = ipoint(0, 0);
 export const FORWARD = ipoint(0, -1);
 export const LEFT = ipoint(-1, 0);
-
-export const Export = {
-  /**
-   * @param {Alg} alg
-   * @return {PointType | IPointType}
-   */
-  calc: alg => operatorCalc(alg),
-
-  /**
-  * @type {PointZero}
-  */
-  point: () => pointFactory(),
-
-  /**
-   * @type {PointAlg}
-   */
-  point: alg => pointFactory(alg),
-
-  /**
-   * @type {PointArr}
-   */
-  point: arr => pointFactory(arr),
-
-  /**
-   * @type {PointCon}
-   */
-  point: (x, y) => pointFactory(x, y),
-
-  /**
-   * @type {IPointAlg}
-   */
-  ipoint: alg => ipointFactory(alg),
-
-  /**
-   * @type {IPointArr}
-   */
-  ipoint: arr => ipointFactory(arr),
-
-  /**
-   * @type {IPointCon}
-   */
-  ipoint: (x, y) => ipointFactory(x, y)
-};

@@ -50,7 +50,6 @@ class AVector {
     }
   }
 
-
   /**
    * @returns {number}
    */
@@ -63,7 +62,11 @@ class AVector {
    */
   normalize() {
     const { length } = this;
-    return new this.constructor(this.x / length, this.y / length, this.z / length);
+    return new this.constructor(
+      this.x / length,
+      this.y / length,
+      this.z / length
+    );
   }
 
   /**
@@ -154,7 +157,9 @@ class AVector {
    * @returns {number}
    */
   distance(v) {
-    return Math.sqrt(square(this.x - v.x) + square(this.y - v.y) + square(this.z - v.z));
+    return Math.sqrt(
+      square(this.x - v.x) + square(this.y - v.y) + square(this.z - v.z)
+    );
   }
 
   /**
@@ -174,11 +179,10 @@ class AVector {
     return [this.x, this.y, this.z];
   }
 
-
   /**
-  * @param {string} target
-  * @returns {VectorType | VictorType | IPointType}
-  */
+   * @param {string} target
+   * @returns {VectorType | VictorType | IPointType}
+   */
   swizzle(target) {
     const data = target.split('').map(t => this[t]);
     if (data.length === 2) {
@@ -219,7 +223,9 @@ class AVector {
    * @returns {string}
    */
   toString() {
-    return `{ x: ${formatNumber(this.x)}, y: ${formatNumber(this.y)}, z: ${formatNumber(this.z)} }`;
+    return `{ x: ${formatNumber(this.x)}, y: ${formatNumber(
+      this.y
+    )}, z: ${formatNumber(this.z)} }`;
   }
 
   /**
@@ -390,17 +396,6 @@ cachedMethod(AVector, 'toArray');
 cachedGetter(AVector, 'length');
 cachedGetter(AVector, 'lengthSq');
 
-/**
- *
- * Vector
- *
- * new Vector(x: *number*, y: *number*, z: *number*): [[Vector]]
- *
- * new Vector(arr: *[number, number, number]*): [[Vector]]
- *
- * new Vector(alg: (*function*(): *number*)): [[Vector]]
- *
- */
 export class Vector extends AVector {
   /**
    *
@@ -466,17 +461,6 @@ export class Vector extends AVector {
   }
 }
 
-/**
- * Victor
- *
- * new Victor(x: *number*, y: *number*, z: *number*): [[Victor]]
- *
- * new Victor(arr: *[number, number, number]*): [[Victor]]
- *
- * new Victor(alg: (*function*(): *number*)): [[Victor]]
- *
- *
- */
 export class Victor extends AVector {
   /**
    * @returns {VictorType}
@@ -505,89 +489,33 @@ export function calc(alg) {
 const vectorFactory = cachedFactory(Vector);
 
 /**
- * @typedef {() => VectorType} VectorZero
- * @typedef {(alg: Alg) => VectorType} VectorAlg
- * @typedef {(x: number , y: number, z: number) => VectorType} VectorCon
- * @typedef {(data: [number, number, number]) => VectorType} VectorArr
- * @typedef {VectorAlg & VectorCon & VectorArr & VectorZero}
- *
- * @param {number | [number, number, number] | Alg} [x]
- * @param {number} [y]
- * @param {number} [z]
- * @returns {VectorType}
- * @hidden
+ * @template Vec
+ * @typedef {() => Vec} Zero
  */
-export function vector(x, y, z) {
-  return vectorFactory(x, y, z);
-}
+/**
+ * @template Vec
+ * @typedef {(alg: Alg) => Vec} Algh
+ */
+/**
+ * @template Vec
+ * @typedef {(x: number, y: number, z: number) => Vec} Con
+ */
+/**
+ * @template Vec
+ * @typedef {(data: [number, number, number]) => Vec} Arr
+ */
+
+/**
+ * @type {Zero<VectorType> & Algh<VectorType> & Con<VectorType> & Arr<VectorType>}
+ */
+export const vector = (...args) => vectorFactory(...args);
 
 const victorFactory = cachedFactory(Victor);
 
 /**
- * @typedef {() => VictorType} VictorZero
- * @typedef {(alg: Alg) => VictorType} VictorAlg
- * @typedef {(x: number , y: number, z: number) => VictorType} VictorCon
- * @typedef {(data: [number, number, number]) => VictorType} VictorArr
- * @typedef {VictorAlg & VictorCon & VictorArr & VictorZero}
- *
- * @param {number | [number, number, number] | Alg} [x]
- * @param {number} [y]
- * @param {number} [z]
- * @returns {VictorType}
- * @hidden
+ * @type {Zero<VictorType> & Algh<VictorType> & Con<VictorType> & Arr<VictorType>}
  */
-export function victor(x, y, z) {
-  return victorFactory(x, y, z);
-}
-
-export const Export = {
-
-  /**
-   * @param {Alg} alg
-   * @return {VectorType | VictorType}
-   */
-  calc: alg => operatorCalc(alg),
-
-  /**
-   * @type {VectorZero}
-   */
-  vector: () => vectorFactory(),
-
-  /**
-   * @type {VectorAlg}
-   */
-  vector: alg => vectorFactory(alg),
-
-  /**
-   * @type {VectorArr}
-   */
-  vector: arr => vectorFactory(arr),
-
-  /**
-   * @type {VectorCon}
-   */
-  vector: (x, y, z) => vectorFactory(x, y, z),
-
-  /**
-  * @type {VictorZero}
-  */
-  victor: () => victorFactory(),
-
-  /**
-   * @type {VictorAlg}
-   */
-  victor: alg => victorFactory(alg),
-
-  /**
-  * @type {VictorArr}
-  */
-  victor: arr => victorFactory(arr),
-
-  /**
-   * @type {VictorCon}
-   */
-  victor: (x, y, z) => victorFactory(x, y, z)
-};
+export const victor = (...args) => victorFactory(...args);
 
 export const ZERO = victor(0, 0, 0);
 export const FORWARD = victor(0, 0, -1);
