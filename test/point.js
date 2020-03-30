@@ -4,7 +4,7 @@ import {
 } from '../src/point';
 
 /**
- * @param {ipoint | point} vec2
+ * @param {(typeof ipoint) | (typeof point)} vec2
  * @param {(typeof Point) | (typeof IPoint)} Vec2
  */
 const pointTest = (vec2, Vec2) => {
