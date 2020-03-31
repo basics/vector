@@ -34,9 +34,8 @@ function square(val) {
  */
 class APoint {
   /**
-   * @param {number | [number, number, number] | Alg} [x]
+   * @param {number | [number, number] | {x: number, y: number} | Alg} [x]
    * @param {number} [y]
-   * @hidden
    */
   constructor(x, y) {
     if (typeof x === 'function') {
@@ -45,6 +44,8 @@ class APoint {
       });
     } else if (isArray(x)) {
       this[AXES] = [...x];
+    } else if (x && typeof x.x === 'number') {
+      this[AXES] = [x.x || 0, x.y || 0];
     } else {
       this[AXES] = [x || 0, y || 0];
     }
@@ -333,7 +334,6 @@ export class IPoint extends APoint {
 /**
  * @param {Alg} alg
  * @return {PointType | IPointType}
- * @hidden
  */
 export function calc(alg) {
   return operatorCalc(alg);
@@ -343,30 +343,37 @@ const pointFactory = cachedFactory(Point);
 
 /**
  * @template P
- * @typedef {() => P} Zero
+ * @typedef {() => P} PZero
  */
 /**
  * @template P
- * @typedef {(alg: Alg) => P} Algh
+ * @typedef {(alg: Alg) => P} PAlg
  */
 /**
  * @template P
- * @typedef {(x: number, y: number) => P} Con
+ * @typedef {(x: number, y: number) => P} PCon
  */
 /**
  * @template P
- * @typedef {(data: [number, number]) => P} Arr
+ * @typedef {(data: [number, number]) => P} PArr
  */
-
 /**
- * @type {Zero<PointType> & Algh<PointType> & Con<PointType> & Arr<PointType>}
+ * @template P
+ * @typedef {(vec: { x: number, y: number }) => P} PObj
+ */
+/**
+ * @template P
+ * @typedef {PZero<Vec> & PAlg<Vec> & PCon<Vec> & PArr<Vec> & PObj<Vec} P
+ */
+/**
+ * @type {P<PointType>}
  */
 export const point = (...args) => pointFactory(...args);
 
 const ipointFactory = cachedFactory(IPoint);
 
 /**
- * @type {Zero<IPointType> & Algh<IPointType> & Con<IPointType> & Arr<IPointType>}
+ * @type {P<IPointType>}
  */
 export const ipoint = (x, y) => ipointFactory(x, y);
 

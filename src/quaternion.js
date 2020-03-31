@@ -399,13 +399,7 @@ const quaternionFactory = cachedFactory(Quaternion);
  * @typedef {(dir: VectorType, up: VectorType) => Quaternion} QuatDirUp
  * @typedef {(axis: VectorType, angle: DegreeType) => Quaternion} QuatAxis
  * @typedef {(arr: [number, number, number, number]) => Quaternion} QuatArr
- * @typedef {QuatNumber & QuatDir & QuatDirUp & QuatAxis & QuatArr & QuatZero}
- *
- * @param {number | VectorType | [number, number, number, number]} [x]
- * @param {number | VectorType} [y]
- * @param {number} [z]
- * @param {number} [w]
- * @hidden
+ * @type {QuatNumber & QuatDir & QuatDirUp & QuatAxis & QuatArr & QuatZero}
  */
 export const quaternion = function (x, y, z, w) {
   return quaternionFactory(x, y, z, w);
@@ -420,17 +414,9 @@ const iquaternionFactory = cachedFactory(IQuaternion);
  * @typedef {(dir: VectorType, up: VectorType) => IQuaternion} IQuatDirUp
  * @typedef {(axis: VectorType, angle: DegreeType) => IQuaternion} IQuatAxis
  * @typedef {(arr: [number, number, number, number]) => IQuaternion} IQuatArr
- * @typedef {IQuatNumber & IQuatDir & IQuatDirUp & IQuatAxis & IQuatArr & IQuatZero}
- *
- * @param {number | VectorType | [number, number, number, number]} [x]
- * @param {number | VectorType} [y]
- * @param {number} [z]
- * @param {number} [w]
- * @hidden
+ * @type {IQuatNumber & IQuatDir & IQuatDirUp & IQuatAxis & IQuatArr & IQuatZero}
  */
-export const iquaternion = function (x, y, z, w) {
-  return iquaternionFactory(x, y, z, w);
-};
+export const iquaternion = (...args) => iquaternionFactory(...args);
 
 const LEFT90 = new IQuaternion(LEFT, degree(90));
 
@@ -451,68 +437,5 @@ export function fromOrientation({ alpha, beta, gamma }, orientation) {
 
   return rot;
 }
-
-export const Export = {
-
-  /**
-   * @type {QuatZero}
-   */
-  quaternion: () => quaternion(),
-
-  /**
-   * @type {QuatDir}
-   */
-  quaternion: (dir) => quaternion(dir),
-
-  /**
-   * @type {QuatDirUp}
-   */
-  quaternion: (dir, up) => quaternion(dir, up),
-
-  /**
-   * @type {QuatArr}
-   */
-  quaternion: (arr) => quaternion(arr),
-
-  /**
-   * @type {QuatAxis}
-   */
-  quaternion: (axis, angle) => quaternion(axis, angle),
-
-  /**
-   * @type {QuatNumber}
-   */
-  quaternion: (x, y, z, w) => quaternion(x, y, z, w),
-
-  /**
-   * @type {IQuatZero}
-   */
-  iquaternion: () => iquaternion(),
-
-  /**
-  * @type {IQuatDir}
-  */
-  iquaternion: (dir) => iquaternion(dir),
-
-  /**
-   * @type {IQuatDirUp}
-   */
-  iquaternion: (dir, up) => iquaternion(dir, up),
-
-  /**
-   * @type {IQuatArr}
-   */
-  iquaternion: (arr) => iquaternion(arr),
-
-  /**
-   * @type {IQuatAxis}
-   */
-  iquaternion: (axis, angle) => iquaternion(axis, angle),
-
-  /**
-   * @type {IQuatNumber}
-   */
-  iquaternion: (x, y, z, w) => iquaternion(x, y, z, w)
-};
 
 export const IDENTITY = iquaternion(0, 0, 0, 1);
