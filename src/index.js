@@ -1,5 +1,6 @@
 import { operatorCalc } from './operator';
-import { Vector } from './vector';
+import { Vector, Victor } from './vector';
+import { Point, IPoint } from './point';
 
 export {
   Vector, Victor, Victor as IVector, vector, victor, victor as ivector, FORWARD, LEFT, UP
@@ -15,15 +16,15 @@ export {
 } from './degree';
 
 /**
- * @typedef {Vector & number} VectorType
- * @typedef {import('./vector').Victor & number} VictorType
- * @typedef {import('./point').Point & number} PointType
- * @typedef {import('./point').IPoint & number} IPointType
+ * @typedef {Vector & number} IndexVectorType
+ * @typedef {Victor & number} IndexVictorType
+ * @typedef {Point & number} IndexPointType
+ * @typedef {IPoint & number} IndexIPointType
  */
 
 /**
  * @param {() => number} alg
- * @return {VectorType | VictorType | PointType | IPointType | number}
+ * @return {IndexVectorType | IndexVictorType | IndexPointType | IndexIPointType | number}
  */
 export function calc(alg) {
   return operatorCalc(alg);

@@ -8,7 +8,6 @@ import {
   defineVectorLength,
   cachedFactory
 } from './operator';
-import { formatNumber } from './formatter';
 
 const X = 0;
 const Y = 1;
