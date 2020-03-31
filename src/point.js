@@ -179,7 +179,7 @@ class APoint {
    * @returns {string}
    */
   toString() {
-    return `{ x: ${formatNumber(this.x)}, y: ${formatNumber(this.y)} }`;
+    return `{ "x": ${this.x}, "y": ${this.y} }`;
   }
 
   /**
@@ -363,17 +363,17 @@ const pointFactory = cachedFactory(Point);
  */
 /**
  * @template P
- * @typedef {PZero<Vec> & PAlg<Vec> & PCon<Vec> & PArr<Vec> & PObj<Vec} P
+ * @typedef {PZero<P> & PAlg<P> & PCon<P> & PArr<P> & PObj<P>} Po
  */
 /**
- * @type {P<PointType>}
+ * @type {Po<PointType>}
  */
 export const point = (...args) => pointFactory(...args);
 
 const ipointFactory = cachedFactory(IPoint);
 
 /**
- * @type {P<IPointType>}
+ * @type {Po<IPointType>}
  */
 export const ipoint = (x, y) => ipointFactory(x, y);
 
