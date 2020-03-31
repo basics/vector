@@ -64,26 +64,16 @@ export class IDegree extends ADegree {
 const ZERO = new IDegree(0);
 
 /**
- * @typedef {(angle: number) => DegreeType} DegreeNum
- * @typedef {(angle: Degree | IDegree) => DegreeType} DegreeDeg
- * @typedef {DegreeNum & DegreeDeg}
- *
  * @param {number | Degree | IDegree} angle
  * @returns {DegreeType}
- * @hidden
  */
 export function degree(angle) {
   return new Degree(angle);
 }
 
 /**
- * @typedef {(angle: number) => IDegreeType} IDegreeNum
- * @typedef {(angle: Degree | IDegree) => IDegreeType} IDegreeDeg
- * @typedef {IDegreeNum & IDegreeDeg}
- *
  * @param {number | Degree | IDegree} angle
  * @returns {IDegreeType}
- * @hidden
  */
 export function idegree(angle) {
   if (angle instanceof IDegree) {
@@ -98,17 +88,3 @@ export function idegree(angle) {
 export function isAngle(angle) {
   return typeof angle === 'number' || angle instanceof ADegree;
 }
-
-export const Export = {
-  /**
-   * @param {number | Degree | IDegree} [angle]
-   * @returns {IDegreeType}
-   */
-  idegree: angle => idegree(angle),
-
-  /**
-   * @param {number | Degree | IDegree} [angle]
-   * @returns {DegreeType}
-   */
-  degree: angle => degree(angle),
-};

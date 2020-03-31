@@ -33,10 +33,9 @@ function square(val) {
  */
 class AVector {
   /**
-   * @param {number | [number, number, number] | Alg} [x]
+   * @param {number | [number, number, number] | {x: number, y: number, z: number}| Alg} [x]
    * @param {number} [y]
    * @param {number} [z]
-   * @hidden
    */
   constructor(x, y, z) {
     if (typeof x === 'function') {
@@ -45,6 +44,8 @@ class AVector {
       });
     } else if (isArray(x)) {
       this[AXES] = [...x];
+    } else if (x && typeof x.x === 'number') {
+      this[AXES] = [x.x || 0, x.y || 0, x.z || 0];
     } else {
       this[AXES] = [x || 0, y || 0, z || 0];
     }
@@ -480,7 +481,6 @@ export class Victor extends AVector {
 /**
  * @param {Alg} alg
  * @return {VectorType | VictorType}
- * @hidden
  */
 export function calc(alg) {
   return operatorCalc(alg);
@@ -490,30 +490,38 @@ const vectorFactory = cachedFactory(Vector);
 
 /**
  * @template Vec
- * @typedef {() => Vec} Zero
+ * @typedef {() => Vec} VecZero
  */
 /**
  * @template Vec
- * @typedef {(alg: Alg) => Vec} Algh
+ * @typedef {(alg: Alg) => Vec} VecAlg
  */
 /**
  * @template Vec
- * @typedef {(x: number, y: number, z: number) => Vec} Con
+ * @typedef {(x: number, y: number, z: number) => Vec} VecCon
  */
 /**
  * @template Vec
- * @typedef {(data: [number, number, number]) => Vec} Arr
+ * @typedef {(data: [number, number, number]) => Vec} VecArr
+ */
+/**
+ * @template Vec
+ * @typedef {(vec: { x: number, y: number, z: number }) => Vec} VecObj
+ */
+/**
+ * @template Vec
+ * @typedef {VecZero<Vec> & VecAlg<Vec> & VecCon<Vec> & VecArr<Vec> & VecObj<Vec} Vec
  */
 
 /**
- * @type {Zero<VectorType> & Algh<VectorType> & Con<VectorType> & Arr<VectorType>}
+ * @type {Vec<VectorType>}
  */
 export const vector = (...args) => vectorFactory(...args);
 
 const victorFactory = cachedFactory(Victor);
 
 /**
- * @type {Zero<VictorType> & Algh<VictorType> & Con<VictorType> & Arr<VictorType>}
+ * @type {Vec<VictorType>}
  */
 export const victor = (...args) => victorFactory(...args);
 
