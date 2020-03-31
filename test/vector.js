@@ -199,11 +199,6 @@ const vectorTest = (vec3, Vec3) => {
     const pos0 = vec3(6, 0, 0);
 
     assert.throws(() => calc(() => pos0 * dir0 || pos0));
-
-    const dir1 = vec3(0, 0, 0);
-    const pos1 = vec3(6, 0, 0);
-
-    assert.throws(() => calc(() => pos1 * dir1 || pos1));
   });
 
   it("should work when using calc function indirectly with ||", () => {
@@ -226,14 +221,10 @@ const vectorTest = (vec3, Vec3) => {
     assert.equal(res1.z, 0);
   });
 
-  it("conditional checks inside calc should return truthy values", () => {
+  it("conditional checks inside calc should throw error", () => {
     const dir0 = vec3(4, 2, 5);
 
-    const res0 = calc(() => (dir0 > 3 ? true : false));
-
-    assert.equal(res0.x, 1);
-    assert.equal(res0.y, 0);
-    assert.equal(res0.z, 1);
+    assert.throws(() => calc(() => (dir0 > 3 ? true : false)));
   });
 };
 
@@ -249,11 +240,11 @@ describe("special Victor test.", () => {
   it("should throw error when tying to change x y z values", () => {
     const pos = victor(5, 6, 7);
 
-    assert.throws(() => (pos.x = 27), Error);
+    assert.throws(() => (pos.x = 27));
     assert.equal(pos.x, 5);
-    assert.throws(() => (pos.y = 28), Error);
+    assert.throws(() => (pos.y = 28));
     assert.equal(pos.y, 6);
-    assert.throws(() => (pos.z = 29), Error);
+    assert.throws(() => (pos.z = 29));
     assert.equal(pos.z, 7);
   });
 
@@ -295,12 +286,12 @@ describe("special Vector test.", () => {
     const dir0 = vector(4, 4, 0);
     const pos0 = vector(6, 0, 0);
 
-    assert.throws(() => pos0.calc(p => p * dir0 || p), Error);
+    assert.throws(() => pos0.calc(p => p * dir0 || p));
 
     const dir1 = vector(0, 0, 0);
     const pos1 = vector(6, 0, 0);
 
-    assert.throws(() => pos1.calc(p => p * dir1 || p), Error);
+    assert.throws(() => pos1.calc(p => p * dir1 || p));
   });
 
   it("should work when using local calc method with indirect ||", () => {
@@ -331,7 +322,7 @@ describe("special Vector test.", () => {
     const dir0 = vector(4, 4, 0);
     const pos0 = vector(6, 0, 0);
 
-    assert.throws(() => pos0.calc(() => dir0), Error);
+    assert.throws(() => pos0.calc(() => dir0));
   });
 
   it("should work when using local calc method indirectly returns vector", () => {

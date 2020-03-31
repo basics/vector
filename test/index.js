@@ -33,9 +33,7 @@ describe('mixed 2D and 3D test.', () => {
   });
 
   it('should throw error from 3d to 2d', () => {
-    assert.throws(() => {
-      const pos = ipoint(() => victor(5, 6, 7) * 2);
-    }, Error);
+    assert.throws(() => ipoint(() => victor(5, 6, 7) * 2));
   });
 
   it('should work tranform manually from 3d to 2d', () => {

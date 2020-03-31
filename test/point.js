@@ -136,13 +136,10 @@ const pointTest = (vec2, Vec2) => {
     assert.equal(res0.y, 4);
   });
 
-  it('conditional checks inside calc should return truthy values', () => {
+  it('conditional checks inside calc should throw error', () => {
     const dir0 = vec2(4, 2);
 
-    const res0 = calc(() => dir0 > 3 ? true : false);
-
-    assert.equal(res0.x, 1);
-    assert.equal(res0.y, 0);
+    assert.throws(() => calc(() => (dir0 > 3 ? true : false)));
   });
 };
 
@@ -158,9 +155,9 @@ describe('special IPoint test.', () => {
   it('should throw error when tying to change x y values', () => {
     const pos = new IPoint(5, 6);
 
-    assert.throws(() => (pos.x = 27), Error);
+    assert.throws(() => (pos.x = 27));
     assert.equal(pos.x, 5);
-    assert.throws(() => (pos.y = 28), Error);
+    assert.throws(() => (pos.y = 28));
     assert.equal(pos.y, 6);
   });
 
@@ -199,8 +196,6 @@ describe('special Point test.', () => {
     const pos0 = point(6, 0);
 
     assert.throws(() => pos0.calc(p => (p * dir0) || p));
-
-    assert.throws(() => pos1.calc(p => (p * dir1) || p));
   });
 
   it('should work when using local calc method with indirectly ||', () => {
