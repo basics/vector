@@ -17,17 +17,16 @@ function handleProgess(progess, alg, resVec) {
   inProgress = progess;
   resultCacheIndex = -1;
   const res = alg(resVec);
-  const typeOfRes = typeof res;
-  if (typeOfRes === 'boolean') {
-    return res ? 1 : 0;
-  }
-  if (typeOfRes !== 'number') {
+  if (typeof res !== 'number') {
     throw new Error(`
-      your assigned progress did not not return a primitive! 
-      calc() does not support logical operators (|| &&) directly
-      
+      your assigned progress did not not return a primitive!
+      calc() does not support logical operators (|| && ==) directly
+
       instead of calc(() => v1 || v2);
       use        calc(() => +v1 || +v2);
+
+      instead of calc(() => v1);
+      use        calc(v1);
       `);
   }
   return res;

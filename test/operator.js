@@ -7,7 +7,7 @@ describe('operatorCalc with Victor test.', () => {
     const pos = victor(5, 6, 7);
     const dir = victor(1, 0, 0);
 
-    assert.throws(() => operatorCalc(() => dir * pos, victor(1, 0, 0)), Error);
+    assert.throws(() => operatorCalc(() => dir * pos, victor(1, 0, 0)));
   });
 });
 
