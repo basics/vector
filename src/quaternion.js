@@ -5,7 +5,7 @@ import {
 import { isArray, multQuatVec } from './util';
 import { formatNumber } from './formatter';
 import { cachedFactory } from './operator';
-import { isAngle, degree, IDegree } from './degree';
+import { isAngle, degree } from './degree';
 
 const X = 0;
 const Y = 1;
@@ -115,10 +115,6 @@ function from(x, y, z, w) {
 
 class AQuaternion {
   /**
-   * @typedef {import('./degree').Degree} Degree
-   * @typedef {import('./degree').IDegree} IDegree
-   * @typedef {IDegree | Degree | number} DegreeType
-   *
    * @param {number | Vector | Victor | Quaternion | IQuaternion | [number, number, number, number] } [x]
    * @param {number | Vector | Victor} [y]
    * @param {number} [z]
@@ -397,7 +393,7 @@ const quaternionFactory = cachedFactory(Quaternion);
  * @typedef {(x: number , y: number, z: number, w: number) => Quaternion} QuatNumber
  * @typedef {(dir: VectorType) => Quaternion} QuatDir
  * @typedef {(dir: VectorType, up: VectorType) => Quaternion} QuatDirUp
- * @typedef {(axis: VectorType, angle: DegreeType) => Quaternion} QuatAxis
+ * @typedef {(axis: VectorType, angle: number) => Quaternion} QuatAxis
  * @typedef {(arr: [number, number, number, number]) => Quaternion} QuatArr
  * @type {QuatNumber & QuatDir & QuatDirUp & QuatAxis & QuatArr & QuatZero}
  */
@@ -412,7 +408,7 @@ const iquaternionFactory = cachedFactory(IQuaternion);
  * @typedef {(x: number, y: number, z: number, w: number) => IQuaternion} IQuatNumber
  * @typedef {(dir: VectorType) => IQuaternion} IQuatDir
  * @typedef {(dir: VectorType, up: VectorType) => IQuaternion} IQuatDirUp
- * @typedef {(axis: VectorType, angle: DegreeType) => IQuaternion} IQuatAxis
+ * @typedef {(axis: VectorType, angle: number) => IQuaternion} IQuatAxis
  * @typedef {(arr: [number, number, number, number]) => IQuaternion} IQuatArr
  * @type {IQuatNumber & IQuatDir & IQuatDirUp & IQuatAxis & IQuatArr & IQuatZero}
  */

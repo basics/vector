@@ -8,7 +8,6 @@ import {
   defineVectorLength,
   cachedFactory
 } from './operator';
-import { formatNumber } from './formatter';
 import { IPoint } from './point';
 
 const X = 0;
@@ -21,7 +20,7 @@ function square(val) {
 }
 
 /**
- * @typedef {IPoint & number} IPointType
+ * @typedef {IPoint & number} VecIPointType
  */
 
 /**
@@ -182,7 +181,7 @@ class AVector {
 
   /**
    * @param {string} target
-   * @returns {VectorType | VictorType | IPointType}
+   * @returns {VectorType | VictorType | VecIPointType}
    */
   swizzle(target) {
     const data = target.split('').map(t => this[t]);
@@ -340,7 +339,7 @@ class AVector {
   }
 
   /**
-   * @returns {IPointType}
+   * @returns {VecIPointType}
    */
   get xy() {
     return new IPoint(this[AXES][X], this[AXES][Y]);
@@ -354,7 +353,7 @@ class AVector {
   }
 
   /**
-   * @returns {IPointType}
+   * @returns {VecIPointType}
    */
   get xz() {
     return new IPoint(this[AXES][X], this[AXES][Z]);
@@ -368,7 +367,7 @@ class AVector {
   }
 
   /**
-   * @returns {IPointType}
+   * @returns {VecIPointType}
    */
   get yz() {
     return new IPoint(this[AXES][Y], this[AXES][Z]);
