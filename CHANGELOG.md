@@ -1,3 +1,11 @@
+## [1.43.2](https://github.com/basics/vector/compare/v1.43.1...v1.43.2) (2020-03-31)
+
+
+### Bug Fixes
+
+* **operator:** remove truthy support ([fdb8608](https://github.com/basics/vector/commit/fdb860819ce806faea8eee19e45762e3deb76a10))
+* **vector:** cleanup jsdocs ([abb2fb6](https://github.com/basics/vector/commit/abb2fb6a74f3379e561185843a0b7a62123b6983))
+
 ## [1.43.1](https://github.com/basics/vector/compare/v1.43.0...v1.43.1) (2020-03-31)
 
 
