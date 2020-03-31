@@ -1,3 +1,10 @@
+## [1.44.1](https://github.com/basics/vector/compare/v1.44.0...v1.44.1) (2020-03-31)
+
+
+### Bug Fixes
+
+* **vector:** fix double jsdoc typedefs ([666d208](https://github.com/basics/vector/commit/666d208b8927446a7477136ab754f55d8024e3d8))
+
 # [1.44.0](https://github.com/basics/vector/compare/v1.43.2...v1.44.0) (2020-03-31)
 
 
