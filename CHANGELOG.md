@@ -1,3 +1,11 @@
+## [1.43.1](https://github.com/basics/vector/compare/v1.43.0...v1.43.1) (2020-03-31)
+
+
+### Bug Fixes
+
+* **config:** revert auto fix behavior ([3ac2188](https://github.com/basics/vector/commit/3ac218822cf346aa24bfaf07c1e98bfcd92a3ab3))
+* **vector:** correct jdocs generic types ([70443ea](https://github.com/basics/vector/commit/70443ea7a4d7c713a1c81a1b3fa49199ced183be))
+
 # [1.43.0](https://github.com/basics/vector/compare/v1.42.0...v1.43.0) (2020-03-25)
 
 
