@@ -1,3 +1,10 @@
+# [1.44.0](https://github.com/basics/vector/compare/v1.43.2...v1.44.0) (2020-03-31)
+
+
+### Features
+
+* **vector:** toString returns valid json string ([c570d70](https://github.com/basics/vector/commit/c570d70d724c391273ef8dc8dd5004a66a2b0ecf))
+
 ## [1.43.2](https://github.com/basics/vector/compare/v1.43.1...v1.43.2) (2020-03-31)
 
 
