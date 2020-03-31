@@ -99,8 +99,6 @@ const pointTest = (vec2, Vec2) => {
     const pos0 = vec2(6, 0);
 
     assert.throws(() => calc(() => (pos0 * dir0) || pos0));
-
-    assert.throws(() => calc(() => (pos1 * dir1) || pos1));
   });
 
   it('should work when using calc function indirectly with ||', () => {
@@ -140,6 +138,21 @@ const pointTest = (vec2, Vec2) => {
     const dir0 = vec2(4, 2);
 
     assert.throws(() => calc(() => (dir0 > 3 ? true : false)));
+  });
+
+  it("should work when toString() to generate a valid json string", () => {
+    const dir0 = vec2(4, 4.5);
+    const json = JSON.parse(dir0.toString());
+
+    assert.equal(json.x, 4);
+    assert.equal(json.y, 4.5);
+  });
+
+  it("should work when calling factory via json object", () => {
+    const dir0 = vec2({ x:4, y: 4.5 });
+
+    assert.equal(dir0.x, 4);
+    assert.equal(dir0.y, 4.5);
   });
 };
 

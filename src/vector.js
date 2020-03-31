@@ -224,9 +224,7 @@ class AVector {
    * @returns {string}
    */
   toString() {
-    return `{ x: ${formatNumber(this.x)}, y: ${formatNumber(
-      this.y
-    )}, z: ${formatNumber(this.z)} }`;
+    return `{ "x": ${this.x}, "y": ${this.y}, "z": ${this.z} }`;
   }
 
   /**
@@ -489,28 +487,28 @@ export function calc(alg) {
 const vectorFactory = cachedFactory(Vector);
 
 /**
- * @template Vec
- * @typedef {() => Vec} VecZero
+ * @template V
+ * @typedef {() => V} VecZero
  */
 /**
- * @template Vec
- * @typedef {(alg: Alg) => Vec} VecAlg
+ * @template V
+ * @typedef {(alg: Alg) => V} VecAlg
  */
 /**
- * @template Vec
- * @typedef {(x: number, y: number, z: number) => Vec} VecCon
+ * @template V
+ * @typedef {(x: number, y: number, z: number) => V} VecCon
  */
 /**
- * @template Vec
- * @typedef {(data: [number, number, number]) => Vec} VecArr
+ * @template V
+ * @typedef {(data: [number, number, number]) => V} VecArr
  */
 /**
- * @template Vec
- * @typedef {(vec: { x: number, y: number, z: number }) => Vec} VecObj
+ * @template V
+ * @typedef {(vec: { x: number, y: number, z: number }) => V} VecObj
  */
 /**
- * @template Vec
- * @typedef {VecZero<Vec> & VecAlg<Vec> & VecCon<Vec> & VecArr<Vec> & VecObj<Vec} Vec
+ * @template V
+ * @typedef {VecZero<V> & VecAlg<V> & VecCon<V> & VecArr<V> & VecObj<V>} Vec
  */
 
 /**
