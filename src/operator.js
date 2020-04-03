@@ -1,4 +1,4 @@
-
+// @ts-nocheck
 const X = 0;
 const Y = 1;
 const Z = 2;
@@ -155,6 +155,11 @@ export function cachedValueOf(VectorClass, getSource) {
   };
 }
 
+/**
+ * @template {Function} F
+ * @param {F} org
+ * @returns {org}
+ */
 function bindCache(org) {
   return function (...args) {
     if (inProgress === X) {
@@ -198,7 +203,7 @@ export function cachedGetter(VectorClass, name) {
   };
 
   Object.defineProperty(Vector, name, {
-    get: bindCache(org)
+    get: bindCache(org),
   });
 }
 
@@ -208,10 +213,25 @@ export function defineVectorLength(VectorClass, value) {
   Object.defineProperty(Vector, VECTOR_LENGTH, { value });
 }
 
+/**
+ * @template {} F, A
+ * @param {{new(...args: A[]): F}} VectorClass
+ * @returns {(...args: A[]) => F}
+ */
 export function cachedFactory(VectorClass) {
   return bindCache((...args) => new VectorClass(...args));
 }
 
-export function cachedFunction(realFactory) {
-  return bindCache((...args) => realFactory(...args));
+/**
+ * @template T
+ * @typedef {{new(...args: any[]): T}} IsClass
+ */
+
+/**
+ * @template {Function} F
+ * @param {F} fun
+ * @returns {F}
+ */
+export function cachedFunction(fun) {
+  return bindCache(fun);
 }

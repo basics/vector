@@ -1,13 +1,6 @@
 // @ts-nocheck
 import { isArray, normRad } from './util';
-import {
-  cachedMethod,
-  cachedGetter,
-  cachedValueOf,
-  operatorCalc,
-  defineVectorLength,
-  cachedFactory
-} from './operator';
+import { cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc } from './operator';
 
 const X = 0;
 const Y = 1;
@@ -29,13 +22,11 @@ function square(val) {
  * @typedef {Point & number} PointType
  * @typedef {() => number} Alg
  * @typedef {APoint & number} APointType
+ */
+/**
  * @abstract
  */
 class APoint {
-  /**
-   * @param {number | [number, number] | {x: number, y: number} | Alg} [x]
-   * @param {number} [y]
-   */
   constructor(x, y) {
     if (typeof x === 'function') {
       operatorCalc(x, (nx, ny) => {
@@ -338,8 +329,6 @@ export function calc(alg) {
   return operatorCalc(alg);
 }
 
-const pointFactory = cachedFactory(Point);
-
 /**
  * @template P
  * @typedef {() => P} PZero
@@ -364,12 +353,15 @@ const pointFactory = cachedFactory(Point);
  * @template P
  * @typedef {PZero<P> & PAlg<P> & PCon<P> & PArr<P> & PObj<P>} Po
  */
+
+const pointFactory = cachedFunction((x, y) => new Point(x, y));
+
 /**
  * @type {Po<PointType>}
  */
-export const point = (...args) => pointFactory(...args);
+export const point = (x, y) => pointFactory(x, y);
 
-const ipointFactory = cachedFactory(IPoint);
+const ipointFactory = cachedFunction((x, y) => new IPoint(x, y));
 
 /**
  * @type {Po<IPointType>}
