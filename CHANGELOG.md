@@ -1,3 +1,15 @@
+# [1.45.0](https://github.com/basics/vector/compare/v1.44.1...v1.45.0) (2020-04-03)
+
+
+### Bug Fixes
+
+* **vector:** add empty first line ([e7bd556](https://github.com/basics/vector/commit/e7bd55628ae3c8622b552482ba02dcc2b2fcfd74))
+
+
+### Features
+
+* **operator:** avoid using cachedFactory ([c6d9833](https://github.com/basics/vector/commit/c6d9833d131b681959109fe09a6d31077ae597f3))
+
 ## [1.44.1](https://github.com/basics/vector/compare/v1.44.0...v1.44.1) (2020-03-31)
 
 
