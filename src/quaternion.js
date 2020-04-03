@@ -1,5 +1,8 @@
+
 // @ts-nocheck
-import { FORWARD, LEFT, RIGHT, UP, Vector, Victor } from './vector';
+import {
+  FORWARD, LEFT, RIGHT, UP, Vector, Victor
+} from './vector';
 import { isArray, multQuatVec } from './util';
 import { formatNumber } from './formatter';
 import { cachedFunction } from './operator';

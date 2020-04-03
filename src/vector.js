@@ -1,6 +1,9 @@
+
 // @ts-nocheck
 import { isArray, multQuatVec, normRad } from './util';
-import { cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc } from './operator';
+import {
+  cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc
+} from './operator';
 import { IPoint } from './point';
 
 const X = 0;

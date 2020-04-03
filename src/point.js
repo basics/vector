@@ -1,6 +1,9 @@
+
 // @ts-nocheck
 import { isArray, normRad } from './util';
-import { cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc } from './operator';
+import {
+  cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc
+} from './operator';
 
 const X = 0;
 const Y = 1;
