@@ -1,8 +1,6 @@
 import { assert } from 'chai';
-import {
-  victor, ipoint, Victor, vector, point, calc
-} from '../src';
-import { cachedValueOf, cachedFactory, operatorCalc } from '../src/operator';
+import { calc, ipoint, point, vector, Victor, victor } from '../src';
+import { cachedFunction, cachedValueOf, operatorCalc } from '../src/operator';
 
 describe('mixed 2D and 3D test.', () => {
   it('fetches higher order operand automatically in calc', () => {
@@ -51,8 +49,9 @@ class Tuple {
     this.z = z;
   }
 }
+
 cachedValueOf(Tuple);
-const tupleFactory = cachedFactory(Tuple);
+const tupleFactory = cachedFunction((x, y, z) => new Tuple(x, y, z));
 const tuple = (x, y, z) => {
   if (typeof x === 'function') {
     return operatorCalc(x, new Tuple());

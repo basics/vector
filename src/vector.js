@@ -1,13 +1,6 @@
 // @ts-nocheck
 import { isArray, multQuatVec, normRad } from './util';
-import {
-  cachedMethod,
-  cachedGetter,
-  cachedValueOf,
-  operatorCalc,
-  defineVectorLength,
-  cachedFactory
-} from './operator';
+import { cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc } from './operator';
 import { IPoint } from './point';
 
 const X = 0;
@@ -21,21 +14,16 @@ function square(val) {
 
 /**
  * @typedef {IPoint & number} VecIPointType
- */
-
-/**
  * @typedef {Victor & number} VictorType
  * @typedef {Vector & number} VectorType
  * @typedef {() => number} Alg
  * @typedef {AVector & number} AVectorType
+ */
+
+/**
  * @abstract
  */
 class AVector {
-  /**
-   * @param {number | [number, number, number] | {x: number, y: number, z: number}| Alg} [x]
-   * @param {number} [y]
-   * @param {number} [z]
-   */
   constructor(x, y, z) {
     if (typeof x === 'function') {
       operatorCalc(x, (nx, ny, nz) => {
@@ -65,7 +53,7 @@ class AVector {
     return new this.constructor(
       this.x / length,
       this.y / length,
-      this.z / length
+      this.z / length,
     );
   }
 
@@ -96,7 +84,7 @@ class AVector {
     return new this.constructor(
       this.y * v.z - this.z * v.y,
       this.z * v.x - this.x * v.z,
-      this.x * v.y - this.y * v.x
+      this.x * v.y - this.y * v.x,
     );
   }
 
@@ -128,7 +116,7 @@ class AVector {
   toAngles() {
     return {
       theta: Math.atan2(this.z, this.x),
-      phi: Math.asin(this.y / this.length)
+      phi: Math.asin(this.y / this.length),
     };
   }
 
@@ -158,7 +146,7 @@ class AVector {
    */
   distance(v) {
     return Math.sqrt(
-      square(this.x - v.x) + square(this.y - v.y) + square(this.z - v.z)
+      square(this.x - v.x) + square(this.y - v.y) + square(this.z - v.z),
     );
   }
 
@@ -184,7 +172,8 @@ class AVector {
    * @returns {VectorType | VictorType | VecIPointType}
    */
   swizzle(target) {
-    const data = target.split('').map(t => this[t]);
+    const data = target.split('')
+      .map(t => this[t]);
     if (data.length === 2) {
       return new IPoint(data[0], data[1]);
     }
@@ -483,8 +472,6 @@ export function calc(alg) {
   return operatorCalc(alg);
 }
 
-const vectorFactory = cachedFactory(Vector);
-
 /**
  * @template V
  * @typedef {() => V} VecZero
@@ -510,17 +497,19 @@ const vectorFactory = cachedFactory(Vector);
  * @typedef {VecZero<V> & VecAlg<V> & VecCon<V> & VecArr<V> & VecObj<V>} Vec
  */
 
+const vectorFactory = cachedFunction((x, y, z) => new Vector(x, y, z));
+
 /**
  * @type {Vec<VectorType>}
  */
-export const vector = (...args) => vectorFactory(...args);
+export const vector = (x, y, z) => vectorFactory(x, y, z);
 
-const victorFactory = cachedFactory(Victor);
+const victorFactory = cachedFunction((x, y, z) => new Victor(x, y, z));
 
 /**
  * @type {Vec<VictorType>}
  */
-export const victor = (...args) => victorFactory(...args);
+export const victor = (x, y, z) => victorFactory(x, y, z);
 
 export const ZERO = victor(0, 0, 0);
 export const FORWARD = victor(0, 0, -1);

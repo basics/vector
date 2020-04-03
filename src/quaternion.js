@@ -1,11 +1,9 @@
 // @ts-nocheck
-import {
-  Vector, Victor, FORWARD, LEFT, UP, RIGHT
-} from './vector';
+import { FORWARD, LEFT, RIGHT, UP, Vector, Victor } from './vector';
 import { isArray, multQuatVec } from './util';
 import { formatNumber } from './formatter';
-import { cachedFactory } from './operator';
-import { isAngle, degree } from './degree';
+import { cachedFunction } from './operator';
+import { degree, isAngle } from './degree';
 
 const X = 0;
 const Y = 1;
@@ -21,6 +19,7 @@ const INVERSE_CACHE = Symbol('inverse cache');
 function length([x, y, z, w]) {
   return Math.sqrt(x * x + y * y + z * z + w * w);
 }
+
 function normalize(axes) {
   const len = length(axes);
   axes[X] /= len;
@@ -114,12 +113,6 @@ function from(x, y, z, w) {
 }
 
 class AQuaternion {
-  /**
-   * @param {number | Vector | Victor | Quaternion | IQuaternion | [number, number, number, number] } [x]
-   * @param {number | Vector | Victor} [y]
-   * @param {number} [z]
-   * @param {number} [w]
-   */
   constructor(x, y, z, w) {
     this[AXES] = from(x, y, z, w);
     normalize(this[AXES]);
@@ -169,7 +162,7 @@ class AQuaternion {
 
   get inverse() {
     const {
-      x, y, z, w
+      x, y, z, w,
     } = this;
     return this.constructor(x * -1, y * -1, z * -1, w);
   }
@@ -179,10 +172,10 @@ class AQuaternion {
   }
 
   /**
-  *
-  * @param {AQuaternion} v
-  * @returns {boolean}
-  */
+   *
+   * @param {AQuaternion} v
+   * @returns {boolean}
+   */
   equals(v) {
     return this.x === v.x && this.y === v.y && this.z === v.z && this.w === v.w;
   }
@@ -200,17 +193,17 @@ class AQuaternion {
   }
 
   /**
-    *
-    * @returns {number}
-    */
+   *
+   * @returns {number}
+   */
   get x() {
     return this[AXES][X];
   }
 
   /**
-    *
-    * @throws SetNotImplementedError
-    */
+   *
+   * @throws SetNotImplementedError
+   */
   set x(_) {
     throw new Error('set x() not implemented');
   }
@@ -274,11 +267,11 @@ class AQuaternion {
 
 export class Quaternion extends AQuaternion {
   /**
-  * @param {number | Quaternion | IQuaternion | Vector | Victor | [number, number, number, number] } [x]
-  * @param {number | Vector | Victor} [y]
-  * @param {number} [z]
-  * @param {number} [w]
-  */
+   * @param {number | Quaternion | IQuaternion | Vector | Victor | [number, number, number, number] } [x]
+   * @param {number | Vector | Victor} [y]
+   * @param {number} [z]
+   * @param {number} [w]
+   */
   set(x, y, z, w) {
     if (x instanceof AQuaternion) {
       this[AXES] = [...x[AXES]];
@@ -289,9 +282,9 @@ export class Quaternion extends AQuaternion {
   }
 
   /**
-     *
-     * @param {number} x
-     */
+   *
+   * @param {number} x
+   */
   set x(x) {
     this[AXES][X] = x;
   }
@@ -313,9 +306,9 @@ export class Quaternion extends AQuaternion {
   }
 
   /**
-  *
-  * @param {number} w
-  */
+   *
+   * @param {number} w
+   */
   set w(w) {
     this[AXES][W] = w;
   }
@@ -378,41 +371,60 @@ export class IQuaternion extends AQuaternion {
   get inverse() {
     return fromCache(this, INVERSE_CACHE, () => {
       const {
-        x, y, z, w
+        x, y, z, w,
       } = this;
       return this.constructor(x * -1, y * -1, z * -1, w);
     });
   }
 }
 
-const quaternionFactory = cachedFactory(Quaternion);
+const q = new Quaternion();
+
+const quaternionFactory = cachedFunction((x, y, z, w) => new Quaternion(x, y, z, w));
 
 /**
  * @typedef {Vector | Victor} VectorType
- * @typedef {() => Quaternion} QuatZero
- * @typedef {(x: number , y: number, z: number, w: number) => Quaternion} QuatNumber
- * @typedef {(dir: VectorType) => Quaternion} QuatDir
- * @typedef {(dir: VectorType, up: VectorType) => Quaternion} QuatDirUp
- * @typedef {(axis: VectorType, angle: number) => Quaternion} QuatAxis
- * @typedef {(arr: [number, number, number, number]) => Quaternion} QuatArr
- * @type {QuatNumber & QuatDir & QuatDirUp & QuatAxis & QuatArr & QuatZero}
  */
-export const quaternion = function (x, y, z, w) {
-  return quaternionFactory(x, y, z, w);
-};
-
-const iquaternionFactory = cachedFactory(IQuaternion);
+/**
+ * @template Q
+ * @typedef {() => Q} QuatZero
+ */
+/**
+ * @template Q
+ * @typedef {(x: number, y: number, z: number, w: number) => Q} QuatNumber
+ */
+/**
+ * @template Q
+ * @typedef {(dir: VectorType) => Q} QuatDir
+ */
+/**
+ * @template Q
+ * @typedef {(dir: VectorType, up: VectorType) => Q} QuatDirUp
+ */
+/**
+ * @template Q
+ * @typedef {(axis: VectorType, angle: number) => Q} QuatAxis
+ */
+/**
+ * @template Q
+ * @typedef {(arr: [number, number, number, number]) => Q} QuatArr
+ */
+/**
+ * @template Q
+ * @typedef {QuatZero<Q> & QuatDir<Q> & QuatDirUp<Q> & QuatAxis<Q> & QuatArr<Q> & QuatZero<Q>} QuatFac
+ */
 
 /**
- * @typedef {() => IQuaternion} IQuatZero
- * @typedef {(x: number, y: number, z: number, w: number) => IQuaternion} IQuatNumber
- * @typedef {(dir: VectorType) => IQuaternion} IQuatDir
- * @typedef {(dir: VectorType, up: VectorType) => IQuaternion} IQuatDirUp
- * @typedef {(axis: VectorType, angle: number) => IQuaternion} IQuatAxis
- * @typedef {(arr: [number, number, number, number]) => IQuaternion} IQuatArr
- * @type {IQuatNumber & IQuatDir & IQuatDirUp & IQuatAxis & IQuatArr & IQuatZero}
+ * @type {QuatFac<Quaternion>}
  */
-export const iquaternion = (...args) => iquaternionFactory(...args);
+export const quaternion = (x, y, z, w) => quaternionFactory(x, y, z, w);
+
+const iquaternionFactory = cachedFunction((x, y, z, w) => new IQuaternion(x, y, z, w));
+
+/**
+ * @type {QuatFac<IQuaternion>}
+ */
+export const iquaternion = (x, y, z, w) => iquaternionFactory(x, y, z, w);
 
 const LEFT90 = new IQuaternion(LEFT, degree(90));
 

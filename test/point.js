@@ -1,7 +1,5 @@
 import { assert } from 'chai';
-import {
-  Point, IPoint, point, ipoint, calc
-} from '../src/point';
+import { calc, ipoint, IPoint, Point, point } from '../src/point';
 
 /**
  * @param {(typeof ipoint) | (typeof point)} vec2
@@ -70,7 +68,8 @@ const pointTest = (vec2, Vec2) => {
   });
 
   it('should create polar coordinates when calling toAngles()', () => {
-    const dir1 = vec2(0, 1).normalize();
+    const dir1 = vec2(0, 1)
+      .normalize();
     const rad = dir1.getRad();
     assert.closeTo(rad, 1.57, 0.1);
   });
@@ -80,7 +79,8 @@ const pointTest = (vec2, Vec2) => {
     const dir2 = vec2(-12, 0);
 
     const angle1 = dir1.angleTo(dir2);
-    const angle2 = dir1.normalize().angleTo(dir2.normalize());
+    const angle2 = dir1.normalize()
+      .angleTo(dir2.normalize());
 
     assert.closeTo(angle1, -1.57, 0.1);
     assert.closeTo(angle1, angle2, 0.1);
@@ -140,7 +140,7 @@ const pointTest = (vec2, Vec2) => {
     assert.throws(() => calc(() => (dir0 > 3 ? true : false)));
   });
 
-  it("should work when toString() to generate a valid json string", () => {
+  it('should work when toString() to generate a valid json string', () => {
     const dir0 = vec2(4, 4.5);
     const json = JSON.parse(dir0.toString());
 
@@ -148,8 +148,11 @@ const pointTest = (vec2, Vec2) => {
     assert.equal(json.y, 4.5);
   });
 
-  it("should work when calling factory via json object", () => {
-    const dir0 = vec2({ x:4, y: 4.5 });
+  it('should work when calling factory via json object', () => {
+    const dir0 = vec2({
+      x: 4,
+      y: 4.5,
+    });
 
     assert.equal(dir0.x, 4);
     assert.equal(dir0.y, 4.5);
@@ -166,7 +169,7 @@ describe('standard IPoint test.', () => {
 
 describe('special IPoint test.', () => {
   it('should throw error when tying to change x y values', () => {
-    const pos = new IPoint(5, 6);
+    const pos = ipoint(5, 6);
 
     assert.throws(() => (pos.x = 27));
     assert.equal(pos.x, 5);
@@ -175,7 +178,7 @@ describe('special IPoint test.', () => {
   });
 
   it('should toPoint() create a mutable Point copy', () => {
-    const ipos = new IPoint(5, 6);
+    const ipos = ipoint(5, 6);
     const pos = ipos.toPoint();
 
     assert.instanceOf(pos, Point);
