@@ -175,6 +175,17 @@ class APoint {
     return `{ "x": ${this.x}, "y": ${this.y} }`;
   }
 
+  toCSSVars(name, target) {
+    let prefix = '';
+    if (name) {
+      prefix = `-${name}`;
+    }
+    target = target || {};
+    target[`-${prefix}-x`] = this.x;
+    target[`-${prefix}-y`] = this.y;
+    return target;
+  }
+
   /**
    *
    * @returns {number}
