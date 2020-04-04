@@ -4,7 +4,6 @@ import {
   FORWARD, LEFT, RIGHT, UP, Vector, Victor
 } from './vector';
 import { isArray, multQuatVec } from './util';
-import { formatNumber } from './formatter';
 import { cachedFunction } from './operator';
 import { degree, isAngle } from './degree';
 
@@ -264,7 +263,20 @@ class AQuaternion {
    * @returns {string}
    */
   toString() {
-    return `{ x: ${formatNumber(this.x)}, y: ${formatNumber(this.y)}, z: ${formatNumber(this.z)}, w: ${formatNumber(this.w)} }`;
+    return `{ "x": ${this.x}, "y": ${this.y}, "z": ${this.z}, "w": ${this.w} }`;
+  }
+
+  toCSSVars(name, target) {
+    let prefix = '';
+    if (name) {
+      prefix = `-${name}`;
+    }
+    target = target || {};
+    target[`-${prefix}-x`] = this.x;
+    target[`-${prefix}-y`] = this.y;
+    target[`-${prefix}-z`] = this.z;
+    target[`-${prefix}-w`] = this.w;
+    return target;
   }
 }
 

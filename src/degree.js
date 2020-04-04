@@ -34,7 +34,17 @@ class ADegree {
    * @returns {string}
    */
   toString() {
-    return `${this[ANGLE] * RAD_TO_DEG}deg`;
+    return `{ "angle": ${this[ANGLE]} }`;
+  }
+
+  toCSSVars(name, target) {
+    let prefix = '';
+    if (name) {
+      prefix = `-${name}`;
+    }
+    target = target || {};
+    target[`-${prefix}-angle`] = `${this[ANGLE] * RAD_TO_DEG}deg`;
+    return target;
   }
 }
 
