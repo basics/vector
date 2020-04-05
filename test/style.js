@@ -1,5 +1,4 @@
-import { assert } from 'chai';
-import { style } from '../src/style';
+import { style, templateStyle } from '../src/style';
 import { victor } from '../src';
 
 describe('style test.', () => {
@@ -12,20 +11,19 @@ describe('style test.', () => {
         rotateZ(calc(var(--rotation-z) * 1deg))
         rotateX(calc(var(--rotation-x) * 1deg))
         rotateY(calc(var(--rotation-y) * 1deg))
-        translate3d(calc(--position-x * 1px), calc(--position-y * 1px), calc(--position-z * 1px))
-    `;
-    const definition = {
-      template,
-      fov: 450,
-      position: victor(5, 6, 7),
-      rotation: victor(45, 6, 7),
-    };
+        translate3d(calc(--position-x * 1px), calc(--position-y * 1px), calc(--position-z * 1px));
+        
+      perspective: calc(var(--fov) * 1px);`;
 
-    const matrix = style(definition);
+    const matrix = style();
 
     matrix.position = victor(-5, -6, -7);
+    matrix.fov = 450;
+    matrix.position = victor(5, 6, 7);
+    matrix.rotation = victor(45, 6, 7);
 
-    console.log('hallo', matrix.cssTemplate, matrix.cssVars);
+    console.log('css vars', matrix.cssVars);
+    console.log('for template', template);
 
     // assert.equal(formatNumber(0.00000001), '0.00000001');
 
@@ -34,26 +32,20 @@ describe('style test.', () => {
   it('a quaternion should behave like static fromOrientation from real Quaternion clas', () => {
 
     const template = `
-      transform:
-        rotateY(calc(var(--alpha-y) * 1deg))
-        rotateZ(calc(var(--beta-z) * 1deg))
-        rotateX(calc(var(--gamma-x) * 1deg))
-        rotateZ(-90deg))
-    `;
-    const definition = {
-      template,
-      alpha: 450,
-      beta: 10,
-      gamma: 12,
-      orientation: 0
-    };
+transform:
+  rotateY(calc(var(--gyro-alpha) * 1deg))
+  rotateZ(calc(var(--gyro-beta) * 1deg))
+  rotateX(calc(var(--gyro-gamma) * 1deg))
+  rotateZ(-90deg));
+`;
 
-    const matrix = style(definition);
+    const matrix = templateStyle(template, 'gyro');
 
     matrix.beta = 20;
-    matrix.orientation = 90;
+    matrix.alpha = 20;
+    matrix.gamma = 12;
 
-    console.log('hallo', matrix.cssTemplate, matrix.cssVars);
+    console.log('baked style', matrix.bakeStyle());
 
     // assert.equal(formatNumber(0.00000001), '0.00000001');
 
