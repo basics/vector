@@ -261,14 +261,31 @@ class AQuaternion {
 
   /**
    *
+   * @returns {object}
+   */
+  toJSON() {
+    return {
+      x: this.x,
+      y: this.y,
+      z: this.z,
+      w: this.w
+    };
+  }
+
+  /**
+   *
    * @returns {string}
    */
   toString() {
-    return `{ "x": ${this.x}, "y": ${this.y}, "z": ${this.z}, "w": ${this.w} }`;
+    return JSON.stringify(this.toJSON());
   }
 
+  /**
+   *
+   * @returns {object}
+   */
   toCSSVars(name, target) {
-    return convertToCSSVars(name, JSON.parse(this.toString()), target);
+    return convertToCSSVars(name, this.toJSON(), target);
   }
 }
 

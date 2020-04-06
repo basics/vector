@@ -213,14 +213,26 @@ class AVector {
 
   /**
    *
+   * @returns {object}
+   */
+  toJSON() {
+    return { x: this.x, y: this.y, z: this.z };
+  }
+
+  /**
+   *
    * @returns {string}
    */
   toString() {
-    return `{ "x": ${this.x}, "y": ${this.y}, "z": ${this.z} }`;
+    return JSON.stringify(this.toJSON());
   }
 
+  /**
+   *
+   * @returns {object}
+   */
   toCSSVars(name, target) {
-    return convertToCSSVars(name, JSON.parse(this.toString()), target);
+    return convertToCSSVars(name, this.toJSON(), target);
   }
 
   /**
