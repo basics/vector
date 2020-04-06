@@ -1,3 +1,4 @@
+import { assert } from 'chai';
 import { style, templateStyle } from '../src/style';
 import { victor } from '../src';
 
@@ -19,13 +20,22 @@ describe('style test.', () => {
 
     matrix.position = victor(-5, -6, -7);
     matrix.fov = 450;
-    matrix.position = victor(5, 6, 7);
     matrix.rotation = victor(45, 6, 7);
 
-    console.log('css vars', matrix.cssVars);
+
+    const { cssVars } = matrix;
+    console.log('css vars', cssVars);
     console.log('for template', template);
 
-    // assert.equal(formatNumber(0.00000001), '0.00000001');
+    assert.deepEqual(cssVars, {
+      '--position-x': -5,
+      '--position-y': -6,
+      '--position-z': -7,
+      '--fov': 450,
+      '--rotation-x': 45,
+      '--rotation-y': 6,
+      '--rotation-z': 7
+    });
 
   });
 
