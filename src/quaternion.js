@@ -6,6 +6,7 @@ import {
 import { isArray, multQuatVec } from './util';
 import { cachedFunction } from './operator';
 import { degree, isAngle } from './degree';
+import { convertToCSSVars } from './utils/css';
 
 const X = 0;
 const Y = 1;
@@ -267,16 +268,7 @@ class AQuaternion {
   }
 
   toCSSVars(name, target) {
-    let prefix = '';
-    if (name) {
-      prefix = `-${name}`;
-    }
-    target = target || {};
-    target[`-${prefix}-x`] = this.x;
-    target[`-${prefix}-y`] = this.y;
-    target[`-${prefix}-z`] = this.z;
-    target[`-${prefix}-w`] = this.w;
-    return target;
+    return convertToCSSVars(name, JSON.parse(this.toString()), target);
   }
 }
 

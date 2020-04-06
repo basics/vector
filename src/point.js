@@ -4,6 +4,7 @@ import { isArray, normRad } from './util';
 import {
   cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc
 } from './operator';
+import { convertToCSSVars } from './utils/css';
 
 const X = 0;
 const Y = 1;
@@ -176,14 +177,7 @@ class APoint {
   }
 
   toCSSVars(name, target) {
-    let prefix = '';
-    if (name) {
-      prefix = `-${name}`;
-    }
-    target = target || {};
-    target[`-${prefix}-x`] = this.x;
-    target[`-${prefix}-y`] = this.y;
-    return target;
+    return convertToCSSVars(name, JSON.parse(this.toString()), target);
   }
 
   /**

@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { normRad } from './util';
+import { convertToCSSVars } from './utils/css';
 
 const ANGLE = Symbol('angle rad');
 const DEG_TO_RAD = Math.PI / 180;
@@ -38,13 +39,7 @@ class ADegree {
   }
 
   toCSSVars(name, target) {
-    let prefix = '';
-    if (name) {
-      prefix = `-${name}`;
-    }
-    target = target || {};
-    target[`-${prefix}-angle`] = `${this[ANGLE] * RAD_TO_DEG}deg`;
-    return target;
+    return convertToCSSVars(name, JSON.parse(this.toString()), target);
   }
 }
 
