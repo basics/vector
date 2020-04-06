@@ -8,7 +8,7 @@ export function getVarPrefix(name) {
 
 export function convertToCSSVars(name, obj, target = {}) {
   const prefix = getVarPrefix(name);
-  Object.entries(obj).forEach((value, key) => {
+  Object.entries(obj).forEach(([key, value]) => {
     target[`--${prefix}${key}`] = value;
   });
   return target;
