@@ -17,7 +17,7 @@ export class Style {
       if (t.toCSSVars) {
         t.toCSSVars(`${prefix}${key}`, res);
       } else {
-        res[`--${prefix}${key}`] = t.toString();
+        res[`--${prefix}${key}`] = t.valueOf();
       }
       return res;
     }, {});
