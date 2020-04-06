@@ -32,14 +32,24 @@ class ADegree {
   }
 
   /**
+   * @returns {object}
+   */
+  toJSON() {
+    return { angle: this[ANGLE] };
+  }
+
+  /**
    * @returns {string}
    */
   toString() {
-    return `{ "angle": ${this[ANGLE]} }`;
+    return JSON.stringify(this.toJSON());
   }
 
+  /**
+   * @returns {object}
+   */
   toCSSVars(name, target) {
-    return convertToCSSVars(name, JSON.parse(this.toString()), target);
+    return convertToCSSVars(name, this.toJSON(), target);
   }
 }
 
