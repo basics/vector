@@ -24,23 +24,6 @@ export class Style {
   }
 }
 
-export class TemplateStyle extends Style {
-  constructor(template, name = undefined) {
-    super(name);
-    this.template = template;
-  }
-
-  bakeStyle() {
-    const { cssVars } = this;
-    const vars = Object.entries(cssVars).map(([key, v]) => `${key}: ${v}`).join((';\n'));
-    return `\n${this.template}\n${vars}\n`;
-  }
-}
-
 export function style(name = undefined) {
   return new Style(name);
-}
-
-export function templateStyle(template, name = undefined) {
-  return new TemplateStyle(template, name);
 }
