@@ -1,3 +1,12 @@
+## [1.46.1](https://github.com/basics/vector/compare/v1.46.0...v1.46.1) (2020-04-07)
+
+
+### Bug Fixes
+
+* **style:** rename resource file style to css ([4d1f03a](https://github.com/basics/vector/commit/4d1f03a7dbd704d08484dfcfbc0626a49b269dd9))
+* **style:** rename style test to css ([4fcf774](https://github.com/basics/vector/commit/4fcf774c05462b0c0657dcf1620136b8e1114db1))
+* **style:** rename style to css ([67ac28a](https://github.com/basics/vector/commit/67ac28a4d672d7945bddc67f725c75bc75dfefad))
+
 # [1.46.0](https://github.com/basics/vector/compare/v1.45.0...v1.46.0) (2020-04-07)
 
 
