@@ -1,3 +1,22 @@
+# [1.46.0](https://github.com/basics/vector/compare/v1.45.0...v1.46.0) (2020-04-07)
+
+
+### Bug Fixes
+
+* **css:** correct usage of Object.entries ([d94b8ec](https://github.com/basics/vector/commit/d94b8ec1f4c1412a965f168f4df4dcfd98971b59))
+* **style:** cleanup class and more tests ([3fa6e48](https://github.com/basics/vector/commit/3fa6e48b9804c49458df59d78dc9da01361dadc6))
+* **style:** running test for style ([742adcb](https://github.com/basics/vector/commit/742adcbe6ee165952fcb3df3f342152b9aae14ea))
+* **style:** void call toString() ([5c48c44](https://github.com/basics/vector/commit/5c48c445db4ffa58268e06800140bb2e66258668))
+* **toCSSVars:** exported to a separate file ([123dbfd](https://github.com/basics/vector/commit/123dbfd703dc6b97d21523e16ad6224c07faba0c))
+
+
+### Features
+
+* **style:** generic style for css vars ([438bedf](https://github.com/basics/vector/commit/438bedf8d56f4669c5fa60ca75e3bd17809cae31))
+* **style:** split to Style and TemplateStyle ([e4cf841](https://github.com/basics/vector/commit/e4cf841a4e0472c36d2b932130eb15ae12645d60))
+* **toJSON:** added toJSON function ([afaa034](https://github.com/basics/vector/commit/afaa03499f67acc88636735a338f93b9fe962608))
+* **vector:** primitives with  toCSSVars method ([9e9ec6c](https://github.com/basics/vector/commit/9e9ec6c86d719c71508ed20e68bcd169e28384d9))
+
 # [1.45.0](https://github.com/basics/vector/compare/v1.44.1...v1.45.0) (2020-04-03)
 
 
