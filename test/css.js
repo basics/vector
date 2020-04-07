@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { style } from '../src/style';
+import { css } from '../src/css';
 import { victor } from '../src';
 
 describe('style test.', () => {
@@ -16,16 +16,16 @@ describe('style test.', () => {
     //
     //   perspective: calc(var(--fov) * 1px);`;
 
-    const matrix = style();
+    const matrix = css();
 
     matrix.position = victor(-5, -6, -7);
     matrix.fov = 450;
     matrix.rotation = victor(45, 6, 7);
 
 
-    const { cssVars } = matrix;
+    const { vars } = matrix;
 
-    assert.deepEqual(cssVars, {
+    assert.deepEqual(vars, {
       '--position-x': -5,
       '--position-y': -6,
       '--position-z': -7,
@@ -48,15 +48,15 @@ describe('style test.', () => {
     //   `;
 
 
-    const matrix = style('gyro');
+    const matrix = css('gyro');
 
     matrix.beta = 20;
     matrix.alpha = 20;
     matrix.gamma = 12;
 
-    const { cssVars } = matrix;
+    const { vars } = matrix;
 
-    assert.deepEqual(cssVars, {
+    assert.deepEqual(vars, {
       '--gyro-beta': 20,
       '--gyro-alpha': 20,
       '--gyro-gamma': 12
