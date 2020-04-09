@@ -1,9 +1,6 @@
-
 // @ts-nocheck
-import { isArray, multQuatVec, normRad } from './util';
-import {
-  cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc
-} from './operator';
+import { acos, isArray, multQuatVec, normRad } from './utils/math';
+import { cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc } from './operator';
 import { IPoint } from './point';
 import { convertToCSSVars } from './utils/css';
 
@@ -130,7 +127,7 @@ class AVector {
    * @returns {number}
    */
   angleTo(v) {
-    return normRad(Math.acos(this.dot(v) / (this.length * v.length)));
+    return normRad(acos(this.dot(v) / (this.length * v.length)));
   }
 
   // http://schteppe.github.io/cannon.js/docs/files/src_math_Quaternion.js.html
@@ -538,3 +535,4 @@ export const LEFT = victor(-1, 0, 0);
 export const RIGHT = victor(1, 0, 0);
 export const UP = victor(0, 1, 0);
 export const BOTTOM = victor(0, -1, 0);
+export const ONE = victor(1, 1, 1);

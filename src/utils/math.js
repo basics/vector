@@ -33,3 +33,13 @@ export function normRad(angle) {
   }
   return mod;
 }
+
+export function acos(fValue) {
+  if (fValue > -1.0) {
+    if (fValue < 1.0) {
+      return Math.acos(fValue);
+    }
+    return 0.0;
+  }
+  return angle180;
+}
