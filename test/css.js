@@ -1,8 +1,51 @@
 import { assert } from 'chai';
 import { css } from '../src/css';
-import { victor } from '../src';
+import { iquaternion, victor } from '../src';
 
 describe('style test.', () => {
+
+  it('a transform should behave like in 3d game engines', () => {
+
+    // const template = `
+    //   transform: matrix3d(
+    //    var(--rot-a1), var(--rot-b1), var(--rot-c1), var(--translation-x),
+    //    var(--rot-a2), var(--rot-b2), var(--rot-c2), var(--translation-y),
+    //    var(--rot-a3), var(--rot-b3), var(--rot-c3), var(--translation-z),
+    //    var(--scale-x), var(--scale-y), var(--scale-z), 1.0);
+
+    const transform = css();
+
+    transform.translation = victor(-5, -6, -7);
+    transform.rotation = iquaternion(victor(0, 0, -1), victor(0, 1, 0));
+    transform.scale = victor(1, 1, 1);
+
+
+    const { vars } = transform;
+
+    assert.deepEqual(vars, {
+      '--rotation-a1': -1,
+      '--rotation-a2': 0,
+      '--rotation-a3': 0,
+      '--rotation-b1': 0,
+      '--rotation-b2': 1,
+      '--rotation-b3': 0,
+      '--rotation-c1': 0,
+      '--rotation-c2': 0,
+      '--rotation-c3': -1,
+      '--rotation-w': 0,
+      '--rotation-x': 0,
+      '--rotation-y': 1,
+      '--rotation-z': 0,
+      '--scale-x': 1,
+      '--scale-y': 1,
+      '--scale-z': 1,
+      '--translation-x': -5,
+      '--translation-y': -6,
+      '--translation-z': -7
+    });
+
+  });
+
   // https://github.com/keithclark/cssvr/blob/master/src/js/viewport.js#L74
   it('a matrix should behave like in the cool cs vr demo', () => {
 

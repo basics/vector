@@ -1,9 +1,6 @@
-
 // @ts-nocheck
-import {
-  FORWARD, LEFT, RIGHT, UP, Vector, Victor
-} from './vector';
-import { isArray, multQuatVec } from './util';
+import { FORWARD, LEFT, RIGHT, UP, Vector, Victor } from './vector';
+import { isArray, multQuatVec } from './utils/math';
 import { cachedFunction } from './operator';
 import { degree, isAngle } from './degree';
 import { convertToCSSVars } from './utils/css';
@@ -112,6 +109,9 @@ function getQuat(x, y, z, w) {
 }
 
 function from(x, y, z, w) {
+  if (x && typeof x.w === 'number') {
+    return getQuat(x.x, x.y, x.z, x.w);
+  }
   return getQuat(x, y, z, w) || [0, 0, 0, 1];
 }
 
@@ -129,12 +129,12 @@ class AQuaternion {
   }
 
   multiply(other, y, z, w) {
+    if (typeof other.w === 'number') {
+      return this.multiplyQuaternion(other);
+    }
     const o = getQuat(other, y, z, w);
     if (o) {
       return this.multiplyQuaternion(new this.constructor(o));
-    }
-    if (typeof other.w === 'number') {
-      return this.multiplyQuaternion(other);
     }
     return this.multiplyVector(other);
   }
@@ -264,11 +264,24 @@ class AQuaternion {
    * @returns {object}
    */
   toJSON() {
+    const {
+      x, y, z, w
+    } = this;
+
     return {
-      x: this.x,
-      y: this.y,
-      z: this.z,
-      w: this.w
+      x,
+      y,
+      z,
+      w,
+      a1: 1 - ((y * y) * 2) - ((z * z) * 2),
+      a2: ((x * y) * 2) - ((z * w) * 2),
+      a3: ((x * z) * 2) + ((y * w) * 2),
+      b1: ((x * y) * 2) + ((z * w) * 2),
+      b2: 1 - ((x * x) * 2) - ((z * z) * 2),
+      b3: ((y * z) * 2) - ((x * w) * 2),
+      c1: ((x * z) * 2) - ((y * w) * 2),
+      c2: ((y * z) * 2) + ((x * w) * 2),
+      c3: 1 - ((x * x) * 2) - ((y * y) * 2)
     };
   }
 
@@ -435,7 +448,11 @@ const quaternionFactory = cachedFunction((x, y, z, w) => new Quaternion(x, y, z,
  */
 /**
  * @template Q
- * @typedef {QuatZero<Q> & QuatDir<Q> & QuatDirUp<Q> & QuatAxis<Q> & QuatArr<Q> & QuatZero<Q>} QuatFac
+ * @typedef {(q: { x: number, y: number, z: number, w: number }) => Q} QuatOther
+ */
+/**
+ * @template Q
+ * @typedef {QuatZero<Q> & QuatDir<Q> & QuatDirUp<Q> & QuatAxis<Q> & QuatArr<Q> & QuatZero<Q> & QuatOther<Q>} QuatFac
  */
 
 /**
