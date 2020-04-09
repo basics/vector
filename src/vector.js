@@ -1,6 +1,10 @@
 // @ts-nocheck
-import { acos, isArray, multQuatVec, normRad } from './utils/math';
-import { cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc } from './operator';
+import {
+  acos, isArray, multQuatVec, normRad
+} from './utils/math';
+import {
+  cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc
+} from './operator';
 import { IPoint } from './point';
 import { convertToCSSVars } from './utils/css';
 
