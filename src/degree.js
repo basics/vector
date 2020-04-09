@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { normRad } from './util';
+import { normRad } from './utils/math';
 import { convertToCSSVars } from './utils/css';
 
 const ANGLE = Symbol('angle rad');

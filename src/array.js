@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { cachedValueOf } from './operator';
-import { isArray } from './util';
+import { isArray } from './utils/math';
 
 export class VectorArray extends Array {
   constructor(...vals) {
