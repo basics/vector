@@ -1,3 +1,12 @@
+## [1.46.2](https://github.com/basics/vector/compare/v1.46.1...v1.46.2) (2020-04-09)
+
+
+### Bug Fixes
+
+* **math:** move util to utils and rename to math ([87808ac](https://github.com/basics/vector/commit/87808ac9dedbfcdda84b9081d7600c8ca4d07e38))
+* **quaternion:** correct curly brackets ([268c995](https://github.com/basics/vector/commit/268c9958376b2359b9c93d0e6269dafe270b2e22))
+* **quaternion:** quaternion toJSON returns matrix3x3 properties ([03b96e9](https://github.com/basics/vector/commit/03b96e9c6f89a0c8b8900e9b4c795c24c7ee202b))
+
 ## [1.46.1](https://github.com/basics/vector/compare/v1.46.0...v1.46.1) (2020-04-07)
 
 
