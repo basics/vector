@@ -18,10 +18,13 @@ class Vec3 {
 
 class Quat { };
 
+const math = {};
+
 const pc = {
   Vec2,
   Vec3,
   Quat,
+  math
 };
 
 describe('override valueOf of playcanvas Vec3', () => {
