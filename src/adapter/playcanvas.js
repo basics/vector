@@ -10,11 +10,12 @@ function fallbackWindow() {
 }
 export function hijackPlayCanvas(pc) {
   const {
-    Vec2, Vec3, Quat, Mat4
+    Vec2, Vec3, Quat, Mat4, math
   } = pc;
   const {
     LEFT, FORWARD, UP, RIGHT, ZERO
   } = Vec3;
+  const { RAD_TO_DEG, DEG_TO_RAD } = math;
 
   cachedValueOf(Vec2);
   defineVectorLength(Vec2, 2);
@@ -78,10 +79,16 @@ export function hijackPlayCanvas(pc) {
       return new Quat();
     }
     if (typeof y === 'number') {
-      return new Quat().setFromAxisAngle(x, y);
+      return new Quat().setFromAxisAngle(x, y * RAD_TO_DEG);
     }
     return new Quat().setFromMat4(new Mat4().setLookAt(ZERO, x, y || UP));
   });
+
+  pc.cross = cachedFunction((a, b) => new Vec3().cross(a, b));
+
+  pc.rotate = cachedFunction((q, axis, angle) => pc.quat(axis, angle).multiply(q));
+
+  pc.deg = (degree) => degree * DEG_TO_RAD;
 
   Quat.prototype.multiplyQuaternion = function (other) {
     return this.clone().mul(other);
@@ -97,13 +104,13 @@ export function hijackPlayCanvas(pc) {
   const LEFT90 = pc.quat(LEFT, 90);
 
   Quat.prototype.setFromOrientation = function ({ alpha, beta, gamma }, orientation) {
-    let rot = pc.quat(UP, alpha)
-      .multiply(RIGHT, beta)
-      .multiply(FORWARD, gamma)
+    let rot = pc.quat(UP, alpha * RAD_TO_DEG)
+      .multiply(RIGHT, beta * RAD_TO_DEG)
+      .multiply(FORWARD, gamma * RAD_TO_DEG)
       .multiply(LEFT90);
 
     if (orientation) {
-      rot = pc.quat(rot.dir, orientation)
+      rot = pc.quat(rot.dir, orientation * RAD_TO_DEG)
         .multiply(rot);
     }
     this.copy(rot);
