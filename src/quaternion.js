@@ -1,5 +1,7 @@
 // @ts-nocheck
-import { FORWARD, LEFT, RIGHT, UP, Vector, Victor } from './vector';
+import {
+  FORWARD, LEFT, RIGHT, UP, Vector, Victor
+} from './vector';
 import { isArray, multQuatVec } from './utils/math';
 import { cachedFunction } from './operator';
 import { degree, isAngle } from './degree';
