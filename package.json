@@ -17,8 +17,9 @@
     "lint": "eslint src",
     "build": "cross-env BABEL_ENV=production npx rollup --config ./.rolluprc",
     "docs": "npx typedoc ./src --out ./docs --allowJs --checkJs --noEmit --excludeNotExported --module commonjs --target es6 --exclude **/debug.js",
-    "prepare": "npm run clean && npm run test && npm run build",
-    "semantic-release": "semantic-release"
+    "prepare": "npm run snyk-protect && npm run clean && npm run test && npm run build",
+    "semantic-release": "semantic-release",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -64,5 +65,8 @@
     "rollup-plugin-node-resolve": "5.2.0",
     "semantic-release": "17.0.6"
   },
-  "snyk": true
+  "snyk": true,
+  "dependencies": {
+    "snyk": "^1.316.1"
+  }
 }
