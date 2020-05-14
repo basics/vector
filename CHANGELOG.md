@@ -1,3 +1,21 @@
+# [1.47.0](https://github.com/basics/vector/compare/v1.46.2...v1.47.0) (2020-05-14)
+
+
+### Bug Fixes
+
+* package.json, package-lock.json & .snyk to reduce vulnerabilities ([e2f97b6](https://github.com/basics/vector/commit/e2f97b6d508ff95b2e74707941a7cb703d71c1f3))
+* package.json, package-lock.json & .snyk to reduce vulnerabilities ([092ba43](https://github.com/basics/vector/commit/092ba4335f8948950411a75e6246e8d21b9df139))
+* package.json, package-lock.json & .snyk to reduce vulnerabilities ([4c44b68](https://github.com/basics/vector/commit/4c44b68e794f0ad2d7489e543b56a7046a06f4b3))
+* upgrade semantic-release from 17.0.6 to 17.0.7 ([0cd034a](https://github.com/basics/vector/commit/0cd034acb2e41695b087b07eb4262f474f9b3bb2))
+* upgrade semantic-release from 17.0.6 to 17.0.7 ([8703ab2](https://github.com/basics/vector/commit/8703ab2e0438b87a6cdb7643f2e4840482bf6163))
+* **playcanvas:** correct requirements for test ([fb35965](https://github.com/basics/vector/commit/fb35965f06a7b31ff10d7a78077a5fdbf6ea2024))
+
+
+### Features
+
+* **playcanvas:** rotate, cross & deg functions ([f54212e](https://github.com/basics/vector/commit/f54212e1c358f65ce449addc2f96f3bafa71bf40))
+* **vector:** iterable vector and point ([271c179](https://github.com/basics/vector/commit/271c179361b514e8cecbd2729dff555cd39a90c2))
+
 ## [1.46.2](https://github.com/basics/vector/compare/v1.46.1...v1.46.2) (2020-04-09)
 
 
