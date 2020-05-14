@@ -270,6 +270,10 @@ class APoint {
   set z(_) {
     throw new Error('set z() not implemented');
   }
+
+  [Symbol.iterator]() {
+    return this[AXES].values();
+  }
 }
 
 cachedValueOf(APoint);

@@ -145,6 +145,23 @@ const vectorTest = (vec3, Vec3) => {
     assert.closeTo(arr[2], 12, 0.1);
   });
 
+  it("should be iterable like an array with x y z values", () => {
+    const dir1 = vec3(7, 10, 12);
+    const [x, y, z] = [...dir1];
+
+    assert.closeTo(x, 7, 0.1);
+    assert.closeTo(y, 10, 0.1);
+    assert.closeTo(z, 12, 0.1);
+  });
+
+  it("should be destructable like an object with x y z pairs", () => {
+    const { x, y, z } = vec3(7, 10, 12);
+
+    assert.closeTo(x, 7, 0.1);
+    assert.closeTo(y, 10, 0.1);
+    assert.closeTo(z, 12, 0.1);
+  });
+
   it("should be all Vector methods usable inside operation handling", () => {
     const dir1 = vec3(0, 1, 0);
     const dir2 = vec3(-1, 0, 0);

@@ -389,6 +389,10 @@ class AVector {
   set yz(_) {
     throw new Error('set yz() not implemented');
   }
+
+  [Symbol.iterator]() {
+    return this[AXES].values();
+  }
 }
 
 cachedValueOf(AVector);
