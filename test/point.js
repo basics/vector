@@ -49,16 +49,6 @@ const pointTest = (vec2, Vec2) => {
     assert.equal(vec.y, 7);
   });
 
-  it('should compares lengths of point.', () => {
-    const pos = vec2(1, 1);
-    const dir = vec2(2, 2);
-
-    assert.isTrue(dir > pos, `${dir} should be longer than ${pos}`);
-    assert.isTrue(dir.len > pos.len, `${dir} should be longer than ${pos}`);
-    assert.isFalse(dir < pos, `${dir} should be longer than ${pos}`);
-    assert.isFalse(dir.len < pos.len, `${dir} should be longer than ${pos}`);
-  });
-
   it('should change length to 1 when calling normalize', () => {
     const pos = vec2(5, 6);
     const dir = pos.normalize();
@@ -171,6 +161,13 @@ const pointTest = (vec2, Vec2) => {
 
     assert.equal(dir0.x, 4);
     assert.equal(dir0.y, 4.5);
+  });
+
+  it("calculate directly outside of calc should throw an error.", () => {
+    const pos = vec2(1, 1, 1);
+    const dir = vec2(2, 2, 2);
+
+     assert.throws(() => (pos + dir));
   });
 };
 

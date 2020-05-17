@@ -44,10 +44,10 @@ class AVector {
   }
 
   /**
-   * @returns {number}
+   * @throws NotImplementedError
    */
   valueOf() {
-    return this.length;
+    throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
   }
 
   /**
