@@ -14,13 +14,13 @@ const offsetA = vector(() => dir * 30 + pos);
 console.log(debug`offsetA: ${offsetA}`);
 // offsetA: { x: 35, y: 6, z: 7 }
 
-// compare length
 let way = offsetA;
-if (way > 1) {
-  way = way.normalize();
+try {
+  way = offsetA + 1;
+} catch (e) {
+  console.log('calculate outside of calc throw an error');
 }
-console.log(debug`way: ${way}`);
-// way: { x: 0.967, y: 0.1658, z: 0.1934 }
+// calculate outside of calc throw an error
 
 // calculate cross product
 const dir1 = vector(0, 1, 0);

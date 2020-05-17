@@ -56,16 +56,6 @@ const vectorTest = (vec3, Vec3) => {
     assert.equal(vec.z, 7);
   });
 
-  it("should compares lengths of vector.", () => {
-    const pos = vec3(1, 1, 1);
-    const dir = vec3(2, 2, 2);
-
-    assert.isTrue(dir > pos, `${dir} should be longer than ${pos}`);
-    assert.isTrue(dir.len > pos.len, `${dir} should be longer than ${pos}`);
-    assert.isFalse(dir < pos, `${dir} should be longer than ${pos}`);
-    assert.isFalse(dir.len < pos.len, `${dir} should be longer than ${pos}`);
-  });
-
   it("should change length to 1 when calling normalize", () => {
     const pos = vec3(5, 6, 7);
     const dir = pos.normalize();
@@ -260,6 +250,14 @@ const vectorTest = (vec3, Vec3) => {
     assert.equal(dir0.y, 5);
     assert.equal(dir0.z, 4.5);
   });
+
+  it("calculate directly outside of calc should throw an error.", () => {
+    const pos = vec3(1, 1, 1);
+    const dir = vec3(2, 2, 2);
+
+     assert.throws(() => (pos + dir));
+  });
+
 };
 
 describe("standard Vector test.", () => {

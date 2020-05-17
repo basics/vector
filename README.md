@@ -85,10 +85,6 @@ import { calc, vector, victor, point, ipoint } from "@js-basics/vector";
 
 [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=12-17)](https://github.com/basics/vector/blob/master/examples/example.js#L12)
 
-### compare lengths
-
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=17-25)](https://github.com/basics/vector/blob/master/examples/example.js#L17)
-
 ### calculate cross product
 
 [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=25-33)](https://github.com/basics/vector/blob/master/examples/example.js#L25)
