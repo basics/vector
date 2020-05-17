@@ -1,3 +1,15 @@
+# [1.48.0](https://github.com/basics/vector/compare/v1.47.0...v1.48.0) (2020-05-17)
+
+
+### Bug Fixes
+
+* **vector:** correct formatting ([2b3e4b5](https://github.com/basics/vector/commit/2b3e4b577c3e064d8f20b94e5a2c354d27fab912))
+
+
+### Features
+
+* **vector:** remove valueOf support outside of calc ([3da0f51](https://github.com/basics/vector/commit/3da0f516c79460546bd46a2ef4ce0434dc4f3b6d))
+
 # [1.47.0](https://github.com/basics/vector/compare/v1.46.2...v1.47.0) (2020-05-14)
 
 
