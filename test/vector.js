@@ -244,7 +244,7 @@ const vectorTest = (vec3, Vec3) => {
   });
 
   it("should work when calling factory via json object", () => {
-    const dir0 = vec3({ x:4, y: 5, z: 4.5 });
+    const dir0 = vec3({ x: 4, y: 5, z: 4.5 });
 
     assert.equal(dir0.x, 4);
     assert.equal(dir0.y, 5);
@@ -255,7 +255,7 @@ const vectorTest = (vec3, Vec3) => {
     const pos = vec3(1, 1, 1);
     const dir = vec3(2, 2, 2);
 
-     assert.throws(() => (pos + dir));
+    assert.throws(() => (pos + dir));
   });
 
 };

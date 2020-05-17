@@ -167,7 +167,7 @@ const pointTest = (vec2, Vec2) => {
     const pos = vec2(1, 1, 1);
     const dir = vec2(2, 2, 2);
 
-     assert.throws(() => (pos + dir));
+    assert.throws(() => (pos + dir));
   });
 };
 
