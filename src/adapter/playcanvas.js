@@ -116,6 +116,24 @@ export function hijackPlayCanvas(pc) {
     this.copy(rot);
     return this;
   };
+
+  Object.defineProperty(Vec3.prototype, 'length', {
+    get() {
+      return this.length();
+    },
+    set() {
+      throw new Error('set length not allowed');
+    }
+  });
+
+  Object.defineProperty(Vec2.prototype, 'length', {
+    get() {
+      return this.length();
+    },
+    set() {
+      throw new Error('set length not allowed');
+    }
+  });
 }
 
 // eslint-disable-next-line no-undef

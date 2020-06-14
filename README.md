@@ -10,12 +10,12 @@
 [![Dependencies Status](https://david-dm.org/basics/vector/status.svg)](https://david-dm.org/basics/vector)
 [![DevDependencies Status](https://david-dm.org/basics/vector/dev-status.svg)](https://david-dm.org/basics/vector?type=dev)
 
-This libary provides 3D Vector in js including support for `+` `-` `*` `/` (also `%` and `**`) operator handling.
+This library provides 3D Vector in js including arithmetic operator overloading (`+ - * / % **`).
 
 Normally vector implementations in javascript handle arithmetic operation by methods `aVec.multiply(bVec).substract(dVec)`.
 Other languages provide operator overloading, that coders can create Vector class which can handle operation similar to number handling `aVec * bVec - dVec`.
 
-This libary gives javascript coders a way to handle operators with a single statement `() => aVec * bVec - dVec`.
+This library gives javascript coders a way to handle operators with a single statement `() => aVec * bVec - dVec`.
 The calculation can be combined with numbers `() => aVec * bVec * 4 - dVec - 1.5`.
 Vector objects can be create with number `new Vector(5, 6, 7)` or directly with assigned statement `new Vector(() => 5 * 30 + 2)`.
 
@@ -169,3 +169,10 @@ import {
 ### write own factory function
 
 [![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=116-134)](https://github.com/basics/vector/blob/master/examples/example.js#L107)
+
+## Predefined adapters
+
+existing operator overloading for game engines or other vector libraries
+
+- [playcanvas](https://github.com/basics/vector/tree/master/src/adapter)
+ 
