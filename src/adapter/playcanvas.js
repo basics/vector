@@ -117,21 +117,21 @@ export function hijackPlayCanvas(pc) {
     return this;
   };
 
-  Object.defineProperty(Vec3.prototype, 'length', {
+  Object.defineProperty(Vec3.prototype, 'len', {
     get() {
       return this.length();
     },
     set() {
-      throw new Error('set length not allowed');
+      throw new Error('set len not allowed');
     }
   });
 
-  Object.defineProperty(Vec2.prototype, 'length', {
+  Object.defineProperty(Vec2.prototype, 'len', {
     get() {
       return this.length();
     },
     set() {
-      throw new Error('set length not allowed');
+      throw new Error('set len not allowed');
     }
   });
 }
