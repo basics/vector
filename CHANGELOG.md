@@ -1,3 +1,10 @@
+## [1.49.1](https://github.com/basics/vector/compare/v1.49.0...v1.49.1) (2020-06-14)
+
+
+### Bug Fixes
+
+* **playcanvas:** len getter on Vec3 and Vec2 ([1a90154](https://github.com/basics/vector/commit/1a90154abdfa9e0250fcd26fa6ee9899bec61d97))
+
 # [1.49.0](https://github.com/basics/vector/compare/v1.48.1...v1.49.0) (2020-06-14)
 
 
