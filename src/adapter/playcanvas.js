@@ -10,7 +10,7 @@ function fallbackWindow() {
 }
 export function hijackPlayCanvas(pc) {
   const {
-    Vec2, Vec3, Quat, Mat4, math
+    Vec2, Vec3, Vec4, Quat, Mat4, math
   } = pc;
   const {
     LEFT, FORWARD, UP, RIGHT, ZERO
@@ -35,6 +35,16 @@ export function hijackPlayCanvas(pc) {
       return operatorCalc(x, new Vec3());
     }
     return vec3Factory(x, y, z);
+  };
+
+  cachedValueOf(Vec4);
+  defineVectorLength(Vec4, 4);
+  const vec4Factory = cachedFactory(Vec4);
+  pc.vec4 = (x, y, z, w) => {
+    if (typeof x === 'function') {
+      return operatorCalc(x, new Vec4());
+    }
+    return vec4Factory(x, y, z, w);
   };
 
   pc.calc = operatorCalc;
@@ -127,6 +137,15 @@ export function hijackPlayCanvas(pc) {
   });
 
   Object.defineProperty(Vec2.prototype, 'len', {
+    get() {
+      return this.length();
+    },
+    set() {
+      throw new Error('set len not allowed');
+    }
+  });
+
+  Object.defineProperty(Vec4.prototype, 'len', {
     get() {
       return this.length();
     },
