@@ -16,6 +16,15 @@ class Vec3 {
   }
 }
 
+class Vec4 {
+  constructor(x, y, z, w) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    this.w = w;
+  }
+}
+
 class Quat { };
 
 const math = {};
@@ -23,6 +32,7 @@ const math = {};
 const pc = {
   Vec2,
   Vec3,
+  Vec4,
   Quat,
   math
 };
