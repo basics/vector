@@ -38,8 +38,10 @@ add `https://unpkg.com/@js-basics/vector/build/iife/adapter/playcanvas.min.js` t
 - `pc.cross(...)` short notation `Vec3().cross`
 - `pc.vec3(...)` short notation `new pc.Vec3(...)`
 - `pc.vec2(...)` short notation `new pc.Vec2(...)`
+- `pc.vec4(...)` short notation `new pc.Vec4(...)`
 - `Vec3().len` getter for `Vec3().length()`
 - `Vec2().len` getter for `Vec2().length()`
+- `Vec4().len` getter for `Vec4().length()`
 
 ### pc.calc()
 
