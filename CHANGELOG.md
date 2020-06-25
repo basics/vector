@@ -1,3 +1,15 @@
+# [1.50.0](https://github.com/basics/vector/compare/v1.49.1...v1.50.0) (2020-06-25)
+
+
+### Bug Fixes
+
+* **playcanvas:** test for Vec4 ([a3b594f](https://github.com/basics/vector/commit/a3b594f5ea5a8df22d2921c02e22a63b7a3899b1))
+
+
+### Features
+
+* **playcanvas:** operator for Vec4 ([5f84b3d](https://github.com/basics/vector/commit/5f84b3dc0ac6493bc3cd852e975756a1b8504126))
+
 ## [1.49.1](https://github.com/basics/vector/compare/v1.49.0...v1.49.1) (2020-06-14)
 
 
