@@ -14,6 +14,9 @@ export {
 export {
   Degree, IDegree, degree, idegree
 } from './degree';
+export {
+  Color, IColor, color, icolor
+} from './color';
 
 /**
  * @typedef {Vector & number} IndexVectorType
