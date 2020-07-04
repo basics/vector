@@ -1,3 +1,10 @@
+# [1.51.0](https://github.com/basics/vector/compare/v1.50.0...v1.51.0) (2020-07-04)
+
+
+### Features
+
+* **color:** color class ([06f1bfe](https://github.com/basics/vector/commit/06f1bfe16b060f118cd7fe792ab99a2ba6a31583))
+
 # [1.50.0](https://github.com/basics/vector/compare/v1.49.1...v1.50.0) (2020-06-25)
 
 
