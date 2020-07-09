@@ -2,6 +2,7 @@
 const X = 0;
 const Y = 1;
 const Z = 2;
+const W = 3;
 const DEFAULT = undefined;
 const VECTOR_LENGTH = Symbol('vector length');
 const GET_SOURCE = Symbol('get source');
@@ -37,7 +38,7 @@ function getVectorLength(vec) {
   if (getSource) {
     return getSource(vec).length;
   }
-  return vec[VECTOR_LENGTH] !== 2 ? 3 : 2;
+  return vec[VECTOR_LENGTH] || 3;
 }
 
 function getVectorValue(vec, index) {
@@ -56,6 +57,9 @@ function getVectorValue(vec, index) {
   }
   if (index === Z) {
     return vec.z;
+  }
+  if (index === W) {
+    return vec.w;
   }
   // really?
   return undefined;
@@ -77,6 +81,9 @@ function setVectorValue(vec, index, value) {
   }
   if (index === Z) {
     vec.z = value;
+  }
+  if (index === W) {
+    vec.w = value;
   }
 }
 
@@ -182,6 +189,10 @@ function bindCache(org) {
       return resultCache[resultCacheIndex];
     }
     if (inProgress === Z) {
+      resultCacheIndex += 1;
+      return resultCache[resultCacheIndex];
+    }
+    if (inProgress === W) {
       resultCacheIndex += 1;
       return resultCache[resultCacheIndex];
     }
