@@ -30,13 +30,13 @@ const colorTest = (color, Color) => {
 
   it('should be calculated by assigned statement', () => {
     const pos = color(5, 6, 7, 8);
-    const dir = color(1, 0, 1, 0);
+    const dir = color(1, 0, 1, 1);
     const scale = color(() => dir * pos);
 
     assert.equal(scale.x, 5);
     assert.equal(scale.y, 0);
     assert.equal(scale.z, 7);
-    assert.equal(scale.w, 0);
+    assert.equal(scale.w, 8);
   });
 
   it('should be calculated by assigned statement with only numbers', () => {
