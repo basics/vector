@@ -1,3 +1,10 @@
+## [1.51.1](https://github.com/basics/vector/compare/v1.51.0...v1.51.1) (2020-07-09)
+
+
+### Bug Fixes
+
+* **operator:** correct handling for 4th channel ([13685c9](https://github.com/basics/vector/commit/13685c965401b8c706869339705264ab37409e59))
+
 # [1.51.0](https://github.com/basics/vector/compare/v1.50.0...v1.51.0) (2020-07-04)
 
 
