@@ -3,6 +3,7 @@ export function isArray(arr) {
   return Array.isArray(arr) || ArrayBuffer.isView(arr);
 }
 
+// http://schteppe.github.io/cannon.js/docs/files/src_math_Quaternion.js.html
 export function multQuatVec(quat, vec) {
   const {
     x, y, z
