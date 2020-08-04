@@ -1,3 +1,16 @@
+# [1.52.0](https://github.com/basics/vector/compare/v1.51.2...v1.52.0) (2020-08-04)
+
+
+### Bug Fixes
+
+* **playcanvas:** correct handling for error in valueOf ([10f23e5](https://github.com/basics/vector/commit/10f23e5a6ef7c80f8ec6bd2c7323b8c83134fec5))
+
+
+### Features
+
+* **mat3:** mat3 with vectors ([8840843](https://github.com/basics/vector/commit/8840843bd5f5b067f72cb3711f6a31947665d2fa))
+* **operator:** algebraic multiplication support ([2f8fd60](https://github.com/basics/vector/commit/2f8fd6014f7b9f4522ce21d32c4462a46e409e22))
+
 ## [1.51.2](https://github.com/basics/vector/compare/v1.51.1...v1.51.2) (2020-07-14)
 
 
