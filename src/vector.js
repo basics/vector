@@ -134,14 +134,25 @@ class AVector {
     return normRad(acos(this.dot(v) / (this.length * v.length)));
   }
 
-  // http://schteppe.github.io/cannon.js/docs/files/src_math_Quaternion.js.html
   /**
    *
    * @param {{ x: number, y: number, z: number, w: number }} quat
    * @returns {AVectorType}
    */
-  rotate(quat) {
+  multiply(quat) {
+    if (quat.x === undefined) {
+      return this.multiplyMat3(quat);
+    }
     return multQuatVec(quat, this);
+  }
+
+  // https://stackoverflow.com/questions/24593939/matrix-multiplication-with-vector-in-glsl#answer-24594497
+  multiplyMat3([column0, column1, column2]) {
+    return new this.constructor(
+      this.dot(column0),
+      this.dot(column1),
+      this.dot(column2)
+    );
   }
 
   /**

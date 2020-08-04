@@ -3,12 +3,18 @@ const X = 0;
 const Y = 1;
 const Z = 2;
 const W = 3;
+const CHECK_SUM = 9999999999999;
+
 const DEFAULT = undefined;
 const VECTOR_LENGTH = Symbol('vector length');
 const GET_SOURCE = Symbol('get source');
+const CHECKED = Symbol('checked');
 
 let inProgress = DEFAULT;
 let inVector;
+let elCount;
+let last;
+let current;
 
 let resultCacheIndex = -1;
 let handlingCache = false;
@@ -17,6 +23,8 @@ const resultCache = [];
 function handleProgess(progess, alg, resVec) {
   inProgress = progess;
   resultCacheIndex = -1;
+  elCount = 0;
+
   const res = alg(resVec);
   if (typeof res !== 'number') {
     throw new Error(`
@@ -41,10 +49,24 @@ function getVectorLength(vec) {
   return vec[VECTOR_LENGTH] || 3;
 }
 
+function maxVector(v1, v2) {
+  if (getVectorLength(v1) > getVectorLength(v2)) {
+    return v1;
+  }
+  return v2;
+}
+
 function getVectorValue(vec, index) {
+  elCount += 1;
+
+  if (index === CHECK_SUM) {
+    return elCount;
+  }
+
   if (index >= getVectorLength(vec)) {
     return 0;
   }
+
   const getSource = vec[GET_SOURCE];
   if (getSource) {
     return getSource(vec)[index];
@@ -87,13 +109,6 @@ function setVectorValue(vec, index, value) {
   }
 }
 
-function maxVector(v1, v2) {
-  if (getVectorLength(v1) > getVectorLength(v2)) {
-    return v1;
-  }
-  return v2;
-}
-
 export function operatorCalc(alg, result) {
   if (typeof alg !== 'function') {
     throw new Error('no function assigned');
@@ -105,13 +120,33 @@ export function operatorCalc(alg, result) {
     const noRes = typeof result === 'undefined';
     const funRes = typeof result === 'function';
     const resVec = !funRes && !noRes ? result : undefined;
-    const x = handleProgess(0, alg, resVec);
+    const x = handleProgess(X, alg, resVec);
 
     if (noRes && typeof inVector === 'undefined') {
       return x;
     }
 
     const inLen = inVector ? getVectorLength(inVector) : 0;
+    if (inLen === CHECK_SUM) {
+      if (!alg[CHECKED]) {
+        const checkSum = handleProgess(CHECK_SUM, alg);
+        if (Math.abs(checkSum - 2) > Number.EPSILON) {
+          throw new Error(`
+            algebraic multiplication works only in simple calls
+
+            calc(() => v * m);
+            calc(() => m * v);
+            calc(() => m * m);
+
+            `);
+        }
+        alg[CHECKED] = true;
+      }
+      if (!last.multiply) {
+        throw new Error(`cannot find method multiply() on ${last}`);
+      }
+      return last.multiply(current);
+    }
     let len = funRes ? result.length : inLen;
     if (!len) {
       len = inLen;
@@ -154,6 +189,8 @@ export function cachedValueOf(VectorClass, getSource) {
   Vector[name] = function () {
     if (inProgress === X) {
       inVector = inVector ? maxVector(inVector, this) : this;
+      last = current;
+      current = this;
     }
     if (inProgress === DEFAULT) {
       return org.call(this);
@@ -222,6 +259,10 @@ export function defineVectorLength(VectorClass, value) {
   const Vector = VectorClass.prototype;
 
   Object.defineProperty(Vector, VECTOR_LENGTH, { value });
+}
+
+export function defineMatrixLength(MatrixClass) {
+  defineVectorLength(MatrixClass, CHECK_SUM);
 }
 
 /**
