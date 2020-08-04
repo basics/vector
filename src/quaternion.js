@@ -3,7 +3,9 @@ import {
   FORWARD, LEFT, RIGHT, UP, Vector, Victor
 } from './vector';
 import { isArray, multQuatVec } from './utils/math';
-import { cachedFunction } from './operator';
+import {
+  cachedFunction, defineMatrixLength, cachedValueOf, operatorCalc as calc
+} from './operator';
 import { degree, isAngle } from './degree';
 import { convertToCSSVars } from './utils/css';
 
@@ -304,6 +306,9 @@ class AQuaternion {
   }
 }
 
+cachedValueOf(AQuaternion);
+defineMatrixLength(AQuaternion);
+
 export class Quaternion extends AQuaternion {
   /**
    * @param {number | Quaternion | IQuaternion | Vector | Victor | [number, number, number, number] } [x]
@@ -458,14 +463,14 @@ const quaternionFactory = cachedFunction((x, y, z, w) => new Quaternion(x, y, z,
  */
 
 /**
- * @type {QuatFac<Quaternion>}
+ * @type {QuatFac<Quaternion & number>}
  */
 export const quaternion = (x, y, z, w) => quaternionFactory(x, y, z, w);
 
 const iquaternionFactory = cachedFunction((x, y, z, w) => new IQuaternion(x, y, z, w));
 
 /**
- * @type {QuatFac<IQuaternion>}
+ * @type {QuatFac<IQuaternion & number>}
  */
 export const iquaternion = (x, y, z, w) => iquaternionFactory(x, y, z, w);
 
@@ -475,7 +480,7 @@ const LEFT90 = new IQuaternion(LEFT, degree(90));
  *
  * @param {{ alpha: number, beta: number, gamma: number }} orientationEvent
  * @param {number} orientation
- * @returns {IQuaternion}
+ * @returns {IQuaternion & number}
  */
 export function fromOrientation({ alpha, beta, gamma }, orientation) {
   let rot = iquaternion(UP, degree(alpha))
