@@ -17,6 +17,18 @@ export function hijackPlayCanvas(pc) {
   } = Vec3;
   const { RAD_TO_DEG, DEG_TO_RAD } = math;
 
+  Vec2.prototype.valueOf = function () {
+    throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
+  };
+
+  Vec3.prototype.valueOf = function () {
+    throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
+  };
+
+  Vec4.prototype.valueOf = function () {
+    throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
+  };
+
   cachedValueOf(Vec2);
   defineVectorLength(Vec2, 2);
   const vec2Factory = cachedFactory(Vec2);
