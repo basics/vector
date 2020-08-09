@@ -9,13 +9,12 @@ describe('simple Quaternion tests.', () => {
     const right = iquaternion(RIGHT, degree(beta));
     const forward = iquaternion(FORWARD, degree(gamma));
 
-    let rot = calc(() => up * right);
-    rot = calc(() => rot * forward);
-    rot = calc(() => rot * LEFT90);
-
-    rot = calc(() => iquaternion(rot.dir, degree(orientation)) * rot);
+    let rot = calc(() => up * right * forward * LEFT90);
+    const dir = iquaternion(rot.dir, degree(orientation));
+    rot = calc(() => dir * rot);
 
     return rot;
+
   }
 
   it('should work with fromOrientation', () => {
@@ -120,5 +119,6 @@ describe('simple Quaternion tests.', () => {
     assert.throws(() => (calc(() => v1 * q1 + 5)));
     assert.throws(() => (calc(() => q1 * 0)));
     assert.throws(() => (calc(() => q1 ** q1)));
+    assert.throws(() => (calc(() => q1 * q1 + v1)));
   });
 });

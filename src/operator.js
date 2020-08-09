@@ -13,8 +13,9 @@ const CHECKED = Symbol('checked');
 let inProgress = DEFAULT;
 let inVector;
 let elCount;
-let last;
-let current;
+const allChecks = [0, 1, 2, 6, 24, 120, 720, 5760, 51840, 518400, 5702400, 68428800, 889574400, 12454041600, 186810624000];
+const collect = [];
+
 
 let resultCacheIndex = -1;
 let handlingCache = false;
@@ -23,9 +24,10 @@ const resultCache = [];
 function handleProgess(progess, alg, resVec) {
   inProgress = progess;
   resultCacheIndex = -1;
-  elCount = 0;
+  elCount = 1;
 
   const res = alg(resVec);
+
   if (typeof res !== 'number') {
     throw new Error(`
       your assigned progress did not not return a primitive!
@@ -130,22 +132,31 @@ export function operatorCalc(alg, result) {
     if (inLen === CHECK_SUM) {
       if (!alg[CHECKED]) {
         const checkSum = handleProgess(CHECK_SUM, alg);
-        if (Math.abs(checkSum - 2) > Number.EPSILON) {
+
+        const sum = allChecks[elCount];
+        if (Math.abs(checkSum - sum) > Number.EPSILON) {
           throw new Error(`
-            algebraic multiplication works only in simple calls
+            algebraic multiplication works only in calls with *
 
             calc(() => v * m);
             calc(() => m * v);
             calc(() => m * m);
+            calc(() => m * m * v);
 
             `);
         }
         alg[CHECKED] = true;
       }
-      if (!last.multiply) {
-        throw new Error(`cannot find method multiply() on ${last}`);
+
+      let last = collect[0];
+      for (let i = 1; i < elCount - 1; i += 1) {
+        const current = collect[i];
+        if (!last.multiply) {
+          throw new Error(`cannot find method multiply() on ${last}`);
+        }
+        last = last.multiply(current);
       }
-      return last.multiply(current);
+      return last;
     }
     let len = funRes ? result.length : inLen;
     if (!len) {
@@ -189,8 +200,7 @@ export function cachedValueOf(VectorClass, getSource) {
   Vector[name] = function () {
     if (inProgress === X) {
       inVector = inVector ? maxVector(inVector, this) : this;
-      last = current;
-      current = this;
+      collect[elCount - 1] = this;
     }
     if (inProgress === DEFAULT) {
       return org.call(this);
