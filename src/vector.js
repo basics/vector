@@ -143,6 +143,9 @@ class AVector {
     if (quat.x === undefined) {
       return this.multiplyMat3(quat);
     }
+    if (quat.w === undefined) {
+      return this.multiplyVec3(quat);
+    }
     return multQuatVec(quat, this);
   }
 
@@ -152,6 +155,14 @@ class AVector {
       this.dot(column0),
       this.dot(column1),
       this.dot(column2)
+    );
+  }
+
+  multiplyVec3({ x, y, z }) {
+    return new this.constructor(
+      this.x * x,
+      this.y * y,
+      this.z * z
     );
   }
 
