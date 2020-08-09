@@ -1,3 +1,10 @@
+# [1.53.0](https://github.com/basics/vector/compare/v1.52.0...v1.53.0) (2020-08-09)
+
+
+### Features
+
+* **operator:** algebraic multiply more operators ([2316d99](https://github.com/basics/vector/commit/2316d99e4672d5e515394108b9260bd50457ae8d))
+
 # [1.52.0](https://github.com/basics/vector/compare/v1.51.2...v1.52.0) (2020-08-04)
 
 
