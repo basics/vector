@@ -1,6 +1,6 @@
 // @ts-nocheck
 import {
-  acos, isArray, multQuatVec, normRad
+  acos, isArray, multQuatVec, normRad, multiplyVecMat3
 } from './utils/math';
 import {
   cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc
@@ -149,13 +149,8 @@ class AVector {
     return multQuatVec(quat, this);
   }
 
-  // https://stackoverflow.com/questions/24593939/matrix-multiplication-with-vector-in-glsl#answer-24594497
-  multiplyMat3([column0, column1, column2]) {
-    return new this.constructor(
-      this.dot(column0),
-      this.dot(column1),
-      this.dot(column2)
-    );
+  multiplyMat3(other) {
+    return multiplyVecMat3(this, other);
   }
 
   multiplyVec3({ x, y, z }) {
