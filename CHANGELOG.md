@@ -1,3 +1,12 @@
+# [1.54.0](https://github.com/basics/vector/compare/v1.53.0...v1.54.0) (2020-08-20)
+
+
+### Features
+
+* **mat3:** mat3 multiply mat3 ([3fc8564](https://github.com/basics/vector/commit/3fc85643a6e031d376dc3289d4a49350404673f9))
+* **playcanvas:** mat3 mat4 default initializer ([90e62f0](https://github.com/basics/vector/commit/90e62f04d6f359beb195648ec1cc88ce7c428838))
+* **playcanvas:** short notation for mat3 mat4 ([8a34894](https://github.com/basics/vector/commit/8a3489484258a6bf8110662a90cfce1b4b8d1ecf))
+
 # [1.53.0](https://github.com/basics/vector/compare/v1.52.0...v1.53.0) (2020-08-09)
 
 
