@@ -183,6 +183,10 @@ export function hijackPlayCanvas(pc) {
     return multiplyMat3Mat3(this, other);
   };
 
+  AMat3.prototype[Symbol.iterator] = function () {
+    return [this[0], this[1], this[2]].values();
+  };
+
   Object.defineProperty(AMat3.prototype, 0, {
     get() {
       const { data } = this;
