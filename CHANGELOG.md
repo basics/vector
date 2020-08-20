@@ -1,3 +1,10 @@
+## [1.55.1](https://github.com/basics/vector/compare/v1.55.0...v1.55.1) (2020-08-20)
+
+
+### Bug Fixes
+
+* **playcanvas:** fix mat3 iteration ([dfc748c](https://github.com/basics/vector/commit/dfc748cda5c0d27af5b405fb8a57460c746f2de5))
+
 # [1.55.0](https://github.com/basics/vector/compare/v1.54.0...v1.55.0) (2020-08-20)
 
 
