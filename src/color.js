@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { isArray } from './utils/math';
+import { isArray, isNumber } from './utils/math';
 import {
   cachedFunction, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc
 } from './operator';
@@ -28,7 +28,7 @@ class AColor {
       });
     } else if (isArray(x)) {
       this[AXES] = [...x];
-    } else if (x && typeof x.x === 'number') {
+    } else if (x && isNumber(x.x)) {
       this[AXES] = [x.x || 0, x.y || 0, x.z || 0, x.w || 0];
     } else {
       this[AXES] = [x || 0, y || 0, z || 0, w || 0];

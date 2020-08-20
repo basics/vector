@@ -84,3 +84,10 @@ export function multiplyVecMat3(vecLeft, [column0, column1, column2]) {
     vecLeft.dot(column2)
   );
 }
+
+export function isNumber(nr) {
+  if (typeof nr === 'number' || (nr && nr.constructor === Number)) {
+    return true;
+  }
+  return false;
+}

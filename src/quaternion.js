@@ -2,7 +2,7 @@
 import {
   FORWARD, LEFT, RIGHT, UP, Vector, Victor
 } from './vector';
-import { isArray, multQuatVec } from './utils/math';
+import { isArray, multQuatVec, isNumber } from './utils/math';
 import {
   cachedFunction, defineMatrixLength, cachedValueOf, operatorCalc as calc
 } from './operator';
@@ -97,7 +97,7 @@ function axisAngle(axis, angle) {
 }
 
 function getQuat(x, y, z, w) {
-  if (typeof x === 'number') {
+  if (isNumber(x)) {
     return [x, y, z, w];
   }
   if (isArray(x)) {
@@ -113,7 +113,7 @@ function getQuat(x, y, z, w) {
 }
 
 function from(x, y, z, w) {
-  if (x && typeof x.w === 'number') {
+  if (x && isNumber(x.w)) {
     return getQuat(x.x, x.y, x.z, x.w);
   }
   return getQuat(x, y, z, w) || [0, 0, 0, 1];
@@ -133,7 +133,7 @@ class AQuaternion {
   }
 
   multiply(other, y, z, w) {
-    if (typeof other.w === 'number') {
+    if (isNumber(other.w)) {
       return this.multiplyQuaternion(other);
     }
     const o = getQuat(other, y, z, w);
@@ -197,6 +197,18 @@ class AQuaternion {
 
   get up() {
     return this.multiplyVector(UP);
+  }
+
+  get [0]() {
+    return this.left;
+  }
+
+  get [1]() {
+    return this.dir;
+  }
+
+  get [2]() {
+    return this.up;
   }
 
   /**
