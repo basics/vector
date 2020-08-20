@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { normRad } from './utils/math';
+import { normRad, isNumber } from './utils/math';
 import { convertToCSSVars } from './utils/css';
 
 const ANGLE = Symbol('angle rad');
@@ -101,5 +101,5 @@ export function idegree(angle) {
 }
 
 export function isAngle(angle) {
-  return typeof angle === 'number' || angle instanceof ADegree;
+  return isNumber(angle) || angle instanceof ADegree;
 }

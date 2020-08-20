@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { isArray, normRad } from './utils/math';
+import { isArray, normRad, isNumber } from './utils/math';
 import {
   cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc
 } from './operator';
@@ -37,7 +37,7 @@ class APoint {
       });
     } else if (isArray(x)) {
       this[AXES] = [...x];
-    } else if (x && typeof x.x === 'number') {
+    } else if (x && isNumber(x.x)) {
       this[AXES] = [x.x || 0, x.y || 0];
     } else {
       this[AXES] = [x || 0, y || 0];

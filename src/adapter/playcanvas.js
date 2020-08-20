@@ -2,7 +2,9 @@
 import {
   operatorCalc, cachedValueOf, defineVectorLength, cachedFactory, cachedFunction, defineMatrixLength
 } from '../operator';
-import { multiplyMat3Vec, multiplyMat3Mat3, multiplyVecMat3 } from '../utils/math';
+import {
+  multiplyMat3Vec, multiplyMat3Mat3, multiplyVecMat3, isNumber
+} from '../utils/math';
 
 function fallbackWindow() {
   return {
@@ -99,13 +101,13 @@ export function hijackPlayCanvas(pc) {
     }
   });
   pc.quat = cachedFunction((x, y, z, w) => {
-    if (typeof x === 'number') {
+    if (isNumber(x)) {
       return new Quat(x, y, z, w);
     }
     if (!x) {
       return new Quat();
     }
-    if (typeof y === 'number') {
+    if (isNumber(y)) {
       return new Quat().setFromAxisAngle(x, y * RAD_TO_DEG);
     }
     return new Quat().setFromMat4(new AMat4().setLookAt(ZERO, x, y || UP));
@@ -122,7 +124,7 @@ export function hijackPlayCanvas(pc) {
   };
 
   Quat.prototype.multiply = function (other, y, z, w) {
-    if (other && typeof other.w === 'number') {
+    if (other && (isNumber(other.w))) {
       return this.multiplyQuaternion(other);
     }
     return this.multiplyQuaternion(pc.quat(other, y, z, w));
@@ -175,7 +177,7 @@ export function hijackPlayCanvas(pc) {
   });
 
   AMat3.prototype.multiply = function (other) {
-    if (other && typeof other.w === 'number') {
+    if (other && (isNumber(other.z))) {
       return multiplyMat3Vec(other);
     }
     return multiplyMat3Mat3(this, other);
@@ -294,7 +296,7 @@ export function hijackPlayCanvas(pc) {
     constructor(...axes) {
       super();
       const [first] = axes;
-      if (typeof first === 'number' || (first && first.constructor === Number)) {
+      if (isNumber(first)) {
         for (let i = 0; i < 9; i += 1) {
           this.data[i] = first;
         }
@@ -310,7 +312,7 @@ export function hijackPlayCanvas(pc) {
     constructor(...axes) {
       super();
       const [first] = axes;
-      if (typeof first === 'number' || (first && first.constructor === Number)) {
+      if (isNumber(first)) {
         for (let i = 0; i < 16; i += 1) {
           this.data[i] = first;
         }
