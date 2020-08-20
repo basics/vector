@@ -1,6 +1,6 @@
 // @ts-nocheck
 import {
-  operatorCalc, cachedValueOf, defineVectorLength, cachedFactory, cachedFunction
+  operatorCalc, cachedValueOf, defineVectorLength, cachedFactory, cachedFunction, defineMatrixLength
 } from '../operator';
 
 function fallbackWindow() {
@@ -10,7 +10,7 @@ function fallbackWindow() {
 }
 export function hijackPlayCanvas(pc) {
   const {
-    Vec2, Vec3, Vec4, Quat, Mat4, math
+    Vec2, Vec3, Vec4, Quat, Mat3, Mat4, math
   } = pc;
   const {
     LEFT, FORWARD, UP, RIGHT, ZERO
@@ -57,6 +57,18 @@ export function hijackPlayCanvas(pc) {
       return operatorCalc(x, new Vec4());
     }
     return vec4Factory(x, y, z, w);
+  };
+
+  pc.mat3 = (...axes) => {
+    const mat = new Mat3();
+    axes.forEach((ax, i) => { mat[i] = ax; });
+    return mat;
+  };
+
+  pc.mat4 = (...axes) => {
+    const mat = new Mat4();
+    axes.forEach((ax, i) => { mat[i] = ax; });
+    return mat;
   };
 
   pc.calc = operatorCalc;
@@ -123,6 +135,9 @@ export function hijackPlayCanvas(pc) {
     return this.multiplyQuaternion(pc.quat(other, y, z, w));
   };
 
+  cachedValueOf(Quat);
+  defineMatrixLength(Quat);
+
   const LEFT90 = pc.quat(LEFT, 90);
 
   Quat.prototype.setFromOrientation = function ({ alpha, beta, gamma }, orientation) {
@@ -163,6 +178,102 @@ export function hijackPlayCanvas(pc) {
     },
     set() {
       throw new Error('set len not allowed');
+    }
+  });
+
+  Object.defineProperty(Mat3.prototype, 0, {
+    get() {
+      const { data } = this;
+      return new Vec3(data[0], data[1], data[2]);
+    },
+    set({ x, y, z }) {
+      this[0] = x;
+      this[1] = y;
+      this[2] = z;
+    }
+  });
+
+  Object.defineProperty(Mat3.prototype, 1, {
+    get() {
+      const { data } = this;
+      return new Vec3(data[3], data[4], data[5]);
+    },
+    set({ x, y, z }) {
+      this[3] = x;
+      this[4] = y;
+      this[5] = z;
+    }
+  });
+
+  Object.defineProperty(Mat3.prototype, 2, {
+    get() {
+      const { data } = this;
+      return new Vec3(data[6], data[7], data[8]);
+    },
+    set({ x, y, z }) {
+      this[6] = x;
+      this[7] = y;
+      this[8] = z;
+    }
+  });
+
+  Object.defineProperty(Mat4.prototype, 0, {
+    get() {
+      const { data } = this;
+      return new Vec4(data[0], data[1], data[2], data[3]);
+    },
+    set({
+      x, y, z, w
+    }) {
+      this[0] = x;
+      this[1] = y;
+      this[2] = z;
+      this[3] = w;
+    }
+  });
+
+  Object.defineProperty(Mat4.prototype, 1, {
+    get() {
+      const { data } = this;
+      return new Vec4(data[4], data[5], data[6], data[7]);
+    },
+    set({
+      x, y, z, w
+    }) {
+      this[4] = x;
+      this[5] = y;
+      this[6] = z;
+      this[7] = w;
+    }
+  });
+
+  Object.defineProperty(Mat4.prototype, 2, {
+    get() {
+      const { data } = this;
+      return new Vec4(data[8], data[9], data[10], data[11]);
+    },
+    set({
+      x, y, z, w
+    }) {
+      this[8] = x;
+      this[9] = y;
+      this[10] = z;
+      this[11] = w;
+    }
+  });
+
+  Object.defineProperty(Mat4.prototype, 3, {
+    get() {
+      const { data } = this;
+      return new Vec4(data[12], data[13], data[14], data[15]);
+    },
+    set({
+      x, y, z, w
+    }) {
+      this[12] = x;
+      this[13] = y;
+      this[14] = z;
+      this[15] = w;
     }
   });
 }
