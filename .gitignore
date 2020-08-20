@@ -45,3 +45,8 @@ yarn.lock
 
 others
 .DS_Store
+
+/index.js
+/operator.js
+/operator-*.js
+/adapter/playcanvas.js
