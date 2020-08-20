@@ -44,3 +44,43 @@ export function acos(fValue) {
   }
   return angle180;
 }
+
+// https://www.khronos.org/registry/OpenGL/specs/es/2.0/GLSL_ES_Specification_1.00.pdf page 50 & 51
+// https://stackoverflow.com/questions/24593939/matrix-multiplication-with-vector-in-glsl#answer-24594497
+export function multiplyMat3Mat3(matLeft, [mat0, mat1, mat2]) {
+  const [column0, column1, column2] = matLeft;
+  return new matLeft.constructor(
+    new column0.constructor(
+      column0.x * mat0.x + column1.x * mat0.y + column2.x * mat0.z,
+      column0.y * mat0.x + column1.y * mat0.y + column2.y * mat0.z,
+      column0.z * mat0.x + column1.z * mat0.y + column2.z * mat0.z
+    ),
+    new column0.constructor(
+      column0.x * mat1.x + column1.x * mat1.y + column2.x * mat1.z,
+      column0.y * mat1.x + column1.y * mat1.y + column2.y * mat1.z,
+      column0.z * mat1.x + column1.z * mat1.y + column2.z * mat1.z
+    ),
+    new column0.constructor(
+      column0.x * mat2.x + column1.x * mat2.y + column2.x * mat2.z,
+      column0.y * mat2.x + column1.y * mat2.y + column2.y * mat2.z,
+      column0.z * mat2.x + column1.z * mat2.y + column2.z * mat2.z
+    )
+  );
+}
+
+export function multiplyMat3Vec(matLeft, { x, y, z }) {
+  const [column0, column1, column2] = matLeft;
+  return new column0.constructor(
+    column0.x * x + column1.x * y + column2.x * z,
+    column0.y * x + column1.y * y + column2.y * z,
+    column0.z * x + column1.z * y + column2.z * z
+  );
+}
+
+export function multiplyVecMat3(vecLeft, [column0, column1, column2]) {
+  return new vecLeft.constructor(
+    vecLeft.dot(column0),
+    vecLeft.dot(column1),
+    vecLeft.dot(column2)
+  );
+}

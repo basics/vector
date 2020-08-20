@@ -2,6 +2,7 @@
 import {
   operatorCalc, cachedValueOf, defineVectorLength, cachedFactory, cachedFunction, defineMatrixLength
 } from '../operator';
+import { multiplyMat3Vec, multiplyMat3Mat3, multiplyVecMat3 } from '../utils/math';
 
 function fallbackWindow() {
   return {
@@ -23,6 +24,10 @@ export function hijackPlayCanvas(pc) {
 
   Vec3.prototype.valueOf = function () {
     throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
+  };
+
+  Vec3.prototype.multiply = function (other) {
+    return multiplyVecMat3(this, other);
   };
 
   Vec4.prototype.valueOf = function () {
@@ -169,15 +174,23 @@ export function hijackPlayCanvas(pc) {
     }
   });
 
+  AMat3.prototype.multiply = function (other) {
+    if (other && typeof other.w === 'number') {
+      return multiplyMat3Vec(other);
+    }
+    return multiplyMat3Mat3(this, other);
+  };
+
   Object.defineProperty(AMat3.prototype, 0, {
     get() {
       const { data } = this;
       return new Vec3(data[0], data[1], data[2]);
     },
     set({ x, y, z }) {
-      this[0] = x;
-      this[1] = y;
-      this[2] = z;
+      const { data } = this;
+      data[0] = x;
+      data[1] = y;
+      data[2] = z;
     }
   });
 
@@ -187,9 +200,10 @@ export function hijackPlayCanvas(pc) {
       return new Vec3(data[3], data[4], data[5]);
     },
     set({ x, y, z }) {
-      this[3] = x;
-      this[4] = y;
-      this[5] = z;
+      const { data } = this;
+      data[3] = x;
+      data[4] = y;
+      data[5] = z;
     }
   });
 
@@ -199,9 +213,10 @@ export function hijackPlayCanvas(pc) {
       return new Vec3(data[6], data[7], data[8]);
     },
     set({ x, y, z }) {
-      this[6] = x;
-      this[7] = y;
-      this[8] = z;
+      const { data } = this;
+      data[6] = x;
+      data[7] = y;
+      data[8] = z;
     }
   });
 
@@ -213,10 +228,11 @@ export function hijackPlayCanvas(pc) {
     set({
       x, y, z, w
     }) {
-      this[0] = x;
-      this[1] = y;
-      this[2] = z;
-      this[3] = w;
+      const { data } = this;
+      data[0] = x;
+      data[1] = y;
+      data[2] = z;
+      data[3] = w;
     }
   });
 
@@ -228,10 +244,11 @@ export function hijackPlayCanvas(pc) {
     set({
       x, y, z, w
     }) {
-      this[4] = x;
-      this[5] = y;
-      this[6] = z;
-      this[7] = w;
+      const { data } = this;
+      data[4] = x;
+      data[5] = y;
+      data[6] = z;
+      data[7] = w;
     }
   });
 
@@ -243,10 +260,11 @@ export function hijackPlayCanvas(pc) {
     set({
       x, y, z, w
     }) {
-      this[8] = x;
-      this[9] = y;
-      this[10] = z;
-      this[11] = w;
+      const { data } = this;
+      data[8] = x;
+      data[9] = y;
+      data[10] = z;
+      data[11] = w;
     }
   });
 
@@ -258,12 +276,19 @@ export function hijackPlayCanvas(pc) {
     set({
       x, y, z, w
     }) {
-      this[12] = x;
-      this[13] = y;
-      this[14] = z;
-      this[15] = w;
+      const { data } = this;
+      data[12] = x;
+      data[13] = y;
+      data[14] = z;
+      data[15] = w;
     }
   });
+
+  cachedValueOf(AMat3);
+  defineMatrixLength(AMat3);
+
+  cachedValueOf(AMat4);
+  defineMatrixLength(AMat4);
 
   class Mat3 extends AMat3 {
     constructor(...axes) {
