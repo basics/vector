@@ -10,7 +10,7 @@ function fallbackWindow() {
 }
 export function hijackPlayCanvas(pc) {
   const {
-    Vec2, Vec3, Vec4, Quat, Mat3, Mat4, math
+    Vec2, Vec3, Vec4, Quat, Mat3: AMat3, Mat4: AMat4, math
   } = pc;
   const {
     LEFT, FORWARD, UP, RIGHT, ZERO
@@ -59,18 +59,6 @@ export function hijackPlayCanvas(pc) {
     return vec4Factory(x, y, z, w);
   };
 
-  pc.mat3 = (...axes) => {
-    const mat = new Mat3();
-    axes.forEach((ax, i) => { mat[i] = ax; });
-    return mat;
-  };
-
-  pc.mat4 = (...axes) => {
-    const mat = new Mat4();
-    axes.forEach((ax, i) => { mat[i] = ax; });
-    return mat;
-  };
-
   pc.calc = operatorCalc;
 
   Object.defineProperty(Quat.prototype, 'left', {
@@ -115,7 +103,7 @@ export function hijackPlayCanvas(pc) {
     if (typeof y === 'number') {
       return new Quat().setFromAxisAngle(x, y * RAD_TO_DEG);
     }
-    return new Quat().setFromMat4(new Mat4().setLookAt(ZERO, x, y || UP));
+    return new Quat().setFromMat4(new AMat4().setLookAt(ZERO, x, y || UP));
   });
 
   pc.cross = cachedFunction((a, b) => new Vec3().cross(a, b));
@@ -181,7 +169,7 @@ export function hijackPlayCanvas(pc) {
     }
   });
 
-  Object.defineProperty(Mat3.prototype, 0, {
+  Object.defineProperty(AMat3.prototype, 0, {
     get() {
       const { data } = this;
       return new Vec3(data[0], data[1], data[2]);
@@ -193,7 +181,7 @@ export function hijackPlayCanvas(pc) {
     }
   });
 
-  Object.defineProperty(Mat3.prototype, 1, {
+  Object.defineProperty(AMat3.prototype, 1, {
     get() {
       const { data } = this;
       return new Vec3(data[3], data[4], data[5]);
@@ -205,7 +193,7 @@ export function hijackPlayCanvas(pc) {
     }
   });
 
-  Object.defineProperty(Mat3.prototype, 2, {
+  Object.defineProperty(AMat3.prototype, 2, {
     get() {
       const { data } = this;
       return new Vec3(data[6], data[7], data[8]);
@@ -217,7 +205,7 @@ export function hijackPlayCanvas(pc) {
     }
   });
 
-  Object.defineProperty(Mat4.prototype, 0, {
+  Object.defineProperty(AMat4.prototype, 0, {
     get() {
       const { data } = this;
       return new Vec4(data[0], data[1], data[2], data[3]);
@@ -232,7 +220,7 @@ export function hijackPlayCanvas(pc) {
     }
   });
 
-  Object.defineProperty(Mat4.prototype, 1, {
+  Object.defineProperty(AMat4.prototype, 1, {
     get() {
       const { data } = this;
       return new Vec4(data[4], data[5], data[6], data[7]);
@@ -247,7 +235,7 @@ export function hijackPlayCanvas(pc) {
     }
   });
 
-  Object.defineProperty(Mat4.prototype, 2, {
+  Object.defineProperty(AMat4.prototype, 2, {
     get() {
       const { data } = this;
       return new Vec4(data[8], data[9], data[10], data[11]);
@@ -262,7 +250,7 @@ export function hijackPlayCanvas(pc) {
     }
   });
 
-  Object.defineProperty(Mat4.prototype, 3, {
+  Object.defineProperty(AMat4.prototype, 3, {
     get() {
       const { data } = this;
       return new Vec4(data[12], data[13], data[14], data[15]);
@@ -276,6 +264,42 @@ export function hijackPlayCanvas(pc) {
       this[15] = w;
     }
   });
+
+  class Mat3 extends AMat3 {
+    constructor(...axes) {
+      super();
+      const [first] = axes;
+      if (typeof first === 'number' || (first && first.constructor === Number)) {
+        for (let i = 0; i < 9; i += 1) {
+          this.data[i] = first;
+        }
+      } else if (Object.getPrototypeOf(first) === AMat4.prototype) {
+        axes.forEach(({ x, y, z }, i) => { this[i] = new Vec3(x, y, z); });
+      } else {
+        axes.forEach((ax, i) => { this[i] = ax; });
+      }
+    }
+  }
+
+  class Mat4 extends AMat4 {
+    constructor(...axes) {
+      super();
+      const [first] = axes;
+      if (typeof first === 'number' || (first && first.constructor === Number)) {
+        for (let i = 0; i < 16; i += 1) {
+          this.data[i] = first;
+        }
+      } else {
+        axes.forEach((ax, i) => { this[i] = ax; });
+      }
+    }
+  }
+  pc.Mat3 = Mat3;
+  pc.Mat4 = Mat4;
+
+  pc.mat3 = (...axes) => new Mat3(...axes);
+
+  pc.mat4 = (...axes) => new Mat4(...axes);
 }
 
 // eslint-disable-next-line no-undef
