@@ -27,6 +27,10 @@ class Vec4 {
 
 class Quat { };
 
+class Mat3 { };
+
+class Mat4 { };
+
 const math = {};
 
 const pc = {
@@ -34,6 +38,8 @@ const pc = {
   Vec3,
   Vec4,
   Quat,
+  Mat3,
+  Mat4,
   math
 };
 
