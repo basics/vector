@@ -1,3 +1,15 @@
+# [1.55.0](https://github.com/basics/vector/compare/v1.54.0...v1.55.0) (2020-08-20)
+
+
+### Bug Fixes
+
+* **math:** reusable isNumber check ([54befda](https://github.com/basics/vector/commit/54befda4074acd0ea433375bee96416709052f22))
+
+
+### Features
+
+* **playcanvas:** reuse mat3 vec multiplier ([fb343db](https://github.com/basics/vector/commit/fb343db2144438fcca5b859a846da1fd23c43765))
+
 # [1.54.0](https://github.com/basics/vector/compare/v1.53.0...v1.54.0) (2020-08-20)
 
 
