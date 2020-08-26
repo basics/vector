@@ -1,3 +1,10 @@
+## [1.56.1](https://github.com/basics/vector/compare/v1.56.0...v1.56.1) (2020-08-26)
+
+
+### Bug Fixes
+
+* **playcanvas:** fix mat3 mat4 via duck typing ([f2a8b49](https://github.com/basics/vector/commit/f2a8b49f4bd137d5571ddd80133e635d2f9abb7c))
+
 # [1.56.0](https://github.com/basics/vector/compare/v1.55.1...v1.56.0) (2020-08-26)
 
 
