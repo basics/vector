@@ -1,3 +1,10 @@
+## [1.56.2](https://github.com/basics/vector/compare/v1.56.1...v1.56.2) (2020-08-26)
+
+
+### Bug Fixes
+
+* **playcanvas:** check for undefined props ([3a2dedd](https://github.com/basics/vector/commit/3a2dedda81782ad4011e08aa4e106d5a2ea5c519))
+
 ## [1.56.1](https://github.com/basics/vector/compare/v1.56.0...v1.56.1) (2020-08-26)
 
 
