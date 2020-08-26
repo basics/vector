@@ -1,10 +1,6 @@
 import { assert } from 'chai';
 import { calc, ipoint, IPoint, Point, point } from '../src/point';
 
-/**
- * @param {(typeof ipoint) | (typeof point)} vec2
- * @param {(typeof Point) | (typeof IPoint)} Vec2
- */
 const pointTest = (vec2, Vec2) => {
   it('should create empty vector', () => {
     const pos = vec2();

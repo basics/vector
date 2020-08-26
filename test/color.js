@@ -1,10 +1,6 @@
 import { assert } from 'chai';
 import { calc, icolor, IColor, Color, color } from '../src/color';
 
-/**
- * @param {(typeof icolor) | (typeof color)} color
- * @param {(typeof Color) | (typeof IColor)} Color
- */
 const colorTest = (color, Color) => {
   it('should create empty color', () => {
     const pos = color();
