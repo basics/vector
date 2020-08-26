@@ -2,10 +2,6 @@ import { assert } from "chai";
 import { Vector, Victor, vector, victor, calc } from "../src/vector";
 import "../examples";
 
-/**
- * @param {(typeof vector) | (typeof victor)} vec3
- * @param {(typeof Vector) | (typeof Victor)} Vec3
- */
 const vectorTest = (vec3, Vec3) => {
   it("should create empty vector", () => {
     const pos = vec3();
