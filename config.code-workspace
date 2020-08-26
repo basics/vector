@@ -12,8 +12,6 @@
     "editor.formatOnSave": false,
     "editor.formatOnPaste": true,
     "eslint.validate": ["javascript"],
-    "prettier.eslintIntegration": true,
-    "prettier.stylelintIntegration": true,
     "files.exclude": {
       ".nuxt/": true,
       "dist/": true,
@@ -41,8 +39,7 @@
       ".vcmrc": "json",
       "*.css": "postcss",
       "*.pcss": "postcss"
-    },
-    "javascript.implicitProjectConfig.checkJs": true
+    }
   },
   "extensions": {
     "recommendations": [
@@ -61,7 +58,6 @@
       "deerawan.vscode-dash",
       "EditorConfig.EditorConfig",
       "eg2.vscode-npm-script",
-      "esbenp.prettier-vscode",
       "formulahendry.auto-close-tag",
       "formulahendry.auto-rename-tag",
       "humao.rest-client",
@@ -74,9 +70,7 @@
       "octref.vetur",
       "pflannery.vscode-versionlens",
       "ricard.postcss",
-      "robertohuertasm.vscode-icons",
       "shekhardtu.vuejspack",
-      "shinnn.stylelint",
       "steoates.autoimport",
       "WallabyJs.quokka-vscode",
       "wix.vscode-import-cost",
