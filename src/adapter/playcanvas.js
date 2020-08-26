@@ -3,7 +3,7 @@ import {
   operatorCalc, cachedValueOf, defineVectorLength, cachedFactory, cachedFunction, defineMatrixLength
 } from '../operator';
 import {
-  multiplyMat3Vec, multiplyMat3Mat3, multiplyVecMat3, isNumber
+  multiplyMat3Vec, multiplyMat3Mat3, multiplyVecMat3, isNumber, multiplyVecMat4
 } from '../utils/math';
 
 function fallbackWindow() {
@@ -33,6 +33,18 @@ export function hijackPlayCanvas(pc) {
   };
 
   Vec4.prototype.valueOf = function () {
+    throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
+  };
+
+  Vec4.prototype.multiply = function (other) {
+    return multiplyVecMat4(this, other);
+  };
+
+  AMat3.prototype.valueOf = function () {
+    throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
+  };
+
+  AMat4.prototype.valueOf = function () {
     throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
   };
 
@@ -290,6 +302,17 @@ export function hijackPlayCanvas(pc) {
     }
   });
 
+  AMat4.prototype.multiply = function (other) {
+    if (other && (isNumber(other.w))) {
+      return this.transformVec4(other);
+    }
+    return AMat4().mul2(this, other);
+  };
+
+  AMat3.prototype[Symbol.iterator] = function () {
+    return [this[0], this[1], this[2], this[2]].values();
+  };
+
   cachedValueOf(AMat3);
   defineMatrixLength(AMat3);
 
@@ -305,7 +328,7 @@ export function hijackPlayCanvas(pc) {
           this.data[i] = first;
         }
       } else if (Object.getPrototypeOf(first) === AMat4.prototype) {
-        axes.forEach(({ x, y, z }, i) => { this[i] = new Vec3(x, y, z); });
+        [first[0], first[1], first[2]].forEach(({ x, y, z }, i) => { this[i] = new Vec3(x, y, z); });
       } else {
         axes.forEach((ax, i) => { this[i] = ax; });
       }
@@ -320,6 +343,8 @@ export function hijackPlayCanvas(pc) {
         for (let i = 0; i < 16; i += 1) {
           this.data[i] = first;
         }
+      } else if (Object.getPrototypeOf(first) === AMat3.prototype) {
+        [first[0], first[1], first[2]].forEach(({ x, y, z }, i) => { this[i] = new Vec4(x, y, z, 0.0); });
       } else {
         axes.forEach((ax, i) => { this[i] = ax; });
       }
