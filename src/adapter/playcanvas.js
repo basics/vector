@@ -327,7 +327,7 @@ export function hijackPlayCanvas(pc) {
         for (let i = 0; i < 9; i += 1) {
           this.data[i] = first;
         }
-      } else if (isNumber(first[0].w)) {
+      } else if (isNumber(first[0]?.w)) {
         [first[0], first[1], first[2]].forEach(({ x, y, z }, i) => { this[i] = new Vec3(x, y, z); });
       } else {
         axes.forEach((ax, i) => { this[i] = ax; });
@@ -343,7 +343,7 @@ export function hijackPlayCanvas(pc) {
         for (let i = 0; i < 16; i += 1) {
           this.data[i] = first;
         }
-      } else if (isNumber(first[0].x) && !isNumber(first[0].w)) {
+      } else if (first[0] && isNumber(first[0].x) && !isNumber(first[0].w)) {
         [first[0], first[1], first[2]].forEach(({ x, y, z }, i) => { this[i] = new Vec4(x, y, z, 0.0); });
       } else {
         axes.forEach((ax, i) => { this[i] = ax; });
