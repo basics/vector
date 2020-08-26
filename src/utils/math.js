@@ -85,6 +85,15 @@ export function multiplyVecMat3(vecLeft, [column0, column1, column2]) {
   );
 }
 
+export function multiplyVecMat4(vecLeft, [column0, column1, column2, column3]) {
+  return new vecLeft.constructor(
+    vecLeft.dot(column0),
+    vecLeft.dot(column1),
+    vecLeft.dot(column2),
+    vecLeft.dot(column3)
+  );
+}
+
 export function isNumber(nr) {
   if (typeof nr === 'number' || (nr && nr.constructor === Number)) {
     return true;

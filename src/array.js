@@ -19,15 +19,6 @@ export class VectorArray extends Array {
 
 cachedValueOf(VectorArray, src => src);
 
-/**
- * @typedef {Array<number> & number} ArrayType
- * @typedef {(arr: Array<number>) => ArrayType} ArrArr
- * @typedef {(...number) => ArrayType} NumberArr
- * @typedef {ArrArr & NumberArr}
- *
- * @param {Array<number> | ...number} vals
- * @returns {ArrayType}
- */
 export function vectorArray(...vals) {
   return new VectorArray(...vals);
 }
