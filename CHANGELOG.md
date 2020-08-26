@@ -1,3 +1,16 @@
+# [1.56.0](https://github.com/basics/vector/compare/v1.55.1...v1.56.0) (2020-08-26)
+
+
+### Bug Fixes
+
+* **playcanvas:** fix mat3 mat4 mix ([18818bc](https://github.com/basics/vector/commit/18818bcd3f7aec61bf126417404a861685c9b223))
+* **tests:** remove more jsdocs ([83a224d](https://github.com/basics/vector/commit/83a224d0fa2f2fd6c68f4e31ffea9acb67f87966))
+
+
+### Features
+
+* **math:** add multiplyVecMat4 function ([a5430ba](https://github.com/basics/vector/commit/a5430ba82da82b6728c16e87bf2b30876162d6e4))
+
 ## [1.55.1](https://github.com/basics/vector/compare/v1.55.0...v1.55.1) (2020-08-20)
 
 
