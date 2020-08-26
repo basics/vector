@@ -125,9 +125,6 @@ class AQuaternion {
     normalize(this[AXES]);
   }
 
-  /**
-   * @throws SetNotImplementedError
-   */
   set(x, y, z, w) {
     throw new Error('set x() not implemented');
   }
@@ -178,11 +175,6 @@ class AQuaternion {
     return this.inverse;
   }
 
-  /**
-   *
-   * @param {AQuaternion} v
-   * @returns {boolean}
-   */
   equals(v) {
     return this.x === v.x && this.y === v.y && this.z === v.z && this.w === v.w;
   }
@@ -211,74 +203,38 @@ class AQuaternion {
     return this.up;
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get x() {
     return this[AXES][X];
   }
 
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
   set x(_) {
     throw new Error('set x() not implemented');
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get y() {
     return this[AXES][Y];
   }
 
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
   set y(_) {
     throw new Error('set y() not implemented');
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get z() {
     return this[AXES][Z];
   }
 
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
   set z(_) {
     throw new Error('set z() not implemented');
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get w() {
     return this[AXES][W];
   }
 
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
   set w(_) {
     throw new Error('set w() not implemented');
   }
 
-  /**
-   *
-   * @returns {object}
-   */
   toJSON() {
     const {
       x, y, z, w
@@ -301,18 +257,10 @@ class AQuaternion {
     };
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   toString() {
     return JSON.stringify(this.toJSON());
   }
 
-  /**
-   *
-   * @returns {object}
-   */
   toCSSVars(name, target) {
     return convertToCSSVars(name, this.toJSON(), target);
   }
@@ -322,12 +270,6 @@ cachedValueOf(AQuaternion);
 defineMatrixLength(AQuaternion);
 
 export class Quaternion extends AQuaternion {
-  /**
-   * @param {number | Quaternion | IQuaternion | Vector | Victor | [number, number, number, number] } [x]
-   * @param {number | Vector | Victor} [y]
-   * @param {number} [z]
-   * @param {number} [w]
-   */
   set(x, y, z, w) {
     if (x instanceof AQuaternion) {
       this[AXES] = [...x[AXES]];
@@ -337,66 +279,34 @@ export class Quaternion extends AQuaternion {
     }
   }
 
-  /**
-   *
-   * @param {number} x
-   */
   set x(x) {
     this[AXES][X] = x;
   }
 
-  /**
-   *
-   * @param {number} y
-   */
   set y(y) {
     this[AXES][Y] = y;
   }
 
-  /**
-   *
-   * @param {number} z
-   */
   set z(z) {
     this[AXES][Z] = z;
   }
 
-  /**
-   *
-   * @param {number} w
-   */
   set w(w) {
     this[AXES][W] = w;
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get x() {
     return this[AXES][X];
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get y() {
     return this[AXES][Y];
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get z() {
     return this[AXES][Z];
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get w() {
     return this[AXES][W];
   }
@@ -438,62 +348,14 @@ const q = new Quaternion();
 
 const quaternionFactory = cachedFunction((x, y, z, w) => new Quaternion(x, y, z, w));
 
-/**
- * @typedef {Vector | Victor} VectorType
- */
-/**
- * @template Q
- * @typedef {() => Q} QuatZero
- */
-/**
- * @template Q
- * @typedef {(x: number, y: number, z: number, w: number) => Q} QuatNumber
- */
-/**
- * @template Q
- * @typedef {(dir: VectorType) => Q} QuatDir
- */
-/**
- * @template Q
- * @typedef {(dir: VectorType, up: VectorType) => Q} QuatDirUp
- */
-/**
- * @template Q
- * @typedef {(axis: VectorType, angle: number) => Q} QuatAxis
- */
-/**
- * @template Q
- * @typedef {(arr: [number, number, number, number]) => Q} QuatArr
- */
-/**
- * @template Q
- * @typedef {(q: { x: number, y: number, z: number, w: number }) => Q} QuatOther
- */
-/**
- * @template Q
- * @typedef {QuatZero<Q> & QuatDir<Q> & QuatDirUp<Q> & QuatAxis<Q> & QuatArr<Q> & QuatZero<Q> & QuatOther<Q>} QuatFac
- */
-
-/**
- * @type {QuatFac<Quaternion & number>}
- */
 export const quaternion = (x, y, z, w) => quaternionFactory(x, y, z, w);
 
 const iquaternionFactory = cachedFunction((x, y, z, w) => new IQuaternion(x, y, z, w));
 
-/**
- * @type {QuatFac<IQuaternion & number>}
- */
 export const iquaternion = (x, y, z, w) => iquaternionFactory(x, y, z, w);
 
 const LEFT90 = new IQuaternion(LEFT, degree(90));
 
-/**
- *
- * @param {{ alpha: number, beta: number, gamma: number }} orientationEvent
- * @param {number} orientation
- * @returns {IQuaternion & number}
- */
 export function fromOrientation({ alpha, beta, gamma }, orientation) {
   let rot = iquaternion(UP, degree(alpha))
     .mul(RIGHT, degree(beta))

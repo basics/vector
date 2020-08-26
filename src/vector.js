@@ -17,17 +17,6 @@ function square(val) {
   return val * val;
 }
 
-/**
- * @typedef {IPoint & number} VecIPointType
- * @typedef {Victor & number} VictorType
- * @typedef {Vector & number} VectorType
- * @typedef {() => number} Alg
- * @typedef {AVector & number} AVectorType
- */
-
-/**
- * @abstract
- */
 class AVector {
   constructor(x, y, z) {
     if (typeof x === 'function') {
@@ -43,16 +32,10 @@ class AVector {
     }
   }
 
-  /**
-   * @throws NotImplementedError
-   */
   valueOf() {
     throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
   }
 
-  /**
-   * @returns {AVectorType}
-   */
   normalize() {
     const { length } = this;
     return new this.constructor(
@@ -62,9 +45,6 @@ class AVector {
     );
   }
 
-  /**
-   * @returns {AVectorType}
-   */
   norm() {
     return this.normalize();
   }
@@ -72,19 +52,10 @@ class AVector {
   // methods ispired by
   // https://evanw.github.io/lightgl.js/docs/vector.html
 
-  /**
-   *
-   * @param {AVectorType} v
-   * @returns {number}
-   */
   dot(v) {
     return this.x * v.x + this.y * v.y + this.z * v.z;
   }
 
-  /**
-   * @param {AVectorType} v
-   * @returns {AVectorType}
-   */
   cross(v) {
     return new this.constructor(
       this.y * v.z - this.z * v.y,
@@ -93,10 +64,6 @@ class AVector {
     );
   }
 
-  /**
-   * @param {AVectorType} v
-   * @returns {AVectorType}
-   */
   crossNormalize(v) {
     const vec = this.cross(v);
     const { length } = vec;
@@ -106,18 +73,10 @@ class AVector {
     return vec;
   }
 
-  /**
-   * @param {AVectorType} v
-   * @returns {AVectorType}
-   */
   cn(v) {
     return this.crossNormalize(v);
   }
 
-  /**
-   *
-   * @returns {{ theta: number, phi: number }}
-   */
   toAngles() {
     return {
       theta: Math.atan2(this.z, this.x),
@@ -125,20 +84,10 @@ class AVector {
     };
   }
 
-  /**
-   *
-   * @param {AVectorType} v
-   * @returns {number}
-   */
   angleTo(v) {
     return normRad(acos(this.dot(v) / (this.length * v.length)));
   }
 
-  /**
-   *
-   * @param {{ x: number, y: number, z: number, w: number }} quat
-   * @returns {AVectorType}
-   */
   multiply(quat) {
     if (quat.x === undefined) {
       return this.multiplyMat3(quat);
@@ -161,38 +110,20 @@ class AVector {
     );
   }
 
-  /**
-   *
-   * @param {AVectorType} v
-   * @returns {number}
-   */
   distance(v) {
     return Math.sqrt(
       square(this.x - v.x) + square(this.y - v.y) + square(this.z - v.z),
     );
   }
 
-  /**
-   *
-   * @param {AVectorType} v
-   * @returns {number}
-   */
   dist(v) {
     return this.distance(v);
   }
 
-  /**
-   *
-   * @returns {[number, number, number]}
-   */
   toArray() {
     return [this.x, this.y, this.z];
   }
 
-  /**
-   * @param {string} target
-   * @returns {VectorType | VictorType | VecIPointType}
-   */
   swizzle(target) {
     const data = target.split('')
       .map(t => this[t]);
@@ -202,207 +133,106 @@ class AVector {
     return new this.constructor(data[0], data[1], data[2]);
   }
 
-  /**
-   * @param {(vector: AVectorType) => number} arg
-   * @returns {this}
-   * @throws NotImplementedError ⚠
-   */
   calc(arg) {
     throw new Error('calc() not implemented');
   }
 
-  /**
-   *
-   * @throws NotImplementedError ⚠
-   * @return {AVectorType}
-   */
   clone() {
     throw new Error('clone() not implemented');
   }
 
-  /**
-   *
-   * @param {AVectorType} v
-   * @returns {boolean}
-   */
   equals(v) {
     return this.x === v.x && this.y === v.y && this.z === v.z;
   }
 
-  /**
-   *
-   * @returns {object}
-   */
   toJSON() {
     return { x: this.x, y: this.y, z: this.z };
   }
 
-  /**
-   *
-   * @returns {string}
-   */
   toString() {
     return JSON.stringify(this.toJSON());
   }
 
-  /**
-   *
-   * @returns {object}
-   */
   toCSSVars(name, target) {
     return convertToCSSVars(name, this.toJSON(), target);
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get lengthSq() {
     return this.dot(this);
   }
 
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
   set lengthSq(_) {
     throw new Error('set lengthSq() not implemented');
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get length() {
     return Math.sqrt(this.lengthSq);
   }
 
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
   set length(_) {
     throw new Error('set length() not implemented');
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get lensq() {
     return this.lengthSq;
   }
 
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
   set lensq(_) {
     throw new Error('set lensq() not implemented');
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get len() {
     return this.length;
   }
 
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
   set len(_) {
     throw new Error('set len() not implemented');
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get x() {
     return this[AXES][X];
   }
 
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
   set x(_) {
     throw new Error('set x() not implemented');
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get y() {
     return this[AXES][Y];
   }
 
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
   set y(_) {
     throw new Error('set y() not implemented');
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get z() {
     return this[AXES][Z];
   }
 
-  /**
-   *
-   * @throws SetNotImplementedError
-   */
   set z(_) {
     throw new Error('set z() not implemented');
   }
 
-  /**
-   * @returns {VecIPointType}
-   */
   get xy() {
     return new IPoint(this[AXES][X], this[AXES][Y]);
   }
 
-  /**
-   * @throws SetNotImplementedError
-   */
   set xy(_) {
     throw new Error('set xz() not implemented');
   }
 
-  /**
-   * @returns {VecIPointType}
-   */
   get xz() {
     return new IPoint(this[AXES][X], this[AXES][Z]);
   }
 
-  /**
-   * @throws SetNotImplementedError
-   */
   set xz(_) {
     throw new Error('set xz() not implemented');
   }
 
-  /**
-   * @returns {VecIPointType}
-   */
   get yz() {
     return new IPoint(this[AXES][Y], this[AXES][Z]);
   }
 
-  /**
-   * @throws SetNotImplementedError
-   */
   set yz(_) {
     throw new Error('set yz() not implemented');
   }
@@ -426,131 +256,59 @@ cachedGetter(AVector, 'length');
 cachedGetter(AVector, 'lengthSq');
 
 export class Vector extends AVector {
-  /**
-   *
-   * @param {number} x
-   */
   set x(x) {
     this[AXES][X] = x;
   }
 
-  /**
-   *
-   * @param {number} y
-   */
   set y(y) {
     this[AXES][Y] = y;
   }
 
-  /**
-   *
-   * @param {number} z
-   */
   set z(z) {
     this[AXES][Z] = z;
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get x() {
     return this[AXES][X];
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get y() {
     return this[AXES][Y];
   }
 
-  /**
-   *
-   * @returns {number}
-   */
   get z() {
     return this[AXES][Z];
   }
 
-  /**
-   * @param {(vector: AVectorType) => number} alg
-   * @returns {this}
-   */
   calc(alg) {
     return operatorCalc(alg, this);
   }
 
-  /**
-   * @returns {AVectorType}
-   */
   clone() {
     return new Vector(this.x, this.y, this.z);
   }
 }
 
 export class Victor extends AVector {
-  /**
-   * @returns {VictorType}
-   */
   toVector() {
     return new Vector(this.x, this.y, this.z);
   }
 
-  /**
-   * @returns {AVectorType}
-   */
   clone() {
     return this;
   }
 }
 
-/**
- * @param {Alg} alg
- * @return {VectorType | VictorType}
- */
 export function calc(alg) {
   return operatorCalc(alg);
 }
 
-/**
- * @template V
- * @typedef {() => V} VecZero
- */
-/**
- * @template V
- * @typedef {(alg: Alg) => V} VecAlg
- */
-/**
- * @template V
- * @typedef {(x: number, y: number, z: number) => V} VecCon
- */
-/**
- * @template V
- * @typedef {(data: [number, number, number]) => V} VecArr
- */
-/**
- * @template V
- * @typedef {(vec: { x: number, y: number, z: number }) => V} VecObj
- */
-/**
- * @template V
- * @typedef {VecZero<V> & VecAlg<V> & VecCon<V> & VecArr<V> & VecObj<V>} Vec
- */
-
 const vectorFactory = cachedFunction((x, y, z) => new Vector(x, y, z));
 
-/**
- * @type {Vec<VectorType>}
- */
 export const vector = (x, y, z) => vectorFactory(x, y, z);
 
 const victorFactory = cachedFunction((x, y, z) => new Victor(x, y, z));
 
-/**
- * @type {Vec<VictorType>}
- */
 export const victor = (x, y, z) => victorFactory(x, y, z);
 
 export const ZERO = victor(0, 0, 0);

@@ -209,11 +209,6 @@ export function cachedValueOf(VectorClass, getSource) {
   };
 }
 
-/**
- * @template {Function} F
- * @param {F} org
- * @returns {org}
- */
 function bindCache(org) {
   return function (...args) {
     if (inProgress === X) {
@@ -275,25 +270,10 @@ export function defineMatrixLength(MatrixClass) {
   defineVectorLength(MatrixClass, CHECK_SUM);
 }
 
-/**
- * @template {} F, A
- * @param {{new(...args: A[]): F}} VectorClass
- * @returns {(...args: A[]) => F}
- */
 export function cachedFactory(VectorClass) {
   return bindCache((...args) => new VectorClass(...args));
 }
 
-/**
- * @template T
- * @typedef {{new(...args: any[]): T}} IsClass
- */
-
-/**
- * @template {Function} F
- * @param {F} fun
- * @returns {F}
- */
 export function cachedFunction(fun) {
   return bindCache(fun);
 }
