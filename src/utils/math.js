@@ -95,7 +95,7 @@ export function multiplyVecMat4(vecLeft, [column0, column1, column2, column3]) {
 }
 
 export function isNumber(nr) {
-  if (typeof nr === 'number' || (nr && nr.constructor === Number)) {
+  if (typeof nr === 'number' || nr?.constructor === Number) {
     return true;
   }
   return false;
