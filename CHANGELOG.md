@@ -1,3 +1,10 @@
+## [1.56.3](https://github.com/basics/vector/compare/v1.56.2...v1.56.3) (2020-08-27)
+
+
+### Bug Fixes
+
+* upgrade snyk from 1.327.0 to 1.348.1 ([79fcf11](https://github.com/basics/vector/commit/79fcf1166455e550d875083e6a608ddc49e4856f))
+
 ## [1.56.2](https://github.com/basics/vector/compare/v1.56.1...v1.56.2) (2020-08-26)
 
 
