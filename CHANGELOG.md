@@ -1,3 +1,10 @@
+## [1.56.8](https://github.com/basics/vector/compare/v1.56.7...v1.56.8) (2020-11-27)
+
+
+### Bug Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([24a7cf1](https://github.com/basics/vector/commit/24a7cf1f2fa4bb193009e96aa24b77d70aeba1ff))
+
 ## [1.56.7](https://github.com/basics/vector/compare/v1.56.6...v1.56.7) (2020-09-12)
 
 
