@@ -16,7 +16,6 @@ let elCount;
 const allChecks = [0, 1, 2, 6, 24, 120, 720, 5760, 51840, 518400, 5702400, 68428800, 889574400, 12454041600, 186810624000];
 const collect = [];
 
-
 let resultCacheIndex = -1;
 let handlingCache = false;
 const resultCache = [];
