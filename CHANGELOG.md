@@ -1,3 +1,10 @@
+## [1.56.10](https://github.com/basics/vector/compare/v1.56.9...v1.56.10) (2020-12-05)
+
+
+### Bug Fixes
+
+* **math:** fix white spaces ([a3ac9e2](https://github.com/basics/vector/commit/a3ac9e2c0f726cf837f776bc5e44459edf92881e))
+
 ## [1.56.9](https://github.com/basics/vector/compare/v1.56.8...v1.56.9) (2020-12-02)
 
 
