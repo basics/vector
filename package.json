@@ -42,7 +42,7 @@
   "devDependencies": {
     "@babel/cli": "7.12.10",
     "@babel/core": "7.12.10",
-    "@babel/preset-env": "7.12.10",
+    "@babel/preset-env": "7.12.11",
     "@babel/register": "7.12.10",
     "babel-eslint": "10.1.0",
     "babel-plugin-istanbul": "6.0.0",
