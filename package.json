@@ -48,7 +48,7 @@
     "babel-plugin-istanbul": "6.0.0",
     "babel-preset-minify": "0.5.1",
     "babelrc-rollup": "3.0.0",
-    "chai": "4.2.0",
+    "chai": "4.3.4",
     "cross-env": "7.0.3",
     "eslint": "7.26.0",
     "eslint-config-airbnb": "18.2.1",
