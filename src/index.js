@@ -20,6 +20,7 @@ export {
   Color, IColor, color, icolor
 } from './color';
 export { IMat3 } from './mat3';
+export { radians, degrees } from './angles';
 
 export function calc(alg) {
   return operatorCalc(alg);
