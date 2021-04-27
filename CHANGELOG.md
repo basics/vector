@@ -1,3 +1,16 @@
+# [1.57.0](https://github.com/basics/vector/compare/v1.56.10...v1.57.0) (2021-04-27)
+
+
+### Bug Fixes
+
+* **operator:** correct check for number types ([65dbc3c](https://github.com/basics/vector/commit/65dbc3c1c9ea169790695e90258f4dc9f57da8bf))
+* upgrade snyk from 1.431.2 to 1.431.4 ([5b15362](https://github.com/basics/vector/commit/5b153625326b69571c324bae0ddc0f67696bba49))
+
+
+### Features
+
+* **math:** radians and degrees functions ([96741bf](https://github.com/basics/vector/commit/96741bf3e1e5ff8c053aaefcf2bbdb4a139c2654))
+
 ## [1.56.10](https://github.com/basics/vector/compare/v1.56.9...v1.56.10) (2020-12-05)
 
 
