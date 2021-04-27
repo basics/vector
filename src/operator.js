@@ -1,4 +1,6 @@
 // @ts-nocheck
+import { isNumber } from './utils/math';
+
 const X = 0;
 const Y = 1;
 const Z = 2;
@@ -27,7 +29,7 @@ function handleProgess(progess, alg, resVec) {
 
   const res = alg(resVec);
 
-  if (typeof res !== 'number') {
+  if (!isNumber(res)) {
     throw new Error(`
       your assigned progress did not not return a primitive!
       calc() does not support logical operators (|| && ==) directly
