@@ -1,3 +1,10 @@
+## [1.57.1](https://github.com/basics/vector/compare/v1.57.0...v1.57.1) (2021-05-13)
+
+
+### Bug Fixes
+
+* **operator:** fix handling with number wrappers ([6cd5be3](https://github.com/basics/vector/commit/6cd5be387327c05cf410b6bf3d3ece637d9e2d28))
+
 # [1.57.0](https://github.com/basics/vector/compare/v1.56.10...v1.57.0) (2021-04-27)
 
 
