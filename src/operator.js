@@ -72,19 +72,19 @@ function getVectorValue(vec, index) {
 
   const getSource = vec[GET_SOURCE];
   if (getSource) {
-    return getSource(vec)[index];
+    return 1.0 * getSource(vec)[index];
   }
   if (index === X) {
-    return vec.x;
+    return 1.0 * vec.x;
   }
   if (index === Y) {
-    return vec.y;
+    return 1.0 * vec.y;
   }
   if (index === Z) {
-    return vec.z;
+    return 1.0 * vec.z;
   }
   if (index === W) {
-    return vec.w;
+    return 1.0 * vec.w;
   }
   // really?
   return undefined;
