@@ -6,11 +6,6 @@ import {
   multiplyMat3Vec, multiplyMat3Mat3, multiplyVecMat3, isNumber, multiplyVecMat4
 } from '../utils/math';
 
-function fallbackWindow() {
-  return {
-    addEventListener() { }
-  };
-}
 export function hijackPlayCanvas(pc) {
   const {
     Vec2, Vec3, Vec4, Quat, Mat3: AMat3, Mat4: AMat4, math
@@ -357,14 +352,3 @@ export function hijackPlayCanvas(pc) {
 
   pc.mat4 = (...axes) => new Mat4(...axes);
 }
-
-// eslint-disable-next-line no-undef
-const global = typeof window === 'undefined' ? fallbackWindow() : window;
-global.addEventListener('load', () => {
-  const { pc } = global;
-  if (!pc) {
-    console.warn('no playcanvas in global namespace found');
-  } else {
-    hijackPlayCanvas(pc);
-  }
-});
