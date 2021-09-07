@@ -31,6 +31,18 @@ increase `Array Size`
 
 add `https://unpkg.com/@js-basics/vector/build/iife/adapter/playcanvas.min.js` to the array
 
+create a new script asset 
+
+set its loading type to `After Engine` 
+
+and type into:
+
+```
+if (typeof basics !== 'undefined') {
+    basics.vector.adapter.playcanvas.hijackPlayCanvas(pc);
+}
+```
+
 ## Features
 
 ### Short notations
