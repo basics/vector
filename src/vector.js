@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   acos, isArray, multQuatVec, normRad, multiplyVecMat3, isNumber
 } from './utils/math';

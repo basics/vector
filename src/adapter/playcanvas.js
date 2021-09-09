@@ -1,10 +1,11 @@
-// @ts-nocheck
 import {
   operatorCalc, cachedValueOf, defineVectorLength, cachedFactory, cachedFunction, defineMatrixLength
 } from '../operator';
 import {
   multiplyMat3Vec, multiplyMat3Mat3, multiplyVecMat3, isNumber, multiplyVecMat4
 } from '../utils/math';
+
+export { hijackArray } from './array';
 
 export function hijackPlayCanvas(pc) {
   const {

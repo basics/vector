@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { cachedValueOf } from './operator';
 import { isArray } from './utils/math';
 

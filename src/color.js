@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { isArray, isNumber } from './utils/math';
 import {
   cachedFunction, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc

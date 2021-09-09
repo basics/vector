@@ -1,10 +1,9 @@
-// @ts-nocheck
 import {
-  FORWARD, LEFT, RIGHT, UP, Vector, Victor
+  FORWARD, LEFT, RIGHT, UP
 } from './vector';
 import { isArray, multQuatVec, isNumber } from './utils/math';
 import {
-  cachedFunction, defineMatrixLength, cachedValueOf, operatorCalc as calc
+  cachedFunction, defineMatrixLength, cachedValueOf
 } from './operator';
 import { degree, isAngle } from './degree';
 import { convertToCSSVars } from './utils/css';

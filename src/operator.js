@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { isNumber } from './utils/math';
 
 const X = 0;

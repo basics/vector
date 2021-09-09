@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { normRad, isNumber } from './utils/math';
 import { convertToCSSVars } from './utils/css';
 

@@ -1,5 +1,5 @@
 // https://code.open-xchange.com/#contentPanel;a7550a02-aa41-45d9-9cad-7e1c920815f3;null;ui/apps/io.ox/office/tk/utils.js;content
-// @ts-nocheck
+
 const DECIMAL = (0.5).toLocaleString().substring(1, 2) || '.';
 const ZERO = (0).toLocaleString() || '0';
 
