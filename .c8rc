@@ -5,7 +5,7 @@
     "lcov"
   ],
   "include": [
-    "test/**/*.js"
+    "src/**/*.js"
   ],
   "extension": [
     ".js"
