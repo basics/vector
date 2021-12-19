@@ -18,7 +18,7 @@
     "cover": "mocha --recursive test/* --experimental-specifier-resolution=node",
     "lint": "eslint src",
     "build": "node ./build.js",
-    "prepare": "npm run snyk-protect && npm run clean && npm run test && npm run build",
+    "setup": "npm run snyk-protect && npm run clean && npm run test && npm run build",
     "semantic-release": "semantic-release",
     "snyk-protect": "snyk protect"
   },
