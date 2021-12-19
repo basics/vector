@@ -1,3 +1,22 @@
+# Project Changelog
+
+## [1.57.2-beta.1](https://github.com/basics/vector/compare/v1.57.1...v1.57.2-beta.1) (2021-12-19)
+
+
+### Bug Fixes
+
+* **build:** refactored ([f54f742](https://github.com/basics/vector/commit/f54f7426605ee3787b6e68b8442c7b6e056094f4))
+* **github:** add beta workflow ([14e1cdb](https://github.com/basics/vector/commit/14e1cdba615ccd3e2e2e5d3ed04a84efb89db1de))
+* **github:** add default workflow ([a58d674](https://github.com/basics/vector/commit/a58d674f90b1273593cceb0b64bb22e065053dfd))
+* **github:** added workflow ([d8da381](https://github.com/basics/vector/commit/d8da3817532110ad2208e159044456568ad0632c))
+* **package-lock:** removed from ignore ([bfa3ac0](https://github.com/basics/vector/commit/bfa3ac008b80cc3bdb38c79ef4113cfe7dc638ba))
+* **playcanvas:** hijackArray working fine ([ba17b26](https://github.com/basics/vector/commit/ba17b26f3a19029f855fe068bf9b5e1b546cb16c))
+* **playcanvas:** remove on load behavior of playcanvas adapter ([461788f](https://github.com/basics/vector/commit/461788fcb5cf6a9b059f00bde05eb9c6620c17a4))
+* **test:** test ([9ea3e7f](https://github.com/basics/vector/commit/9ea3e7f5a740a43d9bc0e8fcfd00e4403a346b13))
+* **test:** test ([bb21079](https://github.com/basics/vector/commit/bb21079cb10319a41b9222830bf9258d601cbcfa))
+* **test:** test ([04fb95d](https://github.com/basics/vector/commit/04fb95d3571fbce7f61256a531d805ec41f4a43c))
+* **test:** test ([6a8fabb](https://github.com/basics/vector/commit/6a8fabbe8e3df329fc7f2e0c94e82deeb8d25df5))
+
 ## [1.57.1](https://github.com/basics/vector/compare/v1.57.0...v1.57.1) (2021-05-13)
 
 
