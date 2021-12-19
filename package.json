@@ -63,7 +63,7 @@
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
     "semantic-release": "17.4.7",
-    "rollup": "2.56.3"
+    "rollup": "2.61.1"
   },
   "snyk": true,
   "dependencies": {
