@@ -26,5 +26,4 @@ export function calc (alg) {
   return operatorCalc(alg);
 }
 
-
 export default Vector;
