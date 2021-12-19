@@ -46,3 +46,4 @@ others
 /operator.js
 /operator-*.js
 /adapter/playcanvas.js
+eslint-report.json
