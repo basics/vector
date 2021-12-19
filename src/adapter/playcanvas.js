@@ -7,7 +7,7 @@ import {
 
 export { hijackArray } from './array';
 
-export function hijackPlayCanvas(pc) {
+export function hijackPlayCanvas (pc) {
   const {
     Vec2, Vec3, Vec4, Quat, Mat3: AMat3, Mat4: AMat4, math
   } = pc;
@@ -77,34 +77,34 @@ export function hijackPlayCanvas(pc) {
   pc.calc = operatorCalc;
 
   Object.defineProperty(Quat.prototype, 'left', {
-    get() {
+    get () {
       return this.transformVector(LEFT, new Vec3());
     },
-    set() {
+    set () {
       throw new Error('set left not allowed');
     }
   });
   Object.defineProperty(Quat.prototype, 'dir', {
-    get() {
+    get () {
       return this.transformVector(FORWARD, new Vec3());
     },
-    set() {
+    set () {
       throw new Error('set dir not allowed');
     }
   });
   Object.defineProperty(Quat.prototype, 'up', {
-    get() {
+    get () {
       return this.transformVector(UP, new Vec3());
     },
-    set() {
+    set () {
       throw new Error('set up not allowed');
     }
   });
   Object.defineProperty(Quat.prototype, 'inverse', {
-    get() {
+    get () {
       return this.clone().invert();
     },
-    set() {
+    set () {
       throw new Error('set inverse not allowed');
     }
   });
@@ -158,28 +158,28 @@ export function hijackPlayCanvas(pc) {
   };
 
   Object.defineProperty(Vec3.prototype, 'len', {
-    get() {
+    get () {
       return this.length();
     },
-    set() {
+    set () {
       throw new Error('set len not allowed');
     }
   });
 
   Object.defineProperty(Vec2.prototype, 'len', {
-    get() {
+    get () {
       return this.length();
     },
-    set() {
+    set () {
       throw new Error('set len not allowed');
     }
   });
 
   Object.defineProperty(Vec4.prototype, 'len', {
-    get() {
+    get () {
       return this.length();
     },
-    set() {
+    set () {
       throw new Error('set len not allowed');
     }
   });
@@ -196,11 +196,11 @@ export function hijackPlayCanvas(pc) {
   };
 
   Object.defineProperty(AMat3.prototype, 0, {
-    get() {
+    get () {
       const { data } = this;
       return new Vec3(data[0], data[1], data[2]);
     },
-    set({ x, y, z }) {
+    set ({ x, y, z }) {
       const { data } = this;
       data[0] = x;
       data[1] = y;
@@ -209,11 +209,11 @@ export function hijackPlayCanvas(pc) {
   });
 
   Object.defineProperty(AMat3.prototype, 1, {
-    get() {
+    get () {
       const { data } = this;
       return new Vec3(data[3], data[4], data[5]);
     },
-    set({ x, y, z }) {
+    set ({ x, y, z }) {
       const { data } = this;
       data[3] = x;
       data[4] = y;
@@ -222,11 +222,11 @@ export function hijackPlayCanvas(pc) {
   });
 
   Object.defineProperty(AMat3.prototype, 2, {
-    get() {
+    get () {
       const { data } = this;
       return new Vec3(data[6], data[7], data[8]);
     },
-    set({ x, y, z }) {
+    set ({ x, y, z }) {
       const { data } = this;
       data[6] = x;
       data[7] = y;
@@ -235,11 +235,11 @@ export function hijackPlayCanvas(pc) {
   });
 
   Object.defineProperty(AMat4.prototype, 0, {
-    get() {
+    get () {
       const { data } = this;
       return new Vec4(data[0], data[1], data[2], data[3]);
     },
-    set({
+    set ({
       x, y, z, w
     }) {
       const { data } = this;
@@ -251,11 +251,11 @@ export function hijackPlayCanvas(pc) {
   });
 
   Object.defineProperty(AMat4.prototype, 1, {
-    get() {
+    get () {
       const { data } = this;
       return new Vec4(data[4], data[5], data[6], data[7]);
     },
-    set({
+    set ({
       x, y, z, w
     }) {
       const { data } = this;
@@ -267,11 +267,11 @@ export function hijackPlayCanvas(pc) {
   });
 
   Object.defineProperty(AMat4.prototype, 2, {
-    get() {
+    get () {
       const { data } = this;
       return new Vec4(data[8], data[9], data[10], data[11]);
     },
-    set({
+    set ({
       x, y, z, w
     }) {
       const { data } = this;
@@ -283,11 +283,11 @@ export function hijackPlayCanvas(pc) {
   });
 
   Object.defineProperty(AMat4.prototype, 3, {
-    get() {
+    get () {
       const { data } = this;
       return new Vec4(data[12], data[13], data[14], data[15]);
     },
-    set({
+    set ({
       x, y, z, w
     }) {
       const { data } = this;
@@ -316,7 +316,7 @@ export function hijackPlayCanvas(pc) {
   defineMatrixLength(AMat4);
 
   class Mat3 extends AMat3 {
-    constructor(...axes) {
+    constructor (...axes) {
       super();
       const [first] = axes;
       if (isNumber(first)) {
@@ -332,7 +332,7 @@ export function hijackPlayCanvas(pc) {
   }
 
   class Mat4 extends AMat4 {
-    constructor(...axes) {
+    constructor (...axes) {
       super();
       const [first] = axes;
       if (isNumber(first)) {

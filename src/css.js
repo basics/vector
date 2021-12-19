@@ -1,9 +1,9 @@
 export class CSS {
-  constructor(name = undefined) {
+  constructor (name = undefined) {
     this.name = name;
   }
 
-  get vars() {
+  get vars () {
     let prefix = '';
     const { name } = this;
     if (name) {
@@ -24,6 +24,6 @@ export class CSS {
   }
 }
 
-export function css(name = undefined) {
+export function css (name = undefined) {
   return new CSS(name);
 }

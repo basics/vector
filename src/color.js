@@ -11,7 +11,7 @@ const W = 3;
 const AXES = Symbol('axes');
 
 class AColor {
-  constructor(x, y, z, w) {
+  constructor (x, y, z, w) {
     if (typeof x === 'function') {
       operatorCalc(x, (nx, ny, nz, nw) => {
         this[AXES] = [nx, ny, nz, nw];
@@ -25,77 +25,77 @@ class AColor {
     }
   }
 
-  dot(v) {
+  dot (v) {
     return this.x * v.x + this.y * v.y + this.z * v.z + this.w * v.w;
   }
 
-  valueOf() {
+  valueOf () {
     throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
   }
 
-  toArray() {
+  toArray () {
     return [this.x, this.y, this.z, this.w];
   }
 
-  calc(alg) {
+  calc (alg) {
     throw new Error('calc() not implemented');
   }
 
-  clone() {
+  clone () {
     throw new Error('clone() not implemented');
   }
 
-  equals(v) {
+  equals (v) {
     return this.x === v.x && this.y === v.y && this.z === v.z && this.w === v.w;
   }
 
-  toJSON() {
+  toJSON () {
     return {
       x: this.x, y: this.y, z: this.z, w: this.w
     };
   }
 
-  toString() {
+  toString () {
     return JSON.stringify(this.toJSON());
   }
 
-  toCSSVars(name, target) {
+  toCSSVars (name, target) {
     return convertToCSSVars(name, this.toJSON(), target);
   }
 
-  get x() {
+  get x () {
     return this[AXES][X];
   }
 
-  set x(_) {
+  set x (_) {
     throw new Error('set x() not implemented');
   }
 
-  get y() {
+  get y () {
     return this[AXES][Y];
   }
 
-  set y(_) {
+  set y (_) {
     throw new Error('set y() not implemented');
   }
 
-  get z() {
+  get z () {
     return this[AXES][Z];
   }
 
-  set z(_) {
+  set z (_) {
     throw new Error('set z() not implemented');
   }
 
-  get w() {
+  get w () {
     return this[AXES][W];
   }
 
-  set w(_) {
+  set w (_) {
     throw new Error('set w() not implemented');
   }
 
-  [Symbol.iterator]() {
+  [Symbol.iterator] () {
     return this[AXES].values();
   }
 }
@@ -105,54 +105,54 @@ defineVectorLength(AColor, 4);
 cachedMethod(AColor, 'toArray');
 
 export class Color extends AColor {
-  set x(x) {
+  set x (x) {
     this[AXES][X] = x;
   }
 
-  set y(y) {
+  set y (y) {
     this[AXES][Y] = y;
   }
 
-  set z(z) {
+  set z (z) {
     this[AXES][Z] = z;
   }
 
-  set w(w) {
+  set w (w) {
     this[AXES][W] = w;
   }
 
-  get x() {
+  get x () {
     return this[AXES][X];
   }
 
-  get y() {
+  get y () {
     return this[AXES][Y];
   }
 
-  get z() {
+  get z () {
     return this[AXES][Z];
   }
 
-  get w() {
+  get w () {
     return this[AXES][W];
   }
 
-  calc(alg) {
+  calc (alg) {
     return operatorCalc(alg, this);
   }
 
-  clone() {
+  clone () {
     return new Color(this.x, this.y);
   }
 }
 
 export class IColor extends AColor {
-  toColor() {
+  toColor () {
     return new Color(this.x, this.y, this.z, this.w);
   }
 }
 
-export function calc(alg) {
+export function calc (alg) {
   return operatorCalc(alg);
 }
 

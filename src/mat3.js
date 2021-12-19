@@ -4,43 +4,43 @@ import { multiplyMat3Mat3, multiplyMat3Vec } from './utils/math';
 const AXES = Symbol('data');
 
 class AMat3 {
-  constructor(...columns) {
+  constructor (...columns) {
     this[AXES] = columns;
   }
 
-  get [0]() {
+  get [0] () {
     return this[AXES][0];
   }
 
-  set [0](_) {
+  set [0] (_) {
     throw new Error('set [0] not implemented');
   }
 
-  get [1]() {
+  get [1] () {
     return this[AXES][1];
   }
 
-  set [1](_) {
+  set [1] (_) {
     throw new Error('set [1] not implemented');
   }
 
-  get [2]() {
+  get [2] () {
     return this[AXES][2];
   }
 
-  set [2](_) {
+  set [2] (_) {
     throw new Error('set [2] not implemented');
   }
 
-  multiplyMat(other) {
+  multiplyMat (other) {
     return multiplyMat3Mat3(this, other);
   }
 
-  multiplyVec(other) {
+  multiplyVec (other) {
     return multiplyMat3Vec(this, other);
   }
 
-  multiply(other) {
+  multiply (other) {
     if (other instanceof AMat3) {
       return this.multiplyMat(other);
     }
@@ -51,7 +51,7 @@ class AMat3 {
     return this.multiplyVec(other);
   }
 
-  [Symbol.iterator]() {
+  [Symbol.iterator] () {
     return this[AXES].values();
   }
 }

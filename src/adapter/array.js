@@ -4,30 +4,30 @@ export const hijackArray = (ArrayClass) => {
   const { prototype } = ArrayClass;
 
   Object.defineProperty(prototype, 'x', {
-    get() {
+    get () {
       return this[0] || 0;
     },
-    set(x) {
+    set (x) {
       this[0] = x;
     },
     configurable: true
   });
 
   Object.defineProperty(prototype, 'y', {
-    get() {
+    get () {
       return this[1] || 0;
     },
-    set(y) {
+    set (y) {
       this[1] = y;
     },
     configurable: true
   });
 
   Object.defineProperty(prototype, 'z', {
-    get() {
+    get () {
       return this[2] || 0;
     },
-    set(z) {
+    set (z) {
       this[2] = z;
     },
     configurable: true
@@ -36,10 +36,10 @@ export const hijackArray = (ArrayClass) => {
   cachedValueOf(ArrayClass);
 
   Object.defineProperty(prototype, 'len', {
-    get() {
+    get () {
       return ((this[0] ** 2) + (this[1] ** 2) + (this[2] ** 2)) ** (1 / 2);
     },
-    set() {
+    set () {
       throw new Error('set len not allowed');
     },
     configurable: true

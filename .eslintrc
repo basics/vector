@@ -1,9 +1,17 @@
 {
-  "parser": "babel-eslint",
-  "extends": "airbnb",
   "env": {
-    "mocha": true
+    "es6": true,
+    "node": true
   },
+  "parserOptions": {
+    "parser": "@babel/eslint-parser",
+    "sourceType": "module",
+    "requireConfigFile": false,
+    "ecmaVersion": "latest"
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
   "rules": {
     "comma-dangle": ["error", "only-multiline"],
     "class-methods-use-this": "off",
@@ -23,6 +31,10 @@
       {
         "code": 140
       }
+    ],
+    "semi": [
+      2,
+      "always"
     ]
   }
 }
