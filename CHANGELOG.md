@@ -1,5 +1,17 @@
 # Project Changelog
 
+# [2.0.0-beta.1](https://github.com/basics/vector/compare/v1.57.2-beta.2...v2.0.0-beta.1) (2021-12-19)
+
+
+### chore
+
+* **ignore:** added folders to npm ignore ([b3da6c3](https://github.com/basics/vector/commit/b3da6c34506cfeb49851ef5fe7fd23d1b8152668))
+
+
+### BREAKING CHANGES
+
+* **ignore:** travis removed added github actions and refactored build process
+
 ## [1.57.2-beta.2](https://github.com/basics/vector/compare/v1.57.2-beta.1...v1.57.2-beta.2) (2021-12-19)
 
 
