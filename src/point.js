@@ -8,19 +8,19 @@ const X = 0;
 const Y = 1;
 const AXES = Symbol('axes');
 
-function angleOverGround(y1, x1, y2, x2) {
+function angleOverGround (y1, x1, y2, x2) {
   const atanOne = Math.atan2(y1, x1);
   const atanTwo = Math.atan2(y2, x2);
 
   return normRad(atanOne - atanTwo);
 }
 
-function square(val) {
+function square (val) {
   return val * val;
 }
 
 class APoint {
-  constructor(x, y) {
+  constructor (x, y) {
     if (typeof x === 'function') {
       operatorCalc(x, (nx, ny) => {
         this[AXES] = [nx, ny];
@@ -34,35 +34,35 @@ class APoint {
     }
   }
 
-  valueOf() {
+  valueOf () {
     throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
   }
 
-  normalize() {
+  normalize () {
     const { length } = this;
     return new this.constructor(this.x / length, this.y / length);
   }
 
-  norm() {
+  norm () {
     return this.normalize();
   }
 
   // methods ispired by
   // https://evanw.github.io/lightgl.js/docs/point.html
 
-  dot(v) {
+  dot (v) {
     return this.x * v.x + this.y * v.y;
   }
 
-  getRad() {
+  getRad () {
     return normRad(Math.atan2(this.y, this.x));
   }
 
-  angleTo(v) {
+  angleTo (v) {
     return angleOverGround(this.y, this.x, v.y, v.x);
   }
 
-  rotate(angle) {
+  rotate (angle) {
     const sa = Math.sin(angle);
     const ca = Math.cos(angle);
 
@@ -72,83 +72,83 @@ class APoint {
     return new this.constructor(x, y);
   }
 
-  distance(v) {
+  distance (v) {
     return Math.sqrt(square(this.x - v.x) + square(this.y - v.y));
   }
 
-  dist(v) {
+  dist (v) {
     return this.distance(v);
   }
 
-  toArray() {
+  toArray () {
     return [this.x, this.y];
   }
 
-  calc(alg) {
+  calc (alg) {
     throw new Error('calc() not implemented');
   }
 
-  clone() {
+  clone () {
     throw new Error('clone() not implemented');
   }
 
-  equals(v) {
+  equals (v) {
     return this.x === v.x && this.y === v.y;
   }
 
-  toJSON() {
+  toJSON () {
     return { x: this.x, y: this.y };
   }
 
-  toString() {
+  toString () {
     return JSON.stringify(this.toJSON());
   }
 
-  toCSSVars(name, target) {
+  toCSSVars (name, target) {
     return convertToCSSVars(name, this.toJSON(), target);
   }
 
-  get lengthSq() {
+  get lengthSq () {
     return this.dot(this);
   }
 
-  get length() {
+  get length () {
     return Math.sqrt(this.lengthSq);
   }
 
-  get lensq() {
+  get lensq () {
     return this.lengthSq;
   }
 
-  get len() {
+  get len () {
     return this.length;
   }
 
-  get x() {
+  get x () {
     return this[AXES][X];
   }
 
-  set x(_) {
+  set x (_) {
     throw new Error('set x() not implemented');
   }
 
-  get y() {
+  get y () {
     return this[AXES][Y];
   }
 
-  set y(_) {
+  set y (_) {
     throw new Error('set y() not implemented');
   }
 
-  get z() {
+  get z () {
     throw new Error('get z() not implemented');
   }
 
-  set z(_) {
+  set z (_) {
     throw new Error('set z() not implemented');
   }
 
-  [Symbol.iterator]() {
+  [Symbol.iterator] () {
     return this[AXES].values();
   }
 }
@@ -164,38 +164,38 @@ cachedGetter(APoint, 'length');
 cachedGetter(APoint, 'lengthSq');
 
 export class Point extends APoint {
-  set x(x) {
+  set x (x) {
     this[AXES][X] = x;
   }
 
-  set y(y) {
+  set y (y) {
     this[AXES][Y] = y;
   }
 
-  get x() {
+  get x () {
     return this[AXES][X];
   }
 
-  get y() {
+  get y () {
     return this[AXES][Y];
   }
 
-  calc(alg) {
+  calc (alg) {
     return operatorCalc(alg, this);
   }
 
-  clone() {
+  clone () {
     return new Point(this.x, this.y);
   }
 }
 
 export class IPoint extends APoint {
-  toPoint() {
+  toPoint () {
     return new Point(this.x, this.y);
   }
 }
 
-export function calc(alg) {
+export function calc (alg) {
   return operatorCalc(alg);
 }
 
