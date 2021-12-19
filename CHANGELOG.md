@@ -1,5 +1,12 @@
 # Project Changelog
 
+## [1.57.2-beta.2](https://github.com/basics/vector/compare/v1.57.2-beta.1...v1.57.2-beta.2) (2021-12-19)
+
+
+### Bug Fixes
+
+* **package:** removed prepare call ([4483da4](https://github.com/basics/vector/commit/4483da48ec91f4dec001cec85fdff8cd1c9c4d08))
+
 ## [1.57.2-beta.1](https://github.com/basics/vector/compare/v1.57.1...v1.57.2-beta.1) (2021-12-19)
 
 
