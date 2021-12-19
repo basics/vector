@@ -175,4 +175,4 @@ import {
 existing operator overloading for game engines or other vector libraries
 
 - [playcanvas](https://github.com/basics/vector/tree/master/src/adapter)
- 
+  
