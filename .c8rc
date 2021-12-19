@@ -1,0 +1,20 @@
+{
+  "all": true,
+  "reporter": [
+    "text",
+    "lcov",
+    "cobertura"
+  ],
+  "include": [
+    "test/**/*.js"
+  ],
+  "extension": [
+    ".js"
+  ],
+  "exclude": [
+
+  ],
+  "sourceMap": true,
+  "instrument": true,
+  "exclude-after-remap": false
+}
