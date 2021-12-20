@@ -1,5 +1,12 @@
 # Project Changelog
 
+# [2.0.0-beta.3](https://github.com/basics/vector/compare/v2.0.0-beta.2...v2.0.0-beta.3) (2021-12-20)
+
+
+### Bug Fixes
+
+* **package:** added module and main entry ([7d23049](https://github.com/basics/vector/commit/7d23049d46597add863144099956a6cd1fa0bc1a))
+
 # [2.0.0-beta.2](https://github.com/basics/vector/compare/v2.0.0-beta.1...v2.0.0-beta.2) (2021-12-20)
 
 
