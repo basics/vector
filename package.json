@@ -3,8 +3,8 @@
   "version": "2.0.0-beta.1",
   "description": "A 3D Vector lib including arithmetic operator overloading (+ - * / % **).",
   "type": "module",
+  "main": "build/esm/index.mjs",
   "module": "build/esm/index.mjs",
-  "main": "build/cjs/index.cjs",
   "directories": {
     "build": "build"
   },
