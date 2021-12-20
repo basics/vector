@@ -31,7 +31,7 @@ inputs.forEach((item) => {
     entryPoints: [item.src],
     format: 'esm',
     splitting: true,
-    keepNames: true,
+    // keepNames: true,
     outdir: './build/esm/',
     outExtension: { '.js': '.mjs' }
   }).catch(() => global.process.exit(1));
