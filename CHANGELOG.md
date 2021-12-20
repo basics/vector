@@ -1,5 +1,12 @@
 # Project Changelog
 
+# [2.0.0-beta.2](https://github.com/basics/vector/compare/v2.0.0-beta.1...v2.0.0-beta.2) (2021-12-20)
+
+
+### Bug Fixes
+
+* **esbuild:** different builds cjs/ems/iife ([a7554a8](https://github.com/basics/vector/commit/a7554a8716b8d55ecfe716a9a5fdeb7e0a1e6001))
+
 # [2.0.0-beta.1](https://github.com/basics/vector/compare/v1.57.2-beta.2...v2.0.0-beta.1) (2021-12-19)
 
 
