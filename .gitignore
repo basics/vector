@@ -39,10 +39,6 @@ docs
 build
 report
 
-# npm package lock
-package-lock.json
-yarn.lock
-
 others
 .DS_Store
 
@@ -50,3 +46,6 @@ others
 /operator.js
 /operator-*.js
 /adapter/playcanvas.js
+eslint-report.json
+
+.husky

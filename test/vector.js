@@ -1,6 +1,5 @@
 import { assert } from "chai";
 import { Vector, Victor, vector, victor, calc } from "../src/vector";
-import "../examples";
 
 const vectorTest = (vec3, Vec3) => {
   it("should create empty vector", () => {

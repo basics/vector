@@ -59,7 +59,7 @@ Internally the `valueOf()` implementation returns `x` in first call, `y` in seco
 ```html
 <script
   type="text/javascript"
-  src="https://unpkg.com/@js-basics/vector/build/iife/bundle.min.js"
+  src="https://unpkg.com/@js-basics/vector/build/iife"
 ></script>
 ```
 
@@ -142,7 +142,7 @@ You are happy with your current vector library and definitely don’t want to ch
 ```html
 <script
   type="text/javascript"
-  src="https://unpkg.com/@js-basics/vector/build/iife/operator.min.js"
+  src="https://unpkg.com/@js-basics/vector/build/iife/operator.js"
 ></script>
 ```
 
@@ -175,4 +175,4 @@ import {
 existing operator overloading for game engines or other vector libraries
 
 - [playcanvas](https://github.com/basics/vector/tree/master/src/adapter)
- 
+  

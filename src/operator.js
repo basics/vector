@@ -21,7 +21,7 @@ let resultCacheIndex = -1;
 let handlingCache = false;
 const resultCache = [];
 
-function handleProgess(progess, alg, resVec) {
+function handleProgess (progess, alg, resVec) {
   inProgress = progess;
   resultCacheIndex = -1;
   elCount = 1;
@@ -43,7 +43,7 @@ function handleProgess(progess, alg, resVec) {
   return res;
 }
 
-function getVectorLength(vec) {
+function getVectorLength (vec) {
   const getSource = vec[GET_SOURCE];
   if (getSource) {
     return getSource(vec).length;
@@ -51,14 +51,14 @@ function getVectorLength(vec) {
   return vec[VECTOR_LENGTH] || 3;
 }
 
-function maxVector(v1, v2) {
+function maxVector (v1, v2) {
   if (getVectorLength(v1) > getVectorLength(v2)) {
     return v1;
   }
   return v2;
 }
 
-function getVectorValue(vec, index) {
+function getVectorValue (vec, index) {
   elCount += 1;
 
   if (index === CHECK_SUM) {
@@ -89,7 +89,7 @@ function getVectorValue(vec, index) {
   return undefined;
 }
 
-function setVectorValue(vec, index, value) {
+function setVectorValue (vec, index, value) {
   const getSource = vec[GET_SOURCE];
   if (getSource) {
     getSource(vec)[index] = value;
@@ -111,7 +111,7 @@ function setVectorValue(vec, index, value) {
   }
 }
 
-export function operatorCalc(alg, result) {
+export function operatorCalc (alg, result) {
   if (typeof alg !== 'function') {
     throw new Error('no function assigned');
   }
@@ -191,7 +191,7 @@ export function operatorCalc(alg, result) {
   }
 }
 
-export function cachedValueOf(VectorClass, getSource) {
+export function cachedValueOf (VectorClass, getSource) {
   const Vector = VectorClass.prototype;
   Vector[GET_SOURCE] = getSource;
   const name = 'valueOf';
@@ -209,7 +209,7 @@ export function cachedValueOf(VectorClass, getSource) {
   };
 }
 
-function bindCache(org) {
+function bindCache (org) {
   return function (...args) {
     if (inProgress === X) {
       if (handlingCache) {
@@ -242,13 +242,13 @@ function bindCache(org) {
   };
 }
 
-export function cachedMethod(VectorClass, name) {
+export function cachedMethod (VectorClass, name) {
   const Vector = VectorClass.prototype;
   const org = Vector[name];
   Vector[name] = bindCache(org);
 }
 
-export function cachedGetter(VectorClass, name) {
+export function cachedGetter (VectorClass, name) {
   const Vector = VectorClass.prototype;
   const desc = Object.getOwnPropertyDescriptor(Vector, name);
   const org = function () {
@@ -260,20 +260,20 @@ export function cachedGetter(VectorClass, name) {
   });
 }
 
-export function defineVectorLength(VectorClass, value) {
+export function defineVectorLength (VectorClass, value) {
   const Vector = VectorClass.prototype;
 
   Object.defineProperty(Vector, VECTOR_LENGTH, { value });
 }
 
-export function defineMatrixLength(MatrixClass) {
+export function defineMatrixLength (MatrixClass) {
   defineVectorLength(MatrixClass, CHECK_SUM);
 }
 
-export function cachedFactory(VectorClass) {
+export function cachedFactory (VectorClass) {
   return bindCache((...args) => new VectorClass(...args));
 }
 
-export function cachedFunction(fun) {
+export function cachedFunction (fun) {
   return bindCache(fun);
 }

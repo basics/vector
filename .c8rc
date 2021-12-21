@@ -1,0 +1,19 @@
+{
+  "all": true,
+  "reporter": [
+    "text",
+    "lcov"
+  ],
+  "include": [
+    "src/**/*.js"
+  ],
+  "extension": [
+    ".js"
+  ],
+  "exclude": [
+
+  ],
+  "sourceMap": true,
+  "instrument": true,
+  "exclude-after-remap": false
+}

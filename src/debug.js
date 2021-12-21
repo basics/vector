@@ -1,4 +1,4 @@
-export default function debug(strings, ...values) {
+export default function debug (strings, ...values) {
   return strings
     .reduce((memo, string, index) => {
       memo.push(string);
