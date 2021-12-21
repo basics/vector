@@ -2,7 +2,7 @@ import { assert } from 'chai';
 import { formatNumber } from '../src/formatter';
 
 describe('formatNumber test.', () => {
-  it('should format Number with default 4 decimals', () => {
+  it('should format Number with default 4 decimals.', () => {
     assert.equal(formatNumber(0.00000001), '0.00000001');
     assert.equal(formatNumber(0.00009998), '0.00009998');
     assert.equal(formatNumber(0.00000000000000000001), '0.00000000000000000001');
