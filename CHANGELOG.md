@@ -1,5 +1,20 @@
 # Project Changelog
 
+# [2.0.0-beta.10](https://github.com/basics/vector/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2021-12-21)
+
+
+### Bug Fixes
+
+* **c8:** changed includes ([31e8f85](https://github.com/basics/vector/commit/31e8f85bd9fb199bbf29867a35444762a4033400))
+* **c8:** changed includes ([ff954af](https://github.com/basics/vector/commit/ff954afd371e580817144417c3c981fd1b4edf7f))
+* **formatter:** fix typo ([56aff08](https://github.com/basics/vector/commit/56aff089da6fa446602e8f501d7e24d474dc9597))
+* **formatter:** fix typo ([a6318b4](https://github.com/basics/vector/commit/a6318b41cc234d0e7844a80c10ef87d1d83b13f8))
+* **formatter:** number format fix typo ([7df6c07](https://github.com/basics/vector/commit/7df6c072c4c4e7871577d2444d827e16483f7e37))
+* **formatter:** number format fix typo ([8dbbe20](https://github.com/basics/vector/commit/8dbbe20ecc30cbf6c00c1b90195319de94714e89))
+* **gitignore:** add husky files to git ignore ([c267936](https://github.com/basics/vector/commit/c267936ed408f2f732b4536f441589d0c2965a5a))
+* **readme:** update public urls in readme ([44d3eb8](https://github.com/basics/vector/commit/44d3eb8119f38e0dd4b81eac603ccb34e2524a70))
+* **sonarcloud:** remove pull requests for sonar cloud ([f56853a](https://github.com/basics/vector/commit/f56853a900e42a218e088c1f2d2e470153b59721))
+
 # [2.0.0-beta.9](https://github.com/basics/vector/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2021-12-21)
 
 
