@@ -9,7 +9,7 @@
 ```html
 <script
   type="text/javascript"
-  src="https://unpkg.com/@js-basics/vector/build/iife/adapter/playcanvas.min.js"
+  src="https://unpkg.com/@js-basics/vector/build/iife/adapter/playcanvas.js"
 ></script>
 ```
 
@@ -29,7 +29,7 @@ open `external scripts`
 
 increase `Array Size`
 
-add `https://unpkg.com/@js-basics/vector/build/iife/adapter/playcanvas.min.js` to the array
+add `https://unpkg.com/@js-basics/vector/build/iife/adapter/playcanvas.js` to the array
 
 create a new script asset 
 
