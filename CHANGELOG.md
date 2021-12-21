@@ -1,5 +1,12 @@
 # Project Changelog
 
+# [2.0.0-beta.9](https://github.com/basics/vector/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2021-12-21)
+
+
+### Bug Fixes
+
+* **workflow:** updated semantic-release github package ([758fc38](https://github.com/basics/vector/commit/758fc38f052428820331d0aceda284a73067de4c))
+
 # [2.0.0-beta.8](https://github.com/basics/vector/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2021-12-21)
 
 
