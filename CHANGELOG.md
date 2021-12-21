@@ -1,5 +1,12 @@
 # Project Changelog
 
+# [2.0.0-beta.7](https://github.com/basics/vector/compare/v2.0.0-beta.6...v2.0.0-beta.7) (2021-12-21)
+
+
+### Bug Fixes
+
+* **package:** main ([41d3d37](https://github.com/basics/vector/commit/41d3d3751e1fc54b1f4f6a5d80759e3507bf47bb))
+
 # [2.0.0-beta.6](https://github.com/basics/vector/compare/v2.0.0-beta.5...v2.0.0-beta.6) (2021-12-21)
 
 
