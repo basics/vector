@@ -1,5 +1,19 @@
 # Project Changelog
 
+# [2.0.0-beta.7](https://github.com/basics/vector/compare/v2.0.0-beta.6...v2.0.0-beta.7) (2021-12-21)
+
+
+### Bug Fixes
+
+* **package:** main ([41d3d37](https://github.com/basics/vector/commit/41d3d3751e1fc54b1f4f6a5d80759e3507bf47bb))
+
+# [2.0.0-beta.6](https://github.com/basics/vector/compare/v2.0.0-beta.5...v2.0.0-beta.6) (2021-12-21)
+
+
+### Bug Fixes
+
+* **cjs:** conditional export ([5f4e0fb](https://github.com/basics/vector/commit/5f4e0fb8a56f18fcda1196b8b35ccd92d7c5ea22))
+
 # [2.0.0-beta.5](https://github.com/basics/vector/compare/v2.0.0-beta.4...v2.0.0-beta.5) (2021-12-20)
 
 
