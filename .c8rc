@@ -2,11 +2,10 @@
   "all": true,
   "reporter": [
     "text",
-    "lcov",
-    "cobertura"
+    "lcov"
   ],
   "include": [
-    "test/**/*.js"
+    "src/**/*.js"
   ],
   "extension": [
     ".js"

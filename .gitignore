@@ -47,3 +47,5 @@ others
 /operator-*.js
 /adapter/playcanvas.js
 eslint-report.json
+
+.husky
