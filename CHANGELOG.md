@@ -1,5 +1,12 @@
 # Project Changelog
 
+# [2.0.0-beta.5](https://github.com/basics/vector/compare/v2.0.0-beta.4...v2.0.0-beta.5) (2021-12-20)
+
+
+### Bug Fixes
+
+* **esm:** removed keep names ([51109fc](https://github.com/basics/vector/commit/51109fcae8dbd8ac606932d8c6afda4a7c0a73f0))
+
 # [2.0.0-beta.4](https://github.com/basics/vector/compare/v2.0.0-beta.3...v2.0.0-beta.4) (2021-12-20)
 
 
