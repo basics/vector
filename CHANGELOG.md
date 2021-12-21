@@ -1,5 +1,12 @@
 # Project Changelog
 
+# [2.0.0-beta.8](https://github.com/basics/vector/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2021-12-21)
+
+
+### Bug Fixes
+
+* **cleanup:** cleanup ([6f0031a](https://github.com/basics/vector/commit/6f0031ac494d52b79708d9f6f2bdfc2862e6e9c2))
+
 # [2.0.0-beta.7](https://github.com/basics/vector/compare/v2.0.0-beta.6...v2.0.0-beta.7) (2021-12-21)
 
 
