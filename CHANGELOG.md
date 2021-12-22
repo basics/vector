@@ -1,5 +1,12 @@
 # Project Changelog
 
+## [2.0.3](https://github.com/basics/vector/compare/v2.0.2...v2.0.3) (2021-12-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency snyk to v1.806.0 ([e81e55d](https://github.com/basics/vector/commit/e81e55d6ae579bdd4d412c523224af5537c312ba))
+
 ## [2.0.2](https://github.com/basics/vector/compare/v2.0.1...v2.0.2) (2021-12-22)
 
 
