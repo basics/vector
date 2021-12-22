@@ -4,6 +4,8 @@ on:
     branches:
       - "main"
       - "beta"
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 jobs:
   analyze:
@@ -52,10 +54,6 @@ jobs:
         uses: sonarsource/sonarcloud-github-action@master
         with:
           args: >
-            -Dsonar.organization=basics
-            -Dsonar.projectKey=basics_vector
-            -Dsonar.eslint.reportPaths=eslint-report.json
-            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
             -Dsonar.projectVersion=${{ steps.package-version.outputs.current-version}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
