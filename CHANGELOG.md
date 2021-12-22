@@ -1,5 +1,12 @@
 # Project Changelog
 
+## [2.0.4](https://github.com/basics/vector/compare/v2.0.3...v2.0.4) (2021-12-22)
+
+
+### Bug Fixes
+
+* **sonarcloud:** removed inclusions ([9da96e4](https://github.com/basics/vector/commit/9da96e498bc93cf25d090e6b50ff154370c2983a))
+
 ## [2.0.4-beta.1](https://github.com/basics/vector/compare/v2.0.3...v2.0.4-beta.1) (2021-12-22)
 
 
