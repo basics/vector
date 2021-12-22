@@ -1,5 +1,14 @@
 # Project Changelog
 
+## [2.0.2-beta.1](https://github.com/basics/vector/compare/v2.0.1...v2.0.2-beta.1) (2021-12-22)
+
+
+### Bug Fixes
+
+* **sonarcloud:** also run by pull_request ([918ea28](https://github.com/basics/vector/commit/918ea2874b1f91475eec4a984eae0b747995d0a3))
+* **sonarcloud:** defined included files ([a245336](https://github.com/basics/vector/commit/a245336005688abd3908f5dc3727d4877a23430e))
+* **sonarcloud:** external property file ([34565a8](https://github.com/basics/vector/commit/34565a8985885e88289acd9ca84f3d062a90bf49))
+
 ## [2.0.1](https://github.com/basics/vector/compare/v2.0.0...v2.0.1) (2021-12-21)
 
 
