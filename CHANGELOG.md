@@ -1,13 +1,56 @@
 # Project Changelog
 
-# [2.0.0-beta.11](https://github.com/basics/vector/compare/v2.0.0-beta.10...v2.0.0-beta.11) (2021-12-22)
+## [2.0.1](https://github.com/basics/vector/compare/v2.0.0...v2.0.1) (2021-12-21)
 
 
 ### Bug Fixes
 
-* **sonarcloud:** also run by pull_request ([918ea28](https://github.com/basics/vector/commit/918ea2874b1f91475eec4a984eae0b747995d0a3))
-* **sonarcloud:** defined included files ([a245336](https://github.com/basics/vector/commit/a245336005688abd3908f5dc3727d4877a23430e))
-* **sonarcloud:** external property file ([34565a8](https://github.com/basics/vector/commit/34565a8985885e88289acd9ca84f3d062a90bf49))
+* **deps:** pin dependencies ([99c7447](https://github.com/basics/vector/commit/99c744749c9647bf790b8a435e2ce5d62dbe40f6))
+
+# [2.0.0](https://github.com/basics/vector/compare/v1.57.1...v2.0.0) (2021-12-21)
+
+
+### Bug Fixes
+
+* **build:** refactored ([f54f742](https://github.com/basics/vector/commit/f54f7426605ee3787b6e68b8442c7b6e056094f4))
+* **c8:** changed includes ([31e8f85](https://github.com/basics/vector/commit/31e8f85bd9fb199bbf29867a35444762a4033400))
+* **c8:** changed includes ([ff954af](https://github.com/basics/vector/commit/ff954afd371e580817144417c3c981fd1b4edf7f))
+* **cjs:** conditional export ([5f4e0fb](https://github.com/basics/vector/commit/5f4e0fb8a56f18fcda1196b8b35ccd92d7c5ea22))
+* **cleanup:** cleanup ([6f0031a](https://github.com/basics/vector/commit/6f0031ac494d52b79708d9f6f2bdfc2862e6e9c2))
+* **esbuild:** different builds cjs/ems/iife ([a7554a8](https://github.com/basics/vector/commit/a7554a8716b8d55ecfe716a9a5fdeb7e0a1e6001))
+* **esm:** keep names ([833b62d](https://github.com/basics/vector/commit/833b62d61e0af724b2e077302d66712fafb34d25))
+* **esm:** removed keep names ([51109fc](https://github.com/basics/vector/commit/51109fcae8dbd8ac606932d8c6afda4a7c0a73f0))
+* **formatter:** fix typo ([56aff08](https://github.com/basics/vector/commit/56aff089da6fa446602e8f501d7e24d474dc9597))
+* **formatter:** fix typo ([a6318b4](https://github.com/basics/vector/commit/a6318b41cc234d0e7844a80c10ef87d1d83b13f8))
+* **formatter:** number format fix typo ([7df6c07](https://github.com/basics/vector/commit/7df6c072c4c4e7871577d2444d827e16483f7e37))
+* **formatter:** number format fix typo ([8dbbe20](https://github.com/basics/vector/commit/8dbbe20ecc30cbf6c00c1b90195319de94714e89))
+* **github:** add beta workflow ([14e1cdb](https://github.com/basics/vector/commit/14e1cdba615ccd3e2e2e5d3ed04a84efb89db1de))
+* **github:** add default workflow ([a58d674](https://github.com/basics/vector/commit/a58d674f90b1273593cceb0b64bb22e065053dfd))
+* **github:** added workflow ([d8da381](https://github.com/basics/vector/commit/d8da3817532110ad2208e159044456568ad0632c))
+* **gitignore:** add husky files to git ignore ([c267936](https://github.com/basics/vector/commit/c267936ed408f2f732b4536f441589d0c2965a5a))
+* **package-lock:** removed from ignore ([bfa3ac0](https://github.com/basics/vector/commit/bfa3ac008b80cc3bdb38c79ef4113cfe7dc638ba))
+* **package:** added module and main entry ([7d23049](https://github.com/basics/vector/commit/7d23049d46597add863144099956a6cd1fa0bc1a))
+* **package:** main ([41d3d37](https://github.com/basics/vector/commit/41d3d3751e1fc54b1f4f6a5d80759e3507bf47bb))
+* **package:** removed prepare call ([4483da4](https://github.com/basics/vector/commit/4483da48ec91f4dec001cec85fdff8cd1c9c4d08))
+* **playcanvas:** hijackArray working fine ([ba17b26](https://github.com/basics/vector/commit/ba17b26f3a19029f855fe068bf9b5e1b546cb16c))
+* **playcanvas:** remove on load behavior of playcanvas adapter ([461788f](https://github.com/basics/vector/commit/461788fcb5cf6a9b059f00bde05eb9c6620c17a4))
+* **readme:** update public urls in readme ([44d3eb8](https://github.com/basics/vector/commit/44d3eb8119f38e0dd4b81eac603ccb34e2524a70))
+* **sonarcloud:** remove pull requests for sonar cloud ([f56853a](https://github.com/basics/vector/commit/f56853a900e42a218e088c1f2d2e470153b59721))
+* **test:** test ([9ea3e7f](https://github.com/basics/vector/commit/9ea3e7f5a740a43d9bc0e8fcfd00e4403a346b13))
+* **test:** test ([bb21079](https://github.com/basics/vector/commit/bb21079cb10319a41b9222830bf9258d601cbcfa))
+* **test:** test ([04fb95d](https://github.com/basics/vector/commit/04fb95d3571fbce7f61256a531d805ec41f4a43c))
+* **test:** test ([6a8fabb](https://github.com/basics/vector/commit/6a8fabbe8e3df329fc7f2e0c94e82deeb8d25df5))
+* **workflow:** updated semantic-release github package ([758fc38](https://github.com/basics/vector/commit/758fc38f052428820331d0aceda284a73067de4c))
+
+
+### chore
+
+* **ignore:** added folders to npm ignore ([b3da6c3](https://github.com/basics/vector/commit/b3da6c34506cfeb49851ef5fe7fd23d1b8152668))
+
+
+### BREAKING CHANGES
+
+* **ignore:** travis removed added github actions and refactored build process
 
 # [2.0.0-beta.10](https://github.com/basics/vector/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2021-12-21)
 
