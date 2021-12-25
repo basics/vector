@@ -302,7 +302,7 @@ export function hijackPlayCanvas (pc) {
     if (other && (isNumber(other.w))) {
       return this.transformVec4(other);
     }
-    return AMat4().mul2(this, other);
+    return new AMat4().mul2(this, other);
   };
 
   AMat3.prototype[Symbol.iterator] = function () {
