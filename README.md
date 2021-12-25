@@ -3,12 +3,14 @@
 [![GitHub package version](https://img.shields.io/github/package-json/v/basics/vector.svg)](https://github.com/basics/vector)
 [![npm version](https://img.shields.io/npm/v/@js-basics/vector.svg)](https://www.npmjs.com/package/@js-basics/vector)
 [![license](https://img.shields.io/github/license/basics/vector.svg)](https://github.com/basics/vector)
+
+![main action pipeline](https://github.com/basics/vector/actions/workflows/main.yml/badge.svg)
+![beta action pipeline](https://github.com/basics/vector/actions/workflows/beta.yml/badge.svg)
 [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
 
-[![OSX/Linux Build Status](https://travis-ci.org/basics/vector.svg?branch=master)](https://travis-ci.org/basics/vector)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/drb33qvmf3koo5gr?svg=true)](https://ci.appveyor.com/project/StephanGerbeth/vector)
-[![Dependencies Status](https://david-dm.org/basics/vector/status.svg)](https://david-dm.org/basics/vector)
-[![DevDependencies Status](https://david-dm.org/basics/vector/dev-status.svg)](https://david-dm.org/basics/vector?type=dev)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=basics_vector&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=basics_vector)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=basics_vector&metric=coverage)](https://sonarcloud.io/summary/new_code?id=basics_vector)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=basics_vector&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=basics_vector)
 
 This library provides 3D Vector in js including arithmetic operator overloading (`+ - * / % **`).
 
@@ -79,57 +81,138 @@ import { calc, vector, victor, point, ipoint } from "@js-basics/vector";
 
 ### create vector by numbers
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=6-12)](https://github.com/basics/vector/blob/master/examples/example.js#L6)
+```javascript
+const pos = vector(5, 6, 7);
+const dir = vector(1, 0, 0);
+console.log(debug`pos:${pos}, dir: ${dir}`);
+// pos: { x: 5, y: 6, z: 7 }  dir: { x: 1, y: 0, z: 0 }
+```
 
 ### create vector by calculating other vectors and number
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=12-17)](https://github.com/basics/vector/blob/master/examples/example.js#L12)
+```javascript
+const offsetA = vector(() => dir * 30 + pos);
+console.log(debug`offsetA: ${offsetA}`);
+// offsetA: { x: 35, y: 6, z: 7 }
+```
 
 ### calculate cross product
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=25-33)](https://github.com/basics/vector/blob/master/examples/example.js#L25)
+```javascript
+const dir1 = vector(0, 1, 0);
+const dir2 = vector(-1, 0, 1);
+const cross = dir1.cross(dir2);
+
+console.log(debug`cross: ${cross}`);
+// cross: { x: 1, y: 0, z: 1 }
+```
 
 ### directly normalize the cross product
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=33-39)](https://github.com/basics/vector/blob/master/examples/example.js#L33)
+```javascript
+const crossNorm = dir1.crossNormalize(dir2);
+
+console.log(debug`crossNorm: ${crossNorm}`);
+// crossNorm: { x: 0.7071, y: 0, z: 0.7071 }
+```
 
 ### cross product handling works also with operator handling
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=39-45)](https://github.com/basics/vector/blob/master/examples/example.js#L39)
+```javascript
+const crossNormCalc = vector(() => dir1.crossNormalize(dir2) * 50);
 
-### normalize only with arithmetic
+console.log(debug`crossNormCalc: ${crossNormCalc}`);
+// crossNormCalc: { x: 35.36, y: 0, z: 35.36 }
+```
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=45-50)](https://github.com/basics/vector/blob/master/examples/example.js#L45)
+### normalize with arithmetic only
+
+```javascript
+const norm = vector(() => offsetA / offsetA.length);
+console.log(debug`norm: ${norm}`);
+// norm: { x: 0.967, y: 0.1658, z: 0.1934 }
+```
 
 ### mutable 3D vector called Vector
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=50-61)](https://github.com/basics/vector/blob/master/examples/example.js#L50)
+```javascript
+const v1 = vector(5, 6, 7);
+
+v1.x = 27;
+console.log(debug`v1: ${v1}`);
+// v1: { x: 27, y: 6, z: 7 }
+
+v1.calc(p => (p + 1) * 12);
+console.log(debug`v1: ${v1}`);
+// v1: { x: 336, y: 84, z: 96 }
+```
 
 ### immutable 3D vector called Victor
 
 behaves exactly like Vector but code cant change its `x`, `y` and `z` axes.
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=61-71)](https://github.com/basics/vector/blob/master/examples/example.js#L57)
+```javascript
+const v2 = victor(5, 6, 7);
+
+try {
+  v2.x = 27;
+} catch (error) {
+  console.log(`error: ${error}`);
+  // error: Error: set x() not implemented
+}
+```
 
 ### mutable 2D vector called Point
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=71-82)](https://github.com/basics/vector/blob/master/examples/example.js#L67)
+```javascript
+const p1 = point(5, 6);
+
+p1.x = 27;
+console.log(debug`p1: ${p1}`);
+// p1: { x: 27, y: 6 }
+
+p1.calc(p => (p + 1) * 12);
+console.log(debug`v1: ${v1}`);
+// p1: { x: 336, y: 84 }
+```
 
 ### immutable 2D vector called IPoint
 
 behaves exactly like Point but code cant change its `x` and `y` axes.
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=82-92)](https://github.com/basics/vector/blob/master/examples/example.js#L74)
+```javascript
+const p2 = ipoint(5, 6);
 
+try {
+  p2.x = 27;
+} catch (error) {
+  console.log('error:', error.toString());
+  // error: Error: set x() not implemented
+}
+```
 ### creating vector inside calculation
 
 works fine thanks to caching in factory function.
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=92-98)](https://github.com/basics/vector/blob/master/examples/example.js#L84)
+```javascript
+// creating vector inside calculation works fine,
+// thanks to caching in factory function
+const inlineVec = victor(() => victor(25, 30, 0) / 2);
+console.log(debug`inlineVec: ${inlineVec}`);
+// inlineVec: { x: 12.5, y: 15, z: 0 }
+```
 
 ### mixing 2D and 3D space
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=98-106)](https://github.com/basics/vector/blob/master/examples/example.js#L90)
+```javascript
+// mix 2D and 3D space
+const from2d = victor(() => point(25, 30) / 2);
+const from3d = ipoint(() => from2d.xy * 2);
+console.log(debug`from2d: ${from2d}`);
+console.log(debug`from3d: ${from3d}`);
+// from2d: { x: 12.5, y: 15, z: 0 }
+// from3d: { x: 25, y: 30 }
+```
 
 ## Not another vector lib
 
@@ -164,11 +247,37 @@ import {
 
 ### override valueOf in own class
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=106-116)](https://github.com/basics/vector/blob/master/examples/example.js#L98)
+```javascript
+class Tuple {
+  constructor(x, y, z) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+  }
+}
+cachedValueOf(Tuple);
+```
 
 ### write own factory function
 
-[![code preview](https://us-central1-code-snippet-to-svg.cloudfunctions.net/default/basics/vector/blob/master/examples/example.js?theme=atom_one_light&range=116-134)](https://github.com/basics/vector/blob/master/examples/example.js#L107)
+```javascript
+const tuple = (() => {
+  const tupleFactory = cachedFactory(Tuple);
+  return (x, y, z) => {
+    if (typeof x === 'function') {
+      return operatorCalc(x, new Tuple());
+    }
+    return tupleFactory(x, y, z);
+  };
+})();
+
+const t1 = tuple(3, 4, 5);
+const t2 = tuple(6, 7, 8);
+const t = tuple(() => t1 + t2 * 2);
+
+console.log(`t: ${JSON.stringify(t)}`);
+// t: {"x":15,"y":18,"z":21}
+```
 
 ## Predefined adapters
 
