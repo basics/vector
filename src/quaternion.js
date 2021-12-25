@@ -46,53 +46,53 @@ function look (forward, up) {
   const m22 = vector.z;
 
   const num8 = (m00 + m11) + m22;
-  const quaternion = new Array(4);
+  const quat = new Array(4);
   if (num8 > 0) {
     let num = Math.sqrt(num8 + 1);
-    quaternion[W] = num * 0.5;
+    quat[W] = num * 0.5;
     num = 0.5 / num;
-    quaternion[X] = (m12 - m21) * num;
-    quaternion[Y] = (m20 - m02) * num;
-    quaternion[Z] = (m01 - m10) * num;
-    return quaternion;
+    quat[X] = (m12 - m21) * num;
+    quat[Y] = (m20 - m02) * num;
+    quat[Z] = (m01 - m10) * num;
+    return quat;
   }
   if ((m00 >= m11) && (m00 >= m22)) {
     const num7 = Math.sqrt(((1 + m00) - m11) - m22);
     const num4 = 0.5 / num7;
-    quaternion[X] = 0.5 * num7;
-    quaternion[Y] = (m01 + m10) * num4;
-    quaternion[Z] = (m02 + m20) * num4;
-    quaternion[W] = (m12 - m21) * num4;
-    return quaternion;
+    quat[X] = 0.5 * num7;
+    quat[Y] = (m01 + m10) * num4;
+    quat[Z] = (m02 + m20) * num4;
+    quat[W] = (m12 - m21) * num4;
+    return quat;
   }
   if (m11 > m22) {
     const num6 = Math.sqrt(((1 + m11) - m00) - m22);
     const num3 = 0.5 / num6;
-    quaternion[X] = (m10 + m01) * num3;
-    quaternion[Y] = 0.5 * num6;
-    quaternion[Z] = (m21 + m12) * num3;
-    quaternion[W] = (m20 - m02) * num3;
-    return quaternion;
+    quat[X] = (m10 + m01) * num3;
+    quat[Y] = 0.5 * num6;
+    quat[Z] = (m21 + m12) * num3;
+    quat[W] = (m20 - m02) * num3;
+    return quat;
   }
   const num5 = Math.sqrt(((1 + m22) - m00) - m11);
   const num2 = 0.5 / num5;
-  quaternion[X] = (m20 + m02) * num2;
-  quaternion[Y] = (m21 + m12) * num2;
-  quaternion[Z] = 0.5 * num5;
-  quaternion[W] = (m01 - m10) * num2;
-  return quaternion;
+  quat[X] = (m20 + m02) * num2;
+  quat[Y] = (m21 + m12) * num2;
+  quat[Z] = 0.5 * num5;
+  quat[W] = (m01 - m10) * num2;
+  return quat;
 }
 
 function axisAngle (axis, angle) {
-  const quaternion = new Array(4);
+  const quat = new Array(4);
   const a = angle * 0.5;
   const sa = Math.sin(a);
   const ca = Math.cos(a);
-  quaternion[X] = sa * axis.x;
-  quaternion[Y] = sa * axis.y;
-  quaternion[Z] = sa * axis.z;
-  quaternion[W] = ca;
-  return quaternion;
+  quat[X] = sa * axis.x;
+  quat[Y] = sa * axis.y;
+  quat[Z] = sa * axis.z;
+  quat[W] = ca;
+  return quat;
 }
 
 function getQuat (x, y, z, w) {
