@@ -1,5 +1,12 @@
 # Project Changelog
 
+## [2.0.5](https://github.com/basics/vector/compare/v2.0.4...v2.0.5) (2021-12-27)
+
+
+### Bug Fixes
+
+* **playcanvas:** code cleanaup ([3164e01](https://github.com/basics/vector/commit/3164e01e40c5a5b367161cc18ff2f4ca0adad1f1))
+
 ## [2.0.4-beta.2](https://github.com/basics/vector/compare/v2.0.4-beta.1...v2.0.4-beta.2) (2021-12-25)
 ## [2.0.4](https://github.com/basics/vector/compare/v2.0.3...v2.0.4) (2021-12-22)
 
