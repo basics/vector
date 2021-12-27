@@ -1,11 +1,13 @@
 # Project Changelog
 
 ## [2.0.4-beta.2](https://github.com/basics/vector/compare/v2.0.4-beta.1...v2.0.4-beta.2) (2021-12-25)
+## [2.0.4](https://github.com/basics/vector/compare/v2.0.3...v2.0.4) (2021-12-22)
 
 
 ### Bug Fixes
 
 * **playcanvas:** code cleanaup ([3164e01](https://github.com/basics/vector/commit/3164e01e40c5a5b367161cc18ff2f4ca0adad1f1))
+* **sonarcloud:** removed inclusions ([9da96e4](https://github.com/basics/vector/commit/9da96e498bc93cf25d090e6b50ff154370c2983a))
 
 ## [2.0.4-beta.1](https://github.com/basics/vector/compare/v2.0.3...v2.0.4-beta.1) (2021-12-22)
 
