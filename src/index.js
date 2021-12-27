@@ -1,9 +1,6 @@
-import { operatorCalc } from './operator';
-import { Vector, Victor } from './vector';
-import { Point, IPoint } from './point';
-import { Quaternion, IQuaternion } from './quaternion';
-import { IMat3 } from './mat3';
+import { Vector } from './vector';
 
+export { operatorCalc as calc } from './operator';
 export {
   Vector, Victor, Victor as IVector, vector, victor, victor as ivector, FORWARD, LEFT, UP, RIGHT
 } from './vector';
@@ -21,9 +18,5 @@ export {
 } from './color';
 export { IMat3 } from './mat3';
 export { radians, degrees } from './angles';
-
-export function calc (alg) {
-  return operatorCalc(alg);
-}
 
 export default Vector;
