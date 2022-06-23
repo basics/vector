@@ -50,7 +50,7 @@
   "homepage": "https://github.com/basics/vector#readme",
   "dependencies": {
     "@babel/core": "7.16.5",
-    "snyk": "1.806.0"
+    "snyk": "1.958.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.16.5",
