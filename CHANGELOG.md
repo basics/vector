@@ -1,5 +1,12 @@
 # Project Changelog
 
+## [2.0.6-beta.1](https://github.com/basics/vector/compare/v2.0.5...v2.0.6-beta.1) (2022-06-27)
+
+
+### Bug Fixes
+
+* **snyk:** moved `snyk` to `devDependencies` ([cfc1493](https://github.com/basics/vector/commit/cfc14938494c8d025d8421473295cdec1d9a0623))
+
 ## [2.0.5](https://github.com/basics/vector/compare/v2.0.4...v2.0.5) (2021-12-27)
 
 

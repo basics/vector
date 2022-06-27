@@ -1,6 +1,6 @@
 {
   "name": "@js-basics/vector",
-  "version": "2.0.5",
+  "version": "2.0.6-beta.1",
   "description": "A 3D Vector lib including arithmetic operator overloading (+ - * / % **).",
   "type": "module",
   "main": "./build/esm/index.mjs",
