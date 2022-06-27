@@ -1,5 +1,20 @@
 # Project Changelog
 
+## [2.0.6-beta.2](https://github.com/basics/vector/compare/v2.0.6-beta.1...v2.0.6-beta.2) (2022-06-27)
+
+
+### Bug Fixes
+
+* **vulnerabilities:** updated packages ([2694f69](https://github.com/basics/vector/commit/2694f69693ef2a584389e1833104438d86aca929))
+* **vulnerabilities:** updated packages ([1e8d36e](https://github.com/basics/vector/commit/1e8d36e30026c1a22c2f0da625ee2a4f2e77af35))
+
+## [2.0.6-beta.1](https://github.com/basics/vector/compare/v2.0.5...v2.0.6-beta.1) (2022-06-27)
+
+
+### Bug Fixes
+
+* **snyk:** moved `snyk` to `devDependencies` ([cfc1493](https://github.com/basics/vector/commit/cfc14938494c8d025d8421473295cdec1d9a0623))
+
 ## [2.0.5](https://github.com/basics/vector/compare/v2.0.4...v2.0.5) (2021-12-27)
 
 
