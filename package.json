@@ -49,8 +49,7 @@
   },
   "homepage": "https://github.com/basics/vector#readme",
   "dependencies": {
-    "@babel/core": "7.16.5",
-    "snyk": "1.806.0"
+    "@babel/core": "7.16.5"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.16.5",
@@ -68,7 +67,8 @@
     "mocha": "9.2.0",
     "pinst": "2.1.6",
     "rimraf": "3.0.2",
-    "semantic-release": "19.0.0"
+    "semantic-release": "19.0.0",
+    "snyk": "^1.958.0"
   },
   "snyk": true
 }
