@@ -49,10 +49,10 @@
   },
   "homepage": "https://github.com/basics/vector#readme",
   "dependencies": {
-    "@babel/core": "7.18.6"
+    "@babel/core": "7.18.9"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.18.2",
+    "@babel/eslint-parser": "7.18.9",
     "@commitlint/cli": "17.0.3",
     "@commitlint/config-conventional": "17.0.3",
     "browserslist-to-esbuild": "1.1.1",
