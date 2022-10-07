@@ -1,5 +1,12 @@
 # Project Changelog
 
+## [2.0.10](https://github.com/basics/vector/compare/v2.0.9...v2.0.10) (2022-10-07)
+
+
+### Bug Fixes
+
+* **deps:** update babel monorepo ([e646464](https://github.com/basics/vector/commit/e6464647ce3ee5c778d89e7c9ecab5a0d80c188f))
+
 ## [2.0.9](https://github.com/basics/vector/compare/v2.0.8...v2.0.9) (2022-07-18)
 
 
