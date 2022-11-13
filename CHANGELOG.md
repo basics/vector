@@ -1,5 +1,12 @@
 # Project Changelog
 
+## [2.0.11](https://github.com/basics/vector/compare/v2.0.10...v2.0.11) (2022-11-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @babel/core to v7.20.2 ([6cab5c3](https://github.com/basics/vector/commit/6cab5c338c8f9b8ac69e02c8a9b2204a3557fcc4))
+
 ## [2.0.10](https://github.com/basics/vector/compare/v2.0.9...v2.0.10) (2022-10-07)
 
 
