@@ -60,7 +60,7 @@
     "chai": "4.3.7",
     "commitlint": "17.2.0",
     "esbuild": "0.15.13",
-    "eslint": "8.27.0",
+    "eslint": "8.29.0",
     "eslint-formatter-json-relative": "0.1.0",
     "husky": "8.0.2",
     "lint-staged": "13.0.3",
