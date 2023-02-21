@@ -68,7 +68,7 @@
     "pinst": "3.0.0",
     "rimraf": "4.1.2",
     "semantic-release": "20.1.0",
-    "snyk": "1.1100.0"
+    "snyk": "1.1108.0"
   },
   "overrides": {
     "@octokit/request": {
