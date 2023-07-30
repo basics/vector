@@ -68,7 +68,7 @@
     "pinst": "3.0.0",
     "rimraf": "5.0.1",
     "semantic-release": "21.0.7",
-    "snyk": "1.1109.0"
+    "snyk": "1.1196.0"
   },
   "snyk": true
 }
