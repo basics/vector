@@ -1,4 +1,5 @@
 import { isNumber } from './utils/math';
+import { hijackDOMPoint } from "./dom.js";
 
 const X = 0;
 const Y = 1;
@@ -194,16 +195,20 @@ export function operatorCalc (alg, result) {
 export function cachedValueOf (VectorClass, getSource) {
   const Vector = VectorClass.prototype;
   Vector[GET_SOURCE] = getSource;
-  const name = 'valueOf';
-  const org = Vector[name];
+  const org = Vector[Symbol.toPrimitive] || function (hint) {
+    if (hint === 'string') {
+      return this.toString();
+    }
+    return this.valueOf();
+  };
 
-  Vector[name] = function () {
+  Vector[Symbol.toPrimitive] = function (hint) {
     if (inProgress === X) {
       inVector = inVector ? maxVector(inVector, this) : this;
       collect[elCount - 1] = this;
     }
     if (inProgress === DEFAULT) {
-      return org.call(this);
+      return org.call(this, hint);
     }
     return getVectorValue(this, inProgress);
   };
@@ -276,4 +281,9 @@ export function cachedFactory (VectorClass) {
 
 export function cachedFunction (fun) {
   return bindCache(fun);
+}
+
+if (typeof DOMPoint !== 'undefined' ) {
+  // eslint-disable-next-line no-undef
+  hijackDOMPoint(DOMPoint);
 }
