@@ -1,5 +1,19 @@
 # Project Changelog
 
+# [2.1.0](https://github.com/basics/vector/compare/v2.0.12...v2.1.0) (2023-07-30)
+
+
+### Bug Fixes
+
+* **deps:** update babel monorepo to v7.22.9 ([af27c4b](https://github.com/basics/vector/commit/af27c4bc4aa69cea1fb0b34bd55e678fc8f9ca90))
+* **deps:** update dependency @babel/core to v7.20.12 ([8fc85d5](https://github.com/basics/vector/commit/8fc85d5b98a9d59417b9462eb1fe7d0afb3ca2ae))
+* **deps:** update dependency @babel/core to v7.21.0 ([dadecf8](https://github.com/basics/vector/commit/dadecf898695bea417beb363e1d27bc6820407a6))
+
+
+### Features
+
+* **operator:** to primitive impl for dom point ([7170acb](https://github.com/basics/vector/commit/7170acb48e6aa476371d28e09343fdc2d75b8f3f))
+
 ## [2.0.12](https://github.com/basics/vector/compare/v2.0.11...v2.0.12) (2022-12-10)
 
 
