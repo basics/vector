@@ -64,7 +64,7 @@
     "eslint-formatter-json-relative": "0.1.0",
     "husky": "8.0.3",
     "lint-staged": "13.3.0",
-    "mocha": "10.2.0",
+    "mocha": "10.4.0",
     "pinst": "3.0.0",
     "rimraf": "5.0.5",
     "semantic-release": "21.1.2",
