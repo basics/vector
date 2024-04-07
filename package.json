@@ -57,7 +57,7 @@
     "@commitlint/config-conventional": "19.1.0",
     "browserslist-to-esbuild": "2.1.1",
     "c8": "8.0.1",
-    "chai": "4.4.1",
+    "chai": "5.1.0",
     "commitlint": "19.2.1",
     "esbuild": "0.20.2",
     "eslint": "8.57.0",
