@@ -59,7 +59,7 @@
     "c8": "9.1.0",
     "chai": "5.1.0",
     "commitlint": "19.3.0",
-    "esbuild": "0.20.2",
+    "esbuild": "0.23.1",
     "eslint": "8.57.0",
     "eslint-formatter-json-relative": "0.1.0",
     "husky": "9.0.11",
