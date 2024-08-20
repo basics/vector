@@ -67,7 +67,7 @@
     "mocha": "10.4.0",
     "pinst": "3.0.0",
     "rimraf": "5.0.10",
-    "semantic-release": "23.1.1",
+    "semantic-release": "24.1.0",
     "snyk": "1.1291.1"
   },
   "snyk": true
