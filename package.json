@@ -62,7 +62,7 @@
     "esbuild": "0.24.0",
     "eslint": "8.57.0",
     "eslint-formatter-json-relative": "0.1.0",
-    "husky": "9.1.5",
+    "husky": "9.1.7",
     "lint-staged": "15.2.9",
     "mocha": "10.7.3",
     "pinst": "3.0.0",
