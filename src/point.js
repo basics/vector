@@ -25,7 +25,7 @@ function square(val) {
 }
 
 class APoint {
-  constructor(x, y) {
+  constructor(x = 0, y = 0) {
     if (typeof x === 'function') {
       operatorCalc(x, (nx, ny) => {
         this[AXES] = [nx, ny];
