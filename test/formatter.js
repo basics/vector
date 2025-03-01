@@ -1,8 +1,9 @@
 import { assert } from 'chai';
 import { formatNumber } from '../src/formatter';
+import { describe, it } from 'vitest';
 
-describe('formatNumber test.', () => {
-  it('should format Number with default 4 decimals.', () => {
+describe('formatNumber test.', function () {
+  it('should format Number with default 4 decimals.', function () {
     assert.equal(formatNumber(0.00000001), '0.00000001');
     assert.equal(formatNumber(0.00009998), '0.00009998');
     assert.equal(formatNumber(0.00000000000000000001), '0.00000000000000000001');

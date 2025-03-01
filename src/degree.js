@@ -3,10 +3,10 @@ import { convertToCSSVars } from './utils/css';
 
 const ANGLE = Symbol('angle rad');
 const DEG_TO_RAD = Math.PI / 180;
-const RAD_TO_DEG = 180 / Math.PI;
+// const RAD_TO_DEG = 180 / Math.PI; // TODO: Wird nicht verwendet?
 
 class ADegree {
-  constructor (angle) {
+  constructor(angle) {
     if (angle instanceof ADegree) {
       this[ANGLE] = angle[ANGLE];
     } else {
@@ -14,25 +14,25 @@ class ADegree {
     }
   }
 
-  valueOf () {
+  valueOf() {
     return this[ANGLE];
   }
 
-  toJSON () {
+  toJSON() {
     return { angle: this[ANGLE] };
   }
 
-  toString () {
+  toString() {
     return JSON.stringify(this.toJSON());
   }
 
-  toCSSVars (name, target) {
+  toCSSVars(name, target) {
     return convertToCSSVars(name, this.toJSON(), target);
   }
 }
 
 export class Degree extends ADegree {
-  set (angle) {
+  set(angle) {
     if (angle instanceof ADegree) {
       this[ANGLE] = angle[ANGLE];
     } else {
@@ -42,18 +42,18 @@ export class Degree extends ADegree {
 }
 
 export class IDegree extends ADegree {
-  toDegree () {
+  toDegree() {
     return new Degree(this[ANGLE]);
   }
 }
 
 const ZERO = new IDegree(0);
 
-export function degree (angle) {
+export function degree(angle) {
   return new Degree(angle);
 }
 
-export function idegree (angle) {
+export function idegree(angle) {
   if (angle instanceof IDegree) {
     return angle;
   }
@@ -63,6 +63,6 @@ export function idegree (angle) {
   return new IDegree(angle);
 }
 
-export function isAngle (angle) {
+export function isAngle(angle) {
   return isNumber(angle) || angle instanceof ADegree;
 }

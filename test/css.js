@@ -1,11 +1,10 @@
 import { assert } from 'chai';
 import { css } from '../src/css';
 import { iquaternion, victor } from '../src';
+import { describe, it } from 'vitest';
 
-describe('style test.', () => {
-
-  it('a transform should behave like in 3d game engines', () => {
-
+describe('style test.', function () {
+  it('a transform should behave like in 3d game engines', function () {
     // const template = `
     //   transform: matrix3d(
     //    var(--rot-a1), var(--rot-b1), var(--rot-c1), var(--translation-x),
@@ -18,7 +17,6 @@ describe('style test.', () => {
     transform.translation = victor(-5, -6, -7);
     transform.rotation = iquaternion(victor(0, 0, -1), victor(0, 1, 0));
     transform.scale = victor(1, 1, 1);
-
 
     const { vars } = transform;
 
@@ -43,12 +41,10 @@ describe('style test.', () => {
       '--translation-y': -6,
       '--translation-z': -7
     });
-
   });
 
   // https://github.com/keithclark/cssvr/blob/master/src/js/viewport.js#L74
-  it('a matrix should behave like in the cool cs vr demo', () => {
-
+  it('a matrix should behave like in the cool cs vr demo', function () {
     // const template = `
     //   transform:
     //     translate3d(-50%,-50%,calc(var(--fov) - var(--fov) / 10px))
@@ -65,7 +61,6 @@ describe('style test.', () => {
     matrix.fov = 450;
     matrix.rotation = victor(45, 6, 7);
 
-
     const { vars } = matrix;
 
     assert.deepEqual(vars, {
@@ -77,11 +72,9 @@ describe('style test.', () => {
       '--rotation-y': 6,
       '--rotation-z': 7
     });
-
   });
 
-  it('a quaternion should behave like static fromOrientation from real Quaternion clas', () => {
-
+  it('a quaternion should behave like static fromOrientation from real Quaternion clas', function () {
     // const template = `
     //   transform:
     //     rotateY(calc(var(--gyro-alpha) * 1deg))
@@ -89,7 +82,6 @@ describe('style test.', () => {
     //     rotateX(calc(var(--gyro-gamma) * 1deg))
     //     rotateZ(-90deg));
     //   `;
-
 
     const matrix = css('gyro');
 

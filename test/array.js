@@ -1,25 +1,24 @@
 import { assert } from 'chai';
-import {
-  operatorCalc
-} from '../src/operator';
-import { vectorArray, VectorArray } from '../src/array';
+import { operatorCalc } from '../src/operator';
+import { vectorArray } from '../src/array';
+import { describe, it } from 'vitest';
 
-describe('standard Array test.', () => {
-  it('should create x y z values', () => {
+describe('standard Array test.', function () {
+  it('should create x y z values', function () {
     const pos = vectorArray(5, 6, 7);
     assert.equal(pos[0], 5);
     assert.equal(pos[1], 6);
     assert.equal(pos[2], 7);
   });
 
-  it('should create x y z values via array', () => {
+  it('should create x y z values via array', function () {
     const pos = vectorArray([5, 6, 7]);
     assert.equal(pos[0], 5);
     assert.equal(pos[1], 6);
     assert.equal(pos[2], 7);
   });
 
-  it('should be calculated by assigned statement', () => {
+  it('should be calculated by assigned statement', function () {
     const pos = vectorArray(5, 6);
     const dir = vectorArray(3, 0);
     const scale = operatorCalc(() => dir * pos);
@@ -28,7 +27,7 @@ describe('standard Array test.', () => {
     assert.equal(scale[1], 0);
   });
 
-  it('should work with mixed 4d and 3d array', () => {
+  it('should work with mixed 4d and 3d array', function () {
     const pos = vectorArray(5, 6, 7, 8);
     const dir = vectorArray(3, 0, 2);
     const scale = operatorCalc(() => dir * pos);
@@ -39,7 +38,7 @@ describe('standard Array test.', () => {
     assert.equal(scale[3], 0);
   });
 
-  it('calling of calc should automatically detect assigned Vector types', () => {
+  it('calling of calc should automatically detect assigned Vector types', function () {
     const pos = vectorArray(2, 2, 2);
     const vec = operatorCalc(() => 2 * pos + 3);
 
@@ -49,4 +48,3 @@ describe('standard Array test.', () => {
     assert.equal(vec[2], 7);
   });
 });
-

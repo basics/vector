@@ -1,0 +1,54 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "breadcrumbs.enabled": true,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.cursorBlinking": "phase",
+    "editor.formatOnPaste": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.minimap.maxColumn": 200,
+    "editor.minimap.showSlider": "always",
+    "editor.smoothScrolling": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit"
+    },
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact"
+    ],
+    "files.exclude": {
+      ".scannerwork/": true,
+      "dist/": false,
+      "node_modules/": false,
+      "output/": true,
+      "**/.idea": true,
+      "**/*.iml": true,
+      "**/out": true,
+      "**/gen": true,
+      "**/logs": true,
+      "**/*.log": true,
+      "**/.DS_Store": true,
+      ".*": false
+    },
+    "files.associations": {
+      ".branchlintrc": "json",
+      ".huskyrc": "json",
+      ".lintstagedrc": "json",
+      ".postcssrc": "json",
+      ".releaserc": "json",
+      ".stylelintrc": "json",
+      ".vcmrc": "json",
+      "*.css": "postcss",
+      "*.pcss": "postcss",
+      ".*ignore": "ignore",
+      "*.js.tmpl": "javascript",
+    },
+    "javascript.format.enable": false,
+    "window.title": "${dirty} ${activeEditorMedium}${separator}${rootName}",
+    "workbench.settings.enableNaturalLanguageSearch": false
+  }
+}
