@@ -20,7 +20,7 @@ function square(val) {
 }
 
 class AVector {
-  constructor(x = 0, y = 0, z = 0) {
+  constructor(x = undefined, y = undefined, z = undefined) {
     if (typeof x === 'function') {
       operatorCalc(x, (nx, ny, nz) => {
         this[AXES] = [nx, ny, nz];
