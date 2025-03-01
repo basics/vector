@@ -25,17 +25,17 @@ function square(val) {
 }
 
 class APoint {
-  constructor(x = undefined, y = undefined) {
-    if (typeof x === 'function') {
-      operatorCalc(x, (nx, ny) => {
+  constructor(...args) {
+    if (typeof args[0] === 'function') {
+      operatorCalc(args[0], (nx, ny) => {
         this[AXES] = [nx, ny];
       });
-    } else if (isArray(x)) {
-      this[AXES] = [...x];
-    } else if (x && isNumber(x.x)) {
-      this[AXES] = [x.x || 0, x.y || 0];
+    } else if (isArray(args[0])) {
+      this[AXES] = [...args[0]];
+    } else if (args[0] && isNumber(args[0].x)) {
+      this[AXES] = [args[0].x || 0, args[0].y || 0];
     } else {
-      this[AXES] = [x || 0, y || 0];
+      this[AXES] = [args[0] || 0, args[1] || 0];
     }
   }
 
