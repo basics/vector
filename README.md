@@ -190,6 +190,7 @@ try {
   // error: Error: set x() not implemented
 }
 ```
+
 ### creating vector inside calculation
 
 works fine thanks to caching in factory function.
