@@ -38,6 +38,7 @@ lib
 docs
 build
 report
+dist
 
 others
 .DS_Store
@@ -49,3 +50,4 @@ others
 eslint-report.json
 
 .husky
+.history

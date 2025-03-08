@@ -1,9 +1,10 @@
 import { assert } from 'chai';
 import { hijackArray } from '../../src/adapter/array';
 import { calc } from '../../src/index';
+import { describe, it } from 'vitest';
 
-describe('override valueOf of Array', () => {
-  it('calculations with the arrays created by [] operator', () => {
+describe('override valueOf of Array', function () {
+  it('calculations with the arrays created by [] operator', function () {
     hijackArray(Array);
 
     const t1 = [3, 4, 5];

@@ -1,16 +1,17 @@
 import { assert } from 'chai';
 import { operatorCalc, cachedFactory } from '../src/operator';
 import { victor, vector } from '../src';
+import { describe, it } from 'vitest';
 
-describe('operatorCalc with Victor test.', () => {
-  it('should throw error with assingned Victor', () => {
+describe('operatorCalc with Victor test.', function () {
+  it('should throw error with assingned Victor', function () {
     const pos = victor(5, 6, 7);
     const dir = victor(1, 0, 0);
 
     assert.throws(() => operatorCalc(() => dir * pos, victor(1, 0, 0)));
   });
 
-  it('should work fine with number wrapper class', () => {
+  it('should work fine with number wrapper class', function () {
     class Num {
       constructor(nr) {
         this.nr = nr;
@@ -36,8 +37,8 @@ describe('operatorCalc with Victor test.', () => {
   });
 });
 
-describe('operatorCalc with Vector test.', () => {
-  it('should work fine with assigning result vector', () => {
+describe('operatorCalc with Vector test.', function () {
+  it('should work fine with assigning result vector', function () {
     const pos = vector(5, 6, 7);
     const dir = vector(1, 0, 0);
 
@@ -49,7 +50,7 @@ describe('operatorCalc with Vector test.', () => {
   });
 });
 
-describe('operatorCalc with class using cachedFactory (Vector or Victor or Point or Ipoint) test.', () => {
+describe('operatorCalc with class using cachedFactory (Vector or Victor or Point or Ipoint) test.', function () {
   let counter = 0;
   class V {
     constructor() {
@@ -58,8 +59,8 @@ describe('operatorCalc with class using cachedFactory (Vector or Victor or Point
   }
   const vFactory = cachedFactory(V);
 
-  it('factory call should be cached', () => {
-    const pos = vector(5, 6, 7);
+  it('factory call should be cached', function () {
+    // const pos = vector(5, 6, 7);
     const dir = vector(1, 0, 0);
     operatorCalc(() => dir * vFactory() + 1);
 

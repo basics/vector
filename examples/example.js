@@ -16,7 +16,9 @@ console.log(debug`offsetA: ${offsetA}`);
 
 let way = offsetA;
 try {
+  // eslint-disable-next-line no-unused-vars
   way = offsetA + 1;
+  // eslint-disable-next-line no-unused-vars
 } catch (e) {
   console.log('calculate outside of calc throw an error');
 }

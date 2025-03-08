@@ -1,7 +1,8 @@
 import { assert } from 'chai';
 import { fromOrientation, IQuaternion, calc, iquaternion, victor, degree, LEFT, FORWARD, UP, RIGHT } from '../src';
+import { describe, it } from 'vitest';
 
-describe('simple Quaternion tests.', () => {
+describe('simple Quaternion tests.', function () {
   const LEFT90 = iquaternion(LEFT, degree(90));
 
   function fromOrientationSlow({ alpha, beta, gamma }, orientation) {
@@ -14,10 +15,9 @@ describe('simple Quaternion tests.', () => {
     rot = calc(() => dir * rot);
 
     return rot;
-
   }
 
-  it('should work with fromOrientation', () => {
+  it('should work with fromOrientation', function () {
     const alpha = fromOrientation({ alpha: 90, beta: 0, gamma: 0 }, 90);
     assert.instanceOf(alpha, IQuaternion);
     assert.closeTo(alpha.x, -0.7071067811865475, 0.001);
@@ -50,7 +50,7 @@ describe('simple Quaternion tests.', () => {
     assert.closeTo(test2.w, 0, 0.001);
   });
 
-  it('should work with fromOrientation via calc', () => {
+  it('should work with fromOrientation via calc', function () {
     const alpha = fromOrientationSlow({ alpha: 90, beta: 0, gamma: 0 }, 90);
     assert.instanceOf(alpha, IQuaternion);
     assert.closeTo(alpha.x, -0.7071067811865475, 0.001);
@@ -83,7 +83,7 @@ describe('simple Quaternion tests.', () => {
     assert.closeTo(test2.w, 0, 0.001);
   });
 
-  it('should work with algebraic multiply', () => {
+  it('should work with algebraic multiply', function () {
     const v1 = victor(0, 1, 0);
     const v2 = victor(4, 5, 6);
     const q1 = iquaternion(-0.7071067811865475, 0.7071067811865475, 0, 0);
@@ -112,13 +112,13 @@ describe('simple Quaternion tests.', () => {
     assert.closeTo(vq.z, 0, 0.001);
   });
 
-  it('should work throw error when using algebraic multiply wrong', () => {
+  it('should work throw error when using algebraic multiply wrong', function () {
     const v1 = victor(0, 1, 0);
     const q1 = iquaternion(-0.7071067811865475, 0.7071067811865475, 0, 0);
 
-    assert.throws(() => (calc(() => v1 * q1 + 5)));
-    assert.throws(() => (calc(() => q1 * 0)));
-    assert.throws(() => (calc(() => q1 ** q1)));
-    assert.throws(() => (calc(() => q1 * q1 + v1)));
+    assert.throws(() => calc(() => v1 * q1 + 5));
+    assert.throws(() => calc(() => q1 * 0));
+    assert.throws(() => calc(() => q1 ** q1));
+    assert.throws(() => calc(() => q1 * q1 + v1));
   });
 });

@@ -1,5 +1,6 @@
 import { assert } from 'chai';
 import { hijackArray, hijackPlayCanvas } from '../../src/adapter/playcanvas';
+import { describe, it } from 'vitest';
 
 class Vec2 {
   constructor(x, y) {
@@ -25,11 +26,11 @@ class Vec4 {
   }
 }
 
-class Quat { };
+class Quat {}
 
-class Mat3 { };
+class Mat3 {}
 
-class Mat4 { };
+class Mat4 {}
 
 const math = {};
 
@@ -43,8 +44,8 @@ const pc = {
   math
 };
 
-describe('override valueOf of playcanvas vector classes', () => {
-  it('calculations with the new class', () => {
+describe('override valueOf of playcanvas vector classes', function () {
+  it('calculations with the new class', function () {
     hijackPlayCanvas(pc);
 
     const t1 = pc.vec3(3, 4, 5);
@@ -57,7 +58,7 @@ describe('override valueOf of playcanvas vector classes', () => {
     assert.equal(pos.z, 21);
   });
 
-  it('calculations with Array class', () => {
+  it('calculations with Array class', function () {
     hijackArray(Array);
 
     const t1 = [3, 4, 5];

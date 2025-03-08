@@ -17,8 +17,9 @@ test
 examples
 CHANGELOG.md
 .editorconfig
-.eslintignore
-.eslintrc
+.eslint.ignore.js
+.eslint.config.js
+build.config.js
 .babelrc
 .gitignore
 .github

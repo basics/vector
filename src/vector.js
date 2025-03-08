@@ -1,8 +1,11 @@
+import { acos, isArray, multQuatVec, normRad, multiplyVecMat3, isNumber } from './utils/math';
 import {
-  acos, isArray, multQuatVec, normRad, multiplyVecMat3, isNumber
-} from './utils/math';
-import {
-  cachedFunction, cachedGetter, cachedMethod, cachedValueOf, defineVectorLength, operatorCalc
+  cachedFunction,
+  cachedGetter,
+  cachedMethod,
+  cachedValueOf,
+  defineVectorLength,
+  operatorCalc
 } from './operator';
 import { IPoint } from './point';
 import { convertToCSSVars } from './utils/css';
@@ -12,58 +15,50 @@ const Y = 1;
 const Z = 2;
 const AXES = Symbol('axes');
 
-function square (val) {
+function square(val) {
   return val * val;
 }
 
 class AVector {
-  constructor (x, y, z) {
-    if (typeof x === 'function') {
-      operatorCalc(x, (nx, ny, nz) => {
+  constructor(...args) {
+    if (typeof args[0] === 'function') {
+      operatorCalc(args[0], (nx, ny, nz) => {
         this[AXES] = [nx, ny, nz];
       });
-    } else if (isArray(x)) {
-      this[AXES] = [...x];
-    } else if (x && isNumber(x.x)) {
-      this[AXES] = [x.x || 0, x.y || 0, x.z || 0];
+    } else if (isArray(args[0])) {
+      this[AXES] = [...args[0]];
+    } else if (args[0] && isNumber(args[0].x)) {
+      this[AXES] = [args[0].x || 0, args[0].y || 0, args[0].z || 0];
     } else {
-      this[AXES] = [x || 0, y || 0, z || 0];
+      this[AXES] = [args[0] || 0, args[1] || 0, args[2] || 0];
     }
   }
 
-  valueOf () {
+  valueOf() {
     throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
   }
 
-  normalize () {
+  normalize() {
     const { length } = this;
-    return new this.constructor(
-      this.x / length,
-      this.y / length,
-      this.z / length,
-    );
+    return new this.constructor(this.x / length, this.y / length, this.z / length);
   }
 
-  norm () {
+  norm() {
     return this.normalize();
   }
 
   // methods ispired by
   // https://evanw.github.io/lightgl.js/docs/vector.html
 
-  dot (v) {
+  dot(v) {
     return this.x * v.x + this.y * v.y + this.z * v.z;
   }
 
-  cross (v) {
-    return new this.constructor(
-      this.y * v.z - this.z * v.y,
-      this.z * v.x - this.x * v.z,
-      this.x * v.y - this.y * v.x,
-    );
+  cross(v) {
+    return new this.constructor(this.y * v.z - this.z * v.y, this.z * v.x - this.x * v.z, this.x * v.y - this.y * v.x);
   }
 
-  crossNormalize (v) {
+  crossNormalize(v) {
     const vec = this.cross(v);
     const { length } = vec;
     vec[AXES][X] /= length;
@@ -72,22 +67,22 @@ class AVector {
     return vec;
   }
 
-  cn (v) {
+  cn(v) {
     return this.crossNormalize(v);
   }
 
-  toAngles () {
+  toAngles() {
     return {
       theta: Math.atan2(this.z, this.x),
-      phi: Math.asin(this.y / this.length),
+      phi: Math.asin(this.y / this.length)
     };
   }
 
-  angleTo (v) {
+  angleTo(v) {
     return normRad(acos(this.dot(v) / (this.length * v.length)));
   }
 
-  multiply (quat) {
+  multiply(quat) {
     if (quat.x === undefined) {
       return this.multiplyMat3(quat);
     }
@@ -97,146 +92,140 @@ class AVector {
     return multQuatVec(quat, this);
   }
 
-  multiplyMat3 (other) {
+  multiplyMat3(other) {
     return multiplyVecMat3(this, other);
   }
 
-  multiplyVec3 ({ x, y, z }) {
-    return new this.constructor(
-      this.x * x,
-      this.y * y,
-      this.z * z
-    );
+  multiplyVec3({ x, y, z }) {
+    return new this.constructor(this.x * x, this.y * y, this.z * z);
   }
 
-  distance (v) {
-    return Math.sqrt(
-      square(this.x - v.x) + square(this.y - v.y) + square(this.z - v.z),
-    );
+  distance(v) {
+    return Math.sqrt(square(this.x - v.x) + square(this.y - v.y) + square(this.z - v.z));
   }
 
-  dist (v) {
+  dist(v) {
     return this.distance(v);
   }
 
-  toArray () {
+  toArray() {
     return [this.x, this.y, this.z];
   }
 
-  swizzle (target) {
-    const data = target.split('')
-      .map(t => this[t]);
+  swizzle(target) {
+    const data = target.split('').map(t => this[t]);
     if (data.length === 2) {
       return new IPoint(data[0], data[1]);
     }
     return new this.constructor(data[0], data[1], data[2]);
   }
 
-  calc (arg) {
+  // eslint-disable-next-line no-unused-vars
+  calc(arg) {
     throw new Error('calc() not implemented');
   }
 
-  clone () {
+  clone() {
     throw new Error('clone() not implemented');
   }
 
-  equals (v) {
+  equals(v) {
     return this.x === v.x && this.y === v.y && this.z === v.z;
   }
 
-  toJSON () {
+  toJSON() {
     return { x: this.x, y: this.y, z: this.z };
   }
 
-  toString () {
+  toString() {
     return JSON.stringify(this.toJSON());
   }
 
-  toCSSVars (name, target) {
+  toCSSVars(name, target) {
     return convertToCSSVars(name, this.toJSON(), target);
   }
 
-  get lengthSq () {
+  get lengthSq() {
     return this.dot(this);
   }
 
-  set lengthSq (_) {
+  set lengthSq(_) {
     throw new Error('set lengthSq() not implemented');
   }
 
-  get length () {
+  get length() {
     return Math.sqrt(this.lengthSq);
   }
 
-  set length (_) {
+  set length(_) {
     throw new Error('set length() not implemented');
   }
 
-  get lensq () {
+  get lensq() {
     return this.lengthSq;
   }
 
-  set lensq (_) {
+  set lensq(_) {
     throw new Error('set lensq() not implemented');
   }
 
-  get len () {
+  get len() {
     return this.length;
   }
 
-  set len (_) {
+  set len(_) {
     throw new Error('set len() not implemented');
   }
 
-  get x () {
+  get x() {
     return this[AXES][X];
   }
 
-  set x (_) {
+  set x(_) {
     throw new Error('set x() not implemented');
   }
 
-  get y () {
+  get y() {
     return this[AXES][Y];
   }
 
-  set y (_) {
+  set y(_) {
     throw new Error('set y() not implemented');
   }
 
-  get z () {
+  get z() {
     return this[AXES][Z];
   }
 
-  set z (_) {
+  set z(_) {
     throw new Error('set z() not implemented');
   }
 
-  get xy () {
+  get xy() {
     return new IPoint(this[AXES][X], this[AXES][Y]);
   }
 
-  set xy (_) {
+  set xy(_) {
     throw new Error('set xz() not implemented');
   }
 
-  get xz () {
+  get xz() {
     return new IPoint(this[AXES][X], this[AXES][Z]);
   }
 
-  set xz (_) {
+  set xz(_) {
     throw new Error('set xz() not implemented');
   }
 
-  get yz () {
+  get yz() {
     return new IPoint(this[AXES][Y], this[AXES][Z]);
   }
 
-  set yz (_) {
+  set yz(_) {
     throw new Error('set yz() not implemented');
   }
 
-  [Symbol.iterator] () {
+  [Symbol.iterator]() {
     return this[AXES].values();
   }
 }
@@ -255,50 +244,50 @@ cachedGetter(AVector, 'length');
 cachedGetter(AVector, 'lengthSq');
 
 export class Vector extends AVector {
-  set x (x) {
+  set x(x) {
     this[AXES][X] = x;
   }
 
-  set y (y) {
+  set y(y) {
     this[AXES][Y] = y;
   }
 
-  set z (z) {
+  set z(z) {
     this[AXES][Z] = z;
   }
 
-  get x () {
+  get x() {
     return this[AXES][X];
   }
 
-  get y () {
+  get y() {
     return this[AXES][Y];
   }
 
-  get z () {
+  get z() {
     return this[AXES][Z];
   }
 
-  calc (alg) {
+  calc(alg) {
     return operatorCalc(alg, this);
   }
 
-  clone () {
+  clone() {
     return new Vector(this.x, this.y, this.z);
   }
 }
 
 export class Victor extends AVector {
-  toVector () {
+  toVector() {
     return new Vector(this.x, this.y, this.z);
   }
 
-  clone () {
+  clone() {
     return this;
   }
 }
 
-export function calc (alg) {
+export function calc(alg) {
   return operatorCalc(alg);
 }
 

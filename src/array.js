@@ -2,7 +2,7 @@ import { cachedValueOf } from './operator';
 import { isArray } from './utils/math';
 
 export class VectorArray extends Array {
-  constructor (...vals) {
+  constructor(...vals) {
     if (!vals.length) {
       throw new Error('no empty array allowd');
     }
@@ -18,6 +18,6 @@ export class VectorArray extends Array {
 
 cachedValueOf(VectorArray, src => src);
 
-export function vectorArray (...vals) {
+export function vectorArray(...vals) {
   return new VectorArray(...vals);
 }

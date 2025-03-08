@@ -1,10 +1,6 @@
-import {
-  FORWARD, LEFT, RIGHT, UP
-} from './vector';
+import { FORWARD, LEFT, RIGHT, UP } from './vector';
 import { isArray, multQuatVec, isNumber } from './utils/math';
-import {
-  cachedFunction, defineMatrixLength, cachedValueOf
-} from './operator';
+import { cachedFunction, defineMatrixLength, cachedValueOf } from './operator';
 import { degree, isAngle } from './degree';
 import { convertToCSSVars } from './utils/css';
 
@@ -19,11 +15,11 @@ const LEFT_CACHE = Symbol('left cache');
 const UP_CACHE = Symbol('up cache');
 const INVERSE_CACHE = Symbol('inverse cache');
 
-function length ([x, y, z, w]) {
+function length([x, y, z, w]) {
   return Math.sqrt(x * x + y * y + z * z + w * w);
 }
 
-function normalize (axes) {
+function normalize(axes) {
   const len = length(axes);
   axes[X] /= len;
   axes[Y] /= len;
@@ -31,7 +27,7 @@ function normalize (axes) {
   axes[W] /= len;
 }
 
-function look (forward, up) {
+function look(forward, up) {
   const vector = forward.normalize();
   const vector2 = up.crossNormalize(vector);
   const vector3 = vector.crossNormalize(vector2);
@@ -45,7 +41,7 @@ function look (forward, up) {
   const m21 = vector.y;
   const m22 = vector.z;
 
-  const num8 = (m00 + m11) + m22;
+  const num8 = m00 + m11 + m22;
   const quat = new Array(4);
   if (num8 > 0) {
     let num = Math.sqrt(num8 + 1);
@@ -56,8 +52,8 @@ function look (forward, up) {
     quat[Z] = (m01 - m10) * num;
     return quat;
   }
-  if ((m00 >= m11) && (m00 >= m22)) {
-    const num7 = Math.sqrt(((1 + m00) - m11) - m22);
+  if (m00 >= m11 && m00 >= m22) {
+    const num7 = Math.sqrt(1 + m00 - m11 - m22);
     const num4 = 0.5 / num7;
     quat[X] = 0.5 * num7;
     quat[Y] = (m01 + m10) * num4;
@@ -66,7 +62,7 @@ function look (forward, up) {
     return quat;
   }
   if (m11 > m22) {
-    const num6 = Math.sqrt(((1 + m11) - m00) - m22);
+    const num6 = Math.sqrt(1 + m11 - m00 - m22);
     const num3 = 0.5 / num6;
     quat[X] = (m10 + m01) * num3;
     quat[Y] = 0.5 * num6;
@@ -74,7 +70,7 @@ function look (forward, up) {
     quat[W] = (m20 - m02) * num3;
     return quat;
   }
-  const num5 = Math.sqrt(((1 + m22) - m00) - m11);
+  const num5 = Math.sqrt(1 + m22 - m00 - m11);
   const num2 = 0.5 / num5;
   quat[X] = (m20 + m02) * num2;
   quat[Y] = (m21 + m12) * num2;
@@ -83,7 +79,7 @@ function look (forward, up) {
   return quat;
 }
 
-function axisAngle (axis, angle) {
+function axisAngle(axis, angle) {
   const quat = new Array(4);
   const a = angle * 0.5;
   const sa = Math.sin(a);
@@ -95,7 +91,7 @@ function axisAngle (axis, angle) {
   return quat;
 }
 
-function getQuat (x, y, z, w) {
+function getQuat(x, y, z, w) {
   if (isNumber(x)) {
     return [x, y, z, w];
   }
@@ -111,7 +107,7 @@ function getQuat (x, y, z, w) {
   return undefined;
 }
 
-function from (x, y, z, w) {
+function from(x, y, z, w) {
   if (x && isNumber(x.w)) {
     return getQuat(x.x, x.y, x.z, x.w);
   }
@@ -119,16 +115,17 @@ function from (x, y, z, w) {
 }
 
 class AQuaternion {
-  constructor (x, y, z, w) {
+  constructor(x, y, z, w) {
     this[AXES] = from(x, y, z, w);
     normalize(this[AXES]);
   }
 
-  set (x, y, z, w) {
+  // eslint-disable-next-line no-unused-vars
+  set(x, y, z, w) {
     throw new Error('set x() not implemented');
   }
 
-  multiply (other, y, z, w) {
+  multiply(other, y, z, w) {
     if (isNumber(other.w)) {
       return this.multiplyQuaternion(other);
     }
@@ -139,11 +136,11 @@ class AQuaternion {
     return this.multiplyVector(other);
   }
 
-  multiplyVector (vec) {
+  multiplyVector(vec) {
     return multQuatVec(this, vec);
   }
 
-  multiplyQuaternion (quat) {
+  multiplyQuaternion(quat) {
     const q1x = this.x;
     const q1y = this.y;
     const q1z = this.z;
@@ -159,108 +156,104 @@ class AQuaternion {
     return new this.constructor(x, y, z, w);
   }
 
-  mul (other, y, z, w) {
+  mul(other, y, z, w) {
     return this.multiply(other, y, z, w);
   }
 
-  get inverse () {
-    const {
-      x, y, z, w,
-    } = this;
+  get inverse() {
+    const { x, y, z, w } = this;
     return this.constructor(x * -1, y * -1, z * -1, w);
   }
 
-  get inv () {
+  get inv() {
     return this.inverse;
   }
 
-  equals (v) {
+  equals(v) {
     return this.x === v.x && this.y === v.y && this.z === v.z && this.w === v.w;
   }
 
-  get left () {
+  get left() {
     return this.multiplyVector(LEFT);
   }
 
-  get dir () {
+  get dir() {
     return this.multiplyVector(FORWARD);
   }
 
-  get up () {
+  get up() {
     return this.multiplyVector(UP);
   }
 
-  get [0] () {
+  get [0]() {
     return this.left;
   }
 
-  get [1] () {
+  get [1]() {
     return this.dir;
   }
 
-  get [2] () {
+  get [2]() {
     return this.up;
   }
 
-  get x () {
+  get x() {
     return this[AXES][X];
   }
 
-  set x (_) {
+  set x(_) {
     throw new Error('set x() not implemented');
   }
 
-  get y () {
+  get y() {
     return this[AXES][Y];
   }
 
-  set y (_) {
+  set y(_) {
     throw new Error('set y() not implemented');
   }
 
-  get z () {
+  get z() {
     return this[AXES][Z];
   }
 
-  set z (_) {
+  set z(_) {
     throw new Error('set z() not implemented');
   }
 
-  get w () {
+  get w() {
     return this[AXES][W];
   }
 
-  set w (_) {
+  set w(_) {
     throw new Error('set w() not implemented');
   }
 
-  toJSON () {
-    const {
-      x, y, z, w
-    } = this;
+  toJSON() {
+    const { x, y, z, w } = this;
 
     return {
       x,
       y,
       z,
       w,
-      a1: 1 - ((y * y) * 2) - ((z * z) * 2),
-      a2: ((x * y) * 2) - ((z * w) * 2),
-      a3: ((x * z) * 2) + ((y * w) * 2),
-      b1: ((x * y) * 2) + ((z * w) * 2),
-      b2: 1 - ((x * x) * 2) - ((z * z) * 2),
-      b3: ((y * z) * 2) - ((x * w) * 2),
-      c1: ((x * z) * 2) - ((y * w) * 2),
-      c2: ((y * z) * 2) + ((x * w) * 2),
-      c3: 1 - ((x * x) * 2) - ((y * y) * 2)
+      a1: 1 - y * y * 2 - z * z * 2,
+      a2: x * y * 2 - z * w * 2,
+      a3: x * z * 2 + y * w * 2,
+      b1: x * y * 2 + z * w * 2,
+      b2: 1 - x * x * 2 - z * z * 2,
+      b3: y * z * 2 - x * w * 2,
+      c1: x * z * 2 - y * w * 2,
+      c2: y * z * 2 + x * w * 2,
+      c3: 1 - x * x * 2 - y * y * 2
     };
   }
 
-  toString () {
+  toString() {
     return JSON.stringify(this.toJSON());
   }
 
-  toCSSVars (name, target) {
+  toCSSVars(name, target) {
     return convertToCSSVars(name, this.toJSON(), target);
   }
 }
@@ -269,7 +262,7 @@ cachedValueOf(AQuaternion);
 defineMatrixLength(AQuaternion);
 
 export class Quaternion extends AQuaternion {
-  set (x, y, z, w) {
+  set(x, y, z, w) {
     if (x instanceof AQuaternion) {
       this[AXES] = [...x[AXES]];
     } else {
@@ -278,40 +271,40 @@ export class Quaternion extends AQuaternion {
     }
   }
 
-  set x (x) {
+  set x(x) {
     this[AXES][X] = x;
   }
 
-  set y (y) {
+  set y(y) {
     this[AXES][Y] = y;
   }
 
-  set z (z) {
+  set z(z) {
     this[AXES][Z] = z;
   }
 
-  set w (w) {
+  set w(w) {
     this[AXES][W] = w;
   }
 
-  get x () {
+  get x() {
     return this[AXES][X];
   }
 
-  get y () {
+  get y() {
     return this[AXES][Y];
   }
 
-  get z () {
+  get z() {
     return this[AXES][Z];
   }
 
-  get w () {
+  get w() {
     return this[AXES][W];
   }
 }
 
-function fromCache (scope, key, fn) {
+function fromCache(scope, key, fn) {
   let res = scope[key];
   if (!res) {
     res = fn();
@@ -321,29 +314,25 @@ function fromCache (scope, key, fn) {
 }
 
 export class IQuaternion extends AQuaternion {
-  get left () {
+  get left() {
     return fromCache(this, LEFT_CACHE, () => this.multiplyVector(LEFT));
   }
 
-  get dir () {
+  get dir() {
     return fromCache(this, FORWARD_CACHE, () => this.multiplyVector(FORWARD));
   }
 
-  get up () {
+  get up() {
     return fromCache(this, UP_CACHE, () => this.multiplyVector(UP));
   }
 
-  get inverse () {
+  get inverse() {
     return fromCache(this, INVERSE_CACHE, () => {
-      const {
-        x, y, z, w,
-      } = this;
+      const { x, y, z, w } = this;
       return this.constructor(x * -1, y * -1, z * -1, w);
     });
   }
 }
-
-const q = new Quaternion();
 
 const quaternionFactory = cachedFunction((x, y, z, w) => new Quaternion(x, y, z, w));
 
@@ -355,14 +344,10 @@ export const iquaternion = (x, y, z, w) => iquaternionFactory(x, y, z, w);
 
 const LEFT90 = new IQuaternion(LEFT, degree(90));
 
-export function fromOrientation ({ alpha, beta, gamma }, orientation) {
-  let rot = iquaternion(UP, degree(alpha))
-    .mul(RIGHT, degree(beta))
-    .mul(FORWARD, degree(gamma))
-    .mul(LEFT90);
+export function fromOrientation({ alpha, beta, gamma }, orientation) {
+  let rot = iquaternion(UP, degree(alpha)).mul(RIGHT, degree(beta)).mul(FORWARD, degree(gamma)).mul(LEFT90);
 
-  rot = iquaternion(rot.dir, degree(orientation))
-    .mul(rot);
+  rot = iquaternion(rot.dir, degree(orientation)).mul(rot);
 
   return rot;
 }

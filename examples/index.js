@@ -1,5 +1,3 @@
-const example = require('./example');
+import example from './example';
 
-module.exports = {
-  example
-};
+export { example };

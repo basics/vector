@@ -3,7 +3,7 @@
 const DECIMAL = (0.5).toLocaleString().substring(1, 2) || '.';
 const ZERO = (0).toLocaleString() || '0';
 
-function normalizeNumber (number) {
+function normalizeNumber(number) {
   // special handling for zero
   if (number === 0) {
     return { mant: 0, exp: 2 };
@@ -27,7 +27,7 @@ function normalizeNumber (number) {
   return { mant, exp };
 }
 
-export function formatNumber (nr, digits) {
+export function formatNumber(nr, digits) {
   const n = normalizeNumber(nr);
   n.mant /= 10;
   n.exp += 1;
@@ -44,12 +44,9 @@ export function formatNumber (nr, digits) {
   if (n.exp < 1) {
     const mantString = mant.toString().replace(`${ZERO}${DECIMAL}`, '');
 
-    return `${ZERO}${DECIMAL}${ZERO.repeat(Math.max(0, -n.exp))}${mantString.toLocaleString(
-      undefined,
-      {
-        useGrouping: true
-      }
-    )}`;
+    return `${ZERO}${DECIMAL}${ZERO.repeat(Math.max(0, -n.exp))}${mantString.toLocaleString(undefined, {
+      useGrouping: true
+    })}`;
   }
   const e = 10 ** n.exp;
   return (mant * e).toLocaleString();

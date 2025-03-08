@@ -1,9 +1,9 @@
 import { assert } from 'chai';
-import { fromOrientation, IQuaternion, calc, iquaternion, victor, degree, LEFT, FORWARD, UP, RIGHT, IMat3 } from '../src';
+import { calc, iquaternion, victor, IMat3 } from '../src';
+import { describe, it } from 'vitest';
 
-describe('simple Mat3 tests.', () => {
-
-  it('should work with algebraic multiply', () => {
+describe('simple Mat3 tests.', function () {
+  it('should work with algebraic multiply', function () {
     const v1 = victor(0, 1, 0);
     const v2 = victor(4, 5, 6);
     const q1 = iquaternion(-0.7071067811865475, 0.7071067811865475, 0, 0);
@@ -32,12 +32,12 @@ describe('simple Mat3 tests.', () => {
     assert.closeTo(vq.z, 0, 0.001);
   });
 
-  it('should lead to different results when changing order', () => {
+  it('should lead to different results when changing order', function () {
     const v1 = victor(1, 2, 3);
     const v2 = victor(4, 5, 6);
 
-    const q1 = new IMat3(victor(0.5, 0, 0), victor(0, 1, 0), victor(0, 0, 1));
-    const q2 = new IMat3(victor(1, 0, 0), victor(0, 0, 0.5), victor(0, 1, 0));
+    // const q1 = new IMat3(victor(0.5, 0, 0), victor(0, 1, 0), victor(0, 0, 1));
+    // const q2 = new IMat3(victor(1, 0, 0), victor(0, 0, 0.5), victor(0, 1, 0));
     const q3 = new IMat3(victor(0, -1, 0), victor(-0.5, 0, 0), victor(0, 0, -1));
 
     const one = calc(() => v1 * q3);
