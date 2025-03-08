@@ -1,5 +1,15 @@
 # Project Changelog
 
+## [2.1.1](https://github.com/basics/vector/compare/v2.1.0...v2.1.1) (2025-03-08)
+
+
+### Bug Fixes
+
+* **src:** added default values ([98678e4](https://github.com/basics/vector/commit/98678e4d67490b2ea121ced48a2d39b7370e753f))
+* **src:** change undefined to args ([f924c5e](https://github.com/basics/vector/commit/f924c5ee4f31f2070af78873ac29c5fac648b2e8))
+* **src:** change zero to undefined ([b512d81](https://github.com/basics/vector/commit/b512d816002927d8374f0b609010a88cc73e26fb))
+* **update:** added unbuild, vitest; updated eslint ([cf1f95c](https://github.com/basics/vector/commit/cf1f95c8074eef426f24088591bc8f139adf90c1))
+
 # [2.1.0](https://github.com/basics/vector/compare/v2.0.12...v2.1.0) (2023-07-30)
 
 
