@@ -3,7 +3,6 @@ import { convertToCSSVars } from './utils/css';
 
 const ANGLE = Symbol('angle rad');
 const DEG_TO_RAD = Math.PI / 180;
-// const RAD_TO_DEG = 180 / Math.PI; // TODO: Wird nicht verwendet?
 
 class ADegree {
   constructor(angle) {
