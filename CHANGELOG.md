@@ -1,5 +1,12 @@
 # Project Changelog
 
+## [2.1.2](https://github.com/basics/vector/compare/v2.1.1...v2.1.2) (2025-03-08)
+
+
+### Bug Fixes
+
+* **publish:** force publish ([119b187](https://github.com/basics/vector/commit/119b187ccb172b9a22a04a5297ad16488bcadadc))
+
 ## [2.1.1](https://github.com/basics/vector/compare/v2.1.0...v2.1.1) (2025-03-08)
 
 
