@@ -50,11 +50,6 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Checkout Repo
         uses: actions/checkout@v4
-      - name: Download Artifact
-        uses: actions/download-artifact@master
-        with:
-          name: artifact
-          path: dist
       - name: Versioning
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
