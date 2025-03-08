@@ -334,7 +334,6 @@ export class IQuaternion extends AQuaternion {
   }
 }
 
-// const q = new Quaternion(); // TODO: Wird nicht verwendet?
 
 const quaternionFactory = cachedFunction((x, y, z, w) => new Quaternion(x, y, z, w));
 
