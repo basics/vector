@@ -1,5 +1,12 @@
 # Project Changelog
 
+## [2.1.3](https://github.com/basics/vector/compare/v2.1.2...v2.1.3) (2025-03-08)
+
+
+### Bug Fixes
+
+* **workflows:** add caching for node_modules in beta and main workflows ([4d5540e](https://github.com/basics/vector/commit/4d5540e4aa2446dc317027ad1ec621972ad3d61d))
+
 ## [2.1.2](https://github.com/basics/vector/compare/v2.1.1...v2.1.2) (2025-03-08)
 
 
