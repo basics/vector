@@ -48,10 +48,18 @@ export class IDegree extends ADegree {
 
 const ZERO = new IDegree(0);
 
+/**
+ * @param {number | ADegree} angle
+ * @returns {Degree & number}
+ */
 export function degree(angle) {
   return new Degree(angle);
 }
 
+/**
+ * @param {number | ADegree} angle
+ * @returns {IDegree & number}
+ */
 export function idegree(angle) {
   if (angle instanceof IDegree) {
     return angle;

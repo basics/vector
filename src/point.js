@@ -207,10 +207,20 @@ export function calc(alg) {
 
 const pointFactory = cachedFunction((x, y) => new Point(x, y));
 
+/**
+ * @param {number | () => number} x
+ * @param {number} [y]
+ * @returns {Point & number}
+ */
 export const point = (x, y) => pointFactory(x, y);
 
 const ipointFactory = cachedFunction((x, y) => new IPoint(x, y));
 
+/**
+ * @param {number | () => number} x
+ * @param {number} [y]
+ * @returns {IPoint & number}
+ */
 export const ipoint = (x, y) => ipointFactory(x, y);
 
 export const ZERO = ipoint(0, 0);
