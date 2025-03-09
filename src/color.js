@@ -160,8 +160,22 @@ export function calc(alg) {
 
 const colorFactory = cachedFunction((x, y, z, w) => new Color(x, y, z, w));
 
+/**
+ * @param {number | () => number} x
+ * @param {number} [y]
+ * @param {number} [z]
+ * @param {number} [w]
+ * @returns {Color & number}
+ */
 export const color = (x, y, z, w) => colorFactory(x, y, z, w);
 
 const icolorFactory = cachedFunction((x, y, z, w) => new IColor(x, y, z, w));
 
+/**
+ * @param {number | () => number} x
+ * @param {number} [y]
+ * @param {number} [z]
+ * @param {number} [w]
+ * @returns {IColor & number}
+ */
 export const icolor = (x, y, z, w) => icolorFactory(x, y, z, w);

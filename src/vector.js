@@ -293,10 +293,22 @@ export function calc(alg) {
 
 const vectorFactory = cachedFunction((x, y, z) => new Vector(x, y, z));
 
+/**
+ * @param {number | () => number} x
+ * @param {number} [y]
+ * @param {number} [z]
+ * @returns {Vector & number}
+ */
 export const vector = (x, y, z) => vectorFactory(x, y, z);
 
 const victorFactory = cachedFunction((x, y, z) => new Victor(x, y, z));
 
+/**
+ * @param {number | () => number} x
+ * @param {number} [y]
+ * @param {number} [z]
+ * @returns {Victor & number}
+ */
 export const victor = (x, y, z) => victorFactory(x, y, z);
 
 export const ZERO = victor(0, 0, 0);
