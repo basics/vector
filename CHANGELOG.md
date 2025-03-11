@@ -1,5 +1,17 @@
 # Project Changelog
 
+# [2.2.0](https://github.com/basics/vector/compare/v2.1.3...v2.2.0) (2025-03-11)
+
+
+### Bug Fixes
+
+* **operator:** set default value for result parameter in operatorCalc function ([ebee175](https://github.com/basics/vector/commit/ebee175aac7b96e08d5a1b45d42096e4a93b47ec))
+
+
+### Features
+
+* **vector:** adding jsdoc types to factory functions ([0a0b289](https://github.com/basics/vector/commit/0a0b2898544f73c8aec3e4843e7f0e029e5cd8c4))
+
 ## [2.1.3](https://github.com/basics/vector/compare/v2.1.2...v2.1.3) (2025-03-08)
 
 
