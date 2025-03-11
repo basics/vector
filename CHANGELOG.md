@@ -1,5 +1,12 @@
 # Project Changelog
 
+## [2.2.1](https://github.com/basics/vector/compare/v2.2.0...v2.2.1) (2025-03-11)
+
+
+### Bug Fixes
+
+* **vector:** adding jsdoc types to public vector api ([d345703](https://github.com/basics/vector/commit/d3457032554a6af0f21e9019e87c51dff778ff0d))
+
 # [2.2.0](https://github.com/basics/vector/compare/v2.1.3...v2.2.0) (2025-03-11)
 
 
