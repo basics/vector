@@ -43,11 +43,17 @@ class APoint {
     throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
   }
 
+  /**
+   * @returns {this}
+   */
   normalize() {
     const { length } = this;
     return new this.constructor(this.x / length, this.y / length);
   }
 
+  /**
+   * @returns {this}
+   */
   norm() {
     return this.normalize();
   }
@@ -63,10 +69,17 @@ class APoint {
     return normRad(Math.atan2(this.y, this.x));
   }
 
+  /**
+   * @param {APoint} v
+   */
   angleTo(v) {
     return angleOverGround(this.y, this.x, v.y, v.x);
   }
 
+  /**
+   * @param {number} angle
+   * @returns {this}
+   */
   rotate(angle) {
     const sa = Math.sin(angle);
     const ca = Math.cos(angle);
@@ -77,14 +90,23 @@ class APoint {
     return new this.constructor(x, y);
   }
 
+  /**
+   * @param {APoint} v
+   */
   distance(v) {
     return Math.sqrt(square(this.x - v.x) + square(this.y - v.y));
   }
 
+  /**
+   * @param {APoint} v
+   */
   dist(v) {
     return this.distance(v);
   }
 
+  /**
+   * @returns {[number, number]}
+   */
   toArray() {
     return [this.x, this.y];
   }
@@ -196,6 +218,9 @@ export class Point extends APoint {
 }
 
 export class IPoint extends APoint {
+  /**
+   * @returns {Point & number}
+   */
   toPoint() {
     return new Point(this.x, this.y);
   }
