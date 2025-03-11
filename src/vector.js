@@ -38,11 +38,17 @@ class AVector {
     throw new Error('valueOf() not implemented, looks like you try to calculate outside of calc');
   }
 
+  /**
+   * @returns {this}
+   */
   normalize() {
     const { length } = this;
     return new this.constructor(this.x / length, this.y / length, this.z / length);
   }
 
+  /**
+   * @returns {this}
+   */
   norm() {
     return this.normalize();
   }
@@ -54,10 +60,18 @@ class AVector {
     return this.x * v.x + this.y * v.y + this.z * v.z;
   }
 
+  /**
+   * @param {AVector} v
+   * @returns {this}
+   */
   cross(v) {
     return new this.constructor(this.y * v.z - this.z * v.y, this.z * v.x - this.x * v.z, this.x * v.y - this.y * v.x);
   }
 
+  /**
+   * @param {AVector} v
+   * @returns {this}
+   */
   crossNormalize(v) {
     const vec = this.cross(v);
     const { length } = vec;
@@ -67,6 +81,10 @@ class AVector {
     return vec;
   }
 
+  /**
+   * @param {AVector} v
+   * @returns {this}
+   */
   cn(v) {
     return this.crossNormalize(v);
   }
@@ -78,6 +96,9 @@ class AVector {
     };
   }
 
+  /**
+   * @param {AVector} v
+   */
   angleTo(v) {
     return normRad(acos(this.dot(v) / (this.length * v.length)));
   }
@@ -100,14 +121,23 @@ class AVector {
     return new this.constructor(this.x * x, this.y * y, this.z * z);
   }
 
+  /**
+   * @param {AVector} v
+   */
   distance(v) {
     return Math.sqrt(square(this.x - v.x) + square(this.y - v.y) + square(this.z - v.z));
   }
 
+  /**
+   * @param {AVector} v
+   */
   dist(v) {
     return this.distance(v);
   }
 
+  /**
+   * @returns {[number, number, number]}
+   */
   toArray() {
     return [this.x, this.y, this.z];
   }
@@ -268,6 +298,10 @@ export class Vector extends AVector {
     return this[AXES][Z];
   }
 
+  /**
+   * @param {() => number} alg
+   * @returns {Vector & number}
+   */
   calc(alg) {
     return operatorCalc(alg, this);
   }
@@ -278,6 +312,9 @@ export class Vector extends AVector {
 }
 
 export class Victor extends AVector {
+  /**
+   * @returns {Vector & number}
+   */
   toVector() {
     return new Vector(this.x, this.y, this.z);
   }
