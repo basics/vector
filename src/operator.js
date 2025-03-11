@@ -114,7 +114,7 @@ function setVectorValue(vec, index, value) {
   }
 }
 
-export function operatorCalc(alg, result) {
+export function operatorCalc(alg, result = undefined) {
   if (typeof alg !== 'function') {
     throw new Error('no function assigned');
   }
