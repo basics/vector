@@ -61,7 +61,7 @@ class AColor {
     return JSON.stringify(this.toJSON());
   }
 
-  toCSSVars(name, target) {
+  toCSSVars(name, target = {}) {
     return convertToCSSVars(name, this.toJSON(), target);
   }
 
