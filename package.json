@@ -61,7 +61,7 @@
     "chai": "5.2.0",
     "commitlint": "19.8.0",
     "eslint": "9.23.0",
-    "eslint-config-prettier": "10.1.1",
+    "eslint-config-prettier": "10.1.5",
     "eslint-formatter-json-relative": "0.1.0",
     "eslint-plugin-prettier": "5.2.3",
     "globals": "16.0.0",
