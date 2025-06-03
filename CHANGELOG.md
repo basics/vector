@@ -1,5 +1,12 @@
 # Project Changelog
 
+## [2.2.3](https://github.com/basics/vector/compare/v2.2.2...v2.2.3) (2025-06-03)
+
+
+### Bug Fixes
+
+* **toCSSVars:** set default value for target parameter in toCSSVars method across multiple classes ([003b2ae](https://github.com/basics/vector/commit/003b2ae162b1ae9e14c99e0bba9b990e9217e06d))
+
 ## [2.2.2](https://github.com/basics/vector/compare/v2.2.1...v2.2.2) (2025-03-13)
 
 
