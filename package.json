@@ -50,7 +50,7 @@
   },
   "homepage": "https://github.com/basics/vector#readme",
   "dependencies": {
-    "@babel/core": "7.27.4"
+    "@babel/core": "7.27.7"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.27.5",
