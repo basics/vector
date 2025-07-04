@@ -50,10 +50,10 @@
   },
   "homepage": "https://github.com/basics/vector#readme",
   "dependencies": {
-    "@babel/core": "7.27.4"
+    "@babel/core": "7.28.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.27.5",
+    "@babel/eslint-parser": "7.28.0",
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
     "@vitest/coverage-v8": "3.2.4",
