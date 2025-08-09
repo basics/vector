@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "config:base"
-  ],
-  "baseBranches": [
-    "main"
-  ],
+  "extends": ["config:recommended"],
+  "baseBranchPatterns": ["main"],
   "rangeStrategy": "pin"
 }
