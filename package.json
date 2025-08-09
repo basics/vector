@@ -72,7 +72,7 @@
     "snyk": "1.1298.2",
     "unbuild": "3.6.0",
     "vitest": "3.2.4",
-    "vitest-sonar-reporter": "2.0.1"
+    "vitest-sonar-reporter": "2.0.4"
   },
   "snyk": true
 }
