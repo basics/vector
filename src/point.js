@@ -208,10 +208,17 @@ export class Point extends APoint {
     return this[AXES][Y];
   }
 
+  /**
+   * @param {() => number} alg
+   * @returns {Point & number}
+   */
   calc(alg) {
     return operatorCalc(alg, this);
   }
 
+  /**
+   * @returns {Point & number}
+   */
   clone() {
     return new Point(this.x, this.y);
   }

@@ -306,6 +306,9 @@ export class Vector extends AVector {
     return operatorCalc(alg, this);
   }
 
+  /**
+   * @returns {Vector & number}
+   */
   clone() {
     return new Vector(this.x, this.y, this.z);
   }
@@ -319,11 +322,18 @@ export class Victor extends AVector {
     return new Vector(this.x, this.y, this.z);
   }
 
+  /**
+   * @returns {Vector & number}
+   */
   clone() {
     return this;
   }
 }
 
+/**
+ * @param {() => number} alg
+ * @returns {Vector & number}
+ */
 export function calc(alg) {
   return operatorCalc(alg);
 }
