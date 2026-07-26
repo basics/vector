@@ -71,7 +71,7 @@
     "semantic-release": "24.2.7",
     "snyk": "1.1298.2",
     "unbuild": "3.6.0",
-    "vitest": "3.2.4",
+    "vitest": "3.2.6",
     "vitest-sonar-reporter": "2.0.4"
   },
   "snyk": true
